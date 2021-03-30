@@ -3,12 +3,11 @@
   "name": "GitHub Username Search",
   "icons": [
     {
-      "src": "favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
+      "src": "favicon.png",
+      "sizes": "32x32"
     },
     {
-      "src": "logo192.png",
+      "src": "app-icon-192.png",
       "type": "image/png",
       "sizes": "192x192"
     }
