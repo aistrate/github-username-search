@@ -9,6 +9,8 @@ import "./App.css";
 import Search from "./Search";
 import History from "./History";
 
+export default App;
+
 function App() {
   return (
     <Router>
@@ -39,5 +41,3 @@ function App() {
     </Router>
   );
 }
-
-export default App;

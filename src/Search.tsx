@@ -1,3 +1,5 @@
+export default Search;
+
 function Search() {
   return (
     <div>
@@ -5,5 +7,3 @@ function Search() {
     </div>
   );
 }
-
-export default Search;

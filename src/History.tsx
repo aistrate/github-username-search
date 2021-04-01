@@ -1,3 +1,5 @@
+export default History;
+
 function History() {
   return (
     <div>
@@ -5,5 +7,3 @@ function History() {
     </div>
   );
 }
-
-export default History;
