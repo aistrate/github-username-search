@@ -5,11 +5,14 @@ import {
   Route,
   Redirect,
 } from "react-router-dom";
+import { Helmet } from "react-helmet";
 import "./App.css";
 import Search from "./Search";
 import History from "./History";
 
 export default App;
+
+const appName = "GitHub Username Search";
 
 function App() {
   return (
@@ -28,9 +31,15 @@ function App() {
 
         <Switch>
           <Route path="/search">
+            <Helmet>
+              <title>Search - {appName}</title>
+            </Helmet>
             <Search />
           </Route>
           <Route path="/history">
+            <Helmet>
+              <title>History - {appName}</title>
+            </Helmet>
             <History />
           </Route>
           <Route path="*">
