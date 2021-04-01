@@ -1,6 +1,6 @@
 import {
   BrowserRouter as Router,
-  Link,
+  NavLink,
   Switch,
   Route,
   Redirect,
@@ -21,10 +21,14 @@ function App() {
         <nav>
           <ul>
             <li>
-              <Link to="/search">Search</Link>
+              <NavLink to="/search" activeStyle={{ fontWeight: "bold" }}>
+                Search
+              </NavLink>
             </li>
             <li>
-              <Link to="/history">History</Link>
+              <NavLink to="/history" activeStyle={{ fontWeight: "bold" }}>
+                History
+              </NavLink>
             </li>
           </ul>
         </nav>
