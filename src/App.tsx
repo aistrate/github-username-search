@@ -19,7 +19,7 @@ function App() {
     <div className="App">
       <Router>
         <Header />
-        <Navigation />
+        <Nav />
         <Content />
       </Router>
     </div>
@@ -30,17 +30,25 @@ function Header() {
   return <div className="Header">{appName}</div>;
 }
 
-function Navigation() {
+function Nav() {
   return (
-    <nav>
-      <ul>
-        <li>
-          <NavLink to="/search" activeStyle={{ fontWeight: "bold" }}>
+    <nav className="Nav">
+      <ul className="Nav__list">
+        <li className="Nav__list-item">
+          <NavLink
+            to="/search"
+            className="Nav__link"
+            activeClassName="Nav__link--active"
+          >
             Search
           </NavLink>
         </li>
-        <li>
-          <NavLink to="/history" activeStyle={{ fontWeight: "bold" }}>
+        <li className="Nav__list-item">
+          <NavLink
+            to="/history"
+            className="Nav__link"
+            activeClassName="Nav__link--active"
+          >
             History
           </NavLink>
         </li>

@@ -11,3 +11,34 @@
   text-align: center;
   padding: 0.7em 0;
 }
+
+.Nav__list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: rgb(0, 0, 0, 0.85);
+  font-size: 1.25rem;
+}
+
+.Nav__list-item {
+  float: left;
+}
+
+.Nav__link {
+  display: block;
+  color: rgb(255, 255, 255, 0.5);
+  font-weight: bold;
+  padding: 0.4em 0.8em;
+  text-align: center;
+  text-decoration: none;
+}
+
+.Nav__link:hover {
+  color: rgb(255, 255, 255);
+  background-color: rgb(255, 255, 255, 0.1);
+}
+
+.Nav__link--active {
+  color: rgb(255, 255, 255);
+}
