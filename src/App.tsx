@@ -27,7 +27,7 @@ function App() {
 }
 
 function Header() {
-  return <div>{appName}</div>;
+  return <div className="Header">{appName}</div>;
 }
 
 function Navigation() {
