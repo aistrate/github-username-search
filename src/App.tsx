@@ -59,22 +59,24 @@ function Nav() {
 
 function Content() {
   return (
-    <Switch>
-      <Route path="/search">
-        <Helmet>
-          <title>Search - {appName}</title>
-        </Helmet>
-        <Search />
-      </Route>
-      <Route path="/history">
-        <Helmet>
-          <title>History - {appName}</title>
-        </Helmet>
-        <History />
-      </Route>
-      <Route path="*">
-        <Redirect to="/search" />
-      </Route>
-    </Switch>
+    <div className="Content">
+      <Switch>
+        <Route path="/search">
+          <Helmet>
+            <title>Search - {appName}</title>
+          </Helmet>
+          <Search />
+        </Route>
+        <Route path="/history">
+          <Helmet>
+            <title>History - {appName}</title>
+          </Helmet>
+          <History />
+        </Route>
+        <Route path="*">
+          <Redirect to="/search" />
+        </Route>
+      </Switch>
+    </div>
   );
 }
