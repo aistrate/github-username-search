@@ -3,7 +3,7 @@ export default History;
 function History() {
   return (
     <div>
-      <h2>History</h2>
+      <h1>History</h1>
     </div>
   );
 }
