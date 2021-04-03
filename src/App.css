@@ -13,7 +13,7 @@
   padding: 0.7em 0;
 }
 
-.Nav__list {
+.Nav {
   list-style-type: none;
   margin: 0;
   padding: 0;
@@ -22,11 +22,11 @@
   font-size: 1.25rem;
 }
 
-.Nav__list-item {
+.NavItem {
   float: left;
 }
 
-.Nav__link {
+.NavItem__link {
   display: block;
   color: rgb(255, 255, 255, 0.5);
   font-weight: bold;
@@ -35,12 +35,12 @@
   text-decoration: none;
 }
 
-.Nav__link:hover {
+.NavItem__link:hover {
   color: rgb(255, 255, 255);
   background-color: rgb(255, 255, 255, 0.1);
 }
 
-.Nav__link--active {
+.NavItem__link--active {
   color: rgb(255, 255, 255);
 }
 

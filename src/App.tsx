@@ -32,28 +32,31 @@ function Header() {
 
 function Nav() {
   return (
-    <nav className="Nav">
-      <ul className="Nav__list">
-        <li className="Nav__list-item">
-          <NavLink
-            to="/search"
-            className="Nav__link"
-            activeClassName="Nav__link--active"
-          >
-            Search
-          </NavLink>
-        </li>
-        <li className="Nav__list-item">
-          <NavLink
-            to="/history"
-            className="Nav__link"
-            activeClassName="Nav__link--active"
-          >
-            History
-          </NavLink>
-        </li>
+    <nav>
+      <ul className="Nav">
+        <NavItem to="/search">Search</NavItem>
+        <NavItem to="/history">History</NavItem>
       </ul>
     </nav>
+  );
+}
+
+type NavItemProps = {
+  to: string;
+  children?: React.ReactNode;
+};
+
+function NavItem({ to, children }: NavItemProps) {
+  return (
+    <li className="NavItem">
+      <NavLink
+        to={to}
+        className="NavItem__link"
+        activeClassName="NavItem__link--active"
+      >
+        {children}
+      </NavLink>
+    </li>
   );
 }
 
