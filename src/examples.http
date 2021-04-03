@@ -1,0 +1,41 @@
+### Examples of calls to GitHub REST API
+
+
+
+### User: aistrate
+
+###
+https://api.github.com/users/aistrate
+
+### from property "repos_url"
+https://api.github.com/users/aistrate/repos
+
+### from HTTP header "Link", rel="next"
+https://api.github.com/user/170662/repos?page=2
+
+### the most usable form
+https://api.github.com/users/aistrate/repos?page=1
+
+### per_page default is 30, max is 100
+https://api.github.com/users/aistrate/repos?page=1&per_page=100
+
+### one repo
+https://api.github.com/repos/aistrate/RegexParser
+
+
+
+### User: facebook
+
+### user (property "public_repos" shows repo count)
+https://api.github.com/users/facebook
+
+### repos (followed by page=2, etc.)
+https://api.github.com/users/facebook/repos?page=1&per_page=30
+
+
+
+### Organizations: microsoft, google
+### People: rmeoc, gaearon, shanselman, fabpot, andrew, taylorotwell,
+###         Rich-Harris, ayende, kentcdodds, jskeet, yyx990803, sebmarkbage
+
+https://api.github.com/users/microsoft
