@@ -21,11 +21,9 @@ const userData = {
 
 function Search() {
   return (
-    <div>
-      <h1>Search</h1>
-
+    <div style={{ marginTop: "2rem" }}>
       <form action="#">
-        Username
+        Username:
         <input type="text" />
         <button type="submit">Search</button>
       </form>
