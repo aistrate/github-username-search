@@ -1,12 +1,12 @@
 export default Search;
 
-const userData = {
+const userData: User = {
   id: 69631,
   avatar_url: "https://avatars.githubusercontent.com/u/69631?v=4",
   //avatar_url: "https://avatars.githubusercontent.com/u/810438?v=4",
   name: "Facebook",
   login: "facebook",
-  type: "Organization" as const,
+  type: "Organization",
   html_url: "https://github.com/facebook",
   created_at: "2009-04-02T03:35:22Z",
   bio:
@@ -34,7 +34,27 @@ function Search() {
   );
 }
 
-function UserInfo({ user }: { user: typeof userData }) {
+type UserType = "User" | "Organization";
+
+type User = {
+  id: number;
+  avatar_url: string;
+  name: string;
+  login: string;
+  type: UserType;
+  html_url: string;
+  created_at: string;
+  bio: string;
+  followers: number;
+  company: string;
+  location: string;
+  email: string;
+  blog: string;
+  twitter_username: string;
+  public_repos: number;
+};
+
+function UserInfo({ user }: { user: User }) {
   const dateCreated = new Date(user.created_at).toLocaleDateString("en-US", {
     year: "numeric",
     month: "short",
@@ -85,7 +105,7 @@ function UserInfo({ user }: { user: typeof userData }) {
 
 type AvatarProps = {
   url: string;
-  userType: "User" | "Organization";
+  userType: UserType;
 };
 
 function Avatar({ url, userType }: AvatarProps) {
