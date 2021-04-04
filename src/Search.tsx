@@ -48,7 +48,7 @@ function UserInfo() {
       <dl>
         <FieldRow label="Username">{user.login}</FieldRow>
         <FieldRow label="Type">{user.type}</FieldRow>
-        <FieldRow label="GitHub">{user.html_url}</FieldRow>
+        <FieldRow label="GitHub Page">{user.html_url}</FieldRow>
         <FieldRow label="Created">{dateCreated}</FieldRow>
         {user.bio && <FieldRow label="Bio">{user.bio}</FieldRow>}
         <FieldRow label="Followers">{user.followers}</FieldRow>

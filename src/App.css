@@ -1,5 +1,5 @@
 .App {
-  max-width: 900px;
+  max-width: 800px;
   min-width: 300px;
   min-height: 100vh;
   margin: auto;
@@ -69,7 +69,7 @@
   top: 0;
   bottom: 0;
   pointer-events: none;
-  background-color: hsla(198, 45%, 10%, 0.02);
+  background-color: hsla(198, 45%, 10%, 0.04);
 }
 
 .FieldRow__label {
@@ -84,7 +84,7 @@
   font-weight: 600;
 }
 
-@media (max-width: 45em) {
+@media (max-width: 40em) {
   .FieldRow {
     flex-direction: column;
   }
