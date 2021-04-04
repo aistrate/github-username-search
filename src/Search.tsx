@@ -121,7 +121,11 @@ function FieldLink(props: React.ComponentPropsWithoutRef<"a">) {
   return <a target="_blank" className="FieldLink" {...props} />;
 }
 
-function Company({ name }: { name: string }) {
+type CompanyProps = {
+  name: string;
+};
+
+function Company({ name }: CompanyProps) {
   return name[0] === "@" ? (
     <FieldLink href={`https://github.com/${name.slice(1)}`}>{name}</FieldLink>
   ) : (
