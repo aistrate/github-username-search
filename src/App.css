@@ -63,14 +63,14 @@
   margin: 0.83em 0;
 }
 
-.FieldRow {
+.Row {
   display: flex;
   line-height: 1.5em;
   padding: 0.5em 0;
   position: relative;
 }
 
-.FieldRow:nth-child(even)::before {
+.Row:nth-child(even)::before {
   content: " ";
   position: absolute;
   left: -1rem;
@@ -81,33 +81,33 @@
   background-color: hsla(198, 45%, 10%, 0.04);
 }
 
-.FieldRow__label {
+.Row__label {
   flex: 0 0 25%;
   min-width: 10.5em;
   margin-right: 1.5em;
 }
 
-.FieldRow__content {
+.Row__content {
   flex: 1;
   margin-left: 0;
   font-weight: 600;
 }
 
 @media (max-width: 40em) {
-  .FieldRow {
+  .Row {
     flex-direction: column;
   }
 
-  .FieldRow__label {
+  .Row__label {
     margin-bottom: 0.25em;
   }
 }
 
-.FieldLink {
+.Link {
   color: #0366d6;
   text-decoration: none;
 }
 
-.FieldLink:hover {
+.Link:hover {
   text-decoration: underline;
 }

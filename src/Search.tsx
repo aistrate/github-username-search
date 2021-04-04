@@ -68,36 +68,34 @@ function UserInfo({ user }: { user: User }) {
       <h2 className="UserInfo__Title">{user.name}</h2>
 
       <dl>
-        <FieldRow label="Username">{user.login}</FieldRow>
-        <FieldRow label="Type">{user.type}</FieldRow>
-        <FieldRow label="GitHub Page">
-          <FieldLink href={user.html_url}>{user.html_url}</FieldLink>
-        </FieldRow>
-        <FieldRow label="Created">{dateCreated}</FieldRow>
-        {user.bio && <FieldRow label="Bio">{user.bio}</FieldRow>}
-        <FieldRow label="Followers">{formatNumber(user.followers)}</FieldRow>
+        <Row label="Username">{user.login}</Row>
+        <Row label="Type">{user.type}</Row>
+        <Row label="GitHub Page">
+          <Link href={user.html_url}>{user.html_url}</Link>
+        </Row>
+        <Row label="Created">{dateCreated}</Row>
+        {user.bio && <Row label="Bio">{user.bio}</Row>}
+        <Row label="Followers">{formatNumber(user.followers)}</Row>
         {user.company && (
-          <FieldRow label="Company">
+          <Row label="Company">
             <Company name={user.company} />
-          </FieldRow>
+          </Row>
         )}
-        {user.location && <FieldRow label="Location">{user.location}</FieldRow>}
-        {user.email && <FieldRow label="Email">{user.email}</FieldRow>}
+        {user.location && <Row label="Location">{user.location}</Row>}
+        {user.email && <Row label="Email">{user.email}</Row>}
         {user.blog && (
-          <FieldRow label="Blog">
-            <FieldLink href={user.blog}>{user.blog}</FieldLink>
-          </FieldRow>
+          <Row label="Blog">
+            <Link href={user.blog}>{user.blog}</Link>
+          </Row>
         )}
         {user.twitter_username && (
-          <FieldRow label="Twitter">
-            <FieldLink href={`https://twitter.com/${user.twitter_username}`}>
+          <Row label="Twitter">
+            <Link href={`https://twitter.com/${user.twitter_username}`}>
               @{user.twitter_username}
-            </FieldLink>
-          </FieldRow>
+            </Link>
+          </Row>
         )}
-        <FieldRow label="Repositories">
-          {formatNumber(user.public_repos)}
-        </FieldRow>
+        <Row label="Repositories">{formatNumber(user.public_repos)}</Row>
       </dl>
     </>
   );
@@ -122,23 +120,23 @@ function Avatar({ url, userType }: AvatarProps) {
   );
 }
 
-type FieldRowProps = {
+type RowProps = {
   label: string;
   children?: React.ReactNode;
 };
 
-function FieldRow({ label, children }: FieldRowProps) {
+function Row({ label, children }: RowProps) {
   return (
-    <div className="FieldRow">
-      <dt className="FieldRow__label">{label}:</dt>
-      <dd className="FieldRow__content">{children}</dd>
+    <div className="Row">
+      <dt className="Row__label">{label}:</dt>
+      <dd className="Row__content">{children}</dd>
     </div>
   );
 }
 
-function FieldLink(props: React.ComponentPropsWithoutRef<"a">) {
+function Link(props: React.ComponentPropsWithoutRef<"a">) {
   // eslint-disable-next-line jsx-a11y/anchor-has-content
-  return <a target="_blank" className="FieldLink" {...props} />;
+  return <a target="_blank" className="Link" {...props} />;
 }
 
 type CompanyProps = {
@@ -147,7 +145,7 @@ type CompanyProps = {
 
 function Company({ name }: CompanyProps) {
   return name[0] === "@" ? (
-    <FieldLink href={`https://github.com/${name.slice(1)}`}>{name}</FieldLink>
+    <Link href={`https://github.com/${name.slice(1)}`}>{name}</Link>
   ) : (
     <>{name}</>
   );
