@@ -10,13 +10,13 @@ const userData = {
   created_at: "2009-04-02T03:35:22Z",
   bio:
     "We are working to build community through open source technology. NB: members must have two-factor auth.",
-  followers: 0,
+  followers: 23144,
   company: "@microsoft",
   location: "Menlo Park, California",
   email: "abc@example.com",
   blog: "https://opensource.fb.com",
   twitter_username: "fabpot",
-  public_repos: 117,
+  public_repos: 1117,
 };
 
 function Search() {
@@ -53,7 +53,7 @@ function UserInfo({ user }: { user: typeof userData }) {
         </FieldRow>
         <FieldRow label="Created">{dateCreated}</FieldRow>
         {user.bio && <FieldRow label="Bio">{user.bio}</FieldRow>}
-        <FieldRow label="Followers">{user.followers}</FieldRow>
+        <FieldRow label="Followers">{formatNumber(user.followers)}</FieldRow>
         {user.company && (
           <FieldRow label="Company">
             <Company name={user.company} />
@@ -73,7 +73,9 @@ function UserInfo({ user }: { user: typeof userData }) {
             </FieldLink>
           </FieldRow>
         )}
-        <FieldRow label="Repositories">{user.public_repos}</FieldRow>
+        <FieldRow label="Repositories">
+          {formatNumber(user.public_repos)}
+        </FieldRow>
       </dl>
     </>
   );
@@ -104,4 +106,8 @@ function Company({ name }: { name: string }) {
   ) : (
     <>{name}</>
   );
+}
+
+function formatNumber(n: number) {
+  return n.toLocaleString("en-US");
 }
