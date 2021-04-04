@@ -20,6 +20,34 @@ const userData: User = {
   public_repos: 1117,
 };
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const Repos = [
+  {
+    id: 10270250,
+    name: "react",
+    html_url: "https://github.com/facebook/react",
+    description:
+      "A declarative, efficient, and flexible JavaScript library for building user interfaces.",
+    fork: false,
+    created_at: "2013-05-24T16:15:54Z",
+    stargazers_count: 166391,
+    language: "JavaScript",
+    forks_count: 33414,
+  },
+  {
+    id: 40508605,
+    name: "relay",
+    html_url: "https://github.com/facebook/relay",
+    description:
+      "Relay is a JavaScript framework for building data-driven React applications.",
+    fork: false,
+    created_at: "2015-08-10T22:09:16Z",
+    stargazers_count: 15533,
+    language: "JavaScript",
+    forks_count: 33414,
+  },
+];
+
 function Search() {
   return (
     <div style={{ marginTop: "2rem" }}>
