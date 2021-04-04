@@ -3,9 +3,10 @@ export default Search;
 const userData = {
   id: 69631,
   avatar_url: "https://avatars.githubusercontent.com/u/69631?v=4",
+  //avatar_url: "https://avatars.githubusercontent.com/u/810438?v=4",
   name: "Facebook",
   login: "facebook",
-  type: "Organization",
+  type: "Organization" as const,
   html_url: "https://github.com/facebook",
   created_at: "2009-04-02T03:35:22Z",
   bio:
@@ -42,7 +43,10 @@ function UserInfo({ user }: { user: typeof userData }) {
 
   return (
     <>
+      <Avatar url={user.avatar_url} userType={user.type} />
+
       <h2 className="UserInfo__Title">{user.name}</h2>
+
       <dl>
         <FieldRow label="Username">{user.login}</FieldRow>
         <FieldRow label="Type">{user.type}</FieldRow>
@@ -76,6 +80,25 @@ function UserInfo({ user }: { user: typeof userData }) {
         </FieldRow>
       </dl>
     </>
+  );
+}
+
+type AvatarProps = {
+  url: string;
+  userType: "User" | "Organization";
+};
+
+function Avatar({ url, userType }: AvatarProps) {
+  return userType === "User" ? (
+    <img
+      className="Avatar Avatar--user"
+      alt="Avatar"
+      width="180"
+      height="180"
+      src={url}
+    />
+  ) : (
+    <img className="Avatar" alt="Avatar" width="100" height="100" src={url} />
   );
 }
 

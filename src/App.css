@@ -48,8 +48,17 @@
   padding: 1rem;
 }
 
-.UserInfo__Title {
+.Avatar {
   margin-top: 3.5rem;
+  height: auto;
+  vertical-align: middle;
+}
+
+.Avatar--user {
+  border-radius: 50%;
+}
+
+.UserInfo__Title {
   font-size: 1.5rem;
   font-weight: 600;
 }
