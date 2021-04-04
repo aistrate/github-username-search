@@ -23,7 +23,7 @@ const userData = {
 function Search() {
   return (
     <div style={{ marginTop: "2rem" }}>
-      <form action="#">
+      <form action="#" style={{ marginBottom: "3.5rem" }}>
         Username:
         <input type="text" />
         <button type="submit">Search</button>
