@@ -1,22 +1,22 @@
 export default Search;
 
-const user = {
-  login: "facebook",
+const userData = {
   id: 69631,
   avatar_url: "https://avatars.githubusercontent.com/u/69631?v=4",
-  html_url: "https://github.com/facebook",
-  type: "Organization",
   name: "Facebook",
-  company: null,
-  blog: "https://opensource.fb.com",
-  location: "Menlo Park, California",
-  email: null,
+  login: "facebook",
+  type: "Organization",
+  html_url: "https://github.com/facebook",
+  created_at: "2009-04-02T03:35:22Z",
   bio:
     "We are working to build community through open source technology. NB: members must have two-factor auth.",
+  followers: 0,
+  company: null,
+  location: "Menlo Park, California",
+  email: null,
+  blog: "https://opensource.fb.com",
   twitter_username: "fabpot",
   public_repos: 117,
-  followers: 0,
-  created_at: "2009-04-02T03:35:22Z",
 };
 
 function Search() {
@@ -30,12 +30,12 @@ function Search() {
         <button type="submit">Search</button>
       </form>
 
-      <UserInfo />
+      <UserInfo user={userData} />
     </div>
   );
 }
 
-function UserInfo() {
+function UserInfo({ user }: { user: typeof userData }) {
   const dateCreated = new Date(user.created_at).toLocaleDateString("en-US", {
     year: "numeric",
     month: "short",
