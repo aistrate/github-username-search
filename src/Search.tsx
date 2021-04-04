@@ -11,9 +11,9 @@ const userData = {
   bio:
     "We are working to build community through open source technology. NB: members must have two-factor auth.",
   followers: 0,
-  company: null,
+  company: "@microsoft",
   location: "Menlo Park, California",
-  email: null,
+  email: "abc@example.com",
   blog: "https://opensource.fb.com",
   twitter_username: "fabpot",
   public_repos: 117,
@@ -48,16 +48,30 @@ function UserInfo({ user }: { user: typeof userData }) {
       <dl>
         <FieldRow label="Username">{user.login}</FieldRow>
         <FieldRow label="Type">{user.type}</FieldRow>
-        <FieldRow label="GitHub Page">{user.html_url}</FieldRow>
+        <FieldRow label="GitHub Page">
+          <FieldLink href={user.html_url}>{user.html_url}</FieldLink>
+        </FieldRow>
         <FieldRow label="Created">{dateCreated}</FieldRow>
         {user.bio && <FieldRow label="Bio">{user.bio}</FieldRow>}
         <FieldRow label="Followers">{user.followers}</FieldRow>
-        {user.company && <FieldRow label="Company">{user.company}</FieldRow>}
+        {user.company && (
+          <FieldRow label="Company">
+            <Company name={user.company} />
+          </FieldRow>
+        )}
         {user.location && <FieldRow label="Location">{user.location}</FieldRow>}
         {user.email && <FieldRow label="Email">{user.email}</FieldRow>}
-        {user.blog && <FieldRow label="Blog">{user.blog}</FieldRow>}
+        {user.blog && (
+          <FieldRow label="Blog">
+            <FieldLink href={user.blog}>{user.blog}</FieldLink>
+          </FieldRow>
+        )}
         {user.twitter_username && (
-          <FieldRow label="Twitter">@{user.twitter_username}</FieldRow>
+          <FieldRow label="Twitter">
+            <FieldLink href={`https://twitter.com/${user.twitter_username}`}>
+              @{user.twitter_username}
+            </FieldLink>
+          </FieldRow>
         )}
         <FieldRow label="Repositories">{user.public_repos}</FieldRow>
       </dl>
@@ -76,5 +90,18 @@ function FieldRow({ label, children }: FieldRowProps) {
       <dt className="FieldRow__label">{label}:</dt>
       <dd className="FieldRow__content">{children}</dd>
     </div>
+  );
+}
+
+function FieldLink(props: React.ComponentPropsWithoutRef<"a">) {
+  // eslint-disable-next-line jsx-a11y/anchor-has-content
+  return <a target="_blank" className="FieldLink" {...props} />;
+}
+
+function Company({ name }: { name: string }) {
+  return name[0] === "@" ? (
+    <FieldLink href={`https://github.com/${name.slice(1)}`}>{name}</FieldLink>
+  ) : (
+    <>{name}</>
   );
 }

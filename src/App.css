@@ -36,12 +36,12 @@
 }
 
 .NavItem__link:hover {
-  color: rgb(255, 255, 255);
+  color: white;
   background-color: rgb(255, 255, 255, 0.1);
 }
 
 .NavItem__link--active {
-  color: rgb(255, 255, 255);
+  color: white;
 }
 
 .Content {
@@ -92,4 +92,13 @@
   .FieldRow__label {
     margin-bottom: 0.25em;
   }
+}
+
+.FieldLink {
+  color: #0366d6;
+  text-decoration: none;
+}
+
+.FieldLink:hover {
+  text-decoration: underline;
 }
