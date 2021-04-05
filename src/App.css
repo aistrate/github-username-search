@@ -57,10 +57,20 @@
   border-radius: 50%;
 }
 
-.UserInfo__Title {
+.UserInfo__title {
   font-size: 1.5rem;
   font-weight: 600;
   margin: 0.83em 0;
+}
+
+.RepoList__title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 3.5rem 0 0.83em;
+}
+
+.RepoInfo + .RepoInfo {
+  margin-top: 2.5rem;
 }
 
 .Row {

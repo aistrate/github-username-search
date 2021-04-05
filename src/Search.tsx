@@ -20,31 +20,30 @@ const userData: User = {
   public_repos: 1117,
 };
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const Repos = [
+const repoData: Repo[] = [
   {
     id: 10270250,
     name: "react",
     html_url: "https://github.com/facebook/react",
+    fork: false,
     description:
       "A declarative, efficient, and flexible JavaScript library for building user interfaces.",
-    fork: false,
-    created_at: "2013-05-24T16:15:54Z",
-    stargazers_count: 166391,
     language: "JavaScript",
+    stargazers_count: 166391,
     forks_count: 33414,
+    updated_at: "2021-04-04T20:01:12Z",
   },
   {
     id: 40508605,
     name: "relay",
     html_url: "https://github.com/facebook/relay",
+    fork: false,
     description:
       "Relay is a JavaScript framework for building data-driven React applications.",
-    fork: false,
-    created_at: "2015-08-10T22:09:16Z",
-    stargazers_count: 15533,
     language: "JavaScript",
+    stargazers_count: 15533,
     forks_count: 33414,
+    updated_at: "2021-04-04T09:00:37Z",
   },
 ];
 
@@ -58,6 +57,8 @@ function Search() {
       </form>
 
       <UserInfo user={userData} />
+
+      <RepoList repos={repoData} />
     </div>
   );
 }
@@ -72,28 +73,26 @@ type User = {
   type: UserType;
   html_url: string;
   created_at: string;
-  bio: string;
+  bio: string | null;
   followers: number;
-  company: string;
-  location: string;
-  email: string;
-  blog: string;
-  twitter_username: string;
+  company: string | null;
+  location: string | null;
+  email: string | null;
+  blog: string | null;
+  twitter_username: string | null;
   public_repos: number;
 };
 
-function UserInfo({ user }: { user: User }) {
-  const dateCreated = new Date(user.created_at).toLocaleDateString("en-US", {
-    year: "numeric",
-    month: "short",
-    day: "numeric",
-  });
+type UserInfoProps = {
+  user: User;
+};
 
+function UserInfo({ user }: UserInfoProps) {
   return (
     <>
       <Avatar url={user.avatar_url} userType={user.type} />
 
-      <h2 className="UserInfo__Title">{user.name}</h2>
+      <h2 className="UserInfo__title">{user.name}</h2>
 
       <dl>
         <Row label="Username">{user.login}</Row>
@@ -101,7 +100,7 @@ function UserInfo({ user }: { user: User }) {
         <Row label="GitHub Page">
           <Link href={user.html_url}>{user.html_url}</Link>
         </Row>
-        <Row label="Created">{dateCreated}</Row>
+        <Row label="Created">{formatDate(user.created_at)}</Row>
         {user.bio && <Row label="Bio">{user.bio}</Row>}
         <Row label="Followers">{formatNumber(user.followers)}</Row>
         {user.company && (
@@ -126,6 +125,63 @@ function UserInfo({ user }: { user: User }) {
         <Row label="Repositories">{formatNumber(user.public_repos)}</Row>
       </dl>
     </>
+  );
+}
+
+type Repo = {
+  id: number;
+  name: string;
+  html_url: string;
+  fork: boolean;
+  description: string | null;
+  language: string | null;
+  stargazers_count: number;
+  forks_count: number;
+  updated_at: string;
+};
+
+type RepoListProps = {
+  repos: Repo[];
+};
+
+type RepoInfoProps = {
+  repo: Repo;
+};
+
+function RepoList({ repos }: RepoListProps) {
+  return (
+    <>
+      <h2 className="RepoList__title">Repositories</h2>
+
+      <div>
+        {repos.map((repo) => (
+          <RepoInfo repo={repo}></RepoInfo>
+        ))}
+      </div>
+    </>
+  );
+}
+
+function RepoInfo({ repo }: RepoInfoProps) {
+  return (
+    <div key={repo.id} className="RepoInfo">
+      <h3>
+        <Link href={repo.html_url}>{repo.name}</Link>
+      </h3>
+
+      <dl>
+        {repo.fork && <Row label="Fork?">Yes</Row>}
+        {repo.description && <Row label="Description">{repo.description}</Row>}
+        {repo.language && <Row label="Language">{repo.language}</Row>}
+        {repo.stargazers_count > 0 && (
+          <Row label="Stars">{formatNumber(repo.stargazers_count)}</Row>
+        )}
+        {repo.forks_count > 0 && (
+          <Row label="Forks">{formatNumber(repo.forks_count)}</Row>
+        )}
+        <Row label="Updated">{formatDate(repo.updated_at)}</Row>
+      </dl>
+    </div>
   );
 }
 
@@ -177,6 +233,14 @@ function Company({ name }: CompanyProps) {
   ) : (
     <>{name}</>
   );
+}
+
+function formatDate(dateString: string) {
+  return new Date(dateString).toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+  });
 }
 
 function formatNumber(n: number) {
