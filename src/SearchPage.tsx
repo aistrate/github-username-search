@@ -63,8 +63,7 @@ function SearchForm() {
   return (
     <form action="#" style={{ marginBottom: "3.5rem" }}>
       <TextInput placeholder="Username" />
-      &nbsp;
-      <button type="submit">Search</button>
+      <Button type="submit">Search</Button>
     </form>
   );
 }
@@ -81,6 +80,10 @@ function TextInput(props: React.ComponentPropsWithoutRef<"input">) {
       {...props}
     />
   );
+}
+
+function Button(props: React.ComponentPropsWithoutRef<"button">) {
+  return <button className="Button" {...props} />;
 }
 
 type UserType = "User" | "Organization";
