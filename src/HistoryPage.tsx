@@ -1,6 +1,6 @@
-export default History;
+export default HistoryPage;
 
-function History() {
+function HistoryPage() {
   return (
     <div>
       <h1>History</h1>

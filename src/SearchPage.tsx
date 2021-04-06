@@ -1,4 +1,4 @@
-export default Search;
+export default SearchPage;
 
 const userData: User = {
   id: 69631,
@@ -49,7 +49,7 @@ const repoData: Repo[] = [
   },
 ];
 
-function Search() {
+function SearchPage() {
   return (
     <div style={{ marginTop: "2rem" }}>
       <form action="#" style={{ marginBottom: "3.5rem" }}>

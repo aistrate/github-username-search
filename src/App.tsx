@@ -7,8 +7,8 @@ import {
 } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import "./App.css";
-import Search from "./Search";
-import History from "./History";
+import SearchPage from "./SearchPage";
+import HistoryPage from "./HistoryPage";
 
 export default App;
 
@@ -68,13 +68,13 @@ function Content() {
           <Helmet>
             <title>Search - {appName}</title>
           </Helmet>
-          <Search />
+          <SearchPage />
         </Route>
         <Route path="/history">
           <Helmet>
             <title>History - {appName}</title>
           </Helmet>
-          <History />
+          <HistoryPage />
         </Route>
         <Route path="*">
           <Redirect to="/search" />
