@@ -62,18 +62,24 @@ function SearchPage() {
 function SearchForm() {
   return (
     <form action="#" style={{ marginBottom: "3.5rem" }}>
-      <input
-        type="text"
-        className="SearchForm__input"
-        placeholder="Username"
-        autoComplete="off"
-        autoCorrect="off"
-        autoCapitalize="none"
-        spellCheck="false"
-      />
+      <TextInput placeholder="Username" />
       &nbsp;
       <button type="submit">Search</button>
     </form>
+  );
+}
+
+function TextInput(props: React.ComponentPropsWithoutRef<"input">) {
+  return (
+    <input
+      className="TextInput"
+      type="text"
+      autoComplete="off"
+      autoCorrect="off"
+      autoCapitalize="none"
+      spellCheck="false"
+      {...props}
+    />
   );
 }
 
