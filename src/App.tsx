@@ -5,7 +5,7 @@ import {
   Route,
   Redirect,
 } from "react-router-dom";
-import { Helmet } from "react-helmet";
+import { useEffect } from "react";
 import "./App.css";
 import SearchPage from "./SearchPage";
 import HistoryPage from "./HistoryPage";
@@ -65,15 +65,11 @@ function Content() {
     <div className="Content">
       <Switch>
         <Route path="/search">
-          <Helmet>
-            <title>Search - {appName}</title>
-          </Helmet>
+          <WindowTitle value={`Search - ${appName}`} />
           <SearchPage />
         </Route>
         <Route path="/history">
-          <Helmet>
-            <title>History - {appName}</title>
-          </Helmet>
+          <WindowTitle value={`History - ${appName}`} />
           <HistoryPage />
         </Route>
         <Route path="*">
@@ -82,4 +78,16 @@ function Content() {
       </Switch>
     </div>
   );
+}
+
+type WindowTitleProps = {
+  value: string;
+};
+
+function WindowTitle({ value }: WindowTitleProps) {
+  useEffect(() => {
+    document.title = value;
+  }, [value]);
+
+  return null;
 }
