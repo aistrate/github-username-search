@@ -97,11 +97,10 @@ function UserInfo({ user }: UserInfoProps) {
       <h2 className="UserInfo__title">{user.name}</h2>
 
       <dl>
-        <Row label="Username">{user.login}</Row>
-        <Row label="Type">{user.type}</Row>
-        <Row label="GitHub Page">
-          <Link href={user.html_url}>{user.html_url}</Link>
+        <Row label="Username">
+          <Link href={user.html_url}>{user.login}</Link>
         </Row>
+        <Row label="Type">{user.type}</Row>
         <Row label="Created">{formatDate(user.created_at)}</Row>
         {user.bio && <Row label="Bio">{user.bio}</Row>}
         <Row label="Followers">{formatNumber(user.followers)}</Row>
