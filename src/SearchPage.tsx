@@ -115,7 +115,7 @@ function UserInfo({ user }: UserInfoProps) {
     <>
       <Avatar url={user.avatar_url} userType={user.type} />
 
-      <h2 className="UserInfo__title">{user.name}</h2>
+      <LargeHeading>{user.name}</LargeHeading>
 
       <dl>
         <Row label="Username">
@@ -173,15 +173,15 @@ type RepoInfoProps = {
 
 function RepoList({ repos }: RepoListProps) {
   return (
-    <>
-      <h2 className="RepoList__title">Repositories</h2>
+    <div className="RepoList">
+      <LargeHeading>Repositories</LargeHeading>
 
       <div>
         {repos.map((repo) => (
           <RepoInfo repo={repo}></RepoInfo>
         ))}
       </div>
-    </>
+    </div>
   );
 }
 
@@ -211,6 +211,11 @@ function RepoInfo({ repo }: RepoInfoProps) {
       </dl>
     </div>
   );
+}
+
+function LargeHeading(props: React.ComponentPropsWithoutRef<"h2">) {
+  // eslint-disable-next-line jsx-a11y/heading-has-content
+  return <h2 className="LargeHeading" {...props}></h2>;
 }
 
 type AvatarProps = {
