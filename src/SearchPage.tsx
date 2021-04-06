@@ -52,16 +52,28 @@ const repoData: Repo[] = [
 function SearchPage() {
   return (
     <div style={{ marginTop: "2rem" }}>
-      <form action="#" style={{ marginBottom: "3.5rem" }}>
-        Username:
-        <input type="text" />
-        <button type="submit">Search</button>
-      </form>
-
+      <SearchForm />
       <UserInfo user={userData} />
-
       <RepoList repos={repoData} />
     </div>
+  );
+}
+
+function SearchForm() {
+  return (
+    <form action="#" style={{ marginBottom: "3.5rem" }}>
+      <input
+        type="text"
+        className="SearchForm__input"
+        placeholder="Username"
+        autoComplete="off"
+        autoCorrect="off"
+        autoCapitalize="none"
+        spellCheck="false"
+      />
+      &nbsp;
+      <button type="submit">Search</button>
+    </form>
   );
 }
 

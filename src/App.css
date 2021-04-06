@@ -6,7 +6,7 @@
 }
 
 .Header {
-  background-color: rgb(3, 47, 98, 0.9);
+  background-color: #1b4371;
   color: white;
   font-size: calc(1rem + 1vw);
   text-align: center;
@@ -46,6 +46,32 @@
 
 .Content {
   padding: 1rem;
+}
+
+.SearchForm__input {
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #0e1e25;
+  border: 1px solid #a2a9b1;
+  border-radius: 6px;
+  outline: none;
+  width: 15em;
+  height: 1.5em;
+  padding: 6px 14px;
+}
+
+.SearchForm__input::placeholder {
+  color: gray;
+}
+
+.SearchForm__input:hover {
+  border-color: #72777d;
+}
+
+.SearchForm__input:focus {
+  border-color: #3366cc;
+  box-shadow: inset 0 0 0 1px #3366cc;
 }
 
 .Avatar {
