@@ -181,11 +181,11 @@ function RepoInfo({ repo }: RepoInfoProps) {
           </Row>
         )}
         {repo.language && <Row label="Language">{repo.language}</Row>}
-        {repo.stargazers_count > 0 && (
-          <Row label="Stars">{formatNumber(repo.stargazers_count)}</Row>
-        )}
-        {repo.forks_count > 0 && (
-          <Row label="Forks">{formatNumber(repo.forks_count)}</Row>
+        {(repo.stargazers_count > 0 || repo.forks_count > 0) && (
+          <Row label="Stats">
+            {formatNumber(repo.stargazers_count)} stars &nbsp;| &nbsp;
+            {formatNumber(repo.forks_count)} forks
+          </Row>
         )}
         <Row label="Updated">{formatDate(repo.updated_at)}</Row>
       </dl>
