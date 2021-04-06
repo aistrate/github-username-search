@@ -28,6 +28,7 @@ const repoData: Repo[] = [
     fork: false,
     description:
       "A declarative, efficient, and flexible JavaScript library for building user interfaces.",
+    homepage: "https://reactjs.org",
     language: "JavaScript",
     stargazers_count: 166391,
     forks_count: 33414,
@@ -40,6 +41,7 @@ const repoData: Repo[] = [
     fork: false,
     description:
       "Relay is a JavaScript framework for building data-driven React applications.",
+    homepage: "https://relay.dev",
     language: "JavaScript",
     stargazers_count: 15533,
     forks_count: 33414,
@@ -134,6 +136,7 @@ type Repo = {
   html_url: string;
   fork: boolean;
   description: string | null;
+  homepage: string;
   language: string | null;
   stargazers_count: number;
   forks_count: number;
@@ -172,6 +175,11 @@ function RepoInfo({ repo }: RepoInfoProps) {
       <dl>
         {repo.fork && <Row label="Fork?">Yes</Row>}
         {repo.description && <Row label="Description">{repo.description}</Row>}
+        {repo.homepage && (
+          <Row label="Homepage">
+            <Link href={repo.homepage}>{repo.homepage}</Link>
+          </Row>
+        )}
         {repo.language && <Row label="Language">{repo.language}</Row>}
         {repo.stargazers_count > 0 && (
           <Row label="Stars">{formatNumber(repo.stargazers_count)}</Row>
