@@ -29,7 +29,7 @@
 .NavItem__link {
   display: block;
   color: rgb(255, 255, 255, 0.5);
-  font-weight: bold;
+  font-weight: 600;
   padding: 0.4em 0.8em;
   text-align: center;
   text-decoration: none;
@@ -51,7 +51,7 @@
 .TextInput {
   font-family: inherit;
   font-size: 1rem;
-  font-weight: 500;
+  font-weight: 600;
   color: #0e1e25;
   border: 1px solid #a2a9b1;
   border-radius: 6px;
