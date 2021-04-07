@@ -48,6 +48,10 @@
   padding: 1rem;
 }
 
+.SearchForm {
+  margin-top: 1.5rem;
+}
+
 .TextInput {
   font-family: inherit;
   font-size: 1rem;
@@ -93,6 +97,10 @@
 
 .Button:focus {
   box-shadow: 0 0 0 2px white, 0 0 0 4px #3078ca;
+}
+
+.UserInfo {
+  margin-top: 3.5rem;
 }
 
 .Avatar {

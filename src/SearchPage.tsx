@@ -51,17 +51,17 @@ const repoData: Repo[] = [
 
 function SearchPage() {
   return (
-    <div style={{ marginTop: "2rem" }}>
+    <>
       <SearchForm />
       <UserInfo user={userData} />
       <RepoList repos={repoData} />
-    </div>
+    </>
   );
 }
 
 function SearchForm() {
   return (
-    <form action="#" style={{ marginBottom: "3.5rem" }}>
+    <form action="#" className="SearchForm">
       <TextInput placeholder="Username" />
       <Button type="submit">Search</Button>
     </form>
@@ -112,7 +112,7 @@ type UserInfoProps = {
 
 function UserInfo({ user }: UserInfoProps) {
   return (
-    <>
+    <div className="UserInfo">
       <Avatar url={user.avatar_url} userType={user.type} />
 
       <LargeHeading>{user.name}</LargeHeading>
@@ -146,7 +146,7 @@ function UserInfo({ user }: UserInfoProps) {
         )}
         <Row label="Repositories">{formatNumber(user.public_repos)}</Row>
       </dl>
-    </>
+    </div>
   );
 }
 
