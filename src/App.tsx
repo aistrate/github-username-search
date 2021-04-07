@@ -17,7 +17,7 @@ const appName = "GitHub Username Search";
 function App() {
   return (
     <div className="App">
-      <Header />
+      <div className="App__header">{appName}</div>
 
       <Router>
         <Nav />
@@ -25,10 +25,6 @@ function App() {
       </Router>
     </div>
   );
-}
-
-function Header() {
-  return <div className="Header">{appName}</div>;
 }
 
 function Nav() {

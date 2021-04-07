@@ -5,7 +5,7 @@
   margin: auto;
 }
 
-.Header {
+.App__header {
   background-color: #1b4371;
   color: white;
   font-size: 2.25rem;
@@ -14,7 +14,7 @@
 }
 
 @media (max-width: 800px) {
-  .Header {
+  .App__header {
     font-size: calc(1.25rem + 2vw);
   }
 }
