@@ -8,9 +8,15 @@
 .Header {
   background-color: #1b4371;
   color: white;
-  font-size: calc(1rem + 1vw);
+  font-size: 2.25rem;
   text-align: center;
-  padding: 0.7em 0;
+  padding: 0.6em 0;
+}
+
+@media (max-width: 800px) {
+  .Header {
+    font-size: calc(1.25rem + 2vw);
+  }
 }
 
 .Nav {
@@ -100,7 +106,7 @@
 }
 
 .UserInfo {
-  margin-top: 3.5rem;
+  margin-top: 4rem;
 }
 
 .Avatar {
