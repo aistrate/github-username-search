@@ -17,8 +17,9 @@ const appName = "GitHub Username Search";
 function App() {
   return (
     <div className="App">
+      <Header />
+
       <Router>
-        <Header />
         <Nav />
         <Content />
       </Router>
@@ -41,25 +42,6 @@ function Nav() {
   );
 }
 
-type NavItemProps = {
-  to: string;
-  children?: React.ReactNode;
-};
-
-function NavItem({ to, children }: NavItemProps) {
-  return (
-    <li className="NavItem">
-      <NavLink
-        to={to}
-        className="NavItem__link"
-        activeClassName="NavItem__link--active"
-      >
-        {children}
-      </NavLink>
-    </li>
-  );
-}
-
 function Content() {
   return (
     <div className="Content">
@@ -77,6 +59,25 @@ function Content() {
         </Route>
       </Switch>
     </div>
+  );
+}
+
+type NavItemProps = {
+  to: string;
+  children?: React.ReactNode;
+};
+
+function NavItem({ to, children }: NavItemProps) {
+  return (
+    <li className="NavItem">
+      <NavLink
+        to={to}
+        className="NavItem__link"
+        activeClassName="NavItem__link--active"
+      >
+        {children}
+      </NavLink>
+    </li>
   );
 }
 
