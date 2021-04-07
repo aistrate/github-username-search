@@ -156,7 +156,7 @@ type Repo = {
   html_url: string;
   fork: boolean;
   description: string | null;
-  homepage: string;
+  homepage: string | null;
   language: string | null;
   stargazers_count: number;
   forks_count: number;
