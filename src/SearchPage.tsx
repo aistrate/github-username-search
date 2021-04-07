@@ -1,3 +1,4 @@
+import { useState } from "react";
 import type { User, Repo } from "./Models";
 import type { SearchEvent } from "./SearchForm";
 import SearchForm from "./SearchForm";
@@ -5,26 +6,6 @@ import UserInfo from "./UserInfo";
 import RepoList from "./RepoInfo";
 
 export default SearchPage;
-
-const userData: User = {
-  id: 69631,
-  avatar_url: "https://avatars.githubusercontent.com/u/69631?v=4",
-  //avatar_url: "https://avatars.githubusercontent.com/u/810438?v=4",
-  name: "Facebook",
-  login: "facebook",
-  type: "Organization",
-  html_url: "https://github.com/facebook",
-  created_at: "2009-04-02T03:35:22Z",
-  bio:
-    "We are working to build community through open source technology. NB: members must have two-factor auth.",
-  followers: 23144,
-  company: "@microsoft",
-  location: "Menlo Park, California",
-  email: "abc@example.com",
-  blog: "https://opensource.fb.com",
-  twitter_username: "fabpot",
-  public_repos: 1117,
-};
 
 const repoData: Repo[] = [
   {
@@ -56,16 +37,31 @@ const repoData: Repo[] = [
 ];
 
 function SearchPage() {
-  const handleSearch = (e: SearchEvent) => {
-    console.log(e.value);
+  const [user, setUser] = useState<User | null>(null);
+
+  const handleSearch = async (e: SearchEvent) => {
+    let username = e.value;
+    let response = await fetch(getUserUrl(username));
+
+    if (response.ok) {
+      let userData: User = await response.json();
+      setUser(userData);
+    } else {
+      alert("HTTP-Error: " + response.status);
+    }
   };
 
   return (
     <>
       <SearchForm fieldName="Username" onSearch={handleSearch} />
 
-      {/* <UserInfo user={userData} />
-      <RepoList repos={repoData} /> */}
+      {user && <UserInfo user={user} />}
+
+      {/* <RepoList repos={repoData} /> */}
     </>
   );
+}
+
+function getUserUrl(username: string) {
+  return `https://api.github.com/users/${username}`;
 }
