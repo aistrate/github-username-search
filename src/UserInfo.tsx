@@ -1,5 +1,6 @@
-import type { User, UserType } from "./Models";
-import { LargeHeading, Row, Link, formatDate, formatNumber } from "./Styled";
+import type { UserType, User } from "./Models";
+import { LargeHeading, Row, Link } from "./Styled";
+import { formatDate, formatNumber } from "./Utils";
 
 export default UserInfo;
 

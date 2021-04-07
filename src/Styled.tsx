@@ -1,13 +1,4 @@
-export {
-  TextInput,
-  Button,
-  LargeHeading,
-  SmallHeading,
-  Row,
-  Link,
-  formatDate,
-  formatNumber,
-};
+export { TextInput, Button, LargeHeading, SmallHeading, Row, Link };
 
 function TextInput(props: React.ComponentPropsWithoutRef<"input">) {
   return (
@@ -54,16 +45,4 @@ function Row({ label, children }: RowProps) {
 function Link(props: React.ComponentPropsWithoutRef<"a">) {
   // eslint-disable-next-line jsx-a11y/anchor-has-content
   return <a target="_blank" className="Link" {...props} />;
-}
-
-function formatDate(dateString: string) {
-  return new Date(dateString).toLocaleDateString("en-US", {
-    year: "numeric",
-    month: "short",
-    day: "numeric",
-  });
-}
-
-function formatNumber(n: number) {
-  return n.toLocaleString("en-US");
 }

@@ -5,10 +5,10 @@ import {
   Route,
   Redirect,
 } from "react-router-dom";
-import { useEffect } from "react";
 import "./App.css";
 import SearchPage from "./SearchPage";
 import HistoryPage from "./HistoryPage";
+import { WindowTitle } from "./Utils";
 
 export default App;
 
@@ -75,16 +75,4 @@ function NavItem({ to, children }: NavItemProps) {
       </NavLink>
     </li>
   );
-}
-
-type WindowTitleProps = {
-  value: string;
-};
-
-function WindowTitle({ value }: WindowTitleProps) {
-  useEffect(() => {
-    document.title = value;
-  }, [value]);
-
-  return null;
 }
