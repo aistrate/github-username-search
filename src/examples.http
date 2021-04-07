@@ -39,7 +39,7 @@ https://api.github.com/users/facebook/repos?page=1&per_page=30
 ###                twitter, sap, tensorflow, bootstrap, nodejs, graphql
 ### People: rmeoc, gaearon, shanselman, fabpot, andrew, taylorotwell,
 ###         Rich-Harris, ayende, kentcdodds, jskeet, yyx990803, sebmarkbage,
-###         octocat, mojombo, wycats, lattner, lexfridman, serras
+###         octocat, mojombo, wycats, lattner, lexfridman, serras, rtfeldman
 
 https://api.github.com/users/microsoft
 
