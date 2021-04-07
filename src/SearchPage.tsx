@@ -188,9 +188,9 @@ function RepoList({ repos }: RepoListProps) {
 function RepoInfo({ repo }: RepoInfoProps) {
   return (
     <div key={repo.id} className="RepoInfo">
-      <h3>
+      <SmallHeading>
         <Link href={repo.html_url}>{repo.name}</Link>
-      </h3>
+      </SmallHeading>
 
       <dl>
         {repo.fork && <Row label="Fork?">Yes</Row>}
@@ -216,6 +216,11 @@ function RepoInfo({ repo }: RepoInfoProps) {
 function LargeHeading(props: React.ComponentPropsWithoutRef<"h2">) {
   // eslint-disable-next-line jsx-a11y/heading-has-content
   return <h2 className="LargeHeading" {...props}></h2>;
+}
+
+function SmallHeading(props: React.ComponentPropsWithoutRef<"h3">) {
+  // eslint-disable-next-line jsx-a11y/heading-has-content
+  return <h3 className="SmallHeading" {...props}></h3>;
 }
 
 type AvatarProps = {

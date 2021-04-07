@@ -118,6 +118,12 @@
   margin: 0.83em 0;
 }
 
+.SmallHeading {
+  font-size: 1.17rem;
+  font-weight: 700;
+  margin: 0.83em 0;
+}
+
 .Row {
   display: flex;
   line-height: 1.5em;
