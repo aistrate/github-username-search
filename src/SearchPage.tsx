@@ -1,4 +1,5 @@
 import type { User, Repo } from "./Models";
+import type { SearchEvent } from "./SearchForm";
 import SearchForm from "./SearchForm";
 import UserInfo from "./UserInfo";
 import RepoList from "./RepoInfo";
@@ -55,11 +56,16 @@ const repoData: Repo[] = [
 ];
 
 function SearchPage() {
+  const handleSearch = (e: SearchEvent) => {
+    console.log(e.value);
+  };
+
   return (
     <>
-      <SearchForm />
-      <UserInfo user={userData} />
-      <RepoList repos={repoData} />
+      <SearchForm fieldName="Username" onSearch={handleSearch} />
+
+      {/* <UserInfo user={userData} />
+      <RepoList repos={repoData} /> */}
     </>
   );
 }
