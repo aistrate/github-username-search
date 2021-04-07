@@ -8,10 +8,6 @@ type RepoListProps = {
   repos: Repo[];
 };
 
-type RepoInfoProps = {
-  repo: Repo;
-};
-
 function RepoList({ repos }: RepoListProps) {
   return (
     <div className="RepoList">
@@ -25,6 +21,10 @@ function RepoList({ repos }: RepoListProps) {
     </div>
   );
 }
+
+type RepoInfoProps = {
+  repo: Repo;
+};
 
 function RepoInfo({ repo }: RepoInfoProps) {
   return (
