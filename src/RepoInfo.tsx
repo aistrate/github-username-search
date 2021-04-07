@@ -8,7 +8,7 @@ import {
   formatNumber,
 } from "./Styled";
 
-export { RepoList };
+export default RepoList;
 
 type RepoListProps = {
   repos: Repo[];

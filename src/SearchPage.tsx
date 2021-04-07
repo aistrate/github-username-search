@@ -1,7 +1,7 @@
-import SearchForm from "./SearchForm";
 import type { User, Repo } from "./Models";
-import { UserInfo } from "./UserInfo";
-import { RepoList } from "./RepoInfo";
+import SearchForm from "./SearchForm";
+import UserInfo from "./UserInfo";
+import RepoList from "./RepoInfo";
 
 export default SearchPage;
 

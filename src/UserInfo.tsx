@@ -1,7 +1,7 @@
 import type { User, UserType } from "./Models";
 import { LargeHeading, Row, Link, formatDate, formatNumber } from "./Styled";
 
-export { UserInfo };
+export default UserInfo;
 
 type UserInfoProps = {
   user: User;
