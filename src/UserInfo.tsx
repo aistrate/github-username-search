@@ -1,27 +1,7 @@
+import type { User, UserType } from "./Models";
 import { LargeHeading, Row, Link, formatDate, formatNumber } from "./Styled";
 
-export type { User };
 export { UserInfo };
-
-type UserType = "User" | "Organization";
-
-type User = {
-  id: number;
-  avatar_url: string;
-  name: string;
-  login: string;
-  type: UserType;
-  html_url: string;
-  created_at: string;
-  bio: string | null;
-  followers: number;
-  company: string | null;
-  location: string | null;
-  email: string | null;
-  blog: string | null;
-  twitter_username: string | null;
-  public_repos: number;
-};
 
 type UserInfoProps = {
   user: User;

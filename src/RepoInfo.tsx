@@ -1,3 +1,4 @@
+import type { Repo } from "./Models";
 import {
   LargeHeading,
   SmallHeading,
@@ -7,21 +8,7 @@ import {
   formatNumber,
 } from "./Styled";
 
-export type { Repo };
 export { RepoList };
-
-type Repo = {
-  id: number;
-  name: string;
-  html_url: string;
-  fork: boolean;
-  description: string | null;
-  homepage: string | null;
-  language: string | null;
-  stargazers_count: number;
-  forks_count: number;
-  updated_at: string;
-};
 
 type RepoListProps = {
   repos: Repo[];
