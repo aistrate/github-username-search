@@ -1,3 +1,4 @@
+import React from "react";
 import type { UserType, User } from "./Models";
 import { LargeHeading, Row, Link } from "./Styled";
 import { formatDate, formatNumber } from "./Utils";
@@ -80,15 +81,15 @@ function Company({ name }: CompanyProps) {
       )
     );
 
-  const comma = <>, </>;
-
   const joined = companies
     .slice(1)
-    .reduce((accumulator, company) => accumulator.concat(comma, company), [
+    .reduce((accumulator, company) => accumulator.concat(<>, </>, company), [
       companies[0],
     ]);
 
-  return <>{joined}</>;
+  // use createElement with spread argument to avoid React's warning:
+  // 'Each child in a list should have a unique "key" prop'
+  return React.createElement(React.Fragment, null, ...joined);
 }
 
 function truncate(s: string, maxLength: number) {
