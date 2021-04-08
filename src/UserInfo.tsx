@@ -35,7 +35,7 @@ function UserInfo({ user }: UserInfoProps) {
         {user.email && <Row label="Email">{user.email}</Row>}
         {user.blog && (
           <Row label="Blog">
-            <Link href={user.blog}>{truncate(user.blog, 80)}</Link>
+            <Link href={user.blog}>{user.blog}</Link>
           </Row>
         )}
         {user.twitter_username && (
@@ -90,8 +90,4 @@ function Company({ name }: CompanyProps) {
   // use createElement with spread argument to avoid React's warning:
   // 'Each child in a list should have a unique "key" prop'
   return React.createElement(React.Fragment, null, ...joined);
-}
-
-function truncate(s: string, maxLength: number) {
-  return s.length > maxLength ? s.substring(0, maxLength) + "..." : s;
 }
