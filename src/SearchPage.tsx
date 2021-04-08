@@ -38,22 +38,37 @@ export default SearchPage;
 
 function SearchPage() {
   const [user, setUser] = useState<User | null>(null);
+  const [error, setError] = useState("");
+  const [info, setInfo] = useState("");
 
   const handleSearch = async (e: SearchEvent) => {
+    setError("");
+    setInfo("");
+
     let username = e.value;
     let response = await fetch(getUserUrl(username));
 
-    if (response.ok) {
-      let userData: User = await response.json();
-      setUser(userData);
-    } else {
-      alert("HTTP-Error: " + response.status);
+    if (!response.ok) {
+      if (response.status === 404) {
+        setInfo(`Username '${username}' was not found.`);
+      } else {
+        let errorData = await response.json();
+        setError(`HTTP Error: (${response.status}) ${errorData.message}`);
+      }
+
+      setUser(null);
+      return;
     }
+
+    let userData: User = await response.json();
+    setUser(userData);
   };
 
   return (
     <>
       <SearchForm fieldName="Username" onSearch={handleSearch} />
+
+      <Message error={error} info={info} />
 
       {user && <UserInfo user={user} />}
 
@@ -64,4 +79,18 @@ function SearchPage() {
 
 function getUserUrl(username: string) {
   return `https://api.github.com/users/${username}`;
+}
+
+type MessageProps = {
+  error?: string;
+  info?: string;
+};
+
+function Message({ error, info }: MessageProps) {
+  return (
+    <div className="Message">
+      {error && <div className="Message__error">{error}</div>}
+      {info && <div>{info}</div>}
+    </div>
+  );
 }
