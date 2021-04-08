@@ -13,7 +13,7 @@ function UserInfo({ user }: UserInfoProps) {
     <div className="UserInfo">
       <Avatar url={user.avatar_url} userType={user.type} />
 
-      <LargeHeading>{user.name}</LargeHeading>
+      <LargeHeading>{user.name || user.login}</LargeHeading>
 
       <dl>
         <Row label="Username">
@@ -22,7 +22,9 @@ function UserInfo({ user }: UserInfoProps) {
         <Row label="Type">{user.type}</Row>
         <Row label="Created">{formatDate(user.created_at)}</Row>
         {user.bio && <Row label="Bio">{user.bio}</Row>}
-        <Row label="Followers">{formatNumber(user.followers)}</Row>
+        {user.followers > 0 && (
+          <Row label="Followers">{formatNumber(user.followers)}</Row>
+        )}
         {user.company && (
           <Row label="Company">
             <Company name={user.company} />
@@ -32,7 +34,7 @@ function UserInfo({ user }: UserInfoProps) {
         {user.email && <Row label="Email">{user.email}</Row>}
         {user.blog && (
           <Row label="Blog">
-            <Link href={user.blog}>{user.blog}</Link>
+            <Link href={user.blog}>{truncate(user.blog, 80)}</Link>
           </Row>
         )}
         {user.twitter_username && (
@@ -66,9 +68,29 @@ type CompanyProps = {
 };
 
 function Company({ name }: CompanyProps) {
-  return name[0] === "@" ? (
-    <Link href={`https://github.com/${name.slice(1)}`}>{name}</Link>
-  ) : (
-    <>{name}</>
-  );
+  // 'name' can be a comma-separated list
+  const companies = name
+    .split(",")
+    .map((c) => c.trim())
+    .map((company) =>
+      company[0] === "@" ? (
+        <Link href={`https://github.com/${company.slice(1)}`}>{company}</Link>
+      ) : (
+        <>{company}</>
+      )
+    );
+
+  const comma = <>, </>;
+
+  const joined = companies
+    .slice(1)
+    .reduce((accumulator, company) => accumulator.concat(comma, company), [
+      companies[0],
+    ]);
+
+  return <>{joined}</>;
+}
+
+function truncate(s: string, maxLength: number) {
+  return s.length > maxLength ? s.substring(0, maxLength) + "..." : s;
 }
