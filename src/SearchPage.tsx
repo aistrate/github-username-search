@@ -42,11 +42,20 @@ function SearchPage() {
   const [info, setInfo] = useState("");
 
   const handleSearch = async (e: SearchEvent) => {
+    let username = e.value;
+
     setError("");
     setInfo("");
 
-    let username = e.value;
-    let response = await fetch(getUserUrl(username));
+    let response: Response;
+    try {
+      response = await fetch(getUserUrl(username));
+    } catch (err) {
+      const message = (err as Error).message;
+      setError(`Fetch Error: ${message}`);
+      setUser(null);
+      return;
+    }
 
     if (!response.ok) {
       if (response.status === 404) {
