@@ -22,8 +22,12 @@ function SearchForm({ fieldName, onSearch }: SearchFormProps) {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    const trimmed = value.trim();
+    setValue(trimmed);
+
     if (onSearch) {
-      onSearch({ value });
+      onSearch({ value: trimmed });
     }
   };
 
