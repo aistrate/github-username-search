@@ -4,6 +4,7 @@ import {
   Switch,
   Route,
   Redirect,
+  useLocation,
 } from "react-router-dom";
 import "./App.css";
 import SearchPage from "./SearchPage";
@@ -39,12 +40,14 @@ function Nav() {
 }
 
 function Content() {
+  const urlParams = useUrlParams();
+
   return (
     <div className="Content">
       <Switch>
         <Route path="/search">
           <WindowTitle value={`Search - ${appName}`} />
-          <SearchPage />
+          <SearchPage queryString={urlParams.get("q") || ""} />
         </Route>
         <Route path="/history">
           <WindowTitle value={`History - ${appName}`} />
@@ -75,4 +78,8 @@ function NavItem({ to, children }: NavItemProps) {
       </NavLink>
     </li>
   );
+}
+
+function useUrlParams() {
+  return new URLSearchParams(useLocation().search);
 }

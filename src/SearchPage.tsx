@@ -36,7 +36,11 @@ export default SearchPage;
 //   },
 // ];
 
-function SearchPage() {
+type SearchPageProps = {
+  queryString: string;
+};
+
+function SearchPage({ queryString }: SearchPageProps) {
   const [user, setUser] = useState<User | null>(null);
   const [error, setError] = useState("");
   const [info, setInfo] = useState("");
@@ -75,7 +79,11 @@ function SearchPage() {
 
   return (
     <>
-      <SearchForm fieldName="Username" onSearch={handleSearch} />
+      <SearchForm
+        fieldName="Username"
+        initialValue={queryString}
+        onSearch={handleSearch}
+      />
 
       <Message error={error} info={info} />
 

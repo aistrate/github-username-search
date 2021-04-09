@@ -10,11 +10,16 @@ type SearchEvent = {
 
 type SearchFormProps = {
   fieldName?: string;
+  initialValue?: string;
   onSearch?: (e: SearchEvent) => void;
 };
 
-function SearchForm({ fieldName, onSearch }: SearchFormProps) {
-  const [value, setValue] = useState("");
+function SearchForm({
+  fieldName,
+  initialValue = "",
+  onSearch,
+}: SearchFormProps) {
+  const [value, setValue] = useState(initialValue);
   const [buttonDisabled, setButtonDisabled] = useState(true);
 
   const handleTextChange = (e: React.ChangeEvent<HTMLInputElement>) => {
