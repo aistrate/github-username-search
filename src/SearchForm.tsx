@@ -15,9 +15,14 @@ type SearchFormProps = {
 
 function SearchForm({ fieldName, onSearch }: SearchFormProps) {
   const [value, setValue] = useState("");
+  const [buttonDisabled, setButtonDisabled] = useState(true);
 
   const handleTextChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setValue(e.target.value);
+    const value = e.target.value;
+    setValue(value);
+
+    const buttonDisabled = value.trim().length === 0;
+    setButtonDisabled(buttonDisabled);
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -38,7 +43,9 @@ function SearchForm({ fieldName, onSearch }: SearchFormProps) {
         value={value}
         onChange={handleTextChange}
       />
-      <Button type="submit">Search</Button>
+      <Button type="submit" disabled={buttonDisabled}>
+        Search
+      </Button>
     </form>
   );
 }

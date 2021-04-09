@@ -106,6 +106,15 @@
   box-shadow: 0 0 0 2px white, 0 0 0 4px #3078ca;
 }
 
+.Button--disabled {
+  background-color: silver;
+  color: #444;
+}
+
+.Button--disabled:hover {
+  background-color: silver;
+}
+
 .Message {
   margin-top: 3rem;
   font-weight: 600;
