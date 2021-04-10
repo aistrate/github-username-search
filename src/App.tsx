@@ -9,6 +9,7 @@ import {
 import "./App.css";
 import SearchPage from "./SearchPage";
 import HistoryPage from "./HistoryPage";
+import AboutPage from "./AboutPage";
 import { WindowTitle } from "./Utils";
 
 export default App;
@@ -34,6 +35,7 @@ function Nav() {
       <ul className="Nav">
         <NavItem to="/search">Search</NavItem>
         <NavItem to="/history">History</NavItem>
+        <NavItem to="/about">About</NavItem>
       </ul>
     </nav>
   );
@@ -52,6 +54,10 @@ function Content() {
         <Route path="/history">
           <WindowTitle value={`History - ${appName}`} />
           <HistoryPage />
+        </Route>
+        <Route path="/about">
+          <WindowTitle value={`About - ${appName}`} />
+          <AboutPage />
         </Route>
         <Route path="*">
           <Redirect to="/search" />
