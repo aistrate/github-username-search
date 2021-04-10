@@ -43,13 +43,18 @@ function Nav() {
 
 function Content() {
   const urlParams = useUrlParams();
+  const queryString = urlParams.get("q") || "";
 
   return (
     <div className="Content">
       <Switch>
         <Route path="/search">
-          <WindowTitle value={`Search - ${appName}`} />
-          <SearchPage queryString={urlParams.get("q") || ""} />
+          <WindowTitle
+            value={`${
+              queryString === "" ? "Search" : queryString
+            } - ${appName}`}
+          />
+          <SearchPage queryString={queryString} />
         </Route>
         <Route path="/history">
           <WindowTitle value={`History - ${appName}`} />
