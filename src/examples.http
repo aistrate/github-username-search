@@ -46,3 +46,10 @@ https://api.github.com/users/microsoft
 ###
 
 https://api.github.com/user/1
+
+
+
+### Rate limit: 60 requests/hour
+### Reset time: new Date(n * 1000), where n is the 'X-RateLimit-Reset' HTTP header
+
+https://api.github.com/rate_limit
