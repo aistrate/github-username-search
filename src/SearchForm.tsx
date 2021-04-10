@@ -11,7 +11,7 @@ type SearchEvent = {
 type SearchFormProps = {
   fieldName?: string;
   initialValue?: string;
-  onSearch?: (e: SearchEvent) => void;
+  onSearch: (e: SearchEvent) => void;
 };
 
 function SearchForm({
@@ -24,19 +24,12 @@ function SearchForm({
 
   const textChanged = (val: string) => {
     setValue(val);
-
-    const buttonDisabled = val.trim().length === 0;
-    setButtonDisabled(buttonDisabled);
+    setButtonDisabled(val.trim().length === 0);
   };
 
   useEffect(() => {
-    const trimmed = initialValue.trim();
-    textChanged(trimmed);
-
-    if (trimmed && onSearch) {
-      onSearch({ value: trimmed });
-    }
-  }, [initialValue, onSearch]);
+    textChanged(initialValue);
+  }, [initialValue]);
 
   const handleTextChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     textChanged(e.target.value);
@@ -47,10 +40,7 @@ function SearchForm({
 
     const trimmed = value.trim();
     setValue(trimmed);
-
-    if (onSearch) {
-      onSearch({ value: trimmed });
-    }
+    onSearch({ value: trimmed });
   };
 
   return (

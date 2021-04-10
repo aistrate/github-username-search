@@ -1,4 +1,5 @@
-import { useState, useCallback } from "react";
+import { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import type { User } from "./Models";
 import type { SearchEvent } from "./SearchForm";
 import SearchForm from "./SearchForm";
@@ -45,37 +46,51 @@ function SearchPage({ queryString }: SearchPageProps) {
   const [error, setError] = useState("");
   const [info, setInfo] = useState("");
 
-  const handleSearch = useCallback(async (e: SearchEvent) => {
-    let username = e.value;
+  const history = useHistory();
 
+  useEffect(() => {
     setError("");
     setInfo("");
 
-    let response: Response;
-    try {
-      response = await fetch(getUserUrl(username));
-    } catch (err) {
-      const message = (err as Error).message;
-      setError(`Fetch Error: ${message}`);
+    const username = queryString.trim();
+
+    if (username === "") {
       setUser(null);
       return;
     }
 
-    if (!response.ok) {
-      if (response.status === 404) {
-        setInfo(`Username '${username}' was not found.`);
-      } else {
-        let errorData = await response.json();
-        setError(`HTTP Error: (${response.status}) ${errorData.message}`);
+    (async function () {
+      let response: Response;
+      try {
+        response = await fetch(getUserUrl(username));
+      } catch (err) {
+        const message = (err as Error).message;
+        setError(`Fetch Error: ${message}`);
+        setUser(null);
+        return;
       }
 
-      setUser(null);
-      return;
-    }
+      if (!response.ok) {
+        if (response.status === 404) {
+          setInfo(`Username '${username}' was not found.`);
+        } else {
+          let errorData = await response.json();
+          setError(`HTTP Error: (${response.status}) ${errorData.message}`);
+        }
 
-    let userData: User = await response.json();
-    setUser(userData);
-  }, []);
+        setUser(null);
+        return;
+      }
+
+      let userData: User = await response.json();
+      setUser(userData);
+    })();
+  }, [queryString]);
+
+  const handleSearch = (e: SearchEvent) => {
+    let username = e.value;
+    history.push(`/search?q=${username}`);
+  };
 
   return (
     <>
