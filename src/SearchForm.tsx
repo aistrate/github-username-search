@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { TextInput, Button } from "./Styled";
 
 export type { SearchEvent };
@@ -19,15 +19,27 @@ function SearchForm({
   initialValue = "",
   onSearch,
 }: SearchFormProps) {
-  const [value, setValue] = useState(initialValue);
+  const [value, setValue] = useState("");
   const [buttonDisabled, setButtonDisabled] = useState(true);
 
-  const handleTextChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
-    setValue(value);
+  const textChanged = (val: string) => {
+    setValue(val);
 
-    const buttonDisabled = value.trim().length === 0;
+    const buttonDisabled = val.trim().length === 0;
     setButtonDisabled(buttonDisabled);
+  };
+
+  useEffect(() => {
+    const trimmed = initialValue.trim();
+    textChanged(trimmed);
+
+    if (trimmed && onSearch) {
+      onSearch({ value: trimmed });
+    }
+  }, [initialValue, onSearch]);
+
+  const handleTextChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    textChanged(e.target.value);
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {

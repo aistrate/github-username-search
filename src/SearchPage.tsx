@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import type { User } from "./Models";
 import type { SearchEvent } from "./SearchForm";
 import SearchForm from "./SearchForm";
@@ -45,7 +45,7 @@ function SearchPage({ queryString }: SearchPageProps) {
   const [error, setError] = useState("");
   const [info, setInfo] = useState("");
 
-  const handleSearch = async (e: SearchEvent) => {
+  const handleSearch = useCallback(async (e: SearchEvent) => {
     let username = e.value;
 
     setError("");
@@ -75,7 +75,7 @@ function SearchPage({ queryString }: SearchPageProps) {
 
     let userData: User = await response.json();
     setUser(userData);
-  };
+  }, []);
 
   return (
     <>
