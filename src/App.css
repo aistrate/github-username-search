@@ -98,8 +98,9 @@
   outline: none;
 }
 
-.Button:hover {
+.Button:hover:not(.Button--disabled) {
   background-color: #22548e;
+  cursor: pointer;
 }
 
 .Button:focus {
@@ -107,12 +108,7 @@
 }
 
 .Button--disabled {
-  background-color: silver;
-  color: #444;
-}
-
-.Button--disabled:hover {
-  background-color: silver;
+  opacity: 0.65;
 }
 
 .Message {
