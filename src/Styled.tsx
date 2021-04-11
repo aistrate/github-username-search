@@ -1,4 +1,4 @@
-export { TextInput, Button, LargeHeading, SmallHeading, Row, Link };
+export { TextInput, Button, Message, LargeHeading, SmallHeading, Row, Link };
 
 function TextInput(props: React.ComponentPropsWithoutRef<"input">) {
   return (
@@ -20,6 +20,20 @@ function Button({
 }: React.ComponentPropsWithoutRef<"button">) {
   const className = disabled ? "Button Button--disabled" : "Button";
   return <button className={className} disabled={disabled} {...props} />;
+}
+
+type MessageProps = {
+  error?: string;
+  info?: string;
+};
+
+function Message({ error, info }: MessageProps) {
+  return (
+    <div className="Message">
+      {error && <div className="Message__error">{error}</div>}
+      {info && <div>{info}</div>}
+    </div>
+  );
 }
 
 function LargeHeading(props: React.ComponentPropsWithoutRef<"h2">) {

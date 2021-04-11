@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import type { User } from "./Models";
 import type { SearchEvent } from "./SearchForm";
+import { Message } from "./Styled";
 import SearchForm from "./SearchForm";
 import UserInfo from "./UserInfo";
 // import RepoList from "./RepoInfo";
@@ -111,18 +112,4 @@ function SearchPage({ queryString }: SearchPageProps) {
 
 function getUserUrl(username: string) {
   return `https://api.github.com/users/${username}`;
-}
-
-type MessageProps = {
-  error?: string;
-  info?: string;
-};
-
-function Message({ error, info }: MessageProps) {
-  return (
-    <div className="Message">
-      {error && <div className="Message__error">{error}</div>}
-      {info && <div>{info}</div>}
-    </div>
-  );
 }
