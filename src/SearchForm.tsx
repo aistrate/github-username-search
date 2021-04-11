@@ -23,13 +23,9 @@ function SearchForm({
   const [buttonDisabled, setButtonDisabled] = useState(true);
   const inputRef = useRef<HTMLInputElement>(null!);
 
-  const textChanged = (val: string) => {
-    setValue(val);
-    setButtonDisabled(val.trim().length === 0);
-  };
-
   useEffect(() => {
     textChanged(initialValue);
+
     if (initialValue.trim().length === 0) {
       inputRef.current.focus();
     } else {
@@ -37,17 +33,22 @@ function SearchForm({
     }
   }, [initialValue]);
 
-  const handleTextChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    textChanged(e.target.value);
-  };
-
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
     const trimmed = value.trim();
     setValue(trimmed);
     onSearch({ value: trimmed });
-  };
+  }
+
+  function handleTextChange(e: React.ChangeEvent<HTMLInputElement>) {
+    textChanged(e.target.value);
+  }
+
+  function textChanged(val: string) {
+    setValue(val);
+    setButtonDisabled(val.trim().length === 0);
+  }
 
   return (
     <form className="SearchForm" onSubmit={handleSubmit}>

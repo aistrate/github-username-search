@@ -90,10 +90,10 @@ function SearchPage({ queryString }: SearchPageProps) {
     })();
   }, [queryString]);
 
-  const handleSearch = (e: SearchEvent) => {
+  function handleSearch(e: SearchEvent) {
     let username = e.value;
     history.push(`/search?q=${username}`);
-  };
+  }
 
   return (
     <>
