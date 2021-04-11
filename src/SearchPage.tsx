@@ -21,8 +21,6 @@ function SearchPage({ queryString }: SearchPageProps) {
 
   const history = useHistory();
 
-  queryString = queryString.trim();
-
   useEffect(() => {
     setUser(null);
     setRepoList([]);

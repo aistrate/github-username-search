@@ -43,7 +43,7 @@ function Nav() {
 
 function Content() {
   const urlParams = useUrlParams();
-  const queryString = urlParams.get("q") || "";
+  const queryString = (urlParams.get("q") || "").trim();
 
   return (
     <div className="Content">
