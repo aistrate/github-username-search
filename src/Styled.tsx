@@ -20,12 +20,8 @@ const TextInput = forwardRef(
   )
 );
 
-function Button({
-  disabled = false,
-  ...props
-}: React.ComponentPropsWithoutRef<"button">) {
-  const className = disabled ? "Button Button--disabled" : "Button";
-  return <button className={className} disabled={disabled} {...props} />;
+function Button(props: React.ComponentPropsWithoutRef<"button">) {
+  return <button className="Button" {...props} />;
 }
 
 type MessageProps = {
