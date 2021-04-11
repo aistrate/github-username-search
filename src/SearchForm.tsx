@@ -24,7 +24,7 @@ function SearchForm({
   const inputRef = useRef<HTMLInputElement>(null!);
 
   useEffect(() => {
-    textChanged(initialValue);
+    setTextAndButton(initialValue);
 
     if (initialValue.trim().length === 0) {
       inputRef.current.focus();
@@ -42,10 +42,10 @@ function SearchForm({
   }
 
   function handleTextChange(e: React.ChangeEvent<HTMLInputElement>) {
-    textChanged(e.target.value);
+    setTextAndButton(e.target.value);
   }
 
-  function textChanged(val: string) {
+  function setTextAndButton(val: string) {
     setValue(val);
     setButtonDisabled(val.trim().length === 0);
   }
