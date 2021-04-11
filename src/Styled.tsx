@@ -1,7 +1,12 @@
+import { forwardRef } from "react";
+
 export { TextInput, Button, Message, LargeHeading, SmallHeading, Row, Link };
 
-function TextInput(props: React.ComponentPropsWithoutRef<"input">) {
-  return (
+const TextInput = forwardRef(
+  (
+    props: React.ComponentPropsWithoutRef<"input">,
+    ref: React.ForwardedRef<HTMLInputElement>
+  ) => (
     <input
       className="TextInput"
       type="text"
@@ -9,10 +14,11 @@ function TextInput(props: React.ComponentPropsWithoutRef<"input">) {
       autoCorrect="off"
       autoCapitalize="none"
       spellCheck="false"
+      ref={ref}
       {...props}
     />
-  );
-}
+  )
+);
 
 function Button({
   disabled = false,

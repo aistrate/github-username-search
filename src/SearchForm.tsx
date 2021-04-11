@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { TextInput, Button } from "./Styled";
 
 export type { SearchEvent };
@@ -21,6 +21,7 @@ function SearchForm({
 }: SearchFormProps) {
   const [value, setValue] = useState("");
   const [buttonDisabled, setButtonDisabled] = useState(true);
+  const inputRef = useRef<HTMLInputElement>(null!);
 
   const textChanged = (val: string) => {
     setValue(val);
@@ -29,6 +30,11 @@ function SearchForm({
 
   useEffect(() => {
     textChanged(initialValue);
+    if (initialValue.trim().length === 0) {
+      inputRef.current.focus();
+    } else {
+      inputRef.current.blur();
+    }
   }, [initialValue]);
 
   const handleTextChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -48,6 +54,7 @@ function SearchForm({
       <TextInput
         placeholder={fieldName}
         value={value}
+        ref={inputRef}
         onChange={handleTextChange}
       />
       <Button type="submit" disabled={buttonDisabled}>
