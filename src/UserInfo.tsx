@@ -58,9 +58,15 @@ type AvatarProps = {
 
 function Avatar({ url, userType }: AvatarProps) {
   return userType === "User" ? (
-    <img src={url} alt="Avatar" width="180" className="Avatar Avatar--user" />
+    <img
+      src={url}
+      alt="Avatar"
+      width="180"
+      height="180"
+      className="Avatar Avatar--user"
+    />
   ) : (
-    <img src={url} alt="Avatar" width="100" className="Avatar" />
+    <img src={url} alt="Avatar" width="100" height="100" className="Avatar" />
   );
 }
 
