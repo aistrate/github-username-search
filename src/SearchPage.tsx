@@ -24,6 +24,8 @@ function SearchPage({ queryString }: SearchPageProps) {
   queryString = queryString.trim();
 
   useEffect(() => {
+    setUser(null);
+    setRepoList([]);
     setError("");
     setInfo("");
 
@@ -34,7 +36,6 @@ function SearchPage({ queryString }: SearchPageProps) {
 
   async function fetchUser(username: string) {
     if (username === "") {
-      setUser(null);
       return;
     }
 
@@ -44,7 +45,6 @@ function SearchPage({ queryString }: SearchPageProps) {
     } catch (err) {
       const message = (err as Error).message;
       setError(`Fetch Error: ${message}`);
-      setUser(null);
       return;
     }
 
@@ -55,8 +55,6 @@ function SearchPage({ queryString }: SearchPageProps) {
         let errorData = await response.json();
         setError(`HTTP Error: (${response.status}) ${errorData.message}`);
       }
-
-      setUser(null);
       return;
     }
 
@@ -66,7 +64,6 @@ function SearchPage({ queryString }: SearchPageProps) {
 
   async function fetchRepoList(username: string, page: number) {
     if (username === "") {
-      setRepoList([]);
       return;
     }
 
@@ -76,7 +73,6 @@ function SearchPage({ queryString }: SearchPageProps) {
     } catch (err) {
       const message = (err as Error).message;
       setError(`Fetch Error: ${message}`);
-      setRepoList([]);
       return;
     }
 
@@ -87,8 +83,6 @@ function SearchPage({ queryString }: SearchPageProps) {
         let errorData = await response.json();
         setError(`HTTP Error: (${response.status}) ${errorData.message}`);
       }
-
-      setRepoList([]);
       return;
     }
 
