@@ -122,5 +122,5 @@ function getUserUrl(username: string) {
 }
 
 function getRepoListUrl(username: string, page: number) {
-  return `https://api.github.com/users/${username}/repos?per_page=100&page=${page}`;
+  return `https://api.github.com/users/${username}/repos?page=${page}&per_page=100&sort=pushed`;
 }

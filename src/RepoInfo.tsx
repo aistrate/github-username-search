@@ -48,7 +48,7 @@ function RepoInfo({ repo }: RepoInfoProps) {
             {formatNumber(repo.forks_count)} forks
           </Row>
         )}
-        <Row label="Updated">{formatDate(repo.updated_at)}</Row>
+        <Row label="Pushed">{formatDate(repo.pushed_at)}</Row>
       </dl>
     </div>
   );
