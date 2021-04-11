@@ -49,11 +49,13 @@ function SearchPage({ queryString }: SearchPageProps) {
 
   const history = useHistory();
 
+  queryString = queryString.trim();
+
   useEffect(() => {
     setError("");
     setInfo("");
 
-    const username = queryString.trim();
+    const username = queryString;
 
     if (username === "") {
       setUser(null);
