@@ -1,4 +1,4 @@
-import { Link } from "./Styled";
+import { Link } from "../Shared/Styled";
 
 export default AboutPage;
 

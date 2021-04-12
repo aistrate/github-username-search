@@ -1,6 +1,6 @@
 import type { Repo } from "./Models";
-import { LargeHeading, SmallHeading, Row, Link } from "./Styled";
-import { formatDateTime, formatNumber } from "./Utils";
+import { LargeHeading, SmallHeading, Row, Link } from "../Shared/Styled";
+import { formatDateTime, formatNumber } from "../Shared/Utils";
 
 export default RepoList;
 

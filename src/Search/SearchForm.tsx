@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { TextInput, Button } from "./Styled";
+import { TextInput, Button } from "../Shared/Styled";
 
 export type { SearchEvent };
 export default SearchForm;

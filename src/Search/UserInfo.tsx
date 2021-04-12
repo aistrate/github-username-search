@@ -1,7 +1,7 @@
 import React from "react";
 import type { UserType, User } from "./Models";
-import { LargeHeading, Row, Link } from "./Styled";
-import { formatDate, formatNumber } from "./Utils";
+import { LargeHeading, Row, Link } from "../Shared/Styled";
+import { formatDate, formatNumber } from "../Shared/Utils";
 
 export default UserInfo;
 

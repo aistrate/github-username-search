@@ -7,10 +7,10 @@ import {
   useLocation,
 } from "react-router-dom";
 import "./App.css";
-import SearchPage from "./SearchPage";
-import HistoryPage from "./HistoryPage";
-import AboutPage from "./AboutPage";
-import { WindowTitle } from "./Utils";
+import SearchPage from "./Search/SearchPage";
+import HistoryPage from "./History/HistoryPage";
+import AboutPage from "./About/AboutPage";
+import { WindowTitle } from "./Shared/Utils";
 
 export default App;
 

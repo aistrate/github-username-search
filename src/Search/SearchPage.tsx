@@ -1,8 +1,8 @@
 import { useHistory } from "react-router-dom";
 import type { User, Repo } from "./Models";
 import type { SearchEvent } from "./SearchForm";
-import { useFetch } from "./Fetch";
-import { Message } from "./Styled";
+import { useFetch } from "../Shared/Fetch";
+import { Message } from "../Shared/Styled";
 import SearchForm from "./SearchForm";
 import UserInfo from "./UserInfo";
 import RepoList from "./RepoInfo";
