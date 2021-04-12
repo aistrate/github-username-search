@@ -14,9 +14,11 @@ function RepoList({ repos }: RepoListProps) {
       <LargeHeading>Repositories</LargeHeading>
 
       <div>
-        {repos.map((repo) => (
-          <RepoInfo key={repo.id} repo={repo}></RepoInfo>
-        ))}
+        {repos.length > 0 ? (
+          repos.map((repo) => <RepoInfo key={repo.id} repo={repo} />)
+        ) : (
+          <>(None)</>
+        )}
       </div>
     </div>
   );
