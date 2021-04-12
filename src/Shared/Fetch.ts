@@ -6,6 +6,7 @@ function useFetch<Data>(requestUrl: string | null) {
   const [data, setData] = useState<Data | null>(null);
   const [error, setError] = useState("");
   const [error404, setError404] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     setData(null);
@@ -16,6 +17,8 @@ function useFetch<Data>(requestUrl: string | null) {
       return;
     }
 
+    setIsLoading(true);
+
     (async () => {
       let response: Response;
       try {
@@ -23,22 +26,27 @@ function useFetch<Data>(requestUrl: string | null) {
       } catch (err) {
         const message = (err as Error).message;
         setError(`Fetch Error: ${message}`);
+        setIsLoading(false);
         return;
       }
 
       if (!response.ok) {
         if (response.status === 404) {
           setError404(true);
-        } else {
-          let errorData = await response.json();
-          setError(`HTTP Error: (${response.status}) ${errorData.message}`);
+          setIsLoading(false);
+          return;
         }
+
+        let errorData = await response.json();
+        setError(`HTTP Error: (${response.status}) ${errorData.message}`);
+        setIsLoading(false);
         return;
       }
 
       setData(await response.json());
+      setIsLoading(false);
     })();
   }, [requestUrl]);
 
-  return { data, error, error404 };
+  return { data, error, error404, isLoading };
 }
