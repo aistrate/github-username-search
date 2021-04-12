@@ -14,78 +14,12 @@ type SearchPageProps = {
 };
 
 function SearchPage({ username }: SearchPageProps) {
-  const [user, setUser] = useState<User | null>(null);
-  const [repoList, setRepoList] = useState<Repo[]>([]);
-  const [error, setError] = useState("");
-  const [info, setInfo] = useState("");
-
   const history = useHistory();
 
-  useEffect(() => {
-    setUser(null);
-    setRepoList([]);
-    setError("");
-    setInfo("");
+  const user = useFetch<User>(getUserUrl(username));
+  const repoList = useFetch<Repo[]>(getRepoListUrl(username, 1));
 
-    fetchUser(username);
-    fetchRepoList(username, 1);
-  }, [username]);
-
-  async function fetchUser(username: string) {
-    if (username === "") {
-      return;
-    }
-
-    let response: Response;
-    try {
-      response = await fetch(getUserUrl(username));
-    } catch (err) {
-      const message = (err as Error).message;
-      setError(`Fetch Error: ${message}`);
-      return;
-    }
-
-    if (!response.ok) {
-      if (response.status === 404) {
-        setInfo(`Username '${username}' was not found.`);
-      } else {
-        let errorData = await response.json();
-        setError(`HTTP Error: (${response.status}) ${errorData.message}`);
-      }
-      return;
-    }
-
-    let userData: User = await response.json();
-    setUser(userData);
-  }
-
-  async function fetchRepoList(username: string, page: number) {
-    if (username === "") {
-      return;
-    }
-
-    let response: Response;
-    try {
-      response = await fetch(getRepoListUrl(username, page));
-    } catch (err) {
-      const message = (err as Error).message;
-      setError(`Fetch Error: ${message}`);
-      return;
-    }
-
-    if (!response.ok) {
-      if (response.status === 404) {
-        setInfo(`Repos for username '${username}' were not found.`);
-      } else {
-        let errorData = await response.json();
-        setError(`HTTP Error: (${response.status}) ${errorData.message}`);
-      }
-      return;
-    }
-
-    let repoListData: Repo[] = await response.json();
-    setRepoList(repoListData);
-  }
+  const info = user.error404 ? `Username '${username}' was not found.` : "";
 
   function handleSearch(e: SearchEvent) {
     let username = e.value;
@@ -100,18 +34,61 @@ function SearchPage({ username }: SearchPageProps) {
         onSearch={handleSearch}
       />
 
-      <Message error={error} info={info} />
+      <Message error={user.error} info={info} />
 
-      {user && <UserInfo user={user} />}
-      {repoList.length > 0 && <RepoList repos={repoList} />}
+      {user.data && <UserInfo user={user.data} />}
+      {repoList.data && <RepoList repos={repoList.data} />}
     </>
   );
 }
 
 function getUserUrl(username: string) {
-  return `https://api.github.com/users/${username}`;
+  return username ? `https://api.github.com/users/${username}` : "";
 }
 
 function getRepoListUrl(username: string, page: number) {
-  return `https://api.github.com/users/${username}/repos?page=${page}&per_page=100&sort=pushed`;
+  return username
+    ? `https://api.github.com/users/${username}/repos?page=${page}&per_page=100&sort=pushed`
+    : "";
+}
+
+function useFetch<Data>(requestUrl: string) {
+  const [data, setData] = useState<Data | null>(null);
+  const [error, setError] = useState("");
+  const [error404, setError404] = useState(false);
+
+  useEffect(() => {
+    setData(null);
+    setError("");
+    setError404(false);
+
+    if (requestUrl === "") {
+      return;
+    }
+
+    (async () => {
+      let response: Response;
+      try {
+        response = await fetch(requestUrl);
+      } catch (err) {
+        const message = (err as Error).message;
+        setError(`Fetch Error: ${message}`);
+        return;
+      }
+
+      if (!response.ok) {
+        if (response.status === 404) {
+          setError404(true);
+        } else {
+          let errorData = await response.json();
+          setError(`HTTP Error: (${response.status}) ${errorData.message}`);
+        }
+        return;
+      }
+
+      setData(await response.json());
+    })();
+  }, [requestUrl]);
+
+  return { data, error, error404 };
 }
