@@ -46,11 +46,11 @@ function SearchPage({ username }: SearchPageProps) {
 }
 
 function getUserUrl(username: string) {
-  return `https://api.github.com/users/${username}`;
+  return `https://api.github.com/users/${username.toLowerCase()}`;
 }
 
 function getRepoListUrl(username: string, page: number) {
-  return `https://api.github.com/users/${username}/repos?page=${page}&per_page=100&sort=pushed`;
+  return `https://api.github.com/users/${username.toLowerCase()}/repos?page=${page}&per_page=100&sort=pushed`;
 }
 
 function useFetch<Data>(requestUrl: string | null) {
