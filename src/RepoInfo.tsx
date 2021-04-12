@@ -1,6 +1,6 @@
 import type { Repo } from "./Models";
 import { LargeHeading, SmallHeading, Row, Link } from "./Styled";
-import { formatDate, formatNumber } from "./Utils";
+import { formatDateTime, formatNumber } from "./Utils";
 
 export default RepoList;
 
@@ -50,7 +50,7 @@ function RepoInfo({ repo }: RepoInfoProps) {
             {formatNumber(repo.forks_count)} forks
           </Row>
         )}
-        <Row label="Pushed">{formatDate(repo.pushed_at)}</Row>
+        <Row label="Pushed">{formatDateTime(repo.pushed_at)}</Row>
       </dl>
     </div>
   );

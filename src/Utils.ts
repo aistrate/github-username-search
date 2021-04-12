@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-export { WindowTitle, formatDate, formatNumber };
+export { WindowTitle, formatDate, formatDateTime, formatNumber };
 
 type WindowTitleProps = {
   value: string;
@@ -15,13 +15,23 @@ function WindowTitle({ value }: WindowTitleProps) {
 }
 
 const locale = "en-GB";
+const dateOptions: Intl.DateTimeFormatOptions = {
+  year: "numeric",
+  month: "short",
+  day: "numeric",
+};
+const dateTimeOptions: Intl.DateTimeFormatOptions = {
+  ...dateOptions,
+  hour: "2-digit",
+  minute: "2-digit",
+};
 
 function formatDate(dateString: string) {
-  return new Date(dateString).toLocaleDateString(locale, {
-    year: "numeric",
-    month: "short",
-    day: "numeric",
-  });
+  return new Date(dateString).toLocaleDateString(locale, dateOptions);
+}
+
+function formatDateTime(dateString: string) {
+  return new Date(dateString).toLocaleDateString(locale, dateTimeOptions);
 }
 
 function formatNumber(n: number) {
