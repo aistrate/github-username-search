@@ -14,8 +14,10 @@ function WindowTitle({ value }: WindowTitleProps) {
   return null;
 }
 
+const locale = "en-GB";
+
 function formatDate(dateString: string) {
-  return new Date(dateString).toLocaleDateString("en-US", {
+  return new Date(dateString).toLocaleDateString(locale, {
     year: "numeric",
     month: "short",
     day: "numeric",
@@ -23,5 +25,5 @@ function formatDate(dateString: string) {
 }
 
 function formatNumber(n: number) {
-  return n.toLocaleString("en-US");
+  return n.toLocaleString(locale);
 }
