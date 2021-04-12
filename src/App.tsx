@@ -54,7 +54,7 @@ function Content() {
               queryString === "" ? "Search" : queryString
             } - ${appName}`}
           />
-          <SearchPage queryString={queryString} />
+          <SearchPage username={queryString} />
         </Route>
         <Route path="/history">
           <WindowTitle value={`History - ${appName}`} />

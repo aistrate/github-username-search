@@ -10,10 +10,10 @@ import RepoList from "./RepoInfo";
 export default SearchPage;
 
 type SearchPageProps = {
-  queryString: string;
+  username: string;
 };
 
-function SearchPage({ queryString }: SearchPageProps) {
+function SearchPage({ username }: SearchPageProps) {
   const [user, setUser] = useState<User | null>(null);
   const [repoList, setRepoList] = useState<Repo[]>([]);
   const [error, setError] = useState("");
@@ -27,10 +27,9 @@ function SearchPage({ queryString }: SearchPageProps) {
     setError("");
     setInfo("");
 
-    const username = queryString;
     fetchUser(username);
     fetchRepoList(username, 1);
-  }, [queryString]);
+  }, [username]);
 
   async function fetchUser(username: string) {
     if (username === "") {
@@ -97,7 +96,7 @@ function SearchPage({ queryString }: SearchPageProps) {
     <>
       <SearchForm
         fieldName="Username"
-        initialValue={queryString}
+        initialValue={username}
         onSearch={handleSearch}
       />
 
