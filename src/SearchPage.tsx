@@ -17,10 +17,12 @@ function SearchPage({ username }: SearchPageProps) {
   const userUrl = username ? getUserUrl(username) : null;
   const repoListUrl = username ? getRepoListUrl(username, 1) : null;
 
-  const user = useFetch<User>(userUrl);
-  const repoList = useFetch<Repo[]>(repoListUrl);
+  const userFetch = useFetch<User>(userUrl);
+  const repoListFetch = useFetch<Repo[]>(repoListUrl);
 
-  const info = user.error404 ? `Username '${username}' was not found.` : "";
+  const info = userFetch.error404
+    ? `Username '${username}' was not found.`
+    : "";
 
   const history = useHistory();
 
@@ -37,10 +39,10 @@ function SearchPage({ username }: SearchPageProps) {
         onSearch={handleSearch}
       />
 
-      <Message error={user.error || repoList.error} info={info} />
+      <Message error={userFetch.error || repoListFetch.error} info={info} />
 
-      {user.data && <UserInfo user={user.data} />}
-      {repoList.data && <RepoList repos={repoList.data} />}
+      {userFetch.data && <UserInfo user={userFetch.data} />}
+      {repoListFetch.data && <RepoList repos={repoListFetch.data} />}
     </>
   );
 }
