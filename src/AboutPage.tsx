@@ -22,7 +22,7 @@ function AboutPage() {
         <li>
           <b>Organizations:</b> facebook, google, netflix, apple, amzn, aws,
           microsoft, github, reddit, twitter, airbnb, shopify, intel, ibm,
-          nodejs, graphql, gatsbyjs
+          JetBrains, nodejs, graphql, gatsbyjs
         </li>
         <li>
           <b>Individuals:</b> fabpot, taylorotwell, wycats, mojombo, gaearon,

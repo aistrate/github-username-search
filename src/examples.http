@@ -30,13 +30,14 @@ https://api.github.com/repos/aistrate/RegexParser
 https://api.github.com/users/facebook
 
 ### repos (followed by page=2, etc.)
-https://api.github.com/users/facebook/repos?page=1&per_page=30
+https://api.github.com/users/facebook/repos?page=1&per_page=100&sort=pushed
 
 
 
 ### Organizations: microsoft, google, netflix, github, amzn, aws, reddit,
 ###                airbnb, shopify, RedHatOfficial, ibm, intel, apple,
-###                twitter, sap, tensorflow, nodejs, graphql, gatsbyjs
+###                twitter, sap, tensorflow, nodejs, graphql, gatsbyjs,
+###                JetBrains, ghc
 ### People: rmeoc, gaearon, shanselman, fabpot, andrew, taylorotwell,
 ###         Rich-Harris, ayende, kentcdodds, jskeet, yyx990803, sebmarkbage,
 ###         octocat, mojombo, wycats, lattner, lexfridman, serras, rtfeldman
