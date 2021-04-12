@@ -15,7 +15,7 @@ function RepoList({ repos }: RepoListProps) {
 
       <div>
         {repos.map((repo) => (
-          <RepoInfo repo={repo}></RepoInfo>
+          <RepoInfo key={repo.id} repo={repo}></RepoInfo>
         ))}
       </div>
     </div>
@@ -28,7 +28,7 @@ type RepoInfoProps = {
 
 function RepoInfo({ repo }: RepoInfoProps) {
   return (
-    <div key={repo.id} className="RepoInfo">
+    <div className="RepoInfo">
       <SmallHeading>
         <Link href={repo.html_url}>{repo.name}</Link>
       </SmallHeading>
