@@ -14,12 +14,12 @@ type SearchPageProps = {
 };
 
 function SearchPage({ username }: SearchPageProps) {
-  const history = useHistory();
-
   const user = useFetch<User>(getUserUrl(username));
   const repoList = useFetch<Repo[]>(getRepoListUrl(username, 1));
 
   const info = user.error404 ? `Username '${username}' was not found.` : "";
+
+  const history = useHistory();
 
   function handleSearch(e: SearchEvent) {
     let username = e.value;
@@ -34,7 +34,7 @@ function SearchPage({ username }: SearchPageProps) {
         onSearch={handleSearch}
       />
 
-      <Message error={user.error} info={info} />
+      <Message error={user.error || repoList.error} info={info} />
 
       {user.data && <UserInfo user={user.data} />}
       {repoList.data && <RepoList repos={repoList.data} />}
