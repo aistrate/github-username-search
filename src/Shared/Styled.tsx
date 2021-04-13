@@ -1,6 +1,15 @@
 import { forwardRef } from "react";
 
-export { TextInput, Button, Message, LargeHeading, SmallHeading, Row, Link };
+export {
+  TextInput,
+  Button,
+  Message,
+  Loading,
+  LargeHeading,
+  SmallHeading,
+  Row,
+  Link,
+};
 
 const TextInput = forwardRef(
   (
@@ -36,6 +45,14 @@ function Message({ error, info }: MessageProps) {
       {info && <div>{info}</div>}
     </div>
   );
+}
+
+type LoadingProps = {
+  isLoading: boolean;
+};
+
+function Loading({ isLoading }: LoadingProps) {
+  return <>{isLoading && <div className="Loading">Loading...</div>}</>;
 }
 
 function LargeHeading(props: React.ComponentPropsWithoutRef<"h2">) {

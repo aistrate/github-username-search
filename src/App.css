@@ -123,6 +123,11 @@
   color: red;
 }
 
+.Loading {
+  margin-top: 3.5rem;
+  font-weight: 600;
+}
+
 .UserInfo {
   margin-top: 4rem;
 }

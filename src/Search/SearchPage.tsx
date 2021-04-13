@@ -2,7 +2,7 @@ import { useHistory } from "react-router-dom";
 import type { User, Repo } from "./Models";
 import type { SearchEvent } from "./SearchForm";
 import { useFetch } from "../Shared/Fetch";
-import { Message } from "../Shared/Styled";
+import { Message, Loading } from "../Shared/Styled";
 import SearchForm from "./SearchForm";
 import UserInfo from "./UserInfo";
 import RepoList from "./RepoInfo";
@@ -42,6 +42,8 @@ function SearchPage({ username }: SearchPageProps) {
       <Message error={userFetch.error || repoListFetch.error} info={info} />
 
       {userFetch.data && <UserInfo user={userFetch.data} />}
+
+      <Loading isLoading={!!userFetch.data && repoListFetch.isLoading} />
       {repoListFetch.data && <RepoList repos={repoListFetch.data} />}
     </>
   );
