@@ -1,7 +1,8 @@
+import { useCallback } from "react";
 import { useHistory } from "react-router-dom";
 import type { User, Repo } from "./Models";
 import type { SearchEvent } from "./SearchForm";
-import { useFetch } from "../Shared/Fetch";
+import { useFetch, usePagedFetch } from "../Shared/Fetch";
 import { Message, Loading } from "../Shared/Styled";
 import SearchForm from "./SearchForm";
 import UserInfo from "./UserInfo";
@@ -17,10 +18,13 @@ function SearchPage({ username }: SearchPageProps) {
   const lcUsername = username.toLowerCase();
 
   const userUrl = lcUsername ? getUserUrl(lcUsername) : null;
-  const repoListUrl = lcUsername ? getRepoListUrl(lcUsername, 1) : null;
+  const repoListUrl = useCallback(
+    (page: number) => (lcUsername ? getRepoListUrl(lcUsername, page) : null),
+    [lcUsername]
+  );
 
   const userFetch = useFetch<User>(userUrl);
-  const repoListFetch = useFetch<Repo[]>(repoListUrl);
+  const repoListFetch = usePagedFetch<Repo>(repoListUrl, lcUsername);
 
   const history = useHistory();
 

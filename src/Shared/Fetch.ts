@@ -1,17 +1,19 @@
 import { useState, useEffect } from "react";
 
-export { useFetch };
+export { useFetch, usePagedFetch };
 
 function useFetch<Data>(requestUrl: string | null) {
   const [data, setData] = useState<Data | null>(null);
   const [error, setError] = useState("");
   const [error404, setError404] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [requestUrlValue, setRequestUrlValue] = useState<string | null>(null);
 
   useEffect(() => {
     setData(null);
     setError("");
     setError404(false);
+    setRequestUrlValue(requestUrl);
 
     if (!requestUrl) {
       return;
@@ -62,5 +64,54 @@ function useFetch<Data>(requestUrl: string | null) {
     };
   }, [requestUrl]);
 
-  return { data, error, error404, isLoading };
+  return { data, error, error404, isLoading, requestUrl: requestUrlValue };
+}
+
+function usePagedFetch<Data>(
+  getRequestUrl: (page: number) => string | null,
+  resettingDependency: string | null
+) {
+  const [lastVisiblePage, setLastVisiblePage] = useState(0);
+  const [page, setPage] = useState(1);
+  const [allData, setAllData] = useState<Data[] | null>(null);
+
+  useEffect(() => {
+    setLastVisiblePage(0);
+    setPage(1);
+    setAllData(null);
+  }, [resettingDependency]);
+
+  const currentFetch = useFetch<Data[]>(getRequestUrl(page));
+
+  useEffect(() => {
+    if (
+      lastVisiblePage < page &&
+      !currentFetch.isLoading &&
+      currentFetch.requestUrl === getRequestUrl(page) &&
+      currentFetch.data &&
+      (currentFetch.data.length > 0 || page === 1)
+    ) {
+      const currentFetchData = currentFetch.data;
+      setLastVisiblePage(page);
+      setAllData((allData) => [...(allData || []), ...currentFetchData]);
+    }
+  }, [lastVisiblePage, page, currentFetch, getRequestUrl]);
+
+  function nextPage() {
+    if (
+      !currentFetch.isLoading &&
+      currentFetch.data &&
+      currentFetch.data.length > 0
+    ) {
+      setPage((page) => page + 1);
+    }
+  }
+
+  return {
+    data: allData,
+    error: currentFetch.error,
+    error404: currentFetch.error404,
+    isLoading: currentFetch.isLoading,
+    nextPage,
+  };
 }
