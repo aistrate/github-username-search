@@ -69,7 +69,7 @@ function useFetch<Data>(requestUrl: string | null) {
 
 function usePagedFetch<Data>(
   getRequestUrl: (page: number) => string | null,
-  resettingDependency: string | null
+  resettingDependencies: React.DependencyList
 ) {
   const [lastVisiblePage, setLastVisiblePage] = useState(0);
   const [page, setPage] = useState(1);
@@ -79,7 +79,8 @@ function usePagedFetch<Data>(
     setLastVisiblePage(0);
     setPage(1);
     setAllData(null);
-  }, [resettingDependency]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, resettingDependencies);
 
   const currentFetch = useFetch<Data[]>(getRequestUrl(page));
 

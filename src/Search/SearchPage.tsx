@@ -24,7 +24,7 @@ function SearchPage({ username }: SearchPageProps) {
   );
 
   const userFetch = useFetch<User>(userUrl);
-  const repoListFetch = usePagedFetch<Repo>(repoListUrl, lcUsername);
+  const repoListFetch = usePagedFetch<Repo>(repoListUrl, [lcUsername]);
 
   const history = useHistory();
 
