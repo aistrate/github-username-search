@@ -39,10 +39,12 @@ function SearchPage({ username }: SearchPageProps) {
 
       <Message
         info={userFetch.error404 ? `Username '${username}' was not found.` : ""}
-        error={userFetch.error || repoListFetch.error}
+        error={userFetch.error}
       />
 
       {userFetch.data && <UserInfo user={userFetch.data} />}
+
+      <Message error={!userFetch.error ? repoListFetch.error : ""} />
 
       <Loading isLoading={!!userFetch.data && repoListFetch.isLoading} />
       {repoListFetch.data && <RepoList repos={repoListFetch.data} />}

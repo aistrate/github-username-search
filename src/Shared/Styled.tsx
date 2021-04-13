@@ -34,16 +34,20 @@ function Button(props: React.ComponentPropsWithoutRef<"button">) {
 }
 
 type MessageProps = {
-  error?: string;
   info?: string;
+  error?: string;
 };
 
-function Message({ error, info }: MessageProps) {
+function Message({ info, error }: MessageProps) {
   return (
-    <div className="Message">
-      {error && <div className="Message__error">{error}</div>}
-      {info && <div>{info}</div>}
-    </div>
+    <>
+      {(info || error) && (
+        <div className="Message">
+          {info && <div>{info}</div>}
+          {error && <div className="Message__error">{error}</div>}
+        </div>
+      )}
+    </>
   );
 }
 
