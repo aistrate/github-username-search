@@ -85,6 +85,15 @@ function usePagedFetch<Data>(
   const currentFetch = useFetch<Data[]>(getRequestUrl(page));
 
   useEffect(() => {
+    // console.log("USE EFFECT");
+    // console.log("lastVisiblePage:", lastVisiblePage);
+    // console.log("page:", page);
+    // console.log("currentFetch.requestUrl:", currentFetch.requestUrl);
+    // console.log("currentFetch.isLoading:", currentFetch.isLoading);
+    // console.log("currentFetch.data.length:", currentFetch.data?.length);
+    // console.log("allData.length:", allData?.length);
+    // console.log("");
+
     if (
       lastVisiblePage < page &&
       !currentFetch.isLoading &&

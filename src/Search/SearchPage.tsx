@@ -8,6 +8,8 @@ import SearchForm from "./SearchForm";
 import UserInfo from "./UserInfo";
 import RepoList from "./RepoInfo";
 
+import { Button } from "../Shared/Styled";
+
 export default SearchPage;
 
 type SearchPageProps = {
@@ -33,6 +35,10 @@ function SearchPage({ username }: SearchPageProps) {
     history.push(`/search?q=${username}`);
   }
 
+  function handleNextPage() {
+    repoListFetch.nextPage();
+  }
+
   return (
     <>
       <SearchForm
@@ -40,6 +46,19 @@ function SearchPage({ username }: SearchPageProps) {
         initialValue={username}
         onSearch={handleSearch}
       />
+
+      <Button
+        type="button"
+        onClick={handleNextPage}
+        disabled={repoListFetch.isLoading}
+        style={{ marginTop: "2rem", marginLeft: 0 }}
+      >
+        Next Page
+      </Button>
+
+      <p style={{ fontSize: "1.25rem", fontWeight: 600 }}>
+        {repoListFetch.data?.length || 0}
+      </p>
 
       <Message
         info={userFetch.error404 ? `Username '${username}' was not found.` : ""}
