@@ -17,6 +17,7 @@ function useFetch<Data>(requestUrl: string | null) {
       return;
     }
 
+    let effectCancelled = false;
     setIsLoading(true);
 
     (async () => {
@@ -24,11 +25,15 @@ function useFetch<Data>(requestUrl: string | null) {
       try {
         response = await fetch(requestUrl);
       } catch (err) {
+        if (effectCancelled) return;
+
         const message = (err as Error).message;
         setError(`Fetch Error: ${message}`);
         setIsLoading(false);
         return;
       }
+
+      if (effectCancelled) return;
 
       if (!response.ok) {
         if (response.status === 404) {
@@ -38,14 +43,23 @@ function useFetch<Data>(requestUrl: string | null) {
         }
 
         let errorData = await response.json();
+        if (effectCancelled) return;
+
         setError(`HTTP Error: (${response.status}) ${errorData.message}`);
         setIsLoading(false);
         return;
       }
 
-      setData(await response.json());
+      const responseData = await response.json();
+      if (effectCancelled) return;
+
+      setData(responseData);
       setIsLoading(false);
     })();
+
+    return () => {
+      effectCancelled = true;
+    };
   }, [requestUrl]);
 
   return { data, error, error404, isLoading };
