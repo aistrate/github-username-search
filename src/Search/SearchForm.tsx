@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { TextInput, Button } from "../Shared/Styled";
+import { TextInput, Button, Link } from "../Shared/Styled";
 
 export type { SearchEvent };
 export default SearchForm;
@@ -53,9 +53,14 @@ function SearchForm({ initialValue = "", onSearch }: SearchFormProps) {
         ref={inputRef}
         onChange={handleTextChange}
       />
+
       <Button type="submit" disabled={buttonDisabled}>
         Search
       </Button>
+
+      <div className="SearchForm__instructions">
+        Type in a full username (see <Link href="./about">examples</Link>)
+      </div>
     </form>
   );
 }
