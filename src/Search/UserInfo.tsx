@@ -28,7 +28,7 @@ function UserInfo({ user }: UserInfoProps) {
         )}
         {user.company && (
           <Row label="Company">
-            <Company name={user.company} />
+            <CompanyList names={user.company} />
           </Row>
         )}
         {user.location && <Row label="Location">{user.location}</Row>}
@@ -70,30 +70,36 @@ function Avatar({ url, userType }: AvatarProps) {
   );
 }
 
-type CompanyProps = {
-  name: string;
+type CompanyListProps = {
+  names: string;
 };
 
-function Company({ name }: CompanyProps) {
-  // 'name' can be a comma-separated list
-  const companies = name
+function CompanyList({ names }: CompanyListProps) {
+  // 'names' can be a comma-separated list
+  const companyList = names
     .split(",")
-    .map((c) => c.trim())
-    .map((company) =>
-      company[0] === "@" ? (
-        <Link href={`https://github.com/${company.slice(1)}`}>{company}</Link>
-      ) : (
-        <>{company}</>
-      )
-    );
+    .map((name) => name.trim())
+    .map((name) => <Company name={name} />);
 
-  const joined = companies
+  const joined = companyList
     .slice(1)
     .reduce((accumulator, company) => accumulator.concat(<>, </>, company), [
-      companies[0],
+      companyList[0],
     ]);
 
   // use createElement with spread argument to avoid React's warning:
   // 'Each child in a list should have a unique "key" prop'
   return React.createElement(React.Fragment, null, ...joined);
+}
+
+type CompanyProps = {
+  name: string;
+};
+
+function Company({ name }: CompanyProps) {
+  return name[0] === "@" ? (
+    <Link href={`https://github.com/${name.slice(1)}`}>{name}</Link>
+  ) : (
+    <>{name}</>
+  );
 }
