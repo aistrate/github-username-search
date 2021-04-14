@@ -31,11 +31,7 @@ function SearchPage({ username }: SearchPageProps) {
 
   return (
     <>
-      <SearchForm
-        fieldName="Username"
-        initialValue={username}
-        onSearch={handleSearch}
-      />
+      <SearchForm initialValue={username} onSearch={handleSearch} />
 
       <Message
         info={userFetch.error404 ? `Username '${username}' was not found.` : ""}

@@ -9,16 +9,11 @@ type SearchEvent = {
 };
 
 type SearchFormProps = {
-  fieldName?: string;
   initialValue?: string;
   onSearch: (e: SearchEvent) => void;
 };
 
-function SearchForm({
-  fieldName,
-  initialValue = "",
-  onSearch,
-}: SearchFormProps) {
+function SearchForm({ initialValue = "", onSearch }: SearchFormProps) {
   const [value, setValue] = useState("");
   const [buttonDisabled, setButtonDisabled] = useState(true);
   const inputRef = useRef<HTMLInputElement>(null!);
@@ -53,7 +48,7 @@ function SearchForm({
   return (
     <form className="SearchForm" onSubmit={handleSubmit}>
       <TextInput
-        placeholder={fieldName}
+        placeholder="Username"
         value={value}
         ref={inputRef}
         onChange={handleTextChange}
