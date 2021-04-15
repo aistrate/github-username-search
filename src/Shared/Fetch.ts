@@ -31,7 +31,7 @@ function useFetch<Data>(requestUrl: string | null) {
         if (effectCancelled) return;
 
         const message = (err as Error).message;
-        setError(`Fetch Error: ${message}`);
+        setError(`Error: ${message}`);
         setIsLoading(false);
         return;
       }
