@@ -34,21 +34,14 @@ function Button(props: React.ComponentPropsWithoutRef<"button">) {
 }
 
 type MessageProps = {
-  info?: string;
-  error?: string | null;
+  type: "info" | "error";
+  children?: React.ReactNode;
 };
 
-function Message({ info, error }: MessageProps) {
-  return (
-    <>
-      {(info || error) && (
-        <div className="Message">
-          {info && <div>{info}</div>}
-          {error && <div className="Message__error">{error}</div>}
-        </div>
-      )}
-    </>
-  );
+function Message({ type, children }: MessageProps) {
+  const className = type === "error" ? "Message Message__error" : "Message";
+
+  return <div className={className}>{children}</div>;
 }
 
 type LoadingProps = {

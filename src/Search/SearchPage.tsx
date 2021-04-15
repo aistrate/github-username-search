@@ -33,18 +33,18 @@ function SearchPage({ username }: SearchPageProps) {
     <>
       <SearchForm initialValue={username} onSearch={handleSearch} />
 
-      <Message
-        info={
-          userFetch.httpStatus === 404
-            ? `Username '${username}' was not found.`
-            : ""
-        }
-        error={userFetch.httpStatus !== 404 ? userFetch.error : null}
-      />
+      {userFetch.error &&
+        (userFetch.httpStatus === 404 ? (
+          <Message type="info">{`Username '${username}' was not found.`}</Message>
+        ) : (
+          <Message type="error">{userFetch.error}</Message>
+        ))}
 
       {userFetch.data && <UserInfo user={userFetch.data} />}
 
-      <Message error={!userFetch.error ? repoListFetch.error : ""} />
+      {!userFetch.error && repoListFetch.error && (
+        <Message type="error">{`(Repositories) ${repoListFetch.error}`}</Message>
+      )}
 
       <Loading isLoading={!!userFetch.data && repoListFetch.isLoading} />
       {repoListFetch.data && <RepoList repos={repoListFetch.data} />}
