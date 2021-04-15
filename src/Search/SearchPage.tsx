@@ -34,8 +34,12 @@ function SearchPage({ username }: SearchPageProps) {
       <SearchForm initialValue={username} onSearch={handleSearch} />
 
       <Message
-        info={userFetch.error404 ? `Username '${username}' was not found.` : ""}
-        error={userFetch.error}
+        info={
+          userFetch.httpStatus === 404
+            ? `Username '${username}' was not found.`
+            : ""
+        }
+        error={userFetch.httpStatus !== 404 ? userFetch.error : null}
       />
 
       {userFetch.data && <UserInfo user={userFetch.data} />}

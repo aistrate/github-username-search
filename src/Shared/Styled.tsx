@@ -35,7 +35,7 @@ function Button(props: React.ComponentPropsWithoutRef<"button">) {
 
 type MessageProps = {
   info?: string;
-  error?: string;
+  error?: string | null;
 };
 
 function Message({ info, error }: MessageProps) {

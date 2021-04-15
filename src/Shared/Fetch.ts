@@ -4,14 +4,14 @@ export { useFetch };
 
 function useFetch<Data>(requestUrl: string | null) {
   const [data, setData] = useState<Data | null>(null);
-  const [error, setError] = useState("");
-  const [error404, setError404] = useState(false);
+  const [httpStatus, setHttpStatus] = useState<number | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     setData(null);
-    setError("");
-    setError404(false);
+    setHttpStatus(null);
+    setError(null);
 
     if (!requestUrl) {
       return;
@@ -24,6 +24,9 @@ function useFetch<Data>(requestUrl: string | null) {
       let response: Response;
       try {
         response = await fetch(requestUrl);
+        if (effectCancelled) return;
+
+        setHttpStatus(response.status);
       } catch (err) {
         if (effectCancelled) return;
 
@@ -33,15 +36,7 @@ function useFetch<Data>(requestUrl: string | null) {
         return;
       }
 
-      if (effectCancelled) return;
-
       if (!response.ok) {
-        if (response.status === 404) {
-          setError404(true);
-          setIsLoading(false);
-          return;
-        }
-
         let errorData = await response.json();
         if (effectCancelled) return;
 
@@ -62,5 +57,5 @@ function useFetch<Data>(requestUrl: string | null) {
     };
   }, [requestUrl]);
 
-  return { data, error, error404, isLoading };
+  return { data, httpStatus, error, isLoading };
 }
