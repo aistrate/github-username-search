@@ -1,4 +1,4 @@
-import { Link } from "../Shared/Styled";
+import { ExternalLink } from "../Shared/Styled";
 
 export default AboutPage;
 
@@ -7,9 +7,9 @@ function AboutPage() {
     <>
       <p>
         Check out the source code for the website{" "}
-        <Link href="https://github.com/aistrate/github-username-search">
+        <ExternalLink href="https://github.com/aistrate/github-username-search">
           here
-        </Link>
+        </ExternalLink>
         .
       </p>
 

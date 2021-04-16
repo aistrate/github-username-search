@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { TextInput, Button, Link } from "../Shared/Styled";
+import { TextInput, Button, ExternalLink } from "../Shared/Styled";
 
 export type { SearchEvent };
 export default SearchForm;
@@ -59,7 +59,8 @@ function SearchForm({ initialValue = "", onSearch }: SearchFormProps) {
       </Button>
 
       <div className="SearchForm__instructions">
-        Type in a full username (see <Link href="./about">examples</Link>)
+        Type in a full username (see{" "}
+        <ExternalLink href="./about">examples</ExternalLink>)
       </div>
     </form>
   );

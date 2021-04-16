@@ -1,5 +1,10 @@
 import type { Repo } from "./Models";
-import { LargeHeading, SmallHeading, Row, Link } from "../Shared/Styled";
+import {
+  LargeHeading,
+  SmallHeading,
+  Row,
+  ExternalLink,
+} from "../Shared/Styled";
 import { formatDateTime, formatNumber } from "../Shared/Utils";
 
 export default RepoList;
@@ -32,7 +37,7 @@ function RepoInfo({ repo }: RepoInfoProps) {
   return (
     <div className="RepoInfo">
       <SmallHeading>
-        <Link href={repo.html_url}>{repo.name}</Link>
+        <ExternalLink href={repo.html_url}>{repo.name}</ExternalLink>
       </SmallHeading>
 
       <dl>
@@ -40,7 +45,7 @@ function RepoInfo({ repo }: RepoInfoProps) {
         {repo.description && <Row label="Description">{repo.description}</Row>}
         {repo.homepage && (
           <Row label="Homepage">
-            <Link href={repo.homepage}>{repo.homepage}</Link>
+            <ExternalLink href={repo.homepage}>{repo.homepage}</ExternalLink>
           </Row>
         )}
         {repo.language && <Row label="Language">{repo.language}</Row>}

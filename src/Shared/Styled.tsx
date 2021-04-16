@@ -8,7 +8,7 @@ export {
   LargeHeading,
   SmallHeading,
   Row,
-  Link,
+  ExternalLink,
 };
 
 const TextInput = forwardRef(
@@ -76,7 +76,7 @@ function Row({ label, children }: RowProps) {
   );
 }
 
-function Link(props: React.ComponentPropsWithoutRef<"a">) {
+function ExternalLink(props: React.ComponentPropsWithoutRef<"a">) {
   // eslint-disable-next-line jsx-a11y/anchor-has-content
   return <a target="_blank" className="Link" {...props} />;
 }

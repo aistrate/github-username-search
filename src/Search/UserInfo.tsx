@@ -1,6 +1,6 @@
 import React from "react";
 import type { UserType, User } from "./Models";
-import { LargeHeading, Row, Link } from "../Shared/Styled";
+import { LargeHeading, Row, ExternalLink } from "../Shared/Styled";
 import { formatDate, formatNumber } from "../Shared/Utils";
 
 export default UserInfo;
@@ -18,7 +18,7 @@ function UserInfo({ user }: UserInfoProps) {
 
       <dl>
         <Row label="Username">
-          <Link href={user.html_url}>{user.login}</Link>
+          <ExternalLink href={user.html_url}>{user.login}</ExternalLink>
         </Row>
         <Row label="Type">{user.type}</Row>
         <Row label="Created">{formatDate(user.created_at)}</Row>
@@ -35,14 +35,14 @@ function UserInfo({ user }: UserInfoProps) {
         {user.email && <Row label="Email">{user.email}</Row>}
         {user.blog && (
           <Row label="Blog">
-            <Link href={user.blog}>{user.blog}</Link>
+            <ExternalLink href={user.blog}>{user.blog}</ExternalLink>
           </Row>
         )}
         {user.twitter_username && (
           <Row label="Twitter">
-            <Link href={`https://twitter.com/${user.twitter_username}`}>
+            <ExternalLink href={`https://twitter.com/${user.twitter_username}`}>
               @{user.twitter_username}
-            </Link>
+            </ExternalLink>
           </Row>
         )}
         <Row label="Repositories">{formatNumber(user.public_repos)}</Row>
@@ -98,7 +98,9 @@ type CompanyProps = {
 
 function Company({ name }: CompanyProps) {
   return name[0] === "@" ? (
-    <Link href={`https://github.com/${name.slice(1)}`}>{name}</Link>
+    <ExternalLink href={`https://github.com/${name.slice(1)}`}>
+      {name}
+    </ExternalLink>
   ) : (
     <>{name}</>
   );
