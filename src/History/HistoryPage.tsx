@@ -1,6 +1,6 @@
 import { Link as RouterLink } from "react-router-dom";
 import { HistoryItem } from "./Models";
-import { LargeHeading, Row } from "../Shared/Styled";
+import { LargeHeading, Row, Link } from "../Shared/Styled";
 import { formatDateTime } from "../Shared/Utils";
 
 export default HistoryPage;
@@ -27,7 +27,7 @@ function HistoryPage() {
 
       {history.map((historyItem) => (
         <Row label={formatDateTime(historyItem.timestamp)}>
-          <RouterLink className="Link" to={`/search?q=${historyItem.username}`}>
+          <RouterLink to={`/search?q=${historyItem.username}`} component={Link}>
             {historyItem.username}
           </RouterLink>
         </Row>
