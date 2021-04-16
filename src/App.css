@@ -154,6 +154,10 @@
   margin-top: 2.5rem;
 }
 
+.History__timestamp {
+  opacity: 0.65;
+}
+
 .LargeHeading {
   font-size: 1.5rem;
   font-weight: 600;

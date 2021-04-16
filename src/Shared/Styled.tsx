@@ -64,14 +64,18 @@ function SmallHeading(props: React.ComponentPropsWithoutRef<"h3">) {
 }
 
 type RowProps = {
-  label: string;
+  label?: React.ReactNode;
+  labelSuffix?: string;
   children?: React.ReactNode;
 };
 
-function Row({ label, children }: RowProps) {
+function Row({ label, labelSuffix = ":", children }: RowProps) {
   return (
     <div className="Row">
-      <dt className="Row__label">{label}:</dt>
+      <dt className="Row__label">
+        {label}
+        {labelSuffix}
+      </dt>
       <dd className="Row__content">{children}</dd>
     </div>
   );

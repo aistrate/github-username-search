@@ -25,8 +25,24 @@ function HistoryPage() {
     <>
       <LargeHeading>History</LargeHeading>
 
+      <History />
+    </>
+  );
+}
+
+function History() {
+  return (
+    <>
       {history.map((historyItem) => (
-        <Row label={formatDateTime(historyItem.timestamp)}>
+        <Row
+          key={historyItem.timestamp}
+          label={
+            <span className="History__timestamp">
+              {formatDateTime(historyItem.timestamp)}
+            </span>
+          }
+          labelSuffix=""
+        >
           <RouterLink to={`/search?q=${historyItem.username}`} component={Link}>
             {historyItem.username}
           </RouterLink>
