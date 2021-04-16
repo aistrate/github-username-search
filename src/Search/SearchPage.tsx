@@ -1,7 +1,10 @@
+import { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import type { User, Repo } from "./Models";
+import type { HistoryItem } from "../History/Models";
 import type { SearchEvent } from "./SearchForm";
 import { useFetch } from "../Shared/Fetch";
+import { setLocalStorageItem } from "../Shared/LocalStorage";
 import { Message, Loading } from "../Shared/Styled";
 import SearchForm from "./SearchForm";
 import UserInfo from "./UserInfo";
@@ -22,11 +25,27 @@ function SearchPage({ username }: SearchPageProps) {
   const userFetch = useFetch<User>(userUrl);
   const repoListFetch = useFetch<Repo[]>(repoListUrl);
 
-  const history = useHistory();
+  useEffect(() => {
+    function updateSeachHistory(history: HistoryItem[]) {
+      return [
+        {
+          username,
+          timestamp: Date.now(),
+        },
+        ...history,
+      ];
+    }
+
+    if (username) {
+      setLocalStorageItem("searchHistory", [], updateSeachHistory);
+    }
+  }, [username]);
+
+  const browserHistory = useHistory();
 
   function handleSearch(e: SearchEvent) {
     let username = e.value;
-    history.push(`/search?q=${username}`);
+    browserHistory.push(`/search?q=${username}`);
   }
 
   return (
