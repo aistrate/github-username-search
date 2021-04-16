@@ -15,25 +15,27 @@ function WindowTitle({ value }: WindowTitleProps) {
 }
 
 const locale = "en-GB";
+
 const dateOptions: Intl.DateTimeFormatOptions = {
   year: "numeric",
   month: "short",
   day: "numeric",
 };
+
 const dateTimeOptions: Intl.DateTimeFormatOptions = {
   ...dateOptions,
   hour: "2-digit",
   minute: "2-digit",
 };
 
-function formatDate(dateString: string) {
-  return new Date(dateString).toLocaleDateString(locale, dateOptions);
+function formatDate(value: string | number) {
+  return new Date(value).toLocaleDateString(locale, dateOptions);
 }
 
-function formatDateTime(dateString: string) {
-  return new Date(dateString).toLocaleDateString(locale, dateTimeOptions);
+function formatDateTime(value: string | number) {
+  return new Date(value).toLocaleDateString(locale, dateTimeOptions);
 }
 
-function formatNumber(n: number) {
-  return n.toLocaleString(locale);
+function formatNumber(value: number) {
+  return value.toLocaleString(locale);
 }
