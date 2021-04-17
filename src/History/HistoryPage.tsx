@@ -16,7 +16,9 @@ function HistoryPage() {
 
   return (
     <>
-      <LargeHeading>History</LargeHeading>
+      <LargeHeading>
+        History {history ? `(${history.length})` : ""}
+      </LargeHeading>
 
       {history && (
         <div>
@@ -28,7 +30,7 @@ function HistoryPage() {
               />
             ))
           ) : (
-            <>(Empty)</>
+            <>(empty)</>
           )}
         </div>
       )}

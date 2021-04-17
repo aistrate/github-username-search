@@ -22,7 +22,7 @@ function RepoList({ repos }: RepoListProps) {
         {repos.length > 0 ? (
           repos.map((repo) => <RepoInfo key={repo.id} repo={repo} />)
         ) : (
-          <>(None)</>
+          <>(none)</>
         )}
       </div>
     </div>
