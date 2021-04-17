@@ -48,10 +48,21 @@ function SearchPage({ username }: SearchPageProps) {
       return history;
     }
 
-    if (username) {
+    if (
+      userUrl &&
+      userFetch.requestUrl === userUrl &&
+      !userFetch.isLoading &&
+      userFetch.httpStatus === 200
+    ) {
       setLocalStorageItem("searchHistory", [], updateHistory);
     }
-  }, [username]);
+  }, [
+    username,
+    userUrl,
+    userFetch.requestUrl,
+    userFetch.isLoading,
+    userFetch.httpStatus,
+  ]);
 
   const browserHistory = useHistory();
 

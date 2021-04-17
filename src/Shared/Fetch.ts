@@ -7,11 +7,13 @@ function useFetch<Data>(requestUrl: string | null) {
   const [httpStatus, setHttpStatus] = useState<number | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [requestUrlValue, setRequestUrlValue] = useState<string | null>(null);
 
   useEffect(() => {
     setData(null);
     setHttpStatus(null);
     setError(null);
+    setRequestUrlValue(requestUrl);
 
     if (!requestUrl) {
       return;
@@ -57,5 +59,5 @@ function useFetch<Data>(requestUrl: string | null) {
     };
   }, [requestUrl]);
 
-  return { data, httpStatus, error, isLoading };
+  return { data, httpStatus, error, isLoading, requestUrl: requestUrlValue };
 }
