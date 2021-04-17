@@ -41,15 +41,17 @@ function Nav() {
 }
 
 function Content() {
-  const urlParams = useUrlParams();
-  const username = (urlParams.get("q") || "").trim();
-  const page = Math.max(1, parseInt(urlParams.get("page") || "") || 1);
+  const queryParams = useQueryParams();
 
   return (
     <div className="Content">
       <Switch>
         <Route path="/search">
-          <SearchPage appName={appName} username={username} page={page} />
+          <SearchPage
+            appName={appName}
+            queryUsername={queryParams.get("q")}
+            queryPage={queryParams.get("page")}
+          />
         </Route>
         <Route path="/history">
           <HistoryPage appName={appName} />
@@ -84,6 +86,6 @@ function NavItem({ to, children }: NavItemProps) {
   );
 }
 
-function useUrlParams() {
+function useQueryParams() {
   return new URLSearchParams(useLocation().search);
 }

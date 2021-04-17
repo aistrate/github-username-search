@@ -15,11 +15,14 @@ export default SearchPage;
 
 type SearchPageProps = {
   appName: string;
-  username: string;
-  page: number;
+  queryUsername: string | null;
+  queryPage: string | null;
 };
 
-function SearchPage({ appName, username, page }: SearchPageProps) {
+function SearchPage({ appName, queryUsername, queryPage }: SearchPageProps) {
+  const username = (queryUsername || "").trim();
+  const page = Math.max(1, parseInt(queryPage || "") || 1);
+
   const lcUsername = username.toLowerCase();
 
   const userUrl = lcUsername ? getUserUrl(lcUsername) : null;
