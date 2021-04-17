@@ -45,7 +45,7 @@ function HistoryRow({ historyItem }: HistoryRowProps) {
     <Row
       label={
         <span className="HistoryRow__timestamp">
-          {formatDateTime(historyItem.timestamp)}
+          {formatDateTime(historyItem.timestamp, "weekday-date-time")}
         </span>
       }
       labelSuffix=""

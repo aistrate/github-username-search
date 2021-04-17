@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-export { WindowTitle, formatDate, formatDateTime, formatNumber };
+export { WindowTitle, formatDateTime, formatNumber };
 
 type WindowTitleProps = {
   value: string;
@@ -28,12 +28,32 @@ const dateTimeOptions: Intl.DateTimeFormatOptions = {
   minute: "2-digit",
 };
 
-function formatDate(value: string | number) {
-  return new Date(value).toLocaleDateString(locale, dateOptions);
+const weekdayDateTimeOptions: Intl.DateTimeFormatOptions = {
+  ...dateTimeOptions,
+  weekday: "short",
+};
+
+type DateTimeFormat = "date" | "date-time" | "weekday-date-time";
+
+function formatDateTime(value: string | number, format: DateTimeFormat) {
+  return new Date(value).toLocaleDateString(locale, getDateTimeOptions(format));
 }
 
-function formatDateTime(value: string | number) {
-  return new Date(value).toLocaleDateString(locale, dateTimeOptions);
+function getDateTimeOptions(format: DateTimeFormat) {
+  switch (format) {
+    case "date":
+      return dateOptions;
+
+    case "date-time":
+      return dateTimeOptions;
+
+    case "weekday-date-time":
+      return weekdayDateTimeOptions;
+
+    default:
+      const _never: never = format;
+      return _never;
+  }
 }
 
 function formatNumber(value: number) {

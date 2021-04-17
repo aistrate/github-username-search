@@ -1,7 +1,7 @@
 import React from "react";
 import type { UserType, User } from "./Models";
 import { LargeHeading, Row, ExternalLink } from "../Shared/Styled";
-import { formatDate, formatNumber } from "../Shared/Utils";
+import { formatDateTime, formatNumber } from "../Shared/Utils";
 
 export default UserInfo;
 
@@ -21,7 +21,7 @@ function UserInfo({ user }: UserInfoProps) {
           <ExternalLink href={user.html_url}>{user.login}</ExternalLink>
         </Row>
         <Row label="Type">{user.type}</Row>
-        <Row label="Created">{formatDate(user.created_at)}</Row>
+        <Row label="Created">{formatDateTime(user.created_at, "date")}</Row>
         {user.bio && <Row label="Bio">{user.bio}</Row>}
         {user.followers > 0 && (
           <Row label="Followers">{formatNumber(user.followers)}</Row>
