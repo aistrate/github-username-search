@@ -29,6 +29,12 @@ function SearchPage({ username }: SearchPageProps) {
     const maxHistoryLength = 100;
 
     function updateHistory(history: HistoryItem[]) {
+      const lcUsername = username.toLowerCase();
+
+      history = history.filter(
+        (item) => item.username.toLowerCase() !== lcUsername
+      );
+
       history = [
         {
           username,
