@@ -34,7 +34,7 @@ function useFetch<Data>(requestUrl: string | null): FetchResult<Data> {
     (async () => {
       let response: Response;
       try {
-        response = await fetch(requestUrl);
+        response = await fetch(requestUrl, fetchOptions);
         if (effectCancelled) return;
 
         setHttpStatus(response.status);
@@ -70,3 +70,12 @@ function useFetch<Data>(requestUrl: string | null): FetchResult<Data> {
 
   return { data, httpStatus, error, isLoading, requestUrl: requestUrlValue };
 }
+
+// define the environment variable in file .env.development.local (NOT production);
+// the file should not be tracked by source control (add to .gitignore)
+const auth = process.env.REACT_APP_GITHUB_API_AUTH;
+
+// this will increase the GitHub API rate limit from 60 to 5000 requests/hour
+const fetchOptions = auth
+  ? { headers: new Headers({ Authorization: auth }) }
+  : {};

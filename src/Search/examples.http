@@ -54,3 +54,10 @@ https://api.github.com/user/1
 ### Reset time: new Date(n * 1000), where n is the 'X-RateLimit-Reset' HTTP header
 
 https://api.github.com/rate_limit
+
+
+
+### To increase the API rate limit from 60 to 5000 requests/hour:
+
+https://api.github.com/users/facebook
+Authorization: Basic <client_id:client_secret in base64>
