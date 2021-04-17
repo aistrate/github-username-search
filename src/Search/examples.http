@@ -30,7 +30,7 @@ https://api.github.com/repos/aistrate/RegexParser
 https://api.github.com/users/facebook
 
 ### repos (followed by page=2, etc.)
-https://api.github.com/users/facebook/repos?page=1&per_page=100&sort=pushed
+https://api.github.com/users/facebook/repos?page=1&per_page=30&sort=pushed
 
 
 

@@ -43,18 +43,15 @@ function Nav() {
 
 function Content() {
   const urlParams = useUrlParams();
-  const queryString = (urlParams.get("q") || "").trim();
+  const username = (urlParams.get("q") || "").trim();
+  const page = Math.max(1, parseInt(urlParams.get("page") || "") || 1);
 
   return (
     <div className="Content">
       <Switch>
         <Route path="/search">
-          <WindowTitle
-            value={`${
-              queryString === "" ? "Search" : queryString
-            } - ${appName}`}
-          />
-          <SearchPage username={queryString} />
+          <WindowTitle value={getSearchPageWindowTitle(username, page)} />
+          <SearchPage username={username} page={page} />
         </Route>
         <Route path="/history">
           <WindowTitle value={`History - ${appName}`} />
@@ -93,4 +90,15 @@ function NavItem({ to, children }: NavItemProps) {
 
 function useUrlParams() {
   return new URLSearchParams(useLocation().search);
+}
+
+function getSearchPageWindowTitle(username: string, page: number) {
+  const title =
+    username === ""
+      ? "Search"
+      : page === 1
+      ? username
+      : `${username} (page ${page})`;
+
+  return `${title} - ${appName}`;
 }

@@ -14,13 +14,14 @@ export default SearchPage;
 
 type SearchPageProps = {
   username: string;
+  page: number;
 };
 
-function SearchPage({ username }: SearchPageProps) {
+function SearchPage({ username, page }: SearchPageProps) {
   const lcUsername = username.toLowerCase();
 
   const userUrl = lcUsername ? getUserUrl(lcUsername) : null;
-  const repoListUrl = lcUsername ? getRepoListUrl(lcUsername, 1) : null;
+  const repoListUrl = lcUsername ? getRepoListUrl(lcUsername, page) : null;
 
   const userFetch = useFetch<User>(userUrl);
   const repoListFetch = useFetch<Repo[]>(repoListUrl);
@@ -100,5 +101,5 @@ function getUserUrl(username: string) {
 }
 
 function getRepoListUrl(username: string, page: number) {
-  return `https://api.github.com/users/${username}/repos?page=${page}&per_page=100&sort=pushed`;
+  return `https://api.github.com/users/${username}/repos?page=${page}&per_page=30&sort=pushed`;
 }
