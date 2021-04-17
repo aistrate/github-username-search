@@ -28,7 +28,7 @@ function SearchPage({ username }: SearchPageProps) {
   useEffect(() => {
     const maxHistoryLength = 100;
 
-    function updateHistory(history: HistoryItem[]) {
+    function addUsername(history: HistoryItem[]) {
       const lcUsername = username.toLowerCase();
 
       history = history.filter(
@@ -48,13 +48,14 @@ function SearchPage({ username }: SearchPageProps) {
       return history;
     }
 
+    // if User fetch was successful, add username to history
     if (
       userUrl &&
       userFetch.requestUrl === userUrl &&
       !userFetch.isLoading &&
       userFetch.httpStatus === 200
     ) {
-      setLocalStorageItem("searchHistory", [], updateHistory);
+      setLocalStorageItem("searchHistory", [], addUsername);
     }
   }, [
     username,
