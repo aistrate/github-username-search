@@ -26,18 +26,24 @@ function SearchPage({ username }: SearchPageProps) {
   const repoListFetch = useFetch<Repo[]>(repoListUrl);
 
   useEffect(() => {
-    function updateSeachHistory(history: HistoryItem[]) {
-      return [
+    const maxHistoryLength = 100;
+
+    function updateHistory(history: HistoryItem[]) {
+      history = [
         {
           username,
           timestamp: Date.now(),
         },
         ...history,
       ];
+
+      history = history.slice(0, maxHistoryLength);
+
+      return history;
     }
 
     if (username) {
-      setLocalStorageItem("searchHistory", [], updateSeachHistory);
+      setLocalStorageItem("searchHistory", [], updateHistory);
     }
   }, [username]);
 
