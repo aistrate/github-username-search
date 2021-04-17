@@ -1,10 +1,17 @@
 import { ExternalLink } from "../Shared/Styled";
+import { WindowTitle } from "../Shared/Utils";
 
 export default AboutPage;
 
-function AboutPage() {
+type AboutPageProps = {
+  appName: string;
+};
+
+function AboutPage({ appName }: AboutPageProps) {
   return (
     <>
+      <WindowTitle value={`About - ${appName}`} />
+
       <p>
         Check out the source code for the website{" "}
         <ExternalLink href="https://github.com/aistrate/github-username-search">

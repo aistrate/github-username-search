@@ -3,11 +3,15 @@ import { Link as RouterLink } from "react-router-dom";
 import type { HistoryItem } from "./Models";
 import { getLocalStorageItem } from "../Shared/LocalStorage";
 import { LargeHeading, Row } from "../Shared/Styled";
-import { formatDateTime } from "../Shared/Utils";
+import { WindowTitle, formatDateTime } from "../Shared/Utils";
 
 export default HistoryPage;
 
-function HistoryPage() {
+type HistoryPageProps = {
+  appName: string;
+};
+
+function HistoryPage({ appName }: HistoryPageProps) {
   const [history, setHistory] = useState<HistoryItem[] | null>(null);
 
   useEffect(() => {
@@ -16,6 +20,8 @@ function HistoryPage() {
 
   return (
     <>
+      <WindowTitle value={`History - ${appName}`} />
+
       <LargeHeading>
         History {history ? `(${history.length})` : ""}
       </LargeHeading>

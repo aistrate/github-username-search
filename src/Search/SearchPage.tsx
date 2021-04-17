@@ -6,6 +6,7 @@ import type { SearchEvent } from "./SearchForm";
 import { useFetch } from "../Shared/Fetch";
 import { setLocalStorageItem } from "../Shared/LocalStorage";
 import { Message, Loading } from "../Shared/Styled";
+import { WindowTitle } from "../Shared/Utils";
 import SearchForm from "./SearchForm";
 import UserInfo from "./UserInfo";
 import RepoList from "./RepoInfo";
@@ -13,11 +14,12 @@ import RepoList from "./RepoInfo";
 export default SearchPage;
 
 type SearchPageProps = {
+  appName: string;
   username: string;
   page: number;
 };
 
-function SearchPage({ username, page }: SearchPageProps) {
+function SearchPage({ appName, username, page }: SearchPageProps) {
   const lcUsername = username.toLowerCase();
 
   const userUrl = lcUsername ? getUserUrl(lcUsername) : null;
@@ -75,6 +77,8 @@ function SearchPage({ username, page }: SearchPageProps) {
 
   return (
     <>
+      <WindowTitle value={getWindowTitle(appName, username, page)} />
+
       <SearchForm initialValue={username} onSearch={handleSearch} />
 
       {userFetch.error &&
@@ -102,4 +106,15 @@ function getUserUrl(username: string) {
 
 function getRepoListUrl(username: string, page: number) {
   return `https://api.github.com/users/${username}/repos?page=${page}&per_page=30&sort=pushed`;
+}
+
+function getWindowTitle(appName: string, username: string, page: number) {
+  const title =
+    username === ""
+      ? "Search"
+      : page === 1
+      ? username
+      : `${username} (page ${page})`;
+
+  return `${title} - ${appName}`;
 }

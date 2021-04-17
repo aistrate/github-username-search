@@ -10,7 +10,6 @@ import "./App.css";
 import SearchPage from "./Search/SearchPage";
 import HistoryPage from "./History/HistoryPage";
 import AboutPage from "./About/AboutPage";
-import { WindowTitle } from "./Shared/Utils";
 
 export default App;
 
@@ -50,16 +49,13 @@ function Content() {
     <div className="Content">
       <Switch>
         <Route path="/search">
-          <WindowTitle value={getSearchPageWindowTitle(username, page)} />
-          <SearchPage username={username} page={page} />
+          <SearchPage appName={appName} username={username} page={page} />
         </Route>
         <Route path="/history">
-          <WindowTitle value={`History - ${appName}`} />
-          <HistoryPage />
+          <HistoryPage appName={appName} />
         </Route>
         <Route path="/about">
-          <WindowTitle value={`About - ${appName}`} />
-          <AboutPage />
+          <AboutPage appName={appName} />
         </Route>
         <Route path="*">
           <Redirect to="/search" />
@@ -90,15 +86,4 @@ function NavItem({ to, children }: NavItemProps) {
 
 function useUrlParams() {
   return new URLSearchParams(useLocation().search);
-}
-
-function getSearchPageWindowTitle(username: string, page: number) {
-  const title =
-    username === ""
-      ? "Search"
-      : page === 1
-      ? username
-      : `${username} (page ${page})`;
-
-  return `${title} - ${appName}`;
 }
