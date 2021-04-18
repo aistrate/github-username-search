@@ -15,7 +15,7 @@ function HistoryPage({ appName }: HistoryPageProps) {
   const [history, setHistory] = useState<HistoryItem[] | null>(null);
 
   useEffect(() => {
-    setHistory(getLocalStorageItem("searchHistory", []));
+    setHistory(getLocalStorageItem<HistoryItem[]>("searchHistory", []));
   }, []);
 
   return (

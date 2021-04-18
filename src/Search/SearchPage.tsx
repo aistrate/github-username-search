@@ -31,37 +31,7 @@ function SearchPage({ appName, queryUsername, queryPage }: SearchPageProps) {
   const userFetch = useFetch<User>(userUrl);
   const repoListFetch = useFetch<Repo[]>(repoListUrl);
 
-  useEffect(() => {
-    const maxHistoryLength = 100;
-
-    function addToHistory(username: string) {
-      return function (history: HistoryItem[]) {
-        history = history.filter((item) => item.username !== username);
-
-        history = [
-          {
-            username,
-            timestamp: Date.now(),
-          },
-          ...history,
-        ];
-
-        history = history.slice(0, maxHistoryLength);
-
-        return history;
-      };
-    }
-
-    // if User fetch was successful, add username to history
-    if (
-      userFetch.requestUrl &&
-      !userFetch.isLoading &&
-      userFetch.httpStatus === 200
-    ) {
-      const lcUsername = extractUsername(userFetch.requestUrl).toLowerCase();
-      setLocalStorageItem("searchHistory", [], addToHistory(lcUsername));
-    }
-  }, [userFetch.requestUrl, userFetch.isLoading, userFetch.httpStatus]);
+  useStoreToHistory(userFetch);
 
   const browserHistory = useHistory();
 
@@ -108,6 +78,36 @@ const usernameRegex = /\/users\/([^/]+)/;
 function extractUsername(url: string) {
   const match = usernameRegex.exec(url);
   return match ? match[1] : "";
+}
+
+function useStoreToHistory(fetch: ReturnType<typeof useFetch>) {
+  useEffect(() => {
+    if (fetch.requestUrl && !fetch.isLoading && fetch.httpStatus === 200) {
+      const lcUsername = extractUsername(fetch.requestUrl).toLowerCase();
+
+      setLocalStorageItem<HistoryItem[]>("searchHistory", [], (history) =>
+        addToHistory(lcUsername, history)
+      );
+    }
+  }, [fetch.requestUrl, fetch.isLoading, fetch.httpStatus]);
+
+  function addToHistory(username: string, history: HistoryItem[]) {
+    const maxHistoryLength = 100;
+
+    history = history.filter((item) => item.username !== username);
+
+    history = [
+      {
+        username,
+        timestamp: Date.now(),
+      },
+      ...history,
+    ];
+
+    history = history.slice(0, maxHistoryLength);
+
+    return history;
+  }
 }
 
 function getWindowTitle(appName: string, username: string, page: number) {
