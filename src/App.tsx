@@ -13,7 +13,7 @@ import AboutPage from "./About/AboutPage";
 
 export default App;
 
-const appName = "GitHub Username Search";
+const appName = process.env.REACT_APP_APPLICATION_NAME || "";
 
 function App() {
   return (
