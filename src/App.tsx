@@ -13,12 +13,12 @@ import AboutPage from "./About/AboutPage";
 
 export default App;
 
-const appName = process.env.REACT_APP_APPLICATION_NAME || "";
-
 function App() {
   return (
     <div className="App">
-      <div className="App__header">{appName}</div>
+      <div className="App__header">
+        {process.env.REACT_APP_APPLICATION_NAME}
+      </div>
 
       <Router>
         <Nav />
@@ -48,16 +48,15 @@ function Content() {
       <Switch>
         <Route path="/search">
           <SearchPage
-            appName={appName}
             queryUsername={queryParams.get("q")}
             queryPage={queryParams.get("page")}
           />
         </Route>
         <Route path="/history">
-          <HistoryPage appName={appName} />
+          <HistoryPage />
         </Route>
         <Route path="/about">
-          <AboutPage appName={appName} />
+          <AboutPage />
         </Route>
         <Route path="*">
           <Redirect to="/search" />

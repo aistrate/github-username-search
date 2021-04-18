@@ -8,7 +8,7 @@ type WindowTitleProps = {
 
 function WindowTitle({ value }: WindowTitleProps) {
   useEffect(() => {
-    document.title = value;
+    document.title = `${value} - ${process.env.REACT_APP_APPLICATION_NAME}`;
   }, [value]);
 
   return null;

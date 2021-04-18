@@ -15,12 +15,11 @@ import RepoList from "./RepoInfo";
 export default SearchPage;
 
 type SearchPageProps = {
-  appName: string;
   queryUsername: string | null;
   queryPage: string | null;
 };
 
-function SearchPage({ appName, queryUsername, queryPage }: SearchPageProps) {
+function SearchPage({ queryUsername, queryPage }: SearchPageProps) {
   const username = (queryUsername || "").trim();
   const page = Math.max(1, parseInt(queryPage || "") || 1);
 
@@ -43,7 +42,7 @@ function SearchPage({ appName, queryUsername, queryPage }: SearchPageProps) {
 
   return (
     <>
-      <WindowTitle value={getWindowTitle(appName, username, page)} />
+      <WindowTitle value={getWindowTitle(username, page)} />
 
       <SearchForm initialValue={username} onSearch={handleSearch} />
 
@@ -111,13 +110,10 @@ function useStoreToHistory(userFetch: FetchResult<User>) {
   }
 }
 
-function getWindowTitle(appName: string, username: string, page: number) {
-  const title =
-    username === ""
-      ? "Search"
-      : page === 1
-      ? username
-      : `${username} (page ${page})`;
-
-  return `${title} - ${appName}`;
+function getWindowTitle(username: string, page: number) {
+  return username === ""
+    ? "Search"
+    : page === 1
+    ? username
+    : `${username} (page ${page})`;
 }

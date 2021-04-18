@@ -3,14 +3,10 @@ import { WindowTitle } from "../Shared/Utils";
 
 export default AboutPage;
 
-type AboutPageProps = {
-  appName: string;
-};
-
-function AboutPage({ appName }: AboutPageProps) {
+function AboutPage() {
   return (
     <>
-      <WindowTitle value={`About - ${appName}`} />
+      <WindowTitle value="About" />
 
       <p>
         Check out the source code for the website{" "}

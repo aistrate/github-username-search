@@ -7,11 +7,7 @@ import { WindowTitle, formatDateTime } from "../Shared/Utils";
 
 export default HistoryPage;
 
-type HistoryPageProps = {
-  appName: string;
-};
-
-function HistoryPage({ appName }: HistoryPageProps) {
+function HistoryPage() {
   const [history, setHistory] = useState<HistoryItem[] | null>(null);
 
   useEffect(() => {
@@ -20,7 +16,7 @@ function HistoryPage({ appName }: HistoryPageProps) {
 
   return (
     <>
-      <WindowTitle value={`History - ${appName}`} />
+      <WindowTitle value="History" />
 
       <LargeHeading>
         History {history ? `(${history.length})` : ""}
