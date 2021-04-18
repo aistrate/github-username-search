@@ -1,8 +1,17 @@
 import { useState, useEffect } from "react";
 
+export type { FetchResult };
 export { useFetch };
 
-function useFetch<Data>(requestUrl: string | null) {
+type FetchResult<Data> = {
+  data: Data | null;
+  httpStatus: number | null;
+  error: string | null;
+  isLoading: boolean;
+  requestUrl: string | null;
+};
+
+function useFetch<Data>(requestUrl: string | null): FetchResult<Data> {
   const [data, setData] = useState<Data | null>(null);
   const [httpStatus, setHttpStatus] = useState<number | null>(null);
   const [error, setError] = useState<string | null>(null);

@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import type { User, Repo } from "./Models";
 import type { HistoryItem } from "../History/Models";
 import type { SearchEvent } from "./SearchForm";
+import type { FetchResult } from "../Shared/Fetch";
 import { useFetch } from "../Shared/Fetch";
 import { setLocalStorageItem } from "../Shared/LocalStorage";
 import { Message, Loading } from "../Shared/Styled";
@@ -80,16 +81,16 @@ function extractUsername(url: string) {
   return match ? match[1] : "";
 }
 
-function useStoreToHistory(fetch: ReturnType<typeof useFetch>) {
+function useStoreToHistory(userFetch: FetchResult<User>) {
   useEffect(() => {
-    if (fetch.requestUrl && !fetch.isLoading && !fetch.error) {
-      const lcUsername = extractUsername(fetch.requestUrl).toLowerCase();
+    if (userFetch.requestUrl && !userFetch.isLoading && !userFetch.error) {
+      const lcUsername = extractUsername(userFetch.requestUrl).toLowerCase();
 
       setLocalStorageItem<HistoryItem[]>("searchHistory", [], (history) =>
         addToHistory(lcUsername, history)
       );
     }
-  }, [fetch.requestUrl, fetch.isLoading, fetch.error]);
+  }, [userFetch.requestUrl, userFetch.isLoading, userFetch.error]);
 
   function addToHistory(username: string, history: HistoryItem[]) {
     const maxHistoryLength = 100;
