@@ -82,14 +82,14 @@ function extractUsername(url: string) {
 
 function useStoreToHistory(fetch: ReturnType<typeof useFetch>) {
   useEffect(() => {
-    if (fetch.requestUrl && !fetch.isLoading && fetch.httpStatus === 200) {
+    if (fetch.requestUrl && !fetch.isLoading && !fetch.error) {
       const lcUsername = extractUsername(fetch.requestUrl).toLowerCase();
 
       setLocalStorageItem<HistoryItem[]>("searchHistory", [], (history) =>
         addToHistory(lcUsername, history)
       );
     }
-  }, [fetch.requestUrl, fetch.isLoading, fetch.httpStatus]);
+  }, [fetch.requestUrl, fetch.isLoading, fetch.error]);
 
   function addToHistory(username: string, history: HistoryItem[]) {
     const maxHistoryLength = 100;
