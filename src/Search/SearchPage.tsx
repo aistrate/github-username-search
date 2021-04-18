@@ -34,42 +34,34 @@ function SearchPage({ appName, queryUsername, queryPage }: SearchPageProps) {
   useEffect(() => {
     const maxHistoryLength = 100;
 
-    function addUsername(history: HistoryItem[]) {
-      const lcUsername = username.toLowerCase();
+    function addToHistory(username: string) {
+      return function (history: HistoryItem[]) {
+        history = history.filter((item) => item.username !== username);
 
-      history = history.filter(
-        (item) => item.username.toLowerCase() !== lcUsername
-      );
+        history = [
+          {
+            username,
+            timestamp: Date.now(),
+          },
+          ...history,
+        ];
 
-      history = [
-        {
-          username,
-          timestamp: Date.now(),
-        },
-        ...history,
-      ];
+        history = history.slice(0, maxHistoryLength);
 
-      history = history.slice(0, maxHistoryLength);
-
-      return history;
+        return history;
+      };
     }
 
     // if User fetch was successful, add username to history
     if (
-      userUrl &&
-      userFetch.requestUrl === userUrl &&
+      userFetch.requestUrl &&
       !userFetch.isLoading &&
       userFetch.httpStatus === 200
     ) {
-      setLocalStorageItem("searchHistory", [], addUsername);
+      const lcUsername = extractUsername(userFetch.requestUrl).toLowerCase();
+      setLocalStorageItem("searchHistory", [], addToHistory(lcUsername));
     }
-  }, [
-    username,
-    userUrl,
-    userFetch.requestUrl,
-    userFetch.isLoading,
-    userFetch.httpStatus,
-  ]);
+  }, [userFetch.requestUrl, userFetch.isLoading, userFetch.httpStatus]);
 
   const browserHistory = useHistory();
 
@@ -109,6 +101,13 @@ function getUserUrl(username: string) {
 
 function getRepoListUrl(username: string, page: number) {
   return `https://api.github.com/users/${username}/repos?page=${page}&per_page=30&sort=pushed`;
+}
+
+const usernameRegex = /\/users\/([^/]+)/;
+
+function extractUsername(url: string) {
+  const match = usernameRegex.exec(url);
+  return match ? match[1] : "";
 }
 
 function getWindowTitle(appName: string, username: string, page: number) {
