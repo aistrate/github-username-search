@@ -155,6 +155,13 @@
   line-height: 2rem;
 }
 
+@media (max-width: 40rem) {
+  .RepoList__pagination {
+    float: none;
+    margin-top: 0.83em;
+  }
+}
+
 .Pagination {
   font-size: 1.17rem;
   font-weight: 600;
