@@ -78,4 +78,4 @@ const auth = process.env.REACT_APP_GITHUB_API_AUTH;
 // this will increase the GitHub API rate limit from 60 to 5000 requests/hour
 const fetchOptions = auth
   ? { headers: new Headers({ Authorization: auth }) }
-  : {};
+  : undefined;
