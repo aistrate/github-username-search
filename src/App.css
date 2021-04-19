@@ -150,6 +150,19 @@
   margin-top: 3.5rem;
 }
 
+.RepoList__pagination {
+  float: right;
+  line-height: 2rem;
+}
+
+.Pagination {
+  font-size: 1.17rem;
+}
+
+.Pagination__next {
+  margin-left: 1.5rem;
+}
+
 .RepoInfo + .RepoInfo {
   margin-top: 2.5rem;
 }

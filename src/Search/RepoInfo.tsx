@@ -6,17 +6,25 @@ import {
   ExternalLink,
 } from "../Shared/Styled";
 import { formatDateTime, formatNumber } from "../Shared/Utils";
+import Pagination from "./Pagination";
 
 export default RepoList;
 
 type RepoListProps = {
   repos: Repo[];
+  username: string;
+  page: number;
 };
 
-function RepoList({ repos }: RepoListProps) {
+function RepoList({ repos, username, page }: RepoListProps) {
   return (
     <div className="RepoList">
-      <LargeHeading>Repositories</LargeHeading>
+      <LargeHeading>
+        Repositories
+        <div className="RepoList__pagination">
+          <Pagination username={username} page={page} />
+        </div>
+      </LargeHeading>
 
       <div>
         {repos.length > 0 ? (

@@ -60,7 +60,9 @@ function SearchPage({ queryUsername, queryPage }: SearchPageProps) {
       )}
 
       <Loading isLoading={!!userFetch.data && repoListFetch.isLoading} />
-      {repoListFetch.data && <RepoList repos={repoListFetch.data} />}
+      {repoListFetch.data && (
+        <RepoList repos={repoListFetch.data} username={username} page={page} />
+      )}
     </>
   );
 }
