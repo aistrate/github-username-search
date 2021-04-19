@@ -14,6 +14,8 @@ import RepoList from "./RepoInfo";
 
 export default SearchPage;
 
+const reposPerPage = 30;
+
 type SearchPageProps = {
   queryUsername: string | null;
   queryPage: string | null;
@@ -40,6 +42,10 @@ function SearchPage({ queryUsername, queryPage }: SearchPageProps) {
     browserHistory.push(`/search?q=${username}`);
   }
 
+  const totalRepoCount = userFetch.data?.public_repos;
+  const pageCount =
+    totalRepoCount !== undefined ? Math.ceil(totalRepoCount / reposPerPage) : 0;
+
   return (
     <>
       <WindowTitle value={getWindowTitle(username, page)} />
@@ -61,7 +67,12 @@ function SearchPage({ queryUsername, queryPage }: SearchPageProps) {
 
       <Loading isLoading={!!userFetch.data && repoListFetch.isLoading} />
       {repoListFetch.data && (
-        <RepoList repos={repoListFetch.data} username={username} page={page} />
+        <RepoList
+          repos={repoListFetch.data}
+          username={username}
+          page={page}
+          pageCount={pageCount}
+        />
       )}
     </>
   );
@@ -72,7 +83,7 @@ function getUserUrl(username: string) {
 }
 
 function getRepoListUrl(username: string, page: number) {
-  return `https://api.github.com/users/${username}/repos?page=${page}&per_page=30&sort=pushed`;
+  return `https://api.github.com/users/${username}/repos?page=${page}&per_page=${reposPerPage}&sort=pushed`;
 }
 
 const usernameRegex = /\/users\/([^/]+)/;

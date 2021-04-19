@@ -5,12 +5,11 @@ export default Pagination;
 type PaginationProps = {
   username: string;
   page: number;
+  pageCount: number;
 };
 
-function Pagination({ username, page }: PaginationProps) {
-  const pageCount = 10;
-
-  return (
+function Pagination({ username, page, pageCount }: PaginationProps) {
+  return pageCount >= 2 ? (
     <div className="Pagination">
       <RouterLink
         className="Link Pagination__link"
@@ -26,5 +25,7 @@ function Pagination({ username, page }: PaginationProps) {
         Next &gt;
       </RouterLink>
     </div>
+  ) : (
+    <></>
   );
 }

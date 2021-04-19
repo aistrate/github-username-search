@@ -14,15 +14,16 @@ type RepoListProps = {
   repos: Repo[];
   username: string;
   page: number;
+  pageCount: number;
 };
 
-function RepoList({ repos, username, page }: RepoListProps) {
+function RepoList({ repos, username, page, pageCount }: RepoListProps) {
   return (
     <div className="RepoList">
       <LargeHeading>
         Repositories
         <div className="RepoList__pagination">
-          <Pagination username={username} page={page} />
+          <Pagination username={username} page={page} pageCount={pageCount} />
         </div>
       </LargeHeading>
 
