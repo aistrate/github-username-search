@@ -153,6 +153,8 @@
 .RepoList__pagination {
   float: right;
   line-height: 2rem;
+  position: relative;
+  top: 1px;
 }
 
 @media (max-width: 40rem) {
