@@ -157,6 +157,7 @@
 
 .Pagination {
   font-size: 1.17rem;
+  font-weight: 600;
 }
 
 .Pagination__next {

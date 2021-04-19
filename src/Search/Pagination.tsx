@@ -14,14 +14,14 @@ function Pagination({ username, page }: PaginationProps) {
         className="Link"
         to={`/search?q=${username}&page=${page - 1}`}
       >
-        {"< Previous"}
+        &lt; Previous
       </RouterLink>
 
       <RouterLink
         className="Pagination__next Link"
         to={`/search?q=${username}&page=${page + 1}`}
       >
-        {"Next >"}
+        Next &gt;
       </RouterLink>
     </div>
   );
