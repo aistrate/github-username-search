@@ -166,11 +166,12 @@
 
 .Pagination {
   font-size: 1.17rem;
-  font-weight: 600;
+  font-weight: 400;
+  white-space: nowrap;
 }
 
-.Pagination__next {
-  margin-left: 1.5em;
+.Pagination__link {
+  font-weight: 600;
 }
 
 .RepoInfo + .RepoInfo {
