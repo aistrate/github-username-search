@@ -91,10 +91,10 @@
 }
 
 .Button {
-  margin-left: 1rem;
   font-family: inherit;
   font-size: 1rem;
   font-weight: 600;
+  margin-left: 1em;
   padding: 0.5em 1em;
   border: none;
   border-radius: 6px;
@@ -160,7 +160,7 @@
 }
 
 .Pagination__next {
-  margin-left: 1.5rem;
+  margin-left: 1.5em;
 }
 
 .RepoInfo + .RepoInfo {
@@ -213,7 +213,7 @@
   font-weight: 600;
 }
 
-@media (max-width: 40em) {
+@media (max-width: 40rem) {
   .Row {
     flex-direction: column;
   }
