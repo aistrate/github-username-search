@@ -82,7 +82,7 @@ function Row({ label, labelSuffix = ":", children }: RowProps) {
 }
 
 function ExternalLink(props: React.ComponentProps<typeof Link>) {
-  return <Link target="_blank" {...props} />;
+  return <Link target="_blank" rel="noreferrer" {...props} />;
 }
 
 function Link(props: React.ComponentPropsWithoutRef<"a">) {
