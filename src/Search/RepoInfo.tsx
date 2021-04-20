@@ -22,7 +22,7 @@ function RepoList({ repos, username, page, pageCount }: RepoListProps) {
     <div className="RepoList">
       <LargeHeading>
         Repositories
-        <div className="RepoList__pagination">
+        <div className="RepoList__pagination RepoList__pagination--top">
           <Pagination username={username} page={page} pageCount={pageCount} />
         </div>
       </LargeHeading>
@@ -33,6 +33,10 @@ function RepoList({ repos, username, page, pageCount }: RepoListProps) {
         ) : (
           <>(none)</>
         )}
+      </div>
+
+      <div className="RepoList__pagination">
+        <Pagination username={username} page={page} pageCount={pageCount} />
       </div>
     </div>
   );
