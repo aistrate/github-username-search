@@ -12,14 +12,18 @@ function Pagination({ username, page, pageCount }: PaginationProps) {
   return pageCount >= 2 ? (
     <div className="Pagination">
       <RouterLink
-        className="Link Pagination__link"
+        className={`Link Pagination__link ${
+          page <= 1 ? "Pagination__link--disabled" : ""
+        }`}
         to={`/search?q=${username}&page=${clamp(page - 1, 1, pageCount)}`}
       >
         &lt; Previous
       </RouterLink>
       &nbsp;&nbsp; Page {page}/{pageCount} &nbsp;&nbsp;
       <RouterLink
-        className="Link Pagination__link"
+        className={`Link Pagination__link ${
+          page >= pageCount ? "Pagination__link--disabled" : ""
+        }`}
         to={`/search?q=${username}&page=${clamp(page + 1, 1, pageCount)}`}
       >
         Next &gt;
