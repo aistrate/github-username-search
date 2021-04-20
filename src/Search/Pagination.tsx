@@ -13,14 +13,14 @@ function Pagination({ username, page, pageCount }: PaginationProps) {
     <div className="Pagination">
       <RouterLink
         className="Link Pagination__link"
-        to={`/search?q=${username}&page=${page - 1}`}
+        to={`/search?q=${username}&page=${clamp(page - 1, 1, pageCount)}`}
       >
         &lt; Previous
       </RouterLink>
       &nbsp;&nbsp; Page {page}/{pageCount} &nbsp;&nbsp;
       <RouterLink
         className="Link Pagination__link"
-        to={`/search?q=${username}&page=${page + 1}`}
+        to={`/search?q=${username}&page=${clamp(page + 1, 1, pageCount)}`}
       >
         Next &gt;
       </RouterLink>
@@ -28,4 +28,8 @@ function Pagination({ username, page, pageCount }: PaginationProps) {
   ) : (
     <></>
   );
+}
+
+function clamp(n: number, min: number, max: number) {
+  return Math.max(min, Math.min(n, max));
 }
