@@ -78,7 +78,7 @@
 }
 
 .TextInput::placeholder {
-  color: gray;
+  color: darkgray;
 }
 
 .TextInput:hover {
