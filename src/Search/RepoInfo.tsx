@@ -1,7 +1,9 @@
 import type { Repo } from "./Models";
+import type { FetchResult } from "../Shared/Fetch";
 import {
   LargeHeading,
   SmallHeading,
+  Loading,
   Row,
   ExternalLink,
 } from "../Shared/Styled";
@@ -11,13 +13,13 @@ import Pagination from "./Pagination";
 export default RepoList;
 
 type RepoListProps = {
-  repos: Repo[];
+  repoListFetch: FetchResult<Repo[]>;
   username: string;
   page: number;
   pageCount: number;
 };
 
-function RepoList({ repos, username, page, pageCount }: RepoListProps) {
+function RepoList({ repoListFetch, username, page, pageCount }: RepoListProps) {
   return (
     <div className="RepoList">
       <LargeHeading>
@@ -27,17 +29,23 @@ function RepoList({ repos, username, page, pageCount }: RepoListProps) {
         </div>
       </LargeHeading>
 
-      <div>
-        {repos.length > 0 ? (
-          repos.map((repo) => <RepoInfo key={repo.id} repo={repo} />)
-        ) : (
-          <>(none)</>
-        )}
-      </div>
+      <Loading isLoading={repoListFetch.isLoading} />
 
-      <div className="RepoList__pagination">
-        <Pagination username={username} page={page} pageCount={pageCount} />
-      </div>
+      {repoListFetch.data && (
+        <div>
+          {repoListFetch.data.length > 0 ? (
+            repoListFetch.data.map((repo) => (
+              <RepoInfo key={repo.id} repo={repo} />
+            ))
+          ) : (
+            <>(none)</>
+          )}
+
+          <div className="RepoList__pagination">
+            <Pagination username={username} page={page} pageCount={pageCount} />
+          </div>
+        </div>
+      )}
     </div>
   );
 }

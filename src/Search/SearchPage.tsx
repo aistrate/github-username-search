@@ -6,7 +6,7 @@ import type { SearchEvent } from "./SearchForm";
 import type { FetchResult } from "../Shared/Fetch";
 import { useFetch } from "../Shared/Fetch";
 import { setLocalStorageItem } from "../Shared/LocalStorage";
-import { Message, Loading } from "../Shared/Styled";
+import { Message } from "../Shared/Styled";
 import { WindowTitle } from "../Shared/Utils";
 import SearchForm from "./SearchForm";
 import UserInfo from "./UserInfo";
@@ -65,10 +65,9 @@ function SearchPage({ queryUsername, queryPage }: SearchPageProps) {
         <Message type="error">{`(Repositories) ${repoListFetch.error}`}</Message>
       )}
 
-      <Loading isLoading={!!userFetch.data && repoListFetch.isLoading} />
-      {repoListFetch.data && (
+      {userFetch.data && (
         <RepoList
-          repos={repoListFetch.data}
+          repoListFetch={repoListFetch}
           username={username}
           page={page}
           pageCount={pageCount}
