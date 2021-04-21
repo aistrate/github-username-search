@@ -61,10 +61,6 @@ function SearchPage({ queryUsername, queryPage }: SearchPageProps) {
 
       {userFetch.data && <UserInfo user={userFetch.data} />}
 
-      {!userFetch.error && repoListFetch.error && (
-        <Message type="error">{`(Repositories) ${repoListFetch.error}`}</Message>
-      )}
-
       {userFetch.data && (
         <RepoList
           repoListFetch={repoListFetch}

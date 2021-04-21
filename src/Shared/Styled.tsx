@@ -40,9 +40,11 @@ type MessageProps = {
 };
 
 function Message({ type, children }: MessageProps) {
-  const className = type === "error" ? "Message Message__error" : "Message";
-
-  return <div className={className}>{children}</div>;
+  return (
+    <div className={`Message ${type === "error" ? "Message__error" : ""}`}>
+      {children}
+    </div>
+  );
 }
 
 type LoadingProps = {

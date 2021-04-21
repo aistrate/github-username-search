@@ -4,6 +4,7 @@ import {
   LargeHeading,
   SmallHeading,
   Loading,
+  Message,
   Row,
   ExternalLink,
 } from "../Shared/Styled";
@@ -30,6 +31,10 @@ function RepoList({ repoListFetch, username, page, pageCount }: RepoListProps) {
       </LargeHeading>
 
       <Loading isLoading={repoListFetch.isLoading} />
+
+      {repoListFetch.error && (
+        <Message type="error">{repoListFetch.error}</Message>
+      )}
 
       {repoListFetch.data && (
         <div>
