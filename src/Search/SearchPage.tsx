@@ -9,7 +9,7 @@ import { setLocalStorageItem } from "../Shared/LocalStorage";
 import { WindowTitle } from "../Shared/Utils";
 import SearchForm from "./SearchForm";
 import UserInfo from "./UserInfo";
-import RepoList from "./RepoInfo";
+import RepoListView from "./RepoListView";
 
 export default SearchPage;
 
@@ -54,7 +54,7 @@ function SearchPage({ queryUsername, queryPage }: SearchPageProps) {
       <UserInfo userFetch={userFetch} username={username} />
 
       {userFetch.data && (
-        <RepoList
+        <RepoListView
           repoListFetch={repoListFetch}
           username={username}
           page={page}

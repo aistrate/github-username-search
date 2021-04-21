@@ -11,18 +11,23 @@ import {
 import { formatDateTime, formatNumber } from "../Shared/Utils";
 import Pagination from "./Pagination";
 
-export default RepoList;
+export default RepoListView;
 
-type RepoListProps = {
+type RepoListViewProps = {
   repoListFetch: FetchResult<Repo[]>;
   username: string;
   page: number;
   pageCount: number;
 };
 
-function RepoList({ repoListFetch, username, page, pageCount }: RepoListProps) {
+function RepoListView({
+  repoListFetch,
+  username,
+  page,
+  pageCount,
+}: RepoListViewProps) {
   return (
-    <div className="RepoList">
+    <div className="RepoListView">
       <LargeHeading>
         Repositories
         <div className="RepoList__pagination RepoList__pagination--top">
@@ -37,21 +42,31 @@ function RepoList({ repoListFetch, username, page, pageCount }: RepoListProps) {
       )}
 
       {repoListFetch.data && (
-        <div>
-          {repoListFetch.data.length > 0 ? (
-            repoListFetch.data.map((repo) => (
-              <RepoInfo key={repo.id} repo={repo} />
-            ))
-          ) : (
-            <>(none)</>
-          )}
+        <>
+          <RepoInfoList repos={repoListFetch.data} />
 
           <div className="RepoList__pagination">
             <Pagination username={username} page={page} pageCount={pageCount} />
           </div>
-        </div>
+        </>
       )}
     </div>
+  );
+}
+
+type RepoInfoListProps = {
+  repos: Repo[];
+};
+
+function RepoInfoList({ repos }: RepoInfoListProps) {
+  return repos.length > 0 ? (
+    <>
+      {repos.map((repo) => (
+        <RepoInfo key={repo.id} repo={repo} />
+      ))}
+    </>
+  ) : (
+    <>(none)</>
   );
 }
 
