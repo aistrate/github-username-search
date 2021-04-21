@@ -186,9 +186,10 @@
   font-weight: 600;
 }
 
-.Pagination__link--disabled {
+.Pagination__link--disabled.Link {
   pointer-events: none;
-  opacity: 0.65;
+  color: black;
+  opacity: 0.33;
 }
 
 .Pagination__link.Link:hover {
