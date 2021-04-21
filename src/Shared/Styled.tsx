@@ -58,9 +58,20 @@ function LargeHeading(props: React.ComponentPropsWithoutRef<"h2">) {
   return <h2 className="LargeHeading" {...props}></h2>;
 }
 
-function SmallHeading(props: React.ComponentPropsWithoutRef<"h3">) {
-  // eslint-disable-next-line jsx-a11y/heading-has-content
-  return <h3 className="SmallHeading" {...props}></h3>;
+type SmallHeadingProps = React.ComponentPropsWithoutRef<"h3"> & {
+  largeMarginTop?: boolean;
+};
+
+function SmallHeading({ largeMarginTop = false, ...props }: SmallHeadingProps) {
+  return (
+    // eslint-disable-next-line jsx-a11y/heading-has-content
+    <h3
+      className={`SmallHeading ${
+        largeMarginTop ? "SmallHeading--largeMarginTop" : ""
+      }`}
+      {...props}
+    ></h3>
+  );
 }
 
 type RowProps = {

@@ -1,4 +1,4 @@
-import { ExternalLink } from "../Shared/Styled";
+import { SmallHeading, ExternalLink } from "../Shared/Styled";
 import { WindowTitle } from "../Shared/Utils";
 
 export default AboutPage;
@@ -16,7 +16,7 @@ function AboutPage() {
         .
       </p>
 
-      <h3>How to search</h3>
+      <SmallHeading largeMarginTop>How to search</SmallHeading>
 
       <p>Search for full usernames, not partials.</p>
 

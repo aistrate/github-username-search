@@ -216,6 +216,10 @@
   margin: 0.83em 0;
 }
 
+.SmallHeading--largeMarginTop {
+  margin-top: 1.67em;
+}
+
 .Row {
   display: flex;
   line-height: 1.5em;
