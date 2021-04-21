@@ -1,6 +1,6 @@
 .App {
   max-width: 50rem;
-  min-width: 22rem;
+  min-width: 20rem;
   min-height: 100vh;
   margin: auto;
 }
@@ -88,6 +88,12 @@
 .TextInput:focus {
   border-color: #3366cc;
   box-shadow: inset 0 0 0 1px #3366cc;
+}
+
+@media (max-width: 40em) {
+  .TextInput {
+    width: 10em;
+  }
 }
 
 .Button {
