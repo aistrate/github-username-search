@@ -6,7 +6,6 @@ import type { SearchEvent } from "./SearchForm";
 import type { FetchResult } from "../Shared/Fetch";
 import { useFetch } from "../Shared/Fetch";
 import { setLocalStorageItem } from "../Shared/LocalStorage";
-import { Message } from "../Shared/Styled";
 import { WindowTitle } from "../Shared/Utils";
 import SearchForm from "./SearchForm";
 import UserInfo from "./UserInfo";
@@ -52,14 +51,7 @@ function SearchPage({ queryUsername, queryPage }: SearchPageProps) {
 
       <SearchForm initialValue={username} onSearch={handleSearch} />
 
-      {userFetch.error &&
-        (userFetch.httpStatus === 404 ? (
-          <Message type="info">{`Username '${username}' was not found.`}</Message>
-        ) : (
-          <Message type="error">{userFetch.error}</Message>
-        ))}
-
-      {userFetch.data && <UserInfo user={userFetch.data} />}
+      <UserInfo userFetch={userFetch} username={username} />
 
       {userFetch.data && (
         <RepoList

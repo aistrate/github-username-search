@@ -1,52 +1,69 @@
 import React from "react";
 import type { UserType, User } from "./Models";
-import { LargeHeading, Row, ExternalLink } from "../Shared/Styled";
+import type { FetchResult } from "../Shared/Fetch";
+import { LargeHeading, Message, Row, ExternalLink } from "../Shared/Styled";
 import { formatDateTime, formatNumber } from "../Shared/Utils";
 
 export default UserInfo;
 
 type UserInfoProps = {
-  user: User;
+  userFetch: FetchResult<User>;
+  username: string;
 };
 
-function UserInfo({ user }: UserInfoProps) {
+function UserInfo({ userFetch, username }: UserInfoProps) {
+  const user = userFetch.data;
+
   return (
     <div className="UserInfo">
-      <Avatar url={user.avatar_url} userType={user.type} />
+      {userFetch.error &&
+        (userFetch.httpStatus === 404 ? (
+          <Message type="info">{`Username '${username}' was not found.`}</Message>
+        ) : (
+          <Message type="error">{userFetch.error}</Message>
+        ))}
 
-      <LargeHeading>{user.name || user.login}</LargeHeading>
+      {user && (
+        <>
+          <Avatar url={user.avatar_url} userType={user.type} />
 
-      <dl>
-        <Row label="Username">
-          <ExternalLink href={user.html_url}>{user.login}</ExternalLink>
-        </Row>
-        <Row label="Type">{user.type}</Row>
-        <Row label="Created">{formatDateTime(user.created_at, "date")}</Row>
-        {user.bio && <Row label="Bio">{user.bio}</Row>}
-        {user.followers > 0 && (
-          <Row label="Followers">{formatNumber(user.followers)}</Row>
-        )}
-        {user.company && (
-          <Row label="Company">
-            <CompanyList names={user.company} />
-          </Row>
-        )}
-        {user.location && <Row label="Location">{user.location}</Row>}
-        {user.email && <Row label="Email">{user.email}</Row>}
-        {user.blog && (
-          <Row label="Blog">
-            <ExternalLink href={user.blog}>{user.blog}</ExternalLink>
-          </Row>
-        )}
-        {user.twitter_username && (
-          <Row label="Twitter">
-            <ExternalLink href={`https://twitter.com/${user.twitter_username}`}>
-              @{user.twitter_username}
-            </ExternalLink>
-          </Row>
-        )}
-        <Row label="Repositories">{formatNumber(user.public_repos)}</Row>
-      </dl>
+          <LargeHeading>{user.name || user.login}</LargeHeading>
+
+          <dl>
+            <Row label="Username">
+              <ExternalLink href={user.html_url}>{user.login}</ExternalLink>
+            </Row>
+            <Row label="Type">{user.type}</Row>
+            <Row label="Created">{formatDateTime(user.created_at, "date")}</Row>
+            {user.bio && <Row label="Bio">{user.bio}</Row>}
+            {user.followers > 0 && (
+              <Row label="Followers">{formatNumber(user.followers)}</Row>
+            )}
+            {user.company && (
+              <Row label="Company">
+                <CompanyList names={user.company} />
+              </Row>
+            )}
+            {user.location && <Row label="Location">{user.location}</Row>}
+            {user.email && <Row label="Email">{user.email}</Row>}
+            {user.blog && (
+              <Row label="Blog">
+                <ExternalLink href={user.blog}>{user.blog}</ExternalLink>
+              </Row>
+            )}
+            {user.twitter_username && (
+              <Row label="Twitter">
+                <ExternalLink
+                  href={`https://twitter.com/${user.twitter_username}`}
+                >
+                  @{user.twitter_username}
+                </ExternalLink>
+              </Row>
+            )}
+            <Row label="Repositories">{formatNumber(user.public_repos)}</Row>
+          </dl>
+        </>
+      )}
     </div>
   );
 }
