@@ -1,10 +1,10 @@
 import type { Repo } from "./Models";
 import type { FetchResult } from "../Shared/Fetch";
 import {
-  LargeHeading,
-  SmallHeading,
   Loading,
   Message,
+  LargeHeading,
+  SmallHeading,
   Row,
   ExternalLink,
 } from "../Shared/Styled";

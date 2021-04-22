@@ -1,7 +1,13 @@
 import React from "react";
 import type { UserType, User } from "./Models";
 import type { FetchResult } from "../Shared/Fetch";
-import { LargeHeading, Message, Row, ExternalLink } from "../Shared/Styled";
+import {
+  Loading,
+  Message,
+  LargeHeading,
+  Row,
+  ExternalLink,
+} from "../Shared/Styled";
 import { formatDateTime, formatNumber } from "../Shared/Utils";
 
 export default UserView;
@@ -14,6 +20,8 @@ type UserViewProps = {
 function UserView({ userFetch, username }: UserViewProps) {
   return (
     <div className="UserView">
+      <Loading isLoading={userFetch.isLoading} />
+
       {userFetch.error &&
         (userFetch.httpStatus === 404 ? (
           <Message type="info">{`Username '${username}' was not found.`}</Message>
