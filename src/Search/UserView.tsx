@@ -4,18 +4,16 @@ import type { FetchResult } from "../Shared/Fetch";
 import { LargeHeading, Message, Row, ExternalLink } from "../Shared/Styled";
 import { formatDateTime, formatNumber } from "../Shared/Utils";
 
-export default UserInfo;
+export default UserView;
 
-type UserInfoProps = {
+type UserViewProps = {
   userFetch: FetchResult<User>;
   username: string;
 };
 
-function UserInfo({ userFetch, username }: UserInfoProps) {
-  const user = userFetch.data;
-
+function UserView({ userFetch, username }: UserViewProps) {
   return (
-    <div className="UserInfo">
+    <div className="UserView">
       {userFetch.error &&
         (userFetch.httpStatus === 404 ? (
           <Message type="info">{`Username '${username}' was not found.`}</Message>
@@ -23,48 +21,54 @@ function UserInfo({ userFetch, username }: UserInfoProps) {
           <Message type="error">{userFetch.error}</Message>
         ))}
 
-      {user && (
-        <>
-          <Avatar url={user.avatar_url} userType={user.type} />
-
-          <LargeHeading>{user.name || user.login}</LargeHeading>
-
-          <dl>
-            <Row label="Username">
-              <ExternalLink href={user.html_url}>{user.login}</ExternalLink>
-            </Row>
-            <Row label="Type">{user.type}</Row>
-            <Row label="Created">{formatDateTime(user.created_at, "date")}</Row>
-            {user.bio && <Row label="Bio">{user.bio}</Row>}
-            {user.followers > 0 && (
-              <Row label="Followers">{formatNumber(user.followers)}</Row>
-            )}
-            {user.company && (
-              <Row label="Company">
-                <CompanyList names={user.company} />
-              </Row>
-            )}
-            {user.location && <Row label="Location">{user.location}</Row>}
-            {user.email && <Row label="Email">{user.email}</Row>}
-            {user.blog && (
-              <Row label="Blog">
-                <ExternalLink href={user.blog}>{user.blog}</ExternalLink>
-              </Row>
-            )}
-            {user.twitter_username && (
-              <Row label="Twitter">
-                <ExternalLink
-                  href={`https://twitter.com/${user.twitter_username}`}
-                >
-                  @{user.twitter_username}
-                </ExternalLink>
-              </Row>
-            )}
-            <Row label="Repositories">{formatNumber(user.public_repos)}</Row>
-          </dl>
-        </>
-      )}
+      {userFetch.data && <UserInfo user={userFetch.data} />}
     </div>
+  );
+}
+
+type UserInfoProps = {
+  user: User;
+};
+
+function UserInfo({ user }: UserInfoProps) {
+  return (
+    <>
+      <Avatar url={user.avatar_url} userType={user.type} />
+
+      <LargeHeading>{user.name || user.login}</LargeHeading>
+
+      <dl>
+        <Row label="Username">
+          <ExternalLink href={user.html_url}>{user.login}</ExternalLink>
+        </Row>
+        <Row label="Type">{user.type}</Row>
+        <Row label="Created">{formatDateTime(user.created_at, "date")}</Row>
+        {user.bio && <Row label="Bio">{user.bio}</Row>}
+        {user.followers > 0 && (
+          <Row label="Followers">{formatNumber(user.followers)}</Row>
+        )}
+        {user.company && (
+          <Row label="Company">
+            <CompanyList names={user.company} />
+          </Row>
+        )}
+        {user.location && <Row label="Location">{user.location}</Row>}
+        {user.email && <Row label="Email">{user.email}</Row>}
+        {user.blog && (
+          <Row label="Blog">
+            <ExternalLink href={user.blog}>{user.blog}</ExternalLink>
+          </Row>
+        )}
+        {user.twitter_username && (
+          <Row label="Twitter">
+            <ExternalLink href={`https://twitter.com/${user.twitter_username}`}>
+              @{user.twitter_username}
+            </ExternalLink>
+          </Row>
+        )}
+        <Row label="Repositories">{formatNumber(user.public_repos)}</Row>
+      </dl>
+    </>
   );
 }
 

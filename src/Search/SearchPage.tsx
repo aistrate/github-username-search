@@ -8,7 +8,7 @@ import { useFetch } from "../Shared/Fetch";
 import { setLocalStorageItem } from "../Shared/LocalStorage";
 import { WindowTitle } from "../Shared/Utils";
 import SearchForm from "./SearchForm";
-import UserInfo from "./UserInfo";
+import UserView from "./UserView";
 import RepoListView from "./RepoListView";
 
 export default SearchPage;
@@ -51,7 +51,7 @@ function SearchPage({ queryUsername, queryPage }: SearchPageProps) {
 
       <SearchForm initialValue={username} onSearch={handleSearch} />
 
-      <UserInfo userFetch={userFetch} username={username} />
+      <UserView userFetch={userFetch} username={username} />
 
       {userFetch.data && (
         <RepoListView
