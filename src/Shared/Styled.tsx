@@ -3,13 +3,12 @@ import { forwardRef } from "react";
 export {
   TextInput,
   Button,
-  Message,
   Loading,
+  Message,
   LargeHeading,
   SmallHeading,
   Row,
   ExternalLink,
-  Link,
 };
 
 const TextInput = forwardRef(
@@ -34,6 +33,14 @@ function Button(props: React.ComponentPropsWithoutRef<"button">) {
   return <button className="Button" {...props} />;
 }
 
+type LoadingProps = {
+  isLoading: boolean;
+};
+
+function Loading({ isLoading }: LoadingProps) {
+  return <>{isLoading && <div className="Loading">Loading...</div>}</>;
+}
+
 type MessageProps = {
   type: "info" | "error";
   children?: React.ReactNode;
@@ -45,14 +52,6 @@ function Message({ type, children }: MessageProps) {
       {children}
     </div>
   );
-}
-
-type LoadingProps = {
-  isLoading: boolean;
-};
-
-function Loading({ isLoading }: LoadingProps) {
-  return <>{isLoading && <div className="Loading">Loading...</div>}</>;
 }
 
 function LargeHeading(props: React.ComponentPropsWithoutRef<"h2">) {
