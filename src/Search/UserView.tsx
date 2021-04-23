@@ -64,7 +64,9 @@ function UserInfo({ user }: UserInfoProps) {
         {user.email && <Row label="Email">{user.email}</Row>}
         {user.blog && (
           <Row label="Blog">
-            <ExternalLink href={user.blog}>{user.blog}</ExternalLink>
+            <ExternalLink nowrap href={user.blog}>
+              {user.blog}
+            </ExternalLink>
           </Row>
         )}
         {user.twitter_username && (

@@ -86,7 +86,9 @@ function RepoInfo({ repo }: RepoInfoProps) {
         {repo.description && <Row label="Description">{repo.description}</Row>}
         {repo.homepage && (
           <Row label="Homepage">
-            <ExternalLink href={repo.homepage}>{repo.homepage}</ExternalLink>
+            <ExternalLink nowrap href={repo.homepage}>
+              {repo.homepage}
+            </ExternalLink>
           </Row>
         )}
         {repo.language && <Row label="Language">{repo.language}</Row>}

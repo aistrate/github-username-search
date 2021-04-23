@@ -270,9 +270,12 @@
 .Link {
   color: #0366d6;
   text-decoration: none;
-  white-space: nowrap;
 }
 
 .Link:hover {
   text-decoration: underline;
+}
+
+.Link--nowrap {
+  white-space: nowrap;
 }
