@@ -38,7 +38,11 @@ function SearchPage({ queryUsername, queryPage }: SearchPageProps) {
 
   function handleSearch(e: SearchEvent) {
     let username = e.value;
-    browserHistory.push(`/search?q=${username}`);
+    let search = `?q=${username}`;
+
+    if (browserHistory.location.search !== search) {
+      browserHistory.push(`/search${search}`);
+    }
   }
 
   const totalRepoCount = userFetch.data?.public_repos;
