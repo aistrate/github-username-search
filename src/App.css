@@ -176,6 +176,10 @@
   .RepoList__pagination--top {
     margin-top: 0.83em;
   }
+
+  .RepoList__pagination--bottom {
+    margin-top: 1.5em;
+  }
 }
 
 .Pagination {
