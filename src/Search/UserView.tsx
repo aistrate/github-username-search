@@ -20,7 +20,7 @@ type UserViewProps = {
 function UserView({ userFetch, username }: UserViewProps) {
   return (
     <div className="UserView">
-      <Loading isLoading={userFetch.isLoading} />
+      {/* <Loading isLoading={userFetch.isLoading} /> */}
 
       {userFetch.error &&
         (userFetch.httpStatus === 404 ? (

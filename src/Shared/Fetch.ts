@@ -19,12 +19,12 @@ function useFetch<Data>(requestUrl: string | null): FetchResult<Data> {
   const [requestUrlValue, setRequestUrlValue] = useState<string | null>(null);
 
   useEffect(() => {
-    setData(null);
     setHttpStatus(null);
     setError(null);
     setRequestUrlValue(requestUrl);
 
     if (!requestUrl) {
+      setData(null);
       return;
     }
 
@@ -43,6 +43,7 @@ function useFetch<Data>(requestUrl: string | null): FetchResult<Data> {
 
         const message = (err as Error).message;
         setError(`Error: ${message}`);
+        setData(null);
         setIsLoading(false);
         return;
       }
@@ -52,6 +53,7 @@ function useFetch<Data>(requestUrl: string | null): FetchResult<Data> {
         if (effectCancelled) return;
 
         setError(`HTTP Error: (${response.status}) ${errorData.message}`);
+        setData(null);
         setIsLoading(false);
         return;
       }

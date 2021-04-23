@@ -35,7 +35,7 @@ function RepoListView({
         </div>
       </LargeHeading>
 
-      <Loading isLoading={repoListFetch.isLoading} />
+      {/* <Loading isLoading={repoListFetch.isLoading} /> */}
 
       {repoListFetch.error && (
         <Message type="error">{repoListFetch.error}</Message>
