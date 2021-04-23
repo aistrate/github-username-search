@@ -45,7 +45,7 @@ function RepoListView({
         <>
           <RepoInfoList repos={repoListFetch.data} />
 
-          <div className="RepoList__pagination">
+          <div className="RepoList__pagination RepoList__pagination--bottom">
             <Pagination username={username} page={page} pageCount={pageCount} />
           </div>
         </>
