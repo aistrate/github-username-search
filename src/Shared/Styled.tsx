@@ -54,10 +54,11 @@ function Message({ type, children }: MessageProps) {
   );
 }
 
-function LargeHeading(props: React.ComponentPropsWithoutRef<"h2">) {
+const LargeHeading = forwardRef((
+  props: React.ComponentPropsWithoutRef<"h2">,
+  ref: React.ForwardedRef<HTMLHeadingElement>
   // eslint-disable-next-line jsx-a11y/heading-has-content
-  return <h2 className="LargeHeading" {...props}></h2>;
-}
+) => <h2 className="LargeHeading" ref={ref} {...props}></h2>);
 
 type SmallHeadingProps = React.ComponentPropsWithoutRef<"h3"> & {
   largeMarginTop?: boolean;

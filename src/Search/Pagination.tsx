@@ -6,9 +6,16 @@ type PaginationProps = {
   username: string;
   page: number;
   pageCount: number;
+  scrollTo?: React.MutableRefObject<HTMLElement>;
 };
 
-function Pagination({ username, page, pageCount }: PaginationProps) {
+function Pagination({ username, page, pageCount, scrollTo }: PaginationProps) {
+  function handlePageChange() {
+    if (scrollTo) {
+      scrollTo.current.scrollIntoView();
+    }
+  }
+
   return pageCount >= 2 ? (
     <div className="Pagination">
       <RouterLink
@@ -16,6 +23,7 @@ function Pagination({ username, page, pageCount }: PaginationProps) {
           page <= 1 ? "Pagination__link--disabled" : ""
         }`}
         to={`/search?q=${username}&page=${clamp(page - 1, 1, pageCount)}`}
+        onClick={handlePageChange}
       >
         &lt; Previous
       </RouterLink>
@@ -25,6 +33,7 @@ function Pagination({ username, page, pageCount }: PaginationProps) {
           page >= pageCount ? "Pagination__link--disabled" : ""
         }`}
         to={`/search?q=${username}&page=${clamp(page + 1, 1, pageCount)}`}
+        onClick={handlePageChange}
       >
         Next &gt;
       </RouterLink>

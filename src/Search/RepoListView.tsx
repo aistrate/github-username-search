@@ -1,3 +1,4 @@
+import { useRef } from "react";
 import type { Repo } from "./Models";
 import type { FetchResult } from "../Shared/Fetch";
 import {
@@ -26,9 +27,11 @@ function RepoListView({
   page,
   pageCount,
 }: RepoListViewProps) {
+  const headingRef = useRef<HTMLHeadingElement>(null!);
+
   return (
-    <div className="RepoListView">
-      <LargeHeading>
+    <div className="RepoListView" id="repositories">
+      <LargeHeading ref={headingRef}>
         Repositories
         <div className="RepoList__pagination RepoList__pagination--top">
           <Pagination username={username} page={page} pageCount={pageCount} />
@@ -46,7 +49,12 @@ function RepoListView({
           <RepoInfoList repos={repoListFetch.data} />
 
           <div className="RepoList__pagination RepoList__pagination--bottom">
-            <Pagination username={username} page={page} pageCount={pageCount} />
+            <Pagination
+              username={username}
+              page={page}
+              pageCount={pageCount}
+              scrollTo={headingRef}
+            />
           </div>
         </>
       )}
