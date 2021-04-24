@@ -3,7 +3,6 @@ import { forwardRef } from "react";
 export {
   TextInput,
   Button,
-  Spinner,
   Message,
   LargeHeading,
   SmallHeading,
@@ -31,10 +30,6 @@ const TextInput = forwardRef(
 
 function Button(props: React.ComponentPropsWithoutRef<"button">) {
   return <button className="Button" {...props} />;
-}
-
-function Spinner() {
-  return <div className="Spinner" />;
 }
 
 type MessageProps = {
