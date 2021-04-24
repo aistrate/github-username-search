@@ -39,7 +39,7 @@ function RepoListView({
       </LargeHeading>
 
       <div className="RepoListView__content">
-        <Spinner isLoading={repoListFetch.isLoading} />
+        {repoListFetch.isLoading && <Spinner />}
 
         {repoListFetch.error && (
           <Message type="error">{repoListFetch.error}</Message>

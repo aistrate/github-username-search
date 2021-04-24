@@ -33,12 +33,8 @@ function Button(props: React.ComponentPropsWithoutRef<"button">) {
   return <button className="Button" {...props} />;
 }
 
-type SpinnerProps = {
-  isLoading: boolean;
-};
-
-function Spinner({ isLoading }: SpinnerProps) {
-  return <>{isLoading && <div className="Spinner" />}</>;
+function Spinner() {
+  return <div className="Spinner" />;
 }
 
 type MessageProps = {
