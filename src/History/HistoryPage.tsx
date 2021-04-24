@@ -4,7 +4,7 @@ import type { HistoryItem } from "./Models";
 import { getLocalStorageItem } from "../Shared/LocalStorage";
 import WindowTitle from "../Shared/WindowTitle";
 import { LargeHeading, Row } from "../Shared/Styled";
-import { formatDateTime } from "../Shared/Utils";
+import { formatDateTime } from "../Shared/Formatting";
 
 export default HistoryPage;
 

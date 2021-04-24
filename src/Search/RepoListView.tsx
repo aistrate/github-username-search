@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import type { Repo } from "./Models";
 import type { FetchResult } from "../Shared/Fetch";
-import { formatDateTime, formatNumber } from "../Shared/Utils";
+import { formatDateTime, formatNumber } from "../Shared/Formatting";
 import {
   Spinner,
   Message,

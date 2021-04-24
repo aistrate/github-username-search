@@ -1,7 +1,7 @@
 import React from "react";
 import type { UserType, User } from "./Models";
 import type { FetchResult } from "../Shared/Fetch";
-import { formatDateTime, formatNumber } from "../Shared/Utils";
+import { formatDateTime, formatNumber } from "../Shared/Formatting";
 import {
   Spinner,
   Message,
