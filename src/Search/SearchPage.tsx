@@ -6,7 +6,7 @@ import type { SearchEvent } from "./SearchForm";
 import type { FetchResult } from "../Shared/Fetch";
 import { useFetch } from "../Shared/Fetch";
 import { setLocalStorageItem } from "../Shared/LocalStorage";
-import { WindowTitle } from "../Shared/Utils";
+import WindowTitle from "../Shared/WindowTitle";
 import SearchForm from "./SearchForm";
 import UserView from "./UserView";
 import RepoListView from "./RepoListView";

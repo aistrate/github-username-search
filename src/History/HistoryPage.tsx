@@ -2,8 +2,9 @@ import { useState, useEffect } from "react";
 import { Link as RouterLink } from "react-router-dom";
 import type { HistoryItem } from "./Models";
 import { getLocalStorageItem } from "../Shared/LocalStorage";
+import WindowTitle from "../Shared/WindowTitle";
 import { LargeHeading, Row } from "../Shared/Styled";
-import { WindowTitle, formatDateTime } from "../Shared/Utils";
+import { formatDateTime } from "../Shared/Utils";
 
 export default HistoryPage;
 
