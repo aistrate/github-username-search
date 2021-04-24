@@ -1,6 +1,7 @@
 import React from "react";
 import type { UserType, User } from "./Models";
 import type { FetchResult } from "../Shared/Fetch";
+import { formatDateTime, formatNumber } from "../Shared/Utils";
 import {
   Spinner,
   Message,
@@ -8,7 +9,6 @@ import {
   Row,
   ExternalLink,
 } from "../Shared/Styled";
-import { formatDateTime, formatNumber } from "../Shared/Utils";
 
 export default UserView;
 

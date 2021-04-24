@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import type { Repo } from "./Models";
 import type { FetchResult } from "../Shared/Fetch";
+import { formatDateTime, formatNumber } from "../Shared/Utils";
 import {
   Spinner,
   Message,
@@ -9,8 +10,7 @@ import {
   Row,
   ExternalLink,
 } from "../Shared/Styled";
-import { formatDateTime, formatNumber } from "../Shared/Utils";
-import Pagination from "./Pagination";
+import Pagination from "../Shared/Pagination";
 
 export default RepoListView;
 
