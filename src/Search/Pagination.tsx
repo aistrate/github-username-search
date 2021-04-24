@@ -3,13 +3,18 @@ import { Link as RouterLink } from "react-router-dom";
 export default Pagination;
 
 type PaginationProps = {
-  username: string;
   page: number;
   pageCount: number;
+  getPageUrl: (page: number) => string;
   scrollTo?: React.MutableRefObject<HTMLElement>;
 };
 
-function Pagination({ username, page, pageCount, scrollTo }: PaginationProps) {
+function Pagination({
+  page,
+  pageCount,
+  getPageUrl,
+  scrollTo,
+}: PaginationProps) {
   function handlePageChange() {
     if (scrollTo) {
       scrollTo.current.scrollIntoView();
@@ -22,7 +27,7 @@ function Pagination({ username, page, pageCount, scrollTo }: PaginationProps) {
         className={`Link Pagination__link ${
           page <= 1 ? "Pagination__link--disabled" : ""
         }`}
-        to={`/search?q=${username}&page=${clamp(page - 1, 1, pageCount)}`}
+        to={getPageUrl(clamp(page - 1, 1, pageCount))}
         onClick={handlePageChange}
       >
         &lt; Previous
@@ -32,7 +37,7 @@ function Pagination({ username, page, pageCount, scrollTo }: PaginationProps) {
         className={`Link Pagination__link ${
           page >= pageCount ? "Pagination__link--disabled" : ""
         }`}
-        to={`/search?q=${username}&page=${clamp(page + 1, 1, pageCount)}`}
+        to={getPageUrl(clamp(page + 1, 1, pageCount))}
         onClick={handlePageChange}
       >
         Next &gt;

@@ -29,12 +29,20 @@ function RepoListView({
 }: RepoListViewProps) {
   const headingRef = useRef<HTMLHeadingElement>(null!);
 
+  function getPageUrl(page: number) {
+    return `/search?q=${username}&page=${page}`;
+  }
+
   return (
     <div className="RepoListView" id="repositories">
       <LargeHeading ref={headingRef}>
         Repositories
         <div className="RepoList__pagination RepoList__pagination--top">
-          <Pagination username={username} page={page} pageCount={pageCount} />
+          <Pagination
+            page={page}
+            pageCount={pageCount}
+            getPageUrl={getPageUrl}
+          />
         </div>
       </LargeHeading>
 
@@ -51,9 +59,9 @@ function RepoListView({
 
             <div className="RepoList__pagination RepoList__pagination--bottom">
               <Pagination
-                username={username}
                 page={page}
                 pageCount={pageCount}
+                getPageUrl={getPageUrl}
                 scrollTo={headingRef}
               />
             </div>
