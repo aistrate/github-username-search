@@ -42,6 +42,7 @@ function RepoListView({
             page={page}
             pageCount={pageCount}
             getPageUrl={getPageUrl}
+            isLoading={repoListFetch.isLoading}
           />
         </div>
       </LargeHeading>
@@ -62,6 +63,7 @@ function RepoListView({
                 page={page}
                 pageCount={pageCount}
                 getPageUrl={getPageUrl}
+                isLoading={repoListFetch.isLoading}
                 scrollTo={headingRef}
               />
             </div>

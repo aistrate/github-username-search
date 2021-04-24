@@ -6,6 +6,7 @@ type PaginationProps = {
   page: number;
   pageCount: number;
   getPageUrl: (page: number) => string;
+  isLoading?: boolean;
   scrollTo?: React.MutableRefObject<HTMLElement>;
 };
 
@@ -13,6 +14,7 @@ function Pagination({
   page,
   pageCount,
   getPageUrl,
+  isLoading = false,
   scrollTo,
 }: PaginationProps) {
   function handlePageChange() {
@@ -32,7 +34,11 @@ function Pagination({
       >
         &lt; Previous
       </RouterLink>
-      &nbsp;&nbsp; Page {page}/{pageCount} &nbsp;&nbsp;
+      &nbsp;&nbsp; Page{" "}
+      <span className={isLoading ? "Pagination__page-number--grayed-out" : ""}>
+        {page}
+      </span>
+      /{pageCount} &nbsp;&nbsp;
       <RouterLink
         className={`Link Pagination__link ${
           page >= pageCount ? "Pagination__link--disabled" : ""

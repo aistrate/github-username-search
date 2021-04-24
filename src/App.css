@@ -228,6 +228,10 @@
   color: #024ca0;
 }
 
+.Pagination__page-number--grayed-out {
+  opacity: 0.5;
+}
+
 .RepoInfo + .RepoInfo {
   margin-top: 2.5rem;
 }
