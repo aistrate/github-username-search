@@ -38,7 +38,7 @@ type LoadingProps = {
 };
 
 function Loading({ isLoading }: LoadingProps) {
-  return <>{isLoading && <div className="Loading">Loading...</div>}</>;
+  return <>{isLoading && <div className="Loading" />}</>;
 }
 
 type MessageProps = {

@@ -38,26 +38,28 @@ function RepoListView({
         </div>
       </LargeHeading>
 
-      {/* <Loading isLoading={repoListFetch.isLoading} /> */}
+      <div className="RepoListView__content">
+        <Loading isLoading={repoListFetch.isLoading} />
 
-      {repoListFetch.error && (
-        <Message type="error">{repoListFetch.error}</Message>
-      )}
+        {repoListFetch.error && (
+          <Message type="error">{repoListFetch.error}</Message>
+        )}
 
-      {repoListFetch.data && (
-        <>
-          <RepoInfoList repos={repoListFetch.data} />
+        {repoListFetch.data && (
+          <>
+            <RepoInfoList repos={repoListFetch.data} />
 
-          <div className="RepoList__pagination RepoList__pagination--bottom">
-            <Pagination
-              username={username}
-              page={page}
-              pageCount={pageCount}
-              scrollTo={headingRef}
-            />
-          </div>
-        </>
-      )}
+            <div className="RepoList__pagination RepoList__pagination--bottom">
+              <Pagination
+                username={username}
+                page={page}
+                pageCount={pageCount}
+                scrollTo={headingRef}
+              />
+            </div>
+          </>
+        )}
+      </div>
     </div>
   );
 }
