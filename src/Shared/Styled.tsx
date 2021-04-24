@@ -3,7 +3,7 @@ import { forwardRef } from "react";
 export {
   TextInput,
   Button,
-  Loading,
+  Spinner,
   Message,
   LargeHeading,
   SmallHeading,
@@ -33,12 +33,12 @@ function Button(props: React.ComponentPropsWithoutRef<"button">) {
   return <button className="Button" {...props} />;
 }
 
-type LoadingProps = {
+type SpinnerProps = {
   isLoading: boolean;
 };
 
-function Loading({ isLoading }: LoadingProps) {
-  return <>{isLoading && <div className="Loading" />}</>;
+function Spinner({ isLoading }: SpinnerProps) {
+  return <>{isLoading && <div className="Spinner" />}</>;
 }
 
 type MessageProps = {

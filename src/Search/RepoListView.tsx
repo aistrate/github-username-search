@@ -2,7 +2,7 @@ import { useRef } from "react";
 import type { Repo } from "./Models";
 import type { FetchResult } from "../Shared/Fetch";
 import {
-  Loading,
+  Spinner,
   Message,
   LargeHeading,
   SmallHeading,
@@ -39,7 +39,7 @@ function RepoListView({
       </LargeHeading>
 
       <div className="RepoListView__content">
-        <Loading isLoading={repoListFetch.isLoading} />
+        <Spinner isLoading={repoListFetch.isLoading} />
 
         {repoListFetch.error && (
           <Message type="error">{repoListFetch.error}</Message>

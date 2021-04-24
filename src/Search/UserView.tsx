@@ -2,7 +2,7 @@ import React from "react";
 import type { UserType, User } from "./Models";
 import type { FetchResult } from "../Shared/Fetch";
 import {
-  Loading,
+  Spinner,
   Message,
   LargeHeading,
   Row,
@@ -20,7 +20,7 @@ type UserViewProps = {
 function UserView({ userFetch, username }: UserViewProps) {
   return (
     <div className="UserView">
-      <Loading isLoading={userFetch.isLoading} />
+      <Spinner isLoading={userFetch.isLoading} />
 
       {userFetch.error &&
         (userFetch.httpStatus === 404 ? (

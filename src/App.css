@@ -133,13 +133,7 @@
   color: red;
 }
 
-@keyframes spinner {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-.Loading:before {
+.Spinner:before {
   content: "";
   box-sizing: border-box;
   position: absolute;
@@ -153,6 +147,12 @@
   border: 6px solid #ccc;
   border-top-color: #0366d6;
   animation: spinner 0.6s linear infinite;
+}
+
+@keyframes spinner {
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .UserView {
