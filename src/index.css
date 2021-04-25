@@ -1,3 +1,9 @@
+@import-normalize;
+
+html {
+  line-height: 1.35;
+}
+
 body {
   overflow-y: scroll;
   margin: 0;

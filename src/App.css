@@ -77,10 +77,6 @@
   padding: 7px 14px;
 }
 
-.TextInput::placeholder {
-  color: darkgray;
-}
-
 .TextInput:hover {
   border-color: #72777d;
 }
