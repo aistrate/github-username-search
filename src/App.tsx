@@ -7,6 +7,7 @@ import {
   useLocation,
 } from "react-router-dom";
 import "./App.css";
+import ErrorBoundary from "./Shared/ErrorBoundary";
 import SearchPage from "./Search/SearchPage";
 import HistoryPage from "./History/HistoryPage";
 import AboutPage from "./About/AboutPage";
@@ -47,16 +48,22 @@ function Content() {
     <div className="Content">
       <Switch>
         <Route path="/search">
-          <SearchPage
-            queryUsername={queryParams.get("q")}
-            queryPage={queryParams.get("page")}
-          />
+          <ErrorBoundary key="search">
+            <SearchPage
+              queryUsername={queryParams.get("q")}
+              queryPage={queryParams.get("page")}
+            />
+          </ErrorBoundary>
         </Route>
         <Route path="/history">
-          <HistoryPage />
+          <ErrorBoundary key="history">
+            <HistoryPage />
+          </ErrorBoundary>
         </Route>
         <Route path="/about">
-          <AboutPage />
+          <ErrorBoundary key="about">
+            <AboutPage />
+          </ErrorBoundary>
         </Route>
         <Route path="*">
           <Redirect to="/search" />
