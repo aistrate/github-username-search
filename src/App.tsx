@@ -42,33 +42,30 @@ function Nav() {
 }
 
 function Content() {
-  const queryParams = useQueryParams();
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
 
   return (
     <div className="Content">
-      <Switch>
-        <Route path="/search">
-          <ErrorBoundary key="search">
+      <ErrorBoundary key={location.pathname}>
+        <Switch>
+          <Route path="/search">
             <SearchPage
               queryUsername={queryParams.get("q")}
               queryPage={queryParams.get("page")}
             />
-          </ErrorBoundary>
-        </Route>
-        <Route path="/history">
-          <ErrorBoundary key="history">
+          </Route>
+          <Route path="/history">
             <HistoryPage />
-          </ErrorBoundary>
-        </Route>
-        <Route path="/about">
-          <ErrorBoundary key="about">
+          </Route>
+          <Route path="/about">
             <AboutPage />
-          </ErrorBoundary>
-        </Route>
-        <Route path="*">
-          <Redirect to="/search" />
-        </Route>
-      </Switch>
+          </Route>
+          <Route path="*">
+            <Redirect to="/search" />
+          </Route>
+        </Switch>
+      </ErrorBoundary>
     </div>
   );
 }
@@ -90,8 +87,4 @@ function NavItem({ to, children }: NavItemProps) {
       </NavLink>
     </li>
   );
-}
-
-function useQueryParams() {
-  return new URLSearchParams(useLocation().search);
 }
