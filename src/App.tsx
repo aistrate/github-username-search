@@ -43,17 +43,14 @@ function Nav() {
 
 function Content() {
   const location = useLocation();
-  const queryParams = new URLSearchParams(location.search);
+  //const queryParams = new URLSearchParams(location.search);
 
   return (
     <div className="Content">
       <ErrorBoundary key={location.pathname}>
         <Switch>
           <Route path="/search">
-            <SearchPage
-              queryUsername={queryParams.get("q")}
-              queryPage={queryParams.get("page")}
-            />
+            <SearchPage queryUsername="microsoft" queryPage="3" />
           </Route>
           <Route path="/history">
             <HistoryPage />
