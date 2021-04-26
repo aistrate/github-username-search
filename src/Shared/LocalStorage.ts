@@ -13,12 +13,12 @@ function getLocalStorageItem<T>(key: string, defaultValue: T) {
 function setLocalStorageItem<T>(
   key: string,
   defaultValue: T,
-  updateItem: (prevItem: T) => T
+  update: (item: T) => T
 ) {
   const prevItem = getLocalStorageItem(key, defaultValue);
 
   try {
-    const item = updateItem(prevItem);
+    const item = update(prevItem);
     window.localStorage.setItem(key, JSON.stringify(item));
   } catch (error) {
     console.error(`Error setting localStorage key '${key}': ${error}`);
