@@ -39,7 +39,7 @@ type MessageProps = {
 
 function Message({ type, children }: MessageProps) {
   return (
-    <div className={`Message ${type === "error" ? "Message__error" : ""}`}>
+    <div className={`Message ${type === "error" ? "Message--error" : ""}`}>
       {children}
     </div>
   );
