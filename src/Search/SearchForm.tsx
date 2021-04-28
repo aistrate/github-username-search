@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import styles from "./SearchForm.module.css";
 import TextInput from "../Styled/TextInput";
 import Button from "../Styled/Button";
 import { ExternalLink } from "../Styled/Links";
@@ -48,7 +49,7 @@ function SearchForm({ initialValue = "", onSearch }: SearchFormProps) {
   }
 
   return (
-    <form className="SearchForm" onSubmit={handleSubmit}>
+    <form className={styles.SearchForm} onSubmit={handleSubmit}>
       <TextInput
         placeholder="Username"
         value={value}
@@ -60,7 +61,7 @@ function SearchForm({ initialValue = "", onSearch }: SearchFormProps) {
         Search
       </Button>
 
-      <div className="SearchForm__instructions">
+      <div className={styles.instructions}>
         Type in a full username (see{" "}
         <ExternalLink href="./about">examples</ExternalLink>)
       </div>

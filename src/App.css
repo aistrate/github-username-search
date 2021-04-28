@@ -55,15 +55,6 @@
   overflow-x: hidden;
 }
 
-.SearchForm {
-  margin-top: 1.5rem;
-}
-
-.SearchForm__instructions {
-  margin-top: 0.6rem;
-  opacity: 0.8;
-}
-
 .UserView {
   margin-top: 3.5rem;
   min-height: 60px;
