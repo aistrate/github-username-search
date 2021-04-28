@@ -144,7 +144,3 @@
 .RepoInfo + .RepoInfo {
   margin-top: 2.5rem;
 }
-
-.HistoryRow__timestamp {
-  opacity: 0.65;
-}

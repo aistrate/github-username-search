@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link as RouterLink } from "react-router-dom";
-import linkStyles from "../Styled/Links.module.css";
+import styles from "./HistoryPage.module.css";
 import type { HistoryItem } from "./Models";
 import { getLocalStorageItem } from "../Shared/LocalStorage";
 import WindowTitle from "../Shared/WindowTitle";
@@ -51,14 +51,14 @@ function HistoryRow({ historyItem }: HistoryRowProps) {
   return (
     <Row
       label={
-        <span className="HistoryRow__timestamp">
+        <span className={styles.timestamp}>
           {formatDateTime(historyItem.timestamp, "weekday-date-time")}
         </span>
       }
       labelSuffix=""
     >
       <RouterLink
-        className={linkStyles.Link}
+        className={styles.usernameLink}
         to={`/search?q=${historyItem.username}`}
       >
         {historyItem.username}
