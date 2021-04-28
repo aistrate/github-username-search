@@ -58,14 +58,13 @@ type PaginationLinkProps = React.ComponentProps<typeof RouterLink> & {
   disabled: boolean;
 };
 
-function PaginationLink({ disabled, ...props }: PaginationLinkProps) {
-  return (
-    <RouterLink
-      className={`Link Pagination__link ${
-        disabled ? "Pagination__link--disabled" : ""
-      }`}
-      {...props}
-    />
+function PaginationLink({ disabled, children, ...props }: PaginationLinkProps) {
+  return disabled ? (
+    <span className="PaginationLink PaginationLink--disabled">{children}</span>
+  ) : (
+    <RouterLink className="Link PaginationLink" {...props}>
+      {children}
+    </RouterLink>
   );
 }
 
