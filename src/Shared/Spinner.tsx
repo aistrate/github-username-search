@@ -8,7 +8,7 @@ function Spinner() {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    let timeout = window.setTimeout(() => {
+    const timeout = window.setTimeout(() => {
       setIsVisible(true);
     }, delay);
 

@@ -37,8 +37,8 @@ function SearchPage({ queryUsername, queryPage }: SearchPageProps) {
   const browserHistory = useHistory();
 
   function handleSearch(e: SearchEvent) {
-    let username = e.value;
-    let search = `?q=${username}`;
+    const username = e.value;
+    const search = `?q=${username}`;
 
     if (browserHistory.location.search !== search) {
       browserHistory.push(`/search${search}`);

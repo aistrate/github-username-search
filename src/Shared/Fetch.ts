@@ -49,7 +49,7 @@ function useFetch<Data>(requestUrl: string | null): FetchResult<Data> {
       }
 
       if (!response.ok) {
-        let errorData = await response.json();
+        const errorData = await response.json();
         if (effectCancelled) return;
 
         setError(`HTTP Error: (${response.status}) ${errorData.message}`);
