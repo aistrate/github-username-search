@@ -6,7 +6,7 @@ import Spinner from "../Shared/Spinner";
 import Message from "../Styled/Message";
 import { LargeHeading, SmallHeading } from "../Styled/Headings";
 import Row from "../Styled/Row";
-import { ExternalLink } from "../Shared/Styled";
+import { ExternalLink } from "../Styled/Links";
 import Pagination from "../Shared/Pagination";
 
 export default RepoListView;

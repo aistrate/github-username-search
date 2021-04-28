@@ -1,3 +1,5 @@
+import styles from "./Links.module.css";
+
 export { ExternalLink };
 
 function ExternalLink(props: React.ComponentProps<typeof Link>) {
@@ -9,6 +11,8 @@ type LinkProps = React.ComponentPropsWithoutRef<"a"> & {
 };
 
 function Link({ nowrap = false, ...props }: LinkProps) {
-  // eslint-disable-next-line jsx-a11y/anchor-has-content
-  return <a className={`Link ${nowrap ? "Link--nowrap" : ""}`} {...props} />;
+  return (
+    // eslint-disable-next-line jsx-a11y/anchor-has-content
+    <a className={`${styles.Link} ${nowrap ? styles.nowrap : ""}`} {...props} />
+  );
 }

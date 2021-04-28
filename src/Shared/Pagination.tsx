@@ -1,4 +1,5 @@
 import { Link as RouterLink } from "react-router-dom";
+import linkStyles from "../Styled/Links.module.css";
 
 export default Pagination;
 
@@ -62,7 +63,7 @@ function PaginationLink({ disabled, children, ...props }: PaginationLinkProps) {
   return disabled ? (
     <span className="PaginationLink PaginationLink--disabled">{children}</span>
   ) : (
-    <RouterLink className="Link PaginationLink" {...props}>
+    <RouterLink className={`${linkStyles.Link} PaginationLink`} {...props}>
       {children}
     </RouterLink>
   );

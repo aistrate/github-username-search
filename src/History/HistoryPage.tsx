@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link as RouterLink } from "react-router-dom";
+import linkStyles from "../Styled/Links.module.css";
 import type { HistoryItem } from "./Models";
 import { getLocalStorageItem } from "../Shared/LocalStorage";
 import WindowTitle from "../Shared/WindowTitle";
@@ -56,7 +57,10 @@ function HistoryRow({ historyItem }: HistoryRowProps) {
       }
       labelSuffix=""
     >
-      <RouterLink className="Link" to={`/search?q=${historyItem.username}`}>
+      <RouterLink
+        className={linkStyles.Link}
+        to={`/search?q=${historyItem.username}`}
+      >
         {historyItem.username}
       </RouterLink>
     </Row>
