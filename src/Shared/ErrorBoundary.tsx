@@ -1,5 +1,5 @@
 import React from "react";
-import { Message } from "../Shared/Styled";
+import Message from "../Styled/Message";
 
 type ErrorBoundaryProps = {
   children?: React.ReactNode;

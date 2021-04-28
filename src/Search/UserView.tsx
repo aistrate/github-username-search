@@ -3,7 +3,10 @@ import type { UserType, User } from "./Models";
 import type { FetchResult } from "../Shared/Fetch";
 import { formatDateTime, formatNumber } from "../Shared/Formatting";
 import Spinner from "../Shared/Spinner";
-import { Message, LargeHeading, Row, ExternalLink } from "../Shared/Styled";
+import Message from "../Styled/Message";
+import { LargeHeading } from "../Styled/Headings";
+import Row from "../Styled/Row";
+import { ExternalLink } from "../Shared/Styled";
 
 export default UserView;
 
