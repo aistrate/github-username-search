@@ -1,5 +1,5 @@
 import { Link as RouterLink } from "react-router-dom";
-import linkStyles from "../Styled/Links.module.css";
+import styles from "./Pagination.module.css";
 
 export default Pagination;
 
@@ -27,7 +27,7 @@ function Pagination({
   return (
     <>
       {pageCount >= 2 && (
-        <div className="Pagination">
+        <div className={styles.Pagination}>
           <PaginationLink
             disabled={page <= 1}
             to={getPageUrl(clamp(page - 1, 1, pageCount))}
@@ -36,9 +36,7 @@ function Pagination({
             &lt; Previous
           </PaginationLink>
           &nbsp;&nbsp; Page{" "}
-          <span
-            className={isLoading ? "Pagination__page-number--grayed-out" : ""}
-          >
+          <span className={isLoading ? styles.grayedOutPageNumber : ""}>
             {page}
           </span>
           /{pageCount} &nbsp;&nbsp;
@@ -61,9 +59,9 @@ type PaginationLinkProps = React.ComponentProps<typeof RouterLink> & {
 
 function PaginationLink({ disabled, children, ...props }: PaginationLinkProps) {
   return disabled ? (
-    <span className="PaginationLink PaginationLink--disabled">{children}</span>
+    <span className={styles.PaginationLinkDisabled}>{children}</span>
   ) : (
-    <RouterLink className={`${linkStyles.Link} PaginationLink`} {...props}>
+    <RouterLink className={styles.PaginationLink} {...props}>
       {children}
     </RouterLink>
   );

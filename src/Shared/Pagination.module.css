@@ -1,0 +1,30 @@
+.Pagination {
+  font-size: 1.17rem;
+  font-weight: 400;
+  white-space: nowrap;
+  user-select: none;
+}
+
+.grayedOutPageNumber {
+  opacity: 0.5;
+}
+
+.PaginationLinkBase {
+  font-weight: 600;
+}
+
+.PaginationLinkDisabled {
+  composes: PaginationLinkBase;
+  color: black;
+  opacity: 0.33;
+}
+
+.PaginationLink {
+  composes: Link from "../Styled/Links.module.css";
+  composes: PaginationLinkBase;
+}
+
+.PaginationLink:hover {
+  text-decoration: none;
+  color: #024ca0;
+}

@@ -116,31 +116,6 @@
   }
 }
 
-.Pagination {
-  user-select: none;
-  font-size: 1.17rem;
-  font-weight: 400;
-  white-space: nowrap;
-}
-
-.PaginationLink {
-  font-weight: 600;
-}
-
-.PaginationLink--disabled {
-  color: black;
-  opacity: 0.33;
-}
-
-.PaginationLink.Link:hover {
-  text-decoration: none;
-  color: #024ca0;
-}
-
-.Pagination__page-number--grayed-out {
-  opacity: 0.5;
-}
-
 .RepoInfo + .RepoInfo {
   margin-top: 2.5rem;
 }
