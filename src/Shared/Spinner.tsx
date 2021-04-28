@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import styles from "./Spinner.module.css";
 
 export default Spinner;
 
@@ -16,5 +17,5 @@ function Spinner() {
     };
   }, []);
 
-  return <>{isVisible && <div className="Spinner" />}</>;
+  return <>{isVisible && <div className={styles.Spinner} />}</>;
 }
