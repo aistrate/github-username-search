@@ -5,7 +5,7 @@
   margin: auto;
 }
 
-.App__header {
+.header {
   background-color: #1b4371;
   color: white;
   font-size: 2.25rem;
@@ -14,7 +14,7 @@
 }
 
 @media (max-width: 50em) {
-  .App__header {
+  .header {
     font-size: calc(1.25rem + 2vw);
   }
 }
@@ -32,7 +32,7 @@
   float: left;
 }
 
-.NavItem__link {
+.NavItem .link {
   display: block;
   color: rgb(255, 255, 255, 0.5);
   font-weight: 600;
@@ -41,12 +41,12 @@
   text-decoration: none;
 }
 
-.NavItem__link:hover {
+.NavItem .link:hover {
   color: white;
   background-color: rgb(255, 255, 255, 0.1);
 }
 
-.NavItem__link--active {
+.NavItem .link.active {
   color: white;
 }
 

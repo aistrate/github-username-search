@@ -6,7 +6,7 @@ import {
   Redirect,
   useLocation,
 } from "react-router-dom";
-import "./App.css";
+import styles from "./App.module.css";
 import ErrorBoundary from "./Shared/ErrorBoundary";
 import SearchPage from "./Search/SearchPage";
 import HistoryPage from "./History/HistoryPage";
@@ -16,8 +16,8 @@ export default App;
 
 function App() {
   return (
-    <div className="App">
-      <div className="App__header">
+    <div className={styles.App}>
+      <div className={styles.header}>
         {process.env.REACT_APP_APPLICATION_NAME}
       </div>
 
@@ -32,7 +32,7 @@ function App() {
 function Nav() {
   return (
     <nav>
-      <ul className="Nav">
+      <ul className={styles.Nav}>
         <NavItem to="/search">Search</NavItem>
         <NavItem to="/history">History</NavItem>
         <NavItem to="/about">About</NavItem>
@@ -46,7 +46,7 @@ function Content() {
   const queryParams = new URLSearchParams(location.search);
 
   return (
-    <div className="Content">
+    <div className={styles.Content}>
       <ErrorBoundary key={location.pathname}>
         <Switch>
           <Route path="/search">
@@ -77,12 +77,8 @@ type NavItemProps = {
 
 function NavItem({ to, children }: NavItemProps) {
   return (
-    <li className="NavItem">
-      <NavLink
-        to={to}
-        className="NavItem__link"
-        activeClassName="NavItem__link--active"
-      >
+    <li className={styles.NavItem}>
+      <NavLink to={to} className={styles.link} activeClassName={styles.active}>
         {children}
       </NavLink>
     </li>
