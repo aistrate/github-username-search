@@ -2,6 +2,6 @@
   font-weight: 600;
 }
 
-.error {
+.Message.error {
   color: red;
 }

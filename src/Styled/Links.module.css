@@ -7,6 +7,6 @@
   text-decoration: underline;
 }
 
-.nowrap {
+.Link.nowrap {
   white-space: nowrap;
 }
