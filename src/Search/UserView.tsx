@@ -1,4 +1,5 @@
 import React from "react";
+import styles from "./UserView.module.css";
 import type { UserType, User } from "./Models";
 import type { FetchResult } from "../Shared/Fetch";
 import { formatDateTime, formatNumber } from "../Shared/Formatting";
@@ -17,7 +18,7 @@ type UserViewProps = {
 
 function UserView({ userFetch, username }: UserViewProps) {
   return (
-    <div className="UserView">
+    <div className={styles.UserView}>
       {userFetch.isLoading && <Spinner />}
 
       {userFetch.error &&
@@ -92,10 +93,16 @@ function Avatar({ url, userType }: AvatarProps) {
       alt="Avatar"
       width="180"
       height="180"
-      className="Avatar Avatar--user"
+      className={`${styles.Avatar} ${styles.typeUser}`}
     />
   ) : (
-    <img src={url} alt="Avatar" width="100" height="100" className="Avatar" />
+    <img
+      src={url}
+      alt="Avatar"
+      width="100"
+      height="100"
+      className={styles.Avatar}
+    />
   );
 }
 

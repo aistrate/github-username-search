@@ -55,21 +55,6 @@
   overflow-x: hidden;
 }
 
-.UserView {
-  margin-top: 3.5rem;
-  min-height: 60px;
-  position: relative;
-}
-
-.Avatar {
-  height: auto;
-  vertical-align: middle;
-}
-
-.Avatar--user {
-  border-radius: 50%;
-}
-
 .RepoListView {
   margin-top: 3.5rem;
 }

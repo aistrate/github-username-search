@@ -1,0 +1,14 @@
+.UserView {
+  margin-top: 3.5rem;
+  min-height: 60px;
+  position: relative;
+}
+
+.Avatar {
+  height: auto;
+  vertical-align: middle;
+}
+
+.Avatar.typeUser {
+  border-radius: 50%;
+}
