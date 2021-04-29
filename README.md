@@ -9,5 +9,6 @@ It was created with `create-react-app` and uses:
 - TypeScript
 - React (with Hooks)
 - React Router
-- plain CSS (no frameworks such as Bootstrap)
-- responsive CSS (for mobile)
+- CSS Modules
+- no CSS frameworks such as Bootstrap
+- responsive CSS (on mobile)
