@@ -1,4 +1,5 @@
 import { useRef } from "react";
+import styles from "./RepoListView.module.css";
 import type { Repo } from "./Models";
 import type { FetchResult } from "../Shared/Fetch";
 import { formatDateTime, formatNumber } from "../Shared/Formatting";
@@ -31,10 +32,10 @@ function RepoListView({
   }
 
   return (
-    <div className="RepoListView" id="repositories">
+    <div className={styles.RepoListView}>
       <LargeHeading ref={headingRef}>
         Repositories
-        <div className="RepoList__pagination RepoList__pagination--top">
+        <div className={`${styles.pagination} ${styles.topPagination}`}>
           <Pagination
             page={page}
             pageCount={pageCount}
@@ -44,7 +45,7 @@ function RepoListView({
         </div>
       </LargeHeading>
 
-      <div className="RepoListView__content">
+      <div className={styles.content}>
         {repoListFetch.isLoading && <Spinner />}
 
         {repoListFetch.error && (
@@ -55,7 +56,7 @@ function RepoListView({
           <>
             <RepoInfoList repos={repoListFetch.data} />
 
-            <div className="RepoList__pagination RepoList__pagination--bottom">
+            <div className={`${styles.pagination} ${styles.bottomPagination}`}>
               <Pagination
                 page={page}
                 pageCount={pageCount}
@@ -93,7 +94,7 @@ type RepoInfoProps = {
 
 function RepoInfo({ repo }: RepoInfoProps) {
   return (
-    <div className="RepoInfo">
+    <div className={styles.RepoInfo}>
       <SmallHeading>
         <ExternalLink href={repo.html_url}>{repo.name}</ExternalLink>
       </SmallHeading>
