@@ -9,22 +9,20 @@
   opacity: 0.5;
 }
 
-.PaginationLinkBase {
+.PaginationLink {
   font-weight: 600;
 }
 
 .PaginationLinkDisabled {
-  composes: PaginationLinkBase;
   color: black;
   opacity: 0.33;
 }
 
-.PaginationLink {
+.PaginationLinkEnabled {
   composes: Link from "../Styled/Links.module.css";
-  composes: PaginationLinkBase;
 }
 
-.PaginationLink:hover {
+.PaginationLinkEnabled:hover {
   text-decoration: none;
   color: #024ca0;
 }
