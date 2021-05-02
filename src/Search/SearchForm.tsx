@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import styles from "./SearchForm.module.css";
 import TextInput from "../Styled/TextInput";
-import Button from "../Styled/Button";
+import { Button } from "../Styled/Button";
 import { ExternalLink } from "../Styled/Links";
 
 export type { SearchEvent };

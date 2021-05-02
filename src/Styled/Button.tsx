@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+export { Button };
+
 const Button = styled.button`
   font-family: inherit;
   font-size: 1rem;
@@ -28,5 +30,3 @@ const Button = styled.button`
     box-shadow: 0 0 0 2px white, 0 0 0 4px #3078ca;
   }
 `;
-
-export default Button;
