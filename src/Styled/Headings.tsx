@@ -1,26 +1,25 @@
-import { forwardRef } from "react";
-import styles from "./Headings.module.css";
+import styled, { css } from "styled-components";
 
 export { LargeHeading, SmallHeading };
 
-const LargeHeading = forwardRef((
-  props: React.ComponentPropsWithoutRef<"h2">,
-  ref: React.ForwardedRef<HTMLHeadingElement>
-  // eslint-disable-next-line jsx-a11y/heading-has-content
-) => <h2 className={styles.LargeHeading} ref={ref} {...props}></h2>);
+const LargeHeading = styled.h2`
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0.83em 0;
+`;
 
-type SmallHeadingProps = React.ComponentPropsWithoutRef<"h3"> & {
+type SmallHeadingProps = {
   largeMarginTop?: boolean;
 };
 
-function SmallHeading({ largeMarginTop = false, ...props }: SmallHeadingProps) {
-  return (
-    // eslint-disable-next-line jsx-a11y/heading-has-content
-    <h3
-      className={`${styles.SmallHeading} ${
-        largeMarginTop ? styles.largeMarginTop : ""
-      }`}
-      {...props}
-    ></h3>
-  );
-}
+const SmallHeading = styled.h3<SmallHeadingProps>`
+  font-size: 1.17rem;
+  font-weight: 700;
+  margin: 0.83em 0;
+
+  ${({ largeMarginTop = false }) =>
+    largeMarginTop &&
+    css`
+      margin-top: 1.67em;
+    `}
+`;
