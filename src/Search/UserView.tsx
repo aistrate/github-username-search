@@ -6,7 +6,7 @@ import { formatDateTime, formatNumber } from "../Shared/Formatting";
 import Spinner from "../Shared/Spinner";
 import { Message } from "../Styled/Message";
 import { LargeHeading } from "../Styled/Headings";
-import Row from "../Styled/Row";
+import { Row } from "../Styled/Row";
 import { ExternalLink } from "../Styled/Links";
 
 export default UserView;
