@@ -1,18 +1,17 @@
-import styles from "./Message.module.css";
+import styled, { css } from "styled-components";
 
-export default Message;
+export { Message };
 
 type MessageProps = {
   type: "info" | "error";
-  children?: React.ReactNode;
 };
 
-function Message({ type, children }: MessageProps) {
-  return (
-    <div
-      className={`${styles.Message} ${type === "error" ? styles.error : ""}`}
-    >
-      {children}
-    </div>
-  );
-}
+const Message = styled.div<MessageProps>`
+  font-weight: 600;
+
+  ${({ type }) =>
+    type === "error" &&
+    css`
+      color: red;
+    `}
+`;
