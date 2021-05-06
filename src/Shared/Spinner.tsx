@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import styles from "./Spinner.module.css";
+import styled, { keyframes } from "styled-components/macro";
 
-export default Spinner;
+export { Spinner };
 
 function Spinner() {
   const delay = 500;
@@ -17,5 +17,29 @@ function Spinner() {
     };
   }, []);
 
-  return <>{isVisible && <div className={styles.Spinner} />}</>;
+  return <>{isVisible && <StyledSpinner />}</>;
 }
+
+const spinning = keyframes`
+  to {
+    transform: rotate(360deg);
+  }
+`;
+
+const StyledSpinner = styled.div`
+  :before {
+    content: "";
+    box-sizing: border-box;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 50px;
+    height: 50px;
+    margin-top: 0;
+    margin-left: -25px;
+    border-radius: 50%;
+    border: 6px solid #ccc;
+    border-top-color: #024ca0;
+    animation: ${spinning} 0.6s linear infinite;
+  }
+`;

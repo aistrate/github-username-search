@@ -3,7 +3,7 @@ import styles from "./RepoListView.module.css";
 import type { Repo } from "./Models";
 import type { FetchResult } from "../Shared/Fetch";
 import { formatDateTime, formatNumber } from "../Shared/Formatting";
-import Spinner from "../Shared/Spinner";
+import { Spinner } from "../Shared/Spinner";
 import { Message } from "../Styled/Message";
 import { LargeHeading, SmallHeading } from "../Styled/Headings";
 import { Row } from "../Styled/Row";
