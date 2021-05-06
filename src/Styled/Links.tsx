@@ -1,18 +1,27 @@
-import styles from "./Links.module.css";
+import styled, { css } from "styled-components/macro";
 
 export { ExternalLink };
 
-function ExternalLink(props: React.ComponentProps<typeof Link>) {
-  return <Link target="_blank" rel="noreferrer" {...props} />;
-}
-
-type LinkProps = React.ComponentPropsWithoutRef<"a"> & {
+type LinkProps = {
   nowrap?: boolean;
 };
 
-function Link({ nowrap = false, ...props }: LinkProps) {
-  return (
-    // eslint-disable-next-line jsx-a11y/anchor-has-content
-    <a className={`${styles.Link} ${nowrap ? styles.nowrap : ""}`} {...props} />
-  );
-}
+const Link = styled.a<LinkProps>`
+  color: #0366d6;
+  text-decoration: none;
+
+  :hover {
+    text-decoration: underline;
+  }
+
+  ${({ nowrap = false }) =>
+    nowrap &&
+    css`
+      white-space: nowrap;
+    `}
+`;
+
+const ExternalLink = styled(Link).attrs(() => ({
+  target: "_blank",
+  rel: "noreferrer",
+}))``;
