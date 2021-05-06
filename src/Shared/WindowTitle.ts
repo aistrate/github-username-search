@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-export default WindowTitle;
+export { WindowTitle };
 
 type WindowTitleProps = {
   value: string;

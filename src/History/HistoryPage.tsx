@@ -3,7 +3,7 @@ import { Link as RouterLink } from "react-router-dom";
 import styles from "./HistoryPage.module.css";
 import type { HistoryItem } from "./Models";
 import { getLocalStorageItem } from "../Shared/LocalStorage";
-import WindowTitle from "../Shared/WindowTitle";
+import { WindowTitle } from "../Shared/WindowTitle";
 import { LargeHeading } from "../Styled/Headings";
 import { Row } from "../Styled/Row";
 import { formatDateTime } from "../Shared/Formatting";
