@@ -1,6 +1,6 @@
 import { WindowTitle } from "../Shared/WindowTitle";
 import { SmallHeading } from "../Styled/Headings";
-import { ExternalLink } from "../Styled/Links";
+import { ExternalLink } from "../Styled/Link";
 
 export default AboutPage;
 

@@ -1,12 +1,12 @@
 import styled, { css } from "styled-components/macro";
 
-export { ExternalLink };
+export { linkStyle, ExternalLink };
 
 type LinkProps = {
   nowrap?: boolean;
 };
 
-const Link = styled.a<LinkProps>`
+const linkStyle = css<LinkProps>`
   color: #0366d6;
   text-decoration: none;
 
@@ -21,7 +21,9 @@ const Link = styled.a<LinkProps>`
     `}
 `;
 
-const ExternalLink = styled(Link).attrs(() => ({
+const ExternalLink = styled.a.attrs(() => ({
   target: "_blank",
   rel: "noreferrer",
-}))``;
+}))`
+  ${linkStyle}
+`;

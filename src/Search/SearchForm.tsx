@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import styles from "./SearchForm.module.css";
 import { TextInput } from "../Styled/TextInput";
 import { Button } from "../Styled/Button";
-import { ExternalLink } from "../Styled/Links";
+import { ExternalLink } from "../Styled/Link";
 
 export type { SearchEvent };
 export default SearchForm;

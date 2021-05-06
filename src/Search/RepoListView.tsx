@@ -7,7 +7,7 @@ import { DelayedSpinner } from "../Shared/DelayedSpinner";
 import { Message } from "../Styled/Message";
 import { LargeHeading, SmallHeading } from "../Styled/Headings";
 import { Row } from "../Styled/Row";
-import { ExternalLink } from "../Styled/Links";
+import { ExternalLink } from "../Styled/Link";
 import Pagination from "../Shared/Pagination";
 
 export default RepoListView;

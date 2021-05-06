@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
-import { Link as RouterLink } from "react-router-dom";
-import styles from "./HistoryPage.module.css";
+import styled from "styled-components/macro";
 import type { HistoryItem } from "./Models";
 import { getLocalStorageItem } from "../Shared/LocalStorage";
 import { WindowTitle } from "../Shared/WindowTitle";
 import { LargeHeading } from "../Styled/Headings";
 import { Row } from "../Styled/Row";
+import { InternalLink } from "../Shared/InternalLink";
 import { formatDateTime } from "../Shared/Formatting";
 
 export default HistoryPage;
@@ -51,18 +51,19 @@ function HistoryRow({ historyItem }: HistoryRowProps) {
   return (
     <Row
       label={
-        <span className={styles.timestamp}>
+        <Timestamp>
           {formatDateTime(historyItem.timestamp, "weekday-date-time")}
-        </span>
+        </Timestamp>
       }
       labelSuffix=""
     >
-      <RouterLink
-        className={styles.usernameLink}
-        to={`/search?q=${historyItem.username}`}
-      >
+      <InternalLink to={`/search?q=${historyItem.username}`}>
         {historyItem.username}
-      </RouterLink>
+      </InternalLink>
     </Row>
   );
 }
+
+const Timestamp = styled.span`
+  opacity: 0.65;
+`;

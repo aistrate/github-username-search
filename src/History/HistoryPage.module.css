@@ -1,7 +1,0 @@
-.timestamp {
-  opacity: 0.65;
-}
-
-.usernameLink {
-  composes: Link from "../Styled/Links.module.css";
-}
