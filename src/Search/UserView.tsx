@@ -3,7 +3,7 @@ import styles from "./UserView.module.css";
 import type { UserType, User } from "./Models";
 import type { FetchResult } from "../Shared/Fetch";
 import { formatDateTime, formatNumber } from "../Shared/Formatting";
-import { Spinner } from "../Shared/Spinner";
+import { DelayedSpinner } from "../Shared/DelayedSpinner";
 import { Message } from "../Styled/Message";
 import { LargeHeading } from "../Styled/Headings";
 import { Row } from "../Styled/Row";
@@ -19,7 +19,7 @@ type UserViewProps = {
 function UserView({ userFetch, username }: UserViewProps) {
   return (
     <div className={styles.UserView}>
-      {userFetch.isLoading && <Spinner />}
+      {userFetch.isLoading && <DelayedSpinner />}
 
       {userFetch.error &&
         (userFetch.httpStatus === 404 ? (

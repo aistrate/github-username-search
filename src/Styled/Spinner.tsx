@@ -1,24 +1,6 @@
-import { useState, useEffect } from "react";
 import styled, { keyframes } from "styled-components/macro";
 
 export { Spinner };
-
-function Spinner() {
-  const delay = 500;
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const timeout = window.setTimeout(() => {
-      setIsVisible(true);
-    }, delay);
-
-    return () => {
-      clearTimeout(timeout);
-    };
-  }, []);
-
-  return <>{isVisible && <StyledSpinner />}</>;
-}
 
 const spinning = keyframes`
   to {
@@ -26,7 +8,7 @@ const spinning = keyframes`
   }
 `;
 
-const StyledSpinner = styled.div`
+const Spinner = styled.div`
   :before {
     content: "";
     box-sizing: border-box;

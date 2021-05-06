@@ -3,7 +3,7 @@ import styles from "./RepoListView.module.css";
 import type { Repo } from "./Models";
 import type { FetchResult } from "../Shared/Fetch";
 import { formatDateTime, formatNumber } from "../Shared/Formatting";
-import { Spinner } from "../Shared/Spinner";
+import { DelayedSpinner } from "../Shared/DelayedSpinner";
 import { Message } from "../Styled/Message";
 import { LargeHeading, SmallHeading } from "../Styled/Headings";
 import { Row } from "../Styled/Row";
@@ -46,7 +46,7 @@ function RepoListView({
       </LargeHeading>
 
       <div className={styles.content}>
-        {repoListFetch.isLoading && <Spinner />}
+        {repoListFetch.isLoading && <DelayedSpinner />}
 
         {repoListFetch.error && (
           <Message type="error">{repoListFetch.error}</Message>
