@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import styles from "./SearchForm.module.css";
+import styled from "styled-components/macro";
 import { TextInput } from "../Styled/TextInput";
 import { Button } from "../Styled/Button";
 import { ExternalLink } from "../Styled/Link";
@@ -49,22 +49,33 @@ function SearchForm({ initialValue = "", onSearch }: SearchFormProps) {
   }
 
   return (
-    <form className={styles.SearchForm} onSubmit={handleSubmit}>
-      <TextInput
-        placeholder="Username"
-        value={value}
-        ref={inputRef}
-        onChange={handleTextChange}
-      />
+    <MarginWrapper>
+      <form onSubmit={handleSubmit}>
+        <TextInput
+          placeholder="Username"
+          value={value}
+          ref={inputRef}
+          onChange={handleTextChange}
+        />
 
-      <Button type="submit" disabled={buttonDisabled}>
-        Search
-      </Button>
+        <Button type="submit" disabled={buttonDisabled}>
+          Search
+        </Button>
 
-      <div className={styles.instructions}>
-        Type in a full username (see{" "}
-        <ExternalLink href="./about">examples</ExternalLink>)
-      </div>
-    </form>
+        <Instructions>
+          Type in a full username (see{" "}
+          <ExternalLink href="./about">examples</ExternalLink>)
+        </Instructions>
+      </form>
+    </MarginWrapper>
   );
 }
+
+const MarginWrapper = styled.div`
+  margin-top: 1.5rem;
+`;
+
+const Instructions = styled.div`
+  margin-top: 0.6rem;
+  opacity: 0.8;
+`;
