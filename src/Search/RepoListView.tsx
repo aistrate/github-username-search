@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import styles from "./RepoListView.module.css";
+import styled, { css } from "styled-components/macro";
 import type { Repo } from "./Models";
 import type { FetchResult } from "../Shared/Fetch";
 import { formatDateTime, formatNumber } from "../Shared/Formatting";
@@ -17,6 +17,7 @@ type RepoListViewProps = {
   username: string;
   page: number;
   pageCount: number;
+  className?: string;
 };
 
 function RepoListView({
@@ -24,6 +25,7 @@ function RepoListView({
   username,
   page,
   pageCount,
+  className,
 }: RepoListViewProps) {
   const headingRef = useRef<HTMLHeadingElement>(null!);
 
@@ -32,20 +34,20 @@ function RepoListView({
   }
 
   return (
-    <div className={styles.RepoListView}>
+    <div className={className}>
       <LargeHeading ref={headingRef}>
         Repositories
-        <div className={`${styles.pagination} ${styles.topPagination}`}>
+        <TopPagination>
           <Pagination
             page={page}
             pageCount={pageCount}
             getPageUrl={getPageUrl}
             isLoading={repoListFetch.isLoading}
           />
-        </div>
+        </TopPagination>
       </LargeHeading>
 
-      <div className={styles.content}>
+      <Content>
         {repoListFetch.isLoading && <DelayedSpinner />}
 
         {repoListFetch.error && (
@@ -56,7 +58,7 @@ function RepoListView({
           <>
             <RepoInfoList repos={repoListFetch.data} />
 
-            <div className={`${styles.pagination} ${styles.bottomPagination}`}>
+            <BottomPagination>
               <Pagination
                 page={page}
                 pageCount={pageCount}
@@ -64,13 +66,54 @@ function RepoListView({
                 isLoading={repoListFetch.isLoading}
                 scrollTo={headingRef}
               />
-            </div>
+            </BottomPagination>
           </>
         )}
-      </div>
+      </Content>
     </div>
   );
 }
+
+const paginationStyle = css`
+  float: right;
+
+  @media (max-width: 40em) {
+    & {
+      float: none;
+    }
+  }
+`;
+
+const TopPagination = styled.div`
+  ${paginationStyle}
+
+  line-height: 2rem;
+  position: relative;
+  top: 1px;
+
+  @media (max-width: 40em) {
+    & {
+      margin-top: 0.83em;
+    }
+  }
+`;
+
+const BottomPagination = styled.div`
+  ${paginationStyle}
+
+  margin: 0.83em 0;
+
+  @media (max-width: 40em) {
+    & {
+      margin-top: 1.5em;
+    }
+  }
+`;
+
+const Content = styled.div`
+  min-height: 60px;
+  position: relative;
+`;
 
 type RepoInfoListProps = {
   repos: Repo[];
@@ -94,7 +137,7 @@ type RepoInfoProps = {
 
 function RepoInfo({ repo }: RepoInfoProps) {
   return (
-    <div className={styles.RepoInfo}>
+    <RepoInfoContainer>
       <SmallHeading>
         <ExternalLink href={repo.html_url}>{repo.name}</ExternalLink>
       </SmallHeading>
@@ -118,6 +161,12 @@ function RepoInfo({ repo }: RepoInfoProps) {
         )}
         <Row label="Pushed">{formatDateTime(repo.pushed_at, "date-time")}</Row>
       </dl>
-    </div>
+    </RepoInfoContainer>
   );
 }
+
+const RepoInfoContainer = styled.div`
+  & + & {
+    margin-top: 2.5rem;
+  }
+`;

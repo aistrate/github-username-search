@@ -59,7 +59,7 @@ function SearchPage({ queryUsername, queryPage }: SearchPageProps) {
       <StyledUserView userFetch={userFetch} username={username} />
 
       {userFetch.data && (
-        <RepoListView
+        <StyledRepoListView
           repoListFetch={repoListFetch}
           username={username}
           page={page}
@@ -75,6 +75,10 @@ const StyledSearchForm = styled(SearchForm)`
 `;
 
 const StyledUserView = styled(UserView)`
+  margin-top: 3.5rem;
+`;
+
+const StyledRepoListView = styled(RepoListView)`
   margin-top: 3.5rem;
 `;
 
