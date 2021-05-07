@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./UserView.module.css";
+import styled, { css } from "styled-components/macro";
 import type { UserType, User } from "./Models";
 import type { FetchResult } from "../Shared/Fetch";
 import { formatDateTime, formatNumber } from "../Shared/Formatting";
@@ -14,11 +14,12 @@ export default UserView;
 type UserViewProps = {
   userFetch: FetchResult<User>;
   username: string;
+  className?: string;
 };
 
-function UserView({ userFetch, username }: UserViewProps) {
+function UserView({ userFetch, username, className }: UserViewProps) {
   return (
-    <div className={styles.UserView}>
+    <Container className={className}>
       {userFetch.isLoading && <DelayedSpinner />}
 
       {userFetch.error &&
@@ -29,9 +30,14 @@ function UserView({ userFetch, username }: UserViewProps) {
         ))}
 
       {userFetch.data && <UserInfo user={userFetch.data} />}
-    </div>
+    </Container>
   );
 }
+
+const Container = styled.div`
+  min-height: 60px;
+  position: relative;
+`;
 
 type UserInfoProps = {
   user: User;
@@ -87,24 +93,33 @@ type AvatarProps = {
 };
 
 function Avatar({ url, userType }: AvatarProps) {
-  return userType === "User" ? (
-    <img
+  const size = userType === "User" ? 180 : 100;
+
+  return (
+    <Image
       src={url}
       alt="Avatar"
-      width="180"
-      height="180"
-      className={`${styles.Avatar} ${styles.typeUser}`}
-    />
-  ) : (
-    <img
-      src={url}
-      alt="Avatar"
-      width="100"
-      height="100"
-      className={styles.Avatar}
+      width={size}
+      height={size}
+      circular={userType === "User"}
     />
   );
 }
+
+type ImageProps = {
+  circular: boolean;
+};
+
+const Image = styled.img<ImageProps>`
+  height: auto;
+  vertical-align: middle;
+
+  ${({ circular }) =>
+    circular &&
+    css`
+      border-radius: 50%;
+    `}
+`;
 
 type CompanyListProps = {
   names: string;
