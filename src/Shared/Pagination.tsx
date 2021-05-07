@@ -1,5 +1,5 @@
-import { Link as RouterLink } from "react-router-dom";
-import styles from "./Pagination.module.css";
+import styled, { css } from "styled-components/macro";
+import { InternalLink } from "../Shared/InternalLink";
 
 export default Pagination;
 
@@ -27,7 +27,7 @@ function Pagination({
   return (
     <>
       {pageCount >= 2 && (
-        <div className={styles.Pagination}>
+        <Container>
           <PaginationLink
             disabled={page <= 1}
             to={getPageUrl(clamp(page - 1, 1, pageCount))}
@@ -35,11 +35,8 @@ function Pagination({
           >
             &lt; Previous
           </PaginationLink>
-          &nbsp;&nbsp; Page{" "}
-          <span className={isLoading ? styles.grayedOutPageNumber : ""}>
-            {page}
-          </span>
-          /{pageCount} &nbsp;&nbsp;
+          &nbsp;&nbsp; Page <Span grayedOut={isLoading}>{page}</Span>/
+          {pageCount} &nbsp;&nbsp;
           <PaginationLink
             disabled={page >= pageCount}
             to={getPageUrl(clamp(page + 1, 1, pageCount))}
@@ -47,33 +44,63 @@ function Pagination({
           >
             Next &gt;
           </PaginationLink>
-        </div>
+        </Container>
       )}
     </>
-  );
-}
-
-type PaginationLinkProps = React.ComponentProps<typeof RouterLink> & {
-  disabled: boolean;
-};
-
-function PaginationLink({ disabled, children, ...props }: PaginationLinkProps) {
-  return disabled ? (
-    <span
-      className={`${styles.PaginationLink} ${styles.PaginationLinkDisabled}`}
-    >
-      {children}
-    </span>
-  ) : (
-    <RouterLink
-      className={`${styles.PaginationLink} ${styles.PaginationLinkEnabled}`}
-      {...props}
-    >
-      {children}
-    </RouterLink>
   );
 }
 
 function clamp(n: number, min: number, max: number) {
   return Math.max(min, Math.min(n, max));
 }
+
+type PaginationLinkProps = React.ComponentProps<typeof EnabledLink> & {
+  disabled: boolean;
+};
+
+function PaginationLink({ disabled, children, ...props }: PaginationLinkProps) {
+  return disabled ? (
+    <DisabledLink>{children}</DisabledLink>
+  ) : (
+    <EnabledLink {...props}>{children}</EnabledLink>
+  );
+}
+
+const paginationLinkStyle = css`
+  font-weight: 600;
+`;
+
+const DisabledLink = styled.span`
+  ${paginationLinkStyle}
+
+  color: black;
+  opacity: 0.33;
+`;
+
+const EnabledLink = styled(InternalLink)`
+  ${paginationLinkStyle}
+
+  :hover {
+    text-decoration: none;
+    color: #024ca0;
+  }
+`;
+
+const Container = styled.div`
+  font-size: 1.17rem;
+  font-weight: 400;
+  white-space: nowrap;
+  user-select: none;
+`;
+
+type SpanProps = {
+  grayedOut: boolean;
+};
+
+const Span = styled.span<SpanProps>(
+  ({ grayedOut }) =>
+    grayedOut &&
+    css`
+      opacity: 0.5;
+    `
+);
