@@ -54,15 +54,17 @@ function clamp(n: number, min: number, max: number) {
   return Math.max(min, Math.min(n, max));
 }
 
-type PaginationLinkProps = React.ComponentProps<typeof EnabledLink> & {
+type PaginationLinkProps = React.ComponentProps<
+  typeof EnabledPaginationLink
+> & {
   disabled: boolean;
 };
 
 function PaginationLink({ disabled, children, ...props }: PaginationLinkProps) {
   return disabled ? (
-    <DisabledLink>{children}</DisabledLink>
+    <DisabledPaginationLink>{children}</DisabledPaginationLink>
   ) : (
-    <EnabledLink {...props}>{children}</EnabledLink>
+    <EnabledPaginationLink {...props}>{children}</EnabledPaginationLink>
   );
 }
 
@@ -70,14 +72,14 @@ const paginationLinkStyle = css`
   font-weight: 600;
 `;
 
-const DisabledLink = styled.span`
+const DisabledPaginationLink = styled.span`
   ${paginationLinkStyle}
 
   color: black;
   opacity: 0.33;
 `;
 
-const EnabledLink = styled(InternalLink)`
+const EnabledPaginationLink = styled(InternalLink)`
   ${paginationLinkStyle}
 
   :hover {
