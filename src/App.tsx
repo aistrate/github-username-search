@@ -7,7 +7,7 @@ import {
   useLocation,
 } from "react-router-dom";
 import styles from "./App.module.css";
-import ErrorBoundary from "./Shared/ErrorBoundary";
+import { ErrorBoundary } from "./Shared/ErrorBoundary";
 import SearchPage from "./Search/SearchPage";
 import HistoryPage from "./History/HistoryPage";
 import AboutPage from "./About/AboutPage";

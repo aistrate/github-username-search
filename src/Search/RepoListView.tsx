@@ -4,11 +4,11 @@ import type { Repo } from "./Models";
 import type { FetchResult } from "../Shared/Fetch";
 import { formatDateTime, formatNumber } from "../Shared/Formatting";
 import { DelayedSpinner } from "../Shared/DelayedSpinner";
+import { Pagination } from "../Shared/Pagination";
 import { Message } from "../Styled/Message";
 import { LargeHeading, SmallHeading } from "../Styled/Headings";
 import { Row } from "../Styled/Row";
 import { ExternalLink } from "../Styled/Link";
-import Pagination from "../Shared/Pagination";
 
 export default RepoListView;
 
