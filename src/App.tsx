@@ -6,7 +6,7 @@ import {
   Redirect,
   useLocation,
 } from "react-router-dom";
-import styles from "./App.module.css";
+import styled from "styled-components/macro";
 import { ErrorBoundary } from "./Shared/ErrorBoundary";
 import SearchPage from "./Search/SearchPage";
 import HistoryPage from "./History/HistoryPage";
@@ -16,27 +16,25 @@ export default App;
 
 function App() {
   return (
-    <div className={styles.App}>
-      <div className={styles.header}>
-        {process.env.REACT_APP_APPLICATION_NAME}
-      </div>
+    <AppContainer>
+      <AppHeader>{process.env.REACT_APP_APPLICATION_NAME}</AppHeader>
 
       <Router>
         <Nav />
         <Content />
       </Router>
-    </div>
+    </AppContainer>
   );
 }
 
 function Nav() {
   return (
     <nav>
-      <ul className={styles.Nav}>
+      <NavList>
         <NavItem to="/search">Search</NavItem>
         <NavItem to="/history">History</NavItem>
         <NavItem to="/about">About</NavItem>
-      </ul>
+      </NavList>
     </nav>
   );
 }
@@ -46,7 +44,7 @@ function Content() {
   const queryParams = new URLSearchParams(location.search);
 
   return (
-    <div className={styles.Content}>
+    <ContentContainer>
       <ErrorBoundary key={location.pathname}>
         <Switch>
           <Route path="/search">
@@ -66,7 +64,7 @@ function Content() {
           </Route>
         </Switch>
       </ErrorBoundary>
-    </div>
+    </ContentContainer>
   );
 }
 
@@ -77,10 +75,67 @@ type NavItemProps = {
 
 function NavItem({ to, children }: NavItemProps) {
   return (
-    <li className={styles.NavItem}>
-      <NavLink to={to} className={styles.link} activeClassName={styles.active}>
+    <NavItemContainer>
+      <StyledNavLink to={to} activeClassName="active">
         {children}
-      </NavLink>
-    </li>
+      </StyledNavLink>
+    </NavItemContainer>
   );
 }
+
+const AppContainer = styled.div`
+  max-width: 50rem;
+  min-width: 20rem;
+  min-height: 100vh;
+  margin: auto;
+`;
+
+const AppHeader = styled.div`
+  background-color: #1b4371;
+  color: white;
+  font-size: 2.25rem;
+  text-align: center;
+  padding: 0.6em 0;
+
+  @media (max-width: 50em) {
+    & {
+      font-size: calc(1.25rem + 2vw);
+    }
+  }
+`;
+
+const NavList = styled.ul`
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: rgb(0, 0, 0, 0.85);
+  font-size: 1.25rem;
+`;
+
+const NavItemContainer = styled.li`
+  float: left;
+`;
+
+const StyledNavLink = styled(NavLink)`
+  display: block;
+  color: rgb(255, 255, 255, 0.5);
+  font-weight: 600;
+  padding: 0.4em 0.8em;
+  text-align: center;
+  text-decoration: none;
+
+  :hover {
+    color: white;
+    background-color: rgb(255, 255, 255, 0.1);
+  }
+
+  &.active {
+    color: white;
+  }
+`;
+
+const ContentContainer = styled.div`
+  padding: 1rem;
+  overflow-x: hidden;
+`;
