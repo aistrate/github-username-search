@@ -1,6 +1,5 @@
 import {
   BrowserRouter as Router,
-  NavLink,
   Switch,
   Route,
   Redirect,
@@ -8,6 +7,7 @@ import {
 } from "react-router-dom";
 import styled from "styled-components/macro";
 import { ErrorBoundary } from "./Shared/ErrorBoundary";
+import Nav from "./Nav";
 import SearchPage from "./Search/SearchPage";
 import HistoryPage from "./History/HistoryPage";
 import AboutPage from "./About/AboutPage";
@@ -24,18 +24,6 @@ function App() {
         <Content />
       </Router>
     </AppContainer>
-  );
-}
-
-function Nav() {
-  return (
-    <nav>
-      <NavList>
-        <NavItem to="/search">Search</NavItem>
-        <NavItem to="/history">History</NavItem>
-        <NavItem to="/about">About</NavItem>
-      </NavList>
-    </nav>
   );
 }
 
@@ -68,21 +56,6 @@ function Content() {
   );
 }
 
-type NavItemProps = {
-  to: string;
-  children?: React.ReactNode;
-};
-
-function NavItem({ to, children }: NavItemProps) {
-  return (
-    <NavItemContainer>
-      <StyledNavLink to={to} activeClassName="active">
-        {children}
-      </StyledNavLink>
-    </NavItemContainer>
-  );
-}
-
 const AppContainer = styled.div`
   max-width: 50rem;
   min-width: 20rem;
@@ -101,37 +74,6 @@ const AppHeader = styled.div`
     & {
       font-size: calc(1.25rem + 2vw);
     }
-  }
-`;
-
-const NavList = styled.ul`
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background-color: rgb(0, 0, 0, 0.85);
-  font-size: 1.25rem;
-`;
-
-const NavItemContainer = styled.li`
-  float: left;
-`;
-
-const StyledNavLink = styled(NavLink)`
-  display: block;
-  color: rgb(255, 255, 255, 0.5);
-  font-weight: 600;
-  padding: 0.4em 0.8em;
-  text-align: center;
-  text-decoration: none;
-
-  :hover {
-    color: white;
-    background-color: rgb(255, 255, 255, 0.1);
-  }
-
-  &.active {
-    color: white;
   }
 `;
 
