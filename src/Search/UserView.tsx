@@ -97,6 +97,7 @@ function Avatar({ url, userType }: AvatarProps) {
 
   return (
     <Image
+      key={url}
       src={url}
       alt="Avatar"
       width={size}
