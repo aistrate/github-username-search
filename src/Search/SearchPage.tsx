@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useHistory } from "react-router-dom";
+import styled from "styled-components/macro";
 import type { User, Repo } from "./Models";
 import type { HistoryItem } from "../History/Models";
 import type { SearchEvent } from "./SearchForm";
@@ -53,7 +54,7 @@ function SearchPage({ queryUsername, queryPage }: SearchPageProps) {
     <>
       <WindowTitle value={getWindowTitle(username, page)} />
 
-      <SearchForm initialValue={username} onSearch={handleSearch} />
+      <StyledSearchForm initialValue={username} onSearch={handleSearch} />
 
       <UserView userFetch={userFetch} username={username} />
 
@@ -121,3 +122,7 @@ function getWindowTitle(username: string, page: number) {
     ? username
     : `${username} (page ${page})`;
 }
+
+const StyledSearchForm = styled(SearchForm)`
+  margin-top: 1.5rem;
+`;

@@ -14,9 +14,14 @@ type SearchEvent = {
 type SearchFormProps = {
   initialValue?: string;
   onSearch: (e: SearchEvent) => void;
+  className?: string;
 };
 
-function SearchForm({ initialValue = "", onSearch }: SearchFormProps) {
+function SearchForm({
+  initialValue = "",
+  onSearch,
+  className,
+}: SearchFormProps) {
   const [value, setValue] = useState("");
   const [buttonDisabled, setButtonDisabled] = useState(true);
   const inputRef = useRef<HTMLInputElement>(null!);
@@ -49,31 +54,25 @@ function SearchForm({ initialValue = "", onSearch }: SearchFormProps) {
   }
 
   return (
-    <MarginWrapper>
-      <form onSubmit={handleSubmit}>
-        <TextInput
-          placeholder="Username"
-          value={value}
-          ref={inputRef}
-          onChange={handleTextChange}
-        />
+    <form className={className} onSubmit={handleSubmit}>
+      <TextInput
+        placeholder="Username"
+        value={value}
+        ref={inputRef}
+        onChange={handleTextChange}
+      />
 
-        <Button type="submit" disabled={buttonDisabled}>
-          Search
-        </Button>
+      <Button type="submit" disabled={buttonDisabled}>
+        Search
+      </Button>
 
-        <Instructions>
-          Type in a full username (see{" "}
-          <ExternalLink href="./about">examples</ExternalLink>)
-        </Instructions>
-      </form>
-    </MarginWrapper>
+      <Instructions>
+        Type in a full username (see{" "}
+        <ExternalLink href="./about">examples</ExternalLink>)
+      </Instructions>
+    </form>
   );
 }
-
-const MarginWrapper = styled.div`
-  margin-top: 1.5rem;
-`;
 
 const Instructions = styled.div`
   margin-top: 0.6rem;
