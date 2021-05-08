@@ -34,6 +34,28 @@ function AboutPage() {
           jskeet, serras
         </li>
       </ul>
+
+      <SmallHeading largeMarginTop>Rate limit</SmallHeading>
+
+      <p>
+        The GitHub API has a{" "}
+        <ExternalLink href="https://docs.github.com/en/rest/overview/resources-in-the-rest-api#rate-limiting">
+          rate limit
+        </ExternalLink>{" "}
+        of 60 requests per hour, associated with your IP address. What counts as
+        a request is either:
+        <ul>
+          <li>a request for user info</li>
+          <li>a request for a page of repositories (30 per page)</li>
+        </ul>
+      </p>
+
+      <p>
+        The browser might do some caching on recent requests, so the actual
+        number you get could be slightly higher.
+      </p>
+
+      <p>Please bear in mind this rate limit when using the website.</p>
     </>
   );
 }
