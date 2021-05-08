@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components/macro";
-import { InternalLink } from "../Shared/InternalLink";
+import { InternalLink } from "../Styled/Links";
 
 export { Pagination };
 

@@ -8,7 +8,7 @@ import { Pagination } from "../Shared/Pagination";
 import { Message } from "../Styled/Message";
 import { LargeHeading, SmallHeading } from "../Styled/Headings";
 import { Row } from "../Styled/Row";
-import { ExternalLink } from "../Styled/Link";
+import { ExternalLink } from "../Styled/Links";
 
 export default RepoListView;
 

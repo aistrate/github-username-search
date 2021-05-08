@@ -7,7 +7,7 @@ import { DelayedSpinner } from "../Shared/DelayedSpinner";
 import { Message } from "../Styled/Message";
 import { LargeHeading } from "../Styled/Headings";
 import { Row } from "../Styled/Row";
-import { ExternalLink } from "../Styled/Link";
+import { ExternalLink } from "../Styled/Links";
 
 export default UserView;
 

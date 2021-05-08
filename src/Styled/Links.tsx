@@ -1,6 +1,7 @@
+import { Link as RouterLink } from "react-router-dom";
 import styled, { css } from "styled-components/macro";
 
-export { linkStyle, ExternalLink };
+export { InternalLink, ExternalLink };
 
 type LinkProps = {
   nowrap?: boolean;
@@ -19,6 +20,10 @@ const linkStyle = css<LinkProps>`
     css`
       white-space: nowrap;
     `}
+`;
+
+const InternalLink = styled(RouterLink)`
+  ${linkStyle}
 `;
 
 const ExternalLink = styled.a.attrs(() => ({
