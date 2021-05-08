@@ -22,7 +22,7 @@ type SearchPageProps = {
 };
 
 function SearchPage({ queryUsername, queryPage }: SearchPageProps) {
-  const username = (queryUsername || "").trim();
+  const username = removeInvalidChars(queryUsername || "");
   const page = Math.max(1, parseInt(queryPage || "") || 1);
 
   const lcUsername = username.toLowerCase();
@@ -113,6 +113,12 @@ function useStoreToHistory(userFetch: FetchResult<User>) {
 
     return history;
   }
+}
+
+const invalidCharsRegex = /[^-a-zA-Z0-9]+/g;
+
+function removeInvalidChars(username: string) {
+  return username.replaceAll(invalidCharsRegex, "");
 }
 
 function getWindowTitle(username: string, page: number) {
