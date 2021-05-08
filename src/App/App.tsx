@@ -6,11 +6,11 @@ import {
   useLocation,
 } from "react-router-dom";
 import styled from "styled-components/macro";
-import { ErrorBoundary } from "./Shared/ErrorBoundary";
 import Nav from "./Nav";
-import SearchPage from "./Search/SearchPage";
-import HistoryPage from "./History/HistoryPage";
-import AboutPage from "./About/AboutPage";
+import { ErrorBoundary } from "../Shared/ErrorBoundary";
+import SearchPage from "../Search/SearchPage";
+import HistoryPage from "../History/HistoryPage";
+import AboutPage from "../About/AboutPage";
 
 export default App;
 
