@@ -70,18 +70,6 @@ function SearchPage({ queryUsername, queryPage }: SearchPageProps) {
   );
 }
 
-const StyledSearchForm = styled(SearchForm)`
-  margin-top: 1.5rem;
-`;
-
-const StyledUserView = styled(UserView)`
-  margin-top: 3.5rem;
-`;
-
-const StyledRepoListView = styled(RepoListView)`
-  margin-top: 3.5rem;
-`;
-
 function getUserUrl(username: string) {
   return `https://api.github.com/users/${username}`;
 }
@@ -134,3 +122,15 @@ function getWindowTitle(username: string, page: number) {
     ? username
     : `${username} (page ${page})`;
 }
+
+const StyledSearchForm = styled(SearchForm)`
+  margin-top: 1.5rem;
+`;
+
+const StyledUserView = styled(UserView)`
+  margin-top: 3.5rem;
+`;
+
+const StyledRepoListView = styled(RepoListView)`
+  margin-top: 3.5rem;
+`;

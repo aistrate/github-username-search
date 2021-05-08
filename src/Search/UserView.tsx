@@ -34,11 +34,6 @@ function UserView({ userFetch, username, className }: UserViewProps) {
   );
 }
 
-const Container = styled.div`
-  min-height: 60px;
-  position: relative;
-`;
-
 type UserInfoProps = {
   user: User;
 };
@@ -107,21 +102,6 @@ function Avatar({ url, userType }: AvatarProps) {
   );
 }
 
-type ImageProps = {
-  circular: boolean;
-};
-
-const Image = styled.img<ImageProps>`
-  height: auto;
-  vertical-align: middle;
-
-  ${({ circular }) =>
-    circular &&
-    css`
-      border-radius: 50%;
-    `}
-`;
-
 type CompanyListProps = {
   names: string;
 };
@@ -157,3 +137,23 @@ function Company({ name }: CompanyProps) {
     <>{name}</>
   );
 }
+
+const Container = styled.div`
+  min-height: 60px;
+  position: relative;
+`;
+
+type ImageProps = {
+  circular: boolean;
+};
+
+const Image = styled.img<ImageProps>`
+  height: auto;
+  vertical-align: middle;
+
+  ${({ circular }) =>
+    circular &&
+    css`
+      border-radius: 50%;
+    `}
+`;

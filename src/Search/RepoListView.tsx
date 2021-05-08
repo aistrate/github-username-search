@@ -74,47 +74,6 @@ function RepoListView({
   );
 }
 
-const paginationStyle = css`
-  float: right;
-
-  @media (max-width: 40em) {
-    & {
-      float: none;
-    }
-  }
-`;
-
-const TopPagination = styled.div`
-  ${paginationStyle}
-
-  line-height: 2rem;
-  position: relative;
-  top: 1px;
-
-  @media (max-width: 40em) {
-    & {
-      margin-top: 0.83em;
-    }
-  }
-`;
-
-const BottomPagination = styled.div`
-  ${paginationStyle}
-
-  margin: 0.83em 0;
-
-  @media (max-width: 40em) {
-    & {
-      margin-top: 1.5em;
-    }
-  }
-`;
-
-const Content = styled.div`
-  min-height: 60px;
-  position: relative;
-`;
-
 type RepoInfoListProps = {
   repos: Repo[];
 };
@@ -164,6 +123,47 @@ function RepoInfo({ repo }: RepoInfoProps) {
     </RepoInfoContainer>
   );
 }
+
+const paginationStyle = css`
+  float: right;
+
+  @media (max-width: 40em) {
+    & {
+      float: none;
+    }
+  }
+`;
+
+const TopPagination = styled.div`
+  ${paginationStyle}
+
+  line-height: 2rem;
+  position: relative;
+  top: 1px;
+
+  @media (max-width: 40em) {
+    & {
+      margin-top: 0.83em;
+    }
+  }
+`;
+
+const BottomPagination = styled.div`
+  ${paginationStyle}
+
+  margin: 0.83em 0;
+
+  @media (max-width: 40em) {
+    & {
+      margin-top: 1.5em;
+    }
+  }
+`;
+
+const Content = styled.div`
+  min-height: 60px;
+  position: relative;
+`;
 
 const RepoInfoContainer = styled.div`
   & + & {
