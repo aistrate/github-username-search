@@ -27,7 +27,7 @@ function SearchPage({ queryUsername, queryPage }: SearchPageProps) {
   let username = (queryUsername || "").trim();
   const page = Math.max(1, parseInt(queryPage || "") || 1);
 
-  const queryValidationError = validateQueryUsername(username);
+  const queryValidationError = validateQuery(username);
   if (queryValidationError) {
     username = "";
   }
@@ -126,7 +126,7 @@ function useStoreToHistory(userFetch: FetchResult<User>) {
   }
 }
 
-function validateQueryUsername(username: string) {
+function validateQuery(username: string) {
   const validationError = validateUsername(username);
 
   if (validationError) {
