@@ -26,10 +26,14 @@ function SearchForm({
   const [buttonDisabled, setButtonDisabled] = useState(true);
   const inputRef = useRef<HTMLInputElement>(null!);
 
+  const [submitted, setSubmitted] = useState(false);
+  const [validationError, setValidationError] = useState<string | null>(null);
+
   useEffect(() => {
     setTextAndButton(initialValue);
+    setSubmitted(false);
 
-    if (initialValue.trim().length === 0) {
+    if (initialValue === "") {
       inputRef.current.focus();
     } else {
       inputRef.current.blur();
@@ -39,9 +43,11 @@ function SearchForm({
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
-    const trimmed = value.trim();
-    setValue(trimmed);
-    onSearch({ value: trimmed });
+    setSubmitted(true);
+
+    if (!validationError) {
+      onSearch({ value });
+    }
   }
 
   function handleTextChange(e: React.ChangeEvent<HTMLInputElement>) {
@@ -50,6 +56,7 @@ function SearchForm({
 
   function setTextAndButton(val: string) {
     setValue(val);
+    setValidationError(validate(val));
     setButtonDisabled(val.trim().length === 0);
   }
 
@@ -66,13 +73,32 @@ function SearchForm({
         Search
       </Button>
 
+      {submitted && validationError && (
+        <Validation>{validationError}</Validation>
+      )}
+
       <Instructions>
         Type in a full username (see{" "}
-        <ExternalLink href="./about">examples</ExternalLink>)
+        <ExternalLink href="./about">examples</ExternalLink>).
       </Instructions>
     </form>
   );
 }
+
+const invalidCharsRegex = /[^-a-zA-Z0-9]+/g;
+
+function validate(value: string) {
+  if (value.trim().length > 0 && value.search(invalidCharsRegex) >= 0) {
+    return "Username may only contain alphanumeric characters or hyphens.";
+  }
+
+  return null;
+}
+
+const Validation = styled.div`
+  margin-top: 0.4rem;
+  color: red;
+`;
 
 const Instructions = styled.div`
   margin-top: 0.6rem;
