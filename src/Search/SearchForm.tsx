@@ -43,10 +43,12 @@ function SearchForm({
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
+    const trimmed = value.trim();
+    setValue(trimmed);
     setSubmitted(true);
 
     if (!validationError) {
-      onSearch({ value });
+      onSearch({ value: trimmed });
     }
   }
 
@@ -56,7 +58,7 @@ function SearchForm({
 
   function setTextAndButton(val: string) {
     setValue(val);
-    setValidationError(validate(val));
+    setValidationError(validateUsername(val));
     setButtonDisabled(val.trim().length === 0);
   }
 
@@ -74,7 +76,7 @@ function SearchForm({
       </Button>
 
       {submitted && validationError && (
-        <Validation>{validationError}</Validation>
+        <ValidationMessage>{validationError}</ValidationMessage>
       )}
 
       <Instructions>
@@ -85,17 +87,20 @@ function SearchForm({
   );
 }
 
-const invalidCharsRegex = /[^-a-zA-Z0-9]+/g;
+const invalidUsernameChars = /[^-a-zA-Z0-9]|--|^-|-$/;
 
-function validate(value: string) {
-  if (value.trim().length > 0 && value.search(invalidCharsRegex) >= 0) {
-    return "Username may only contain alphanumeric characters or hyphens.";
+function validateUsername(username: string) {
+  username = username.trim();
+
+  if (username.search(invalidUsernameChars) >= 0) {
+    return `Username may only contain alphanumeric characters or single hyphens,
+            and cannot begin or end with a hyphen.`;
   }
 
   return null;
 }
 
-const Validation = styled.div`
+const ValidationMessage = styled.div`
   margin-top: 0.4rem;
   color: red;
 `;
