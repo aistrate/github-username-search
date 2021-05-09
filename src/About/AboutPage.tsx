@@ -44,11 +44,11 @@ function AboutPage() {
         </ExternalLink>{" "}
         of 60 requests per hour, associated with your IP address. The website
         makes two types of requests:
-        <ul>
-          <li>user info</li>
-          <li>page of repositories</li>
-        </ul>
       </p>
+      <ul>
+        <li>user info</li>
+        <li>page of repositories</li>
+      </ul>
 
       <p>
         The browser might do some caching on recent requests, so the actual
