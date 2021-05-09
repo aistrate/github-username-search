@@ -46,16 +46,19 @@ function AboutPage() {
         makes two types of requests:
         <ul>
           <li>user info</li>
-          <li>page of repositories (30 per page)</li>
+          <li>page of repositories</li>
         </ul>
       </p>
 
       <p>
         The browser might do some caching on recent requests, so the actual
-        number of requests you make can be slightly higher.
+        number of requests you get can be slightly higher.
       </p>
 
-      <p>Please bear in mind this limit when using the website.</p>
+      <p>
+        Please bear in mind this limit when using the website (be economical
+        with requests, especially when paging through repositories).
+      </p>
     </>
   );
 }
