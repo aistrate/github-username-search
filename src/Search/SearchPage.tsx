@@ -8,6 +8,8 @@ import type { FetchResult } from "../Shared/Fetch";
 import { useFetch } from "../Shared/Fetch";
 import { setLocalStorageItem } from "../Shared/LocalStorage";
 import { WindowTitle } from "../Shared/WindowTitle";
+import { Message } from "../Styled/Message";
+import { validateUsername } from "./Validation";
 import SearchForm from "./SearchForm";
 import UserView from "./UserView";
 import RepoListView from "./RepoListView";
@@ -22,8 +24,13 @@ type SearchPageProps = {
 };
 
 function SearchPage({ queryUsername, queryPage }: SearchPageProps) {
-  const username = removeInvalidChars(queryUsername || "");
+  let username = (queryUsername || "").trim();
   const page = Math.max(1, parseInt(queryPage || "") || 1);
+
+  const queryValidationError = validateQueryUsername(username);
+  if (queryValidationError) {
+    username = "";
+  }
 
   const lcUsername = username.toLowerCase();
 
@@ -55,6 +62,10 @@ function SearchPage({ queryUsername, queryPage }: SearchPageProps) {
       <WindowTitle value={getWindowTitle(username, page)} />
 
       <StyledSearchForm initialValue={username} onSearch={handleSearch} />
+
+      {queryValidationError && (
+        <StyledMessage type="error">{queryValidationError}</StyledMessage>
+      )}
 
       <StyledUserView userFetch={userFetch} username={username} />
 
@@ -115,10 +126,14 @@ function useStoreToHistory(userFetch: FetchResult<User>) {
   }
 }
 
-const invalidCharsRegex = /[^-a-zA-Z0-9]+/g;
+function validateQueryUsername(username: string) {
+  const validationError = validateUsername(username);
 
-function removeInvalidChars(username: string) {
-  return username.replaceAll(invalidCharsRegex, "");
+  if (validationError) {
+    return `Invalid username "${username}" in the URL. ${validationError}`;
+  }
+
+  return null;
 }
 
 function getWindowTitle(username: string, page: number) {
@@ -131,6 +146,10 @@ function getWindowTitle(username: string, page: number) {
 
 const StyledSearchForm = styled(SearchForm)`
   margin-top: 1.5rem;
+`;
+
+const StyledMessage = styled(Message)`
+  margin-top: 3.5rem;
 `;
 
 const StyledUserView = styled(UserView)`

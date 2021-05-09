@@ -3,6 +3,7 @@ import styled from "styled-components/macro";
 import { TextInput } from "../Styled/TextInput";
 import { Button } from "../Styled/Button";
 import { ExternalLink } from "../Styled/Links";
+import { validateUsername } from "./Validation";
 
 export type { SearchEvent };
 export default SearchForm;
@@ -85,19 +86,6 @@ function SearchForm({
       </Instructions>
     </form>
   );
-}
-
-const invalidUsernameChars = /[^-a-zA-Z0-9]|--|^-|-$/;
-
-function validateUsername(username: string) {
-  username = username.trim();
-
-  if (username.search(invalidUsernameChars) >= 0) {
-    return `Username may only contain alphanumeric characters or single hyphens,
-            and cannot begin or end with a hyphen.`;
-  }
-
-  return null;
 }
 
 const ValidationMessage = styled.div`
