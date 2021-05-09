@@ -70,6 +70,7 @@ function PaginationLink({ disabled, children, ...props }: PaginationLinkProps) {
 
 const paginationLinkStyle = css`
   font-weight: 600;
+  user-select: none;
 `;
 
 const DisabledPaginationLink = styled.span`
@@ -92,7 +93,6 @@ const Container = styled.div`
   font-size: 1.17rem;
   font-weight: 400;
   white-space: nowrap;
-  user-select: none;
 `;
 
 type SpanProps = {
