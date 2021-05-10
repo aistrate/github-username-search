@@ -148,8 +148,8 @@ type ImageProps = {
 };
 
 const Image = styled.img<ImageProps>`
+  display: block;
   height: auto;
-  vertical-align: middle;
 
   ${({ circular }) =>
     circular &&
