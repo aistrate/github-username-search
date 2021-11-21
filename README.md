@@ -10,5 +10,4 @@ It was created with `create-react-app` and features:
 - React (with Hooks)
 - React Router
 - styled-components
-- no CSS frameworks (such as Bootstrap)
 - responsive CSS (on mobile)
