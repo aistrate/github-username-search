@@ -1,5 +1,5 @@
 import {
-  BrowserRouter as Router,
+  BrowserRouter,
   Switch,
   Route,
   Redirect,
@@ -19,10 +19,10 @@ function App() {
     <AppContainer>
       <AppHeader>{process.env.REACT_APP_APPLICATION_NAME}</AppHeader>
 
-      <Router>
+      <BrowserRouter>
         <Nav />
         <Content />
-      </Router>
+      </BrowserRouter>
     </AppContainer>
   );
 }
