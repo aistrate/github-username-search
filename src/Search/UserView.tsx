@@ -115,9 +115,10 @@ function CompanyList({ names }: CompanyListProps) {
 
   const joined = companyList
     .slice(1)
-    .reduce((accumulator, company) => accumulator.concat(<>, </>, company), [
-      companyList[0],
-    ]);
+    .reduce(
+      (accumulator, company) => accumulator.concat(<>, </>, company),
+      [companyList[0]]
+    );
 
   // use createElement with spread argument to avoid React's warning:
   // 'Each child in a list should have a unique "key" prop'
