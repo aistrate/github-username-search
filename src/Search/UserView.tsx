@@ -113,10 +113,12 @@ function CompanyList({ names }: CompanyListProps) {
     .map((name) => name.trim())
     .map((name) => <Company name={name} />);
 
+  const comma = <>, </>;
+
   const joined = companyList
     .slice(1)
     .reduce(
-      (accumulator, company) => accumulator.concat(<>, </>, company),
+      (accumulator, company) => accumulator.concat(comma, company),
       [companyList[0]]
     );
 
