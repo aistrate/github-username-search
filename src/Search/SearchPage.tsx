@@ -1,14 +1,11 @@
-import { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components/macro";
 import type { User, Repo } from "./Models";
-import type { HistoryItem } from "../History/Models";
 import type { SearchEvent } from "./SearchForm";
-import type { FetchResult } from "../Shared/Fetch";
 import { useFetch } from "../Shared/Fetch";
-import { setLocalStorageItem } from "../Shared/LocalStorage";
 import { WindowTitle } from "../Shared/WindowTitle";
 import { Message } from "../Styled/Message";
+import { useStoreToHistory } from "./StoreToHistory";
 import { validateUsername } from "./Validation";
 import SearchForm from "./SearchForm";
 import UserView from "./UserView";
@@ -87,43 +84,6 @@ function getUserUrl(username: string) {
 
 function getRepoListUrl(username: string, page: number) {
   return `https://api.github.com/users/${username}/repos?page=${page}&per_page=${reposPerPage}&sort=pushed`;
-}
-
-const usernameRegex = /\/users\/([^/]+)/;
-
-function extractUsername(url: string) {
-  const match = usernameRegex.exec(url);
-  return match ? match[1] : "";
-}
-
-function useStoreToHistory(userFetch: FetchResult<User>) {
-  useEffect(() => {
-    if (userFetch.requestUrl && !userFetch.isLoading && !userFetch.error) {
-      const lcUsername = extractUsername(userFetch.requestUrl).toLowerCase();
-
-      setLocalStorageItem<HistoryItem[]>("searchHistory", [], (history) =>
-        addToHistory(lcUsername, history)
-      );
-    }
-  }, [userFetch.requestUrl, userFetch.isLoading, userFetch.error]);
-
-  function addToHistory(username: string, history: HistoryItem[]) {
-    const maxHistoryLength = 100;
-
-    history = history.filter((item) => item.username !== username);
-
-    history = [
-      {
-        username,
-        timestamp: Date.now(),
-      },
-      ...history,
-    ];
-
-    history = history.slice(0, maxHistoryLength);
-
-    return history;
-  }
 }
 
 function validateQuery(username: string) {
