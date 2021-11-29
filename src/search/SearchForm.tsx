@@ -1,8 +1,8 @@
 import { useState, useEffect, useRef } from "react";
 import styled from "styled-components/macro";
-import TextInput from "../Styled/TextInput";
-import Button from "../Styled/Button";
-import { ExternalLink } from "../Styled/Links";
+import TextInput from "../styled/TextInput";
+import Button from "../styled/Button";
+import { ExternalLink } from "../styled/Links";
 import { validateUsername } from "./Validation";
 
 export type { SearchEvent };

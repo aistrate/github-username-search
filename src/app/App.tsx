@@ -7,10 +7,10 @@ import {
 } from "react-router-dom";
 import styled from "styled-components/macro";
 import Nav from "./Nav";
-import ErrorBoundary from "../Common/ErrorBoundary";
-import SearchPage from "../Search/SearchPage";
-import HistoryPage from "../History/HistoryPage";
-import AboutPage from "../About/AboutPage";
+import ErrorBoundary from "../common/ErrorBoundary";
+import SearchPage from "../search/SearchPage";
+import HistoryPage from "../history/HistoryPage";
+import AboutPage from "../about/AboutPage";
 
 export default App;
 
