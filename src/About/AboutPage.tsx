@@ -1,4 +1,4 @@
-import WindowTitle from "../Shared/WindowTitle";
+import WindowTitle from "../Common/WindowTitle";
 import { SmallHeading } from "../Styled/Headings";
 import { ExternalLink } from "../Styled/Links";
 

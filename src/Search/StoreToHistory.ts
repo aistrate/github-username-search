@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import type { User } from "./Models";
 import type { HistoryItem } from "../History/Models";
-import type { FetchResult } from "../Shared/Fetch";
-import { setLocalStorageItem } from "../Shared/LocalStorage";
+import type { FetchResult } from "../Common/Fetch";
+import { setLocalStorageItem } from "../Common/LocalStorage";
 
 export { useStoreToHistory };
 

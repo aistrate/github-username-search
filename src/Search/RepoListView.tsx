@@ -1,10 +1,10 @@
 import { useRef } from "react";
 import styled, { css } from "styled-components/macro";
 import type { Repo } from "./Models";
-import type { FetchResult } from "../Shared/Fetch";
-import { formatDateTime, formatNumber } from "../Shared/Formatting";
-import DelayedSpinner from "../Shared/DelayedSpinner";
-import Pagination from "../Shared/Pagination";
+import type { FetchResult } from "../Common/Fetch";
+import { formatDateTime, formatNumber } from "../Common/Formatting";
+import DelayedSpinner from "../Common/DelayedSpinner";
+import Pagination from "../Common/Pagination";
 import Message from "../Styled/Message";
 import Row from "../Styled/Row";
 import { LargeHeading, SmallHeading } from "../Styled/Headings";

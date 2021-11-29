@@ -1,9 +1,9 @@
 import React from "react";
 import styled, { css } from "styled-components/macro";
 import type { UserType, User } from "./Models";
-import type { FetchResult } from "../Shared/Fetch";
-import { formatDateTime, formatNumber } from "../Shared/Formatting";
-import DelayedSpinner from "../Shared/DelayedSpinner";
+import type { FetchResult } from "../Common/Fetch";
+import { formatDateTime, formatNumber } from "../Common/Formatting";
+import DelayedSpinner from "../Common/DelayedSpinner";
 import Message from "../Styled/Message";
 import Row from "../Styled/Row";
 import { LargeHeading } from "../Styled/Headings";
