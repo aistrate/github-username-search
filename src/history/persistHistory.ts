@@ -7,11 +7,11 @@ import {
 import type { User } from "../search/models";
 import { HistoryItem } from "./models";
 
-export { useLoadSearchHistory, useSaveToSearchHistory };
+export { useLoadHistory, useSaveToHistory };
 
 const localStorageKey = "searchHistory";
 
-function useLoadSearchHistory() {
+function useLoadHistory() {
   const [history, setHistory] = useState<HistoryItem[] | null>(null);
 
   useEffect(() => {
@@ -21,11 +21,7 @@ function useLoadSearchHistory() {
   return history;
 }
 
-function useSaveToSearchHistory({
-  requestUrl,
-  isLoading,
-  error,
-}: FetchResult<User>) {
+function useSaveToHistory({ requestUrl, isLoading, error }: FetchResult<User>) {
   useEffect(() => {
     if (requestUrl && !isLoading && !error) {
       const lcUsername = extractUsername(requestUrl).toLowerCase();

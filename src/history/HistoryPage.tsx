@@ -5,12 +5,12 @@ import { LargeHeading } from "../styled/Headings";
 import { InternalLink } from "../styled/Links";
 import Row from "../styled/Row";
 import type { HistoryItem } from "./models";
-import { useLoadSearchHistory } from "./persistSearchHistory";
+import { useLoadHistory } from "./persistHistory";
 
 export default HistoryPage;
 
 function HistoryPage() {
-  const history = useLoadSearchHistory();
+  const history = useLoadHistory();
 
   return (
     <>
