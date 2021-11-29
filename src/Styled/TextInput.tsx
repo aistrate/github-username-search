@@ -1,7 +1,5 @@
 import styled from "styled-components/macro";
 
-export { TextInput };
-
 const TextInput = styled.input.attrs(() => ({
   type: "text",
   autoComplete: "off",
@@ -35,3 +33,5 @@ const TextInput = styled.input.attrs(() => ({
     }
   }
 `;
+
+export default TextInput;

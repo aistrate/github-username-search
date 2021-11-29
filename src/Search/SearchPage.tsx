@@ -4,7 +4,7 @@ import type { User, Repo } from "./Models";
 import type { SearchEvent } from "./SearchForm";
 import { useFetch } from "../Shared/Fetch";
 import { WindowTitle } from "../Shared/WindowTitle";
-import { Message } from "../Styled/Message";
+import Message from "../Styled/Message";
 import { useStoreToHistory } from "./StoreToHistory";
 import { validateUsername } from "./Validation";
 import SearchForm from "./SearchForm";

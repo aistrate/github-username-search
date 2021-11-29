@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import styled from "styled-components/macro";
-import { TextInput } from "../Styled/TextInput";
-import { Button } from "../Styled/Button";
+import TextInput from "../Styled/TextInput";
+import Button from "../Styled/Button";
 import { ExternalLink } from "../Styled/Links";
 import { validateUsername } from "./Validation";
 

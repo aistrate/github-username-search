@@ -1,7 +1,5 @@
 import styled, { keyframes } from "styled-components/macro";
 
-export { Spinner };
-
 const spinning = keyframes`
   to {
     transform: rotate(360deg);
@@ -25,3 +23,5 @@ const Spinner = styled.div`
     animation: ${spinning} 0.6s linear infinite;
   }
 `;
+
+export default Spinner;

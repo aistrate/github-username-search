@@ -5,9 +5,9 @@ import type { FetchResult } from "../Shared/Fetch";
 import { formatDateTime, formatNumber } from "../Shared/Formatting";
 import { DelayedSpinner } from "../Shared/DelayedSpinner";
 import { Pagination } from "../Shared/Pagination";
-import { Message } from "../Styled/Message";
+import Message from "../Styled/Message";
 import { LargeHeading, SmallHeading } from "../Styled/Headings";
-import { Row } from "../Styled/Row";
+import Row from "../Styled/Row";
 import { ExternalLink } from "../Styled/Links";
 
 export default RepoListView;

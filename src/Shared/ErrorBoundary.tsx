@@ -1,5 +1,5 @@
 import React from "react";
-import { Message } from "../Styled/Message";
+import Message from "../Styled/Message";
 
 export { ErrorBoundary };
 

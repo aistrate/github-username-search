@@ -1,6 +1,6 @@
 import styled from "styled-components/macro";
 
-export { Row };
+export default Row;
 
 type RowProps = {
   label?: React.ReactNode;
