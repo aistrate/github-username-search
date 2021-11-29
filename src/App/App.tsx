@@ -7,7 +7,7 @@ import {
 } from "react-router-dom";
 import styled from "styled-components/macro";
 import Nav from "./Nav";
-import { ErrorBoundary } from "../Shared/ErrorBoundary";
+import ErrorBoundary from "../Shared/ErrorBoundary";
 import SearchPage from "../Search/SearchPage";
 import HistoryPage from "../History/HistoryPage";
 import AboutPage from "../About/AboutPage";

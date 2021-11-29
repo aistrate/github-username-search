@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components/macro";
 import { InternalLink } from "../Styled/Links";
 
-export { Pagination };
+export default Pagination;
 
 type PaginationProps = {
   page: number;

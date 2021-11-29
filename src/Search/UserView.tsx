@@ -3,7 +3,7 @@ import styled, { css } from "styled-components/macro";
 import type { UserType, User } from "./Models";
 import type { FetchResult } from "../Shared/Fetch";
 import { formatDateTime, formatNumber } from "../Shared/Formatting";
-import { DelayedSpinner } from "../Shared/DelayedSpinner";
+import DelayedSpinner from "../Shared/DelayedSpinner";
 import Message from "../Styled/Message";
 import { LargeHeading } from "../Styled/Headings";
 import Row from "../Styled/Row";

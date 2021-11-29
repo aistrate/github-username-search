@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import Spinner from "../Styled/Spinner";
 
-export { DelayedSpinner };
+export default DelayedSpinner;
 
 type DelayedSpinnerProps = {
   delay?: number;

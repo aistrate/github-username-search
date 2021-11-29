@@ -1,8 +1,6 @@
 import React from "react";
 import Message from "../Styled/Message";
 
-export { ErrorBoundary };
-
 type ErrorBoundaryProps = {
   children?: React.ReactNode;
 };
@@ -34,3 +32,5 @@ class ErrorBoundary extends React.Component<
     return this.props.children;
   }
 }
+
+export default ErrorBoundary;
