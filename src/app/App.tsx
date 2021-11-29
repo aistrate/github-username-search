@@ -1,16 +1,16 @@
 import {
   BrowserRouter,
-  Switch,
-  Route,
   Redirect,
+  Route,
+  Switch,
   useLocation,
 } from "react-router-dom";
 import styled from "styled-components/macro";
-import Nav from "./Nav";
-import ErrorBoundary from "../common/ErrorBoundary";
-import SearchPage from "../search/SearchPage";
-import HistoryPage from "../history/HistoryPage";
 import AboutPage from "../about/AboutPage";
+import ErrorBoundary from "../common/ErrorBoundary";
+import HistoryPage from "../history/HistoryPage";
+import SearchPage from "../search/SearchPage";
+import Nav from "./Nav";
 
 export default App;
 

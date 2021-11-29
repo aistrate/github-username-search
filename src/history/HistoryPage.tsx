@@ -1,12 +1,12 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components/macro";
-import type { HistoryItem } from "./Models";
-import { getLocalStorageItem } from "../common/LocalStorage";
 import { formatDateTime } from "../common/Formatting";
+import { getLocalStorageItem } from "../common/LocalStorage";
 import WindowTitle from "../common/WindowTitle";
-import Row from "../styled/Row";
 import { LargeHeading } from "../styled/Headings";
 import { InternalLink } from "../styled/Links";
+import Row from "../styled/Row";
+import type { HistoryItem } from "./Models";
 
 export default HistoryPage;
 
