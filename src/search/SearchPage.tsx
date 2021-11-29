@@ -2,12 +2,12 @@ import { useHistory } from "react-router-dom";
 import styled from "styled-components/macro";
 import { useFetch } from "../common/fetch";
 import WindowTitle from "../common/WindowTitle";
+import { useSaveToSearchHistory } from "../history/persistSearchHistory";
 import Message from "../styled/Message";
 import type { Repo, User } from "./models";
 import RepoListView from "./RepoListView";
 import type { SearchEvent } from "./SearchForm";
 import SearchForm from "./SearchForm";
-import { useStoreToHistory } from "./storeToHistory";
 import UserView from "./UserView";
 import { validateUsername } from "./validation";
 
@@ -37,7 +37,7 @@ function SearchPage({ queryUsername, queryPage }: SearchPageProps) {
   const userFetch = useFetch<User>(userUrl);
   const repoListFetch = useFetch<Repo[]>(repoListUrl);
 
-  useStoreToHistory(userFetch);
+  useSaveToSearchHistory(userFetch);
 
   const browserHistory = useHistory();
 

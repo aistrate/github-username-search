@@ -1,21 +1,16 @@
-import { useEffect, useState } from "react";
 import styled from "styled-components/macro";
 import { formatDateTime } from "../common/formatting";
-import { getLocalStorageItem } from "../common/localStorage";
 import WindowTitle from "../common/WindowTitle";
 import { LargeHeading } from "../styled/Headings";
 import { InternalLink } from "../styled/Links";
 import Row from "../styled/Row";
 import type { HistoryItem } from "./models";
+import { useLoadSearchHistory } from "./persistSearchHistory";
 
 export default HistoryPage;
 
 function HistoryPage() {
-  const [history, setHistory] = useState<HistoryItem[] | null>(null);
-
-  useEffect(() => {
-    setHistory(getLocalStorageItem<HistoryItem[]>("searchHistory", []));
-  }, []);
+  const history = useLoadSearchHistory();
 
   return (
     <>

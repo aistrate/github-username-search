@@ -1,12 +1,27 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import type { FetchResult } from "../common/fetch";
-import { setLocalStorageItem } from "../common/localStorage";
-import type { HistoryItem } from "../history/models";
-import type { User } from "./models";
+import {
+  getLocalStorageItem,
+  setLocalStorageItem,
+} from "../common/localStorage";
+import type { User } from "../search/models";
+import { HistoryItem } from "./models";
 
-export { useStoreToHistory };
+export { useLoadSearchHistory, useSaveToSearchHistory };
 
-function useStoreToHistory({
+const localStorageKey = "searchHistory";
+
+function useLoadSearchHistory() {
+  const [history, setHistory] = useState<HistoryItem[] | null>(null);
+
+  useEffect(() => {
+    setHistory(getLocalStorageItem<HistoryItem[]>(localStorageKey, []));
+  }, []);
+
+  return history;
+}
+
+function useSaveToSearchHistory({
   requestUrl,
   isLoading,
   error,
@@ -15,7 +30,7 @@ function useStoreToHistory({
     if (requestUrl && !isLoading && !error) {
       const lcUsername = extractUsername(requestUrl).toLowerCase();
 
-      setLocalStorageItem<HistoryItem[]>("searchHistory", [], (history) =>
+      setLocalStorageItem<HistoryItem[]>(localStorageKey, [], (history) =>
         addToHistory(lcUsername, history)
       );
     }
