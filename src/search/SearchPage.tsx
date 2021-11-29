@@ -1,15 +1,15 @@
 import { useHistory } from "react-router-dom";
 import styled from "styled-components/macro";
-import { useFetch } from "../common/Fetch";
+import { useFetch } from "../common/fetch";
 import WindowTitle from "../common/WindowTitle";
 import Message from "../styled/Message";
-import type { Repo, User } from "./Models";
+import type { Repo, User } from "./models";
 import RepoListView from "./RepoListView";
 import type { SearchEvent } from "./SearchForm";
 import SearchForm from "./SearchForm";
-import { useStoreToHistory } from "./StoreToHistory";
+import { useStoreToHistory } from "./storeToHistory";
 import UserView from "./UserView";
-import { validateUsername } from "./Validation";
+import { validateUsername } from "./validation";
 
 export default SearchPage;
 

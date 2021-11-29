@@ -1,14 +1,14 @@
 import { useRef } from "react";
 import styled, { css } from "styled-components/macro";
 import DelayedSpinner from "../common/DelayedSpinner";
-import type { FetchResult } from "../common/Fetch";
-import { formatDateTime, formatNumber } from "../common/Formatting";
+import type { FetchResult } from "../common/fetch";
+import { formatDateTime, formatNumber } from "../common/formatting";
 import Pagination from "../common/Pagination";
 import { LargeHeading, SmallHeading } from "../styled/Headings";
 import { ExternalLink } from "../styled/Links";
 import Message from "../styled/Message";
 import Row from "../styled/Row";
-import type { Repo } from "./Models";
+import type { Repo } from "./models";
 
 export default RepoListView;
 

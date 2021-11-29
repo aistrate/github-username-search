@@ -3,7 +3,7 @@ import styled from "styled-components/macro";
 import Button from "../styled/Button";
 import { ExternalLink } from "../styled/Links";
 import TextInput from "../styled/TextInput";
-import { validateUsername } from "./Validation";
+import { validateUsername } from "./validation";
 
 export type { SearchEvent };
 export default SearchForm;
