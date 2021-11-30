@@ -1,9 +1,9 @@
 import styled from "styled-components/macro";
-import { formatDateTime } from "../common/formatting";
-import WindowTitle from "../common/WindowTitle";
-import { LargeHeading } from "../styled/Headings";
-import { InternalLink } from "../styled/Links";
-import Row from "../styled/Row";
+import { formatDateTime } from "../../common/formatting";
+import { LargeHeading } from "../../common/styled/Headings";
+import { InternalLink } from "../../common/styled/Links";
+import Row from "../../common/styled/Row";
+import WindowTitle from "../../common/WindowTitle";
 import type { HistoryItem } from "./models";
 import { useLoadHistory } from "./persistHistory";
 

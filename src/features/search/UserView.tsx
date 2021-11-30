@@ -1,12 +1,12 @@
 import React from "react";
 import styled, { css } from "styled-components/macro";
-import DelayedSpinner from "../common/DelayedSpinner";
-import type { FetchResult } from "../common/fetch";
-import { formatDateTime, formatNumber } from "../common/formatting";
-import { LargeHeading } from "../styled/Headings";
-import { ExternalLink } from "../styled/Links";
-import Message from "../styled/Message";
-import Row from "../styled/Row";
+import DelayedSpinner from "../../common/DelayedSpinner";
+import type { FetchResult } from "../../common/fetch";
+import { formatDateTime, formatNumber } from "../../common/formatting";
+import { LargeHeading } from "../../common/styled/Headings";
+import { ExternalLink } from "../../common/styled/Links";
+import Message from "../../common/styled/Message";
+import Row from "../../common/styled/Row";
 import type { User, UserType } from "./models";
 
 export default UserView;

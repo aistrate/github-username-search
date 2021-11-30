@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import type { FetchResult } from "../common/fetch";
+import type { FetchResult } from "../../common/fetch";
 import {
   getLocalStorageItem,
   setLocalStorageItem,
-} from "../common/localStorage";
+} from "../../common/localStorage";
 import type { User } from "../search/models";
 import { HistoryItem } from "./models";
 

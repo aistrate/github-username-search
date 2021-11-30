@@ -6,10 +6,10 @@ import {
   useLocation,
 } from "react-router-dom";
 import styled from "styled-components/macro";
-import AboutPage from "../about/AboutPage";
 import ErrorBoundary from "../common/ErrorBoundary";
-import HistoryPage from "../history/HistoryPage";
-import SearchPage from "../search/SearchPage";
+import AboutPage from "../features/about/AboutPage";
+import HistoryPage from "../features/history/HistoryPage";
+import SearchPage from "../features/search/SearchPage";
 import Nav from "./Nav";
 
 export default App;

@@ -1,9 +1,9 @@
 import { useHistory } from "react-router-dom";
 import styled from "styled-components/macro";
-import { useFetch } from "../common/fetch";
-import WindowTitle from "../common/WindowTitle";
+import { useFetch } from "../../common/fetch";
+import Message from "../../common/styled/Message";
+import WindowTitle from "../../common/WindowTitle";
 import { useSaveToHistory } from "../history/persistHistory";
-import Message from "../styled/Message";
 import type { Repo, User } from "./models";
 import RepoListView from "./RepoListView";
 import type { SearchEvent } from "./SearchForm";

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import Spinner from "../styled/Spinner";
+import Spinner from "./styled/Spinner";
 
 export default DelayedSpinner;
 
