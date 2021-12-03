@@ -38,11 +38,13 @@ function SearchPage({ queryUsername, queryPage }: SearchPageProps) {
 
   useEffect(() => {
     dispatch(fetchUser(lcUsername));
+  }, [dispatch, lcUsername]);
 
+  useEffect(() => {
     return () => {
       dispatch(resetUser());
     };
-  }, [dispatch, lcUsername]);
+  }, [dispatch]);
 
   const userUrl = lcUsername ? getUserUrl(lcUsername) : null;
   const repoListUrl = lcUsername ? getRepoListUrl(lcUsername, page) : null;

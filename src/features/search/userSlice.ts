@@ -72,8 +72,8 @@ const userSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(fetchUser.fulfilled, (state, action) => {
-        state.isLoading = false;
         state.data = action.payload;
+        state.isLoading = false;
       });
   },
 });
