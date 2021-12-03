@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components/macro";
 import { useFetch } from "../../common/fetch";
@@ -8,6 +10,7 @@ import type { Repo, User } from "./models";
 import RepoListView from "./RepoListView";
 import type { SearchEvent } from "./SearchForm";
 import SearchForm from "./SearchForm";
+import { fetchUser } from "./userSlice";
 import UserView from "./UserView";
 import { validateUsername } from "./validation";
 
@@ -30,6 +33,12 @@ function SearchPage({ queryUsername, queryPage }: SearchPageProps) {
   }
 
   const lcUsername = username.toLowerCase();
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchUser(lcUsername));
+  }, [dispatch, lcUsername]);
 
   const userUrl = lcUsername ? getUserUrl(lcUsername) : null;
   const repoListUrl = lcUsername ? getRepoListUrl(lcUsername, page) : null;
