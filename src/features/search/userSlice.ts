@@ -10,13 +10,36 @@ const fetchUser = createAsyncThunk(
 
     const response = await fetch(getUserUrl(username), fetchOptions);
     if (response.ok) {
-      return await response.json();
+      const data: User = await response.json();
+      return extractUserFields(data);
+    } else {
+      return null;
     }
   }
 );
 
 function getUserUrl(username: string) {
   return `https://api.github.com/users/${username}`;
+}
+
+function extractUserFields(user: User): User {
+  return {
+    id: user.id,
+    avatar_url: user.avatar_url,
+    name: user.name,
+    login: user.login,
+    type: user.type,
+    html_url: user.html_url,
+    created_at: user.created_at,
+    bio: user.bio,
+    followers: user.followers,
+    company: user.company,
+    location: user.location,
+    email: user.email,
+    blog: user.blog,
+    twitter_username: user.twitter_username,
+    public_repos: user.public_repos,
+  };
 }
 
 type UserState = {
@@ -44,10 +67,13 @@ const userSlice = createSlice({
       .addCase(fetchUser.pending, (state) => {
         state.isLoading = true;
       })
-      .addCase(fetchUser.fulfilled, (state, action: PayloadAction<User>) => {
-        state.isLoading = false;
-        state.data = action.payload;
-      });
+      .addCase(
+        fetchUser.fulfilled,
+        (state, action: PayloadAction<User | null>) => {
+          state.isLoading = false;
+          state.data = action.payload;
+        }
+      );
   },
 });
 
