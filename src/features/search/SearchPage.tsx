@@ -10,7 +10,7 @@ import type { Repo, User } from "./models";
 import RepoListView from "./RepoListView";
 import type { SearchEvent } from "./SearchForm";
 import SearchForm from "./SearchForm";
-import { fetchUser } from "./userSlice";
+import { fetchUser, resetUser } from "./userSlice";
 import UserView from "./UserView";
 import { validateUsername } from "./validation";
 
@@ -38,6 +38,10 @@ function SearchPage({ queryUsername, queryPage }: SearchPageProps) {
 
   useEffect(() => {
     dispatch(fetchUser(lcUsername));
+
+    return () => {
+      dispatch(resetUser());
+    };
   }, [dispatch, lcUsername]);
 
   const userUrl = lcUsername ? getUserUrl(lcUsername) : null;

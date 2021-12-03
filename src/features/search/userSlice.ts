@@ -61,7 +61,11 @@ const initialState: UserState = {
 const userSlice = createSlice({
   name: "user",
   initialState,
-  reducers: {},
+  reducers: {
+    resetUser() {
+      return initialState;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchUser.pending, (state) => {
@@ -89,3 +93,5 @@ const fetchOptions = auth
 export default userSlice.reducer;
 
 export { fetchUser };
+
+export const { resetUser } = userSlice.actions;
