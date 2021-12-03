@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { User } from "./models";
 
 const fetchUser = createAsyncThunk(
@@ -71,13 +71,10 @@ const userSlice = createSlice({
       .addCase(fetchUser.pending, (state) => {
         state.isLoading = true;
       })
-      .addCase(
-        fetchUser.fulfilled,
-        (state, action: PayloadAction<User | null>) => {
-          state.isLoading = false;
-          state.data = action.payload;
-        }
-      );
+      .addCase(fetchUser.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.data = action.payload;
+      });
   },
 });
 
