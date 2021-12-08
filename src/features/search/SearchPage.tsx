@@ -6,7 +6,7 @@ import { useFetch } from "../../common/fetch";
 import Message from "../../common/styled/Message";
 import WindowTitle from "../../common/WindowTitle";
 import { useSaveToHistory } from "../history/persistHistory";
-import type { Repo, User } from "./models";
+import type { Repo } from "./models";
 import RepoListView from "./RepoListView";
 import type { SearchEvent } from "./SearchForm";
 import SearchForm from "./SearchForm";
@@ -48,13 +48,11 @@ function SearchPage({ queryUsername, queryPage }: SearchPageProps) {
 
   const userState = useSelector(selectUser);
 
-  const userUrl = lcUsername ? getUserUrl(lcUsername) : null;
   const repoListUrl = lcUsername ? getRepoListUrl(lcUsername, page) : null;
 
-  const userFetch = useFetch<User>(userUrl);
   const repoListFetch = useFetch<Repo[]>(repoListUrl);
 
-  useSaveToHistory(userFetch);
+  useSaveToHistory(userState);
 
   const browserHistory = useHistory();
 
@@ -93,10 +91,6 @@ function SearchPage({ queryUsername, queryPage }: SearchPageProps) {
       )}
     </>
   );
-}
-
-function getUserUrl(username: string) {
-  return `https://api.github.com/users/${username}`;
 }
 
 function getRepoListUrl(username: string, page: number) {
