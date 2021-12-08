@@ -5,7 +5,7 @@ import { User } from "./models";
 const fetchUser = createAsyncThunk<
   { data: User | null; httpStatus: number | null },
   string,
-  { rejectValue: { errorMessage: string; httpStatus: number | null } }
+  { rejectValue: { error: string; httpStatus: number | null } }
 >("user/fetchUser", async (username, { rejectWithValue }) => {
   if (!username) {
     return { data: null, httpStatus: null };
@@ -15,14 +15,14 @@ const fetchUser = createAsyncThunk<
   try {
     response = await fetch(getUserUrl(username), fetchOptions);
   } catch (err) {
-    const errorMessage = `Error: ${(err as Error).message}`;
-    return rejectWithValue({ errorMessage, httpStatus: null });
+    const error = `Error: ${(err as Error).message}`;
+    return rejectWithValue({ error, httpStatus: null });
   }
 
   if (!response.ok) {
     const errorData = await response.json();
-    const errorMessage = `HTTP Error: (${response.status}) ${errorData.message}`;
-    return rejectWithValue({ errorMessage, httpStatus: response.status });
+    const error = `HTTP Error: (${response.status}) ${errorData.message}`;
+    return rejectWithValue({ error, httpStatus: response.status });
   }
 
   const data: User = await response.json();
@@ -93,7 +93,7 @@ const userSlice = createSlice({
       .addCase(fetchUser.rejected, (state, action) => {
         state.data = null;
         state.httpStatus = action.payload?.httpStatus ?? null;
-        state.error = action.payload?.errorMessage ?? null;
+        state.error = action.payload?.error ?? null;
         state.isLoading = false;
       });
   },
