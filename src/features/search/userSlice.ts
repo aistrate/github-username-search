@@ -11,12 +11,14 @@ const fetchUser = createAsyncThunk<
     return { isLoading: false };
   }
 
+  const requestUrl = getUserUrl(username);
+
   let response: Response;
   try {
-    response = await fetch(getUserUrl(username), fetchOptions);
+    response = await fetch(requestUrl, fetchOptions);
   } catch (err) {
     const error = `Error: ${(err as Error).message}`;
-    return rejectWithValue({ error, isLoading: false });
+    return rejectWithValue({ error, requestUrl, isLoading: false });
   }
 
   if (!response.ok) {
@@ -25,6 +27,7 @@ const fetchUser = createAsyncThunk<
     return rejectWithValue({
       error,
       httpStatus: response.status,
+      requestUrl,
       isLoading: false,
     });
   }
@@ -33,6 +36,7 @@ const fetchUser = createAsyncThunk<
   return {
     data: extractUserFields(data),
     httpStatus: response.status,
+    requestUrl,
     isLoading: false,
   };
 });
