@@ -55,18 +55,18 @@ function extractUserFields(user: User): User {
 
 type UserState = {
   data: User | null;
-  httpStatus: number | null;
   error: string | null;
-  isLoading: boolean;
+  httpStatus: number | null;
   requestUrl: string | null;
+  isLoading: boolean;
 };
 
 const initialState: UserState = {
   data: null,
-  httpStatus: null,
   error: null,
-  isLoading: false,
+  httpStatus: null,
   requestUrl: null,
+  isLoading: false,
 };
 
 const userSlice = createSlice({
@@ -80,20 +80,20 @@ const userSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(fetchUser.pending, (state) => {
-        state.httpStatus = null;
         state.error = null;
+        state.httpStatus = null;
         state.isLoading = true;
       })
       .addCase(fetchUser.fulfilled, (state, action) => {
         state.data = action.payload.data;
-        state.httpStatus = action.payload.httpStatus;
         state.error = null;
+        state.httpStatus = action.payload.httpStatus;
         state.isLoading = false;
       })
       .addCase(fetchUser.rejected, (state, action) => {
         state.data = null;
-        state.httpStatus = action.payload?.httpStatus ?? null;
         state.error = action.payload?.error ?? null;
+        state.httpStatus = action.payload?.httpStatus ?? null;
         state.isLoading = false;
       });
   },
