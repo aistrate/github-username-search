@@ -93,7 +93,7 @@ const userSlice = createSlice({
         return action.payload;
       })
       .addCase(fetchUser.rejected, (_state, action) => {
-        return action.payload || { error: "Unknown error", isLoading: false };
+        return action.payload;
       });
   },
 });
