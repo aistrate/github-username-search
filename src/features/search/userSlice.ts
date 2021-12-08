@@ -1,4 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { RootState } from "../../app/store";
 import { User } from "./models";
 
 const fetchUser = createAsyncThunk<
@@ -98,6 +99,8 @@ const userSlice = createSlice({
   },
 });
 
+const selectUser = (state: RootState) => state.user;
+
 // define the environment variable in file .env.development.local (NOT production);
 // the file should not be tracked by source control (add to .gitignore)
 const auth = process.env.REACT_APP_GITHUB_API_AUTH;
@@ -109,6 +112,8 @@ const fetchOptions = auth
 
 export default userSlice.reducer;
 
-export { fetchUser };
+export type { UserState };
+
+export { fetchUser, selectUser };
 
 export const { resetUser } = userSlice.actions;

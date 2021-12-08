@@ -1,35 +1,35 @@
 import React from "react";
 import styled, { css } from "styled-components/macro";
 import DelayedSpinner from "../../common/DelayedSpinner";
-import type { FetchResult } from "../../common/fetch";
 import { formatDateTime, formatNumber } from "../../common/formatting";
 import { LargeHeading } from "../../common/styled/Headings";
 import { ExternalLink } from "../../common/styled/Links";
 import Message from "../../common/styled/Message";
 import Row from "../../common/styled/Row";
 import type { User, UserType } from "./models";
+import type { UserState } from "./userSlice";
 
 export default UserView;
 
 type UserViewProps = {
-  userFetch: FetchResult<User>;
+  userState: UserState;
   username: string;
   className?: string;
 };
 
-function UserView({ userFetch, username, className }: UserViewProps) {
+function UserView({ userState, username, className }: UserViewProps) {
   return (
     <Container className={className}>
-      {userFetch.isLoading && <DelayedSpinner />}
+      {userState.isLoading && <DelayedSpinner />}
 
-      {userFetch.error &&
-        (userFetch.httpStatus === 404 ? (
+      {userState.error &&
+        (userState.httpStatus === 404 ? (
           <Message type="info">{`Username '${username}' was not found.`}</Message>
         ) : (
-          <Message type="error">{userFetch.error}</Message>
+          <Message type="error">{userState.error}</Message>
         ))}
 
-      {userFetch.data && <UserInfo user={userFetch.data} />}
+      {userState.data && <UserInfo user={userState.data} />}
     </Container>
   );
 }

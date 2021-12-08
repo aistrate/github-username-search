@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components/macro";
 import { useFetch } from "../../common/fetch";
@@ -10,7 +10,7 @@ import type { Repo, User } from "./models";
 import RepoListView from "./RepoListView";
 import type { SearchEvent } from "./SearchForm";
 import SearchForm from "./SearchForm";
-import { fetchUser, resetUser } from "./userSlice";
+import { fetchUser, resetUser, selectUser } from "./userSlice";
 import UserView from "./UserView";
 import { validateUsername } from "./validation";
 
@@ -46,6 +46,8 @@ function SearchPage({ queryUsername, queryPage }: SearchPageProps) {
     };
   }, [dispatch]);
 
+  const userState = useSelector(selectUser);
+
   const userUrl = lcUsername ? getUserUrl(lcUsername) : null;
   const repoListUrl = lcUsername ? getRepoListUrl(lcUsername, page) : null;
 
@@ -65,7 +67,7 @@ function SearchPage({ queryUsername, queryPage }: SearchPageProps) {
     }
   }
 
-  const totalRepoCount = userFetch.data?.public_repos;
+  const totalRepoCount = userState.data?.public_repos;
   const pageCount =
     totalRepoCount !== undefined ? Math.ceil(totalRepoCount / reposPerPage) : 0;
 
@@ -79,9 +81,9 @@ function SearchPage({ queryUsername, queryPage }: SearchPageProps) {
         <StyledMessage type="error">{queryValidationError}</StyledMessage>
       )}
 
-      <StyledUserView userFetch={userFetch} username={username} />
+      <StyledUserView userState={userState} username={username} />
 
-      {userFetch.data && (
+      {userState.data && (
         <StyledRepoListView
           repoListFetch={repoListFetch}
           username={username}
