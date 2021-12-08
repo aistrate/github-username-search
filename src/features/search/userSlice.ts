@@ -73,9 +73,9 @@ type UserState = {
   isLoading: boolean;
 };
 
-const initialState: UserState = {
+const initialState = {
   isLoading: false,
-};
+} as UserState;
 
 const userSlice = createSlice({
   name: "user",
