@@ -3,12 +3,12 @@ import { RootState } from "../../app/store";
 import { User } from "./models";
 
 const fetchUser = createAsyncThunk<
-  { data: User | null; httpStatus: number | null },
+  { data?: User; httpStatus?: number },
   string,
-  { rejectValue: { error: string; httpStatus: number | null } }
+  { rejectValue: { error: string; httpStatus?: number } }
 >("user/fetchUser", async (username, { rejectWithValue }) => {
   if (!username) {
-    return { data: null, httpStatus: null };
+    return {};
   }
 
   let response: Response;
@@ -16,7 +16,7 @@ const fetchUser = createAsyncThunk<
     response = await fetch(getUserUrl(username), fetchOptions);
   } catch (err) {
     const error = `Error: ${(err as Error).message}`;
-    return rejectWithValue({ error, httpStatus: null });
+    return rejectWithValue({ error });
   }
 
   if (!response.ok) {
@@ -54,18 +54,14 @@ function extractUserFields(user: User): User {
 }
 
 type UserState = {
-  data: User | null;
-  error: string | null;
-  httpStatus: number | null;
-  requestUrl: string | null;
+  data?: User;
+  error?: string;
+  httpStatus?: number;
+  requestUrl?: string;
   isLoading: boolean;
 };
 
 const initialState: UserState = {
-  data: null,
-  error: null,
-  httpStatus: null,
-  requestUrl: null,
   isLoading: false,
 };
 
@@ -80,20 +76,20 @@ const userSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(fetchUser.pending, (state) => {
-        state.error = null;
-        state.httpStatus = null;
+        state.error = undefined;
+        state.httpStatus = undefined;
         state.isLoading = true;
       })
       .addCase(fetchUser.fulfilled, (state, action) => {
         state.data = action.payload.data;
-        state.error = null;
+        state.error = undefined;
         state.httpStatus = action.payload.httpStatus;
         state.isLoading = false;
       })
       .addCase(fetchUser.rejected, (state, action) => {
-        state.data = null;
-        state.error = action.payload?.error ?? null;
-        state.httpStatus = action.payload?.httpStatus ?? null;
+        state.data = undefined;
+        state.error = action.payload?.error;
+        state.httpStatus = action.payload?.httpStatus;
         state.isLoading = false;
       });
   },
