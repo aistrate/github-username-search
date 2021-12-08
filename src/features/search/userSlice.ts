@@ -3,12 +3,12 @@ import { RootState } from "../../app/store";
 import { User } from "./models";
 
 const fetchUser = createAsyncThunk<
-  { data?: User; httpStatus?: number },
+  UserState,
   string,
-  { rejectValue: { error: string; httpStatus?: number } }
+  { rejectValue: UserState }
 >("user/fetchUser", async (username, { rejectWithValue }) => {
   if (!username) {
-    return {};
+    return { isLoading: false };
   }
 
   let response: Response;
@@ -16,17 +16,25 @@ const fetchUser = createAsyncThunk<
     response = await fetch(getUserUrl(username), fetchOptions);
   } catch (err) {
     const error = `Error: ${(err as Error).message}`;
-    return rejectWithValue({ error });
+    return rejectWithValue({ error, isLoading: false });
   }
 
   if (!response.ok) {
     const errorData = await response.json();
     const error = `HTTP Error: (${response.status}) ${errorData.message}`;
-    return rejectWithValue({ error, httpStatus: response.status });
+    return rejectWithValue({
+      error,
+      httpStatus: response.status,
+      isLoading: false,
+    });
   }
 
   const data: User = await response.json();
-  return { data: extractUserFields(data), httpStatus: response.status };
+  return {
+    data: extractUserFields(data),
+    httpStatus: response.status,
+    isLoading: false,
+  };
 });
 
 function getUserUrl(username: string) {
@@ -76,21 +84,16 @@ const userSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(fetchUser.pending, (state) => {
-        state.error = undefined;
-        state.httpStatus = undefined;
-        state.isLoading = true;
+        return {
+          data: state.data, // to avoid flickering
+          isLoading: true,
+        };
       })
-      .addCase(fetchUser.fulfilled, (state, action) => {
-        state.data = action.payload.data;
-        state.error = undefined;
-        state.httpStatus = action.payload.httpStatus;
-        state.isLoading = false;
+      .addCase(fetchUser.fulfilled, (_state, action) => {
+        return action.payload;
       })
-      .addCase(fetchUser.rejected, (state, action) => {
-        state.data = undefined;
-        state.error = action.payload?.error;
-        state.httpStatus = action.payload?.httpStatus;
-        state.isLoading = false;
+      .addCase(fetchUser.rejected, (_state, action) => {
+        return action.payload || { error: "Unknown error", isLoading: false };
       });
   },
 });
