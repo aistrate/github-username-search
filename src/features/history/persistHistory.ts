@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
+import type { FetchState } from "../../common/fetchThunk";
 import {
   getLocalStorageItem,
   setLocalStorageItem,
 } from "../../common/localStorage";
-import type { UserState } from "../search/userSlice";
+import type { User } from "../search/models";
 import type { HistoryItem } from "./models";
 
 export { useLoadHistory, useSaveToHistory };
@@ -20,7 +21,7 @@ function useLoadHistory() {
   return history;
 }
 
-function useSaveToHistory({ requestUrl, isLoading, error }: UserState) {
+function useSaveToHistory({ requestUrl, isLoading, error }: FetchState<User>) {
   useEffect(() => {
     if (requestUrl && !isLoading && !error) {
       const lcUsername = extractUsername(requestUrl).toLowerCase();

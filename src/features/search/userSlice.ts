@@ -1,51 +1,20 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { RootState } from "../../app/store";
-import { User } from "./models";
+import { createSlice } from "@reduxjs/toolkit";
+import type { RootState } from "../../app/store";
+import type { FetchState } from "../../common/fetchThunk";
+import { createFetchThunk } from "../../common/fetchThunk";
+import type { User } from "./models";
 
-const fetchUser = createAsyncThunk<
-  UserState,
-  string,
-  { rejectValue: UserState }
->("user/fetchUser", async (username, { rejectWithValue }) => {
-  if (!username) {
-    return { isLoading: false };
-  }
-
-  const requestUrl = getUserUrl(username);
-
-  let response: Response;
-  try {
-    response = await fetch(requestUrl, fetchOptions);
-  } catch (err) {
-    const error = `Error: ${(err as Error).message}`;
-    return rejectWithValue({ error, requestUrl, isLoading: false });
-  }
-
-  if (!response.ok) {
-    const errorData = await response.json();
-    const error = `HTTP Error: (${response.status}) ${errorData.message}`;
-    return rejectWithValue({
-      error,
-      httpStatus: response.status,
-      requestUrl,
-      isLoading: false,
-    });
-  }
-
-  const data: User = await response.json();
-  return {
-    data: extractUserFields(data),
-    httpStatus: response.status,
-    requestUrl,
-    isLoading: false,
-  };
-});
+const fetchUser = createFetchThunk<User, string, User>(
+  "user/fetchUser",
+  getUserUrl,
+  selectUserFields
+);
 
 function getUserUrl(username: string) {
-  return `https://api.github.com/users/${username}`;
+  return username ? `https://api.github.com/users/${username}` : null;
 }
 
-function extractUserFields(user: User): User {
+function selectUserFields(user: User): User {
   return {
     id: user.id,
     avatar_url: user.avatar_url,
@@ -65,17 +34,9 @@ function extractUserFields(user: User): User {
   };
 }
 
-type UserState = {
-  data?: User;
-  error?: string;
-  httpStatus?: number;
-  requestUrl?: string;
-  isLoading: boolean;
-};
-
 const initialState = {
   isLoading: false,
-} as UserState;
+} as FetchState<User>;
 
 const userSlice = createSlice({
   name: "user",
@@ -104,18 +65,7 @@ const userSlice = createSlice({
 
 const selectUser = (state: RootState) => state.user;
 
-// define the environment variable in file .env.development.local (NOT production);
-// the file should not be tracked by source control (add to .gitignore)
-const auth = process.env.REACT_APP_GITHUB_API_AUTH;
-
-// this will increase the GitHub API rate limit from 60 to 5000 requests/hour
-const fetchOptions = auth
-  ? { headers: new Headers({ Authorization: auth }) }
-  : undefined;
-
 export default userSlice.reducer;
-
-export type { UserState };
 
 export { fetchUser, selectUser };
 
