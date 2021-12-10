@@ -39,7 +39,7 @@ function SearchPage({ queryUsername, queryPage }: SearchPageProps) {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchUser(lcUsername));
+    dispatch(fetchUser({ username: lcUsername }));
   }, [dispatch, lcUsername]);
 
   useEffect(() => {

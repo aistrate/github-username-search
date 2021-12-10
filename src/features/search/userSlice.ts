@@ -7,13 +7,15 @@ import {
 } from "../../common/fetchThunk";
 import type { User } from "./models";
 
-const fetchUser = createFetchThunk<User, string, User>(
+const fetchUser = createFetchThunk<User, FetchUserArg, User>(
   "user/fetchUser",
   getUserUrl,
   extractUserData
 );
 
-function getUserUrl(username: string) {
+type FetchUserArg = { username: string };
+
+function getUserUrl({ username }: FetchUserArg) {
   return username ? `https://api.github.com/users/${username}` : null;
 }
 
