@@ -7,6 +7,8 @@ import {
 } from "../../common/fetchThunk";
 import type { Repo } from "./models";
 
+type FetchReposArg = { username: string; page: number };
+
 const fetchRepos = createFetchThunk<Repo[], FetchReposArg, Repo[]>(
   "repos/fetchRepos",
   getReposUrl,
@@ -14,8 +16,6 @@ const fetchRepos = createFetchThunk<Repo[], FetchReposArg, Repo[]>(
 );
 
 const reposPerPage = 30;
-
-type FetchReposArg = { username: string; page: number };
 
 function getReposUrl({ username, page }: FetchReposArg) {
   return username
@@ -40,7 +40,7 @@ function extractReposData(repos: Repo[]): Repo[] {
 
 const initialState = {
   isLoading: false,
-} as FetchState<Repo[]>;
+} as FetchState<Repo[], FetchReposArg>;
 
 const reposSlice = createSlice({
   name: "repos",
@@ -58,6 +58,8 @@ const reposSlice = createSlice({
 const selectRepos = (state: RootState) => state.repos;
 
 export default reposSlice.reducer;
+
+export type { FetchReposArg };
 
 export { fetchRepos, selectRepos, reposPerPage };
 

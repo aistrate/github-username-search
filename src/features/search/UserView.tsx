@@ -8,11 +8,12 @@ import { ExternalLink } from "../../common/styled/Links";
 import Message from "../../common/styled/Message";
 import Row from "../../common/styled/Row";
 import type { User, UserType } from "./models";
+import type { FetchUserArg } from "./userSlice";
 
 export default UserView;
 
 type UserViewProps = {
-  userFetch: FetchState<User>;
+  userFetch: FetchState<User, FetchUserArg>;
   username: string;
   className?: string;
 };

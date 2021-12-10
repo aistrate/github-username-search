@@ -1,11 +1,11 @@
 import type { ActionReducerMapBuilder, AsyncThunk } from "@reduxjs/toolkit";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-type FetchState<Data> = {
+type FetchState<Data, ThunkArg> = {
   data?: Data;
   error?: string;
   httpStatus?: number;
-  requestUrl?: string;
+  arg?: ThunkArg;
   isLoading: boolean;
 };
 
@@ -15,9 +15,9 @@ const createFetchThunk = <Data, ThunkArg, ResponseData>(
   extractData: (responseData: ResponseData) => Data
 ) =>
   createAsyncThunk<
-    FetchState<Data>,
+    FetchState<Data, ThunkArg>,
     ThunkArg,
-    { rejectValue: FetchState<Data> }
+    { rejectValue: FetchState<Data, ThunkArg> }
   >(typePrefix, async (thunkArg, { rejectWithValue }) => {
     const requestUrl = getRequestUrl(thunkArg);
 
@@ -30,7 +30,7 @@ const createFetchThunk = <Data, ThunkArg, ResponseData>(
       response = await fetch(requestUrl, fetchOptions);
     } catch (err) {
       const error = `Error: ${(err as Error).message}`;
-      return rejectWithValue({ error, requestUrl, isLoading: false });
+      return rejectWithValue({ error, isLoading: false });
     }
 
     if (!response.ok) {
@@ -39,7 +39,6 @@ const createFetchThunk = <Data, ThunkArg, ResponseData>(
       return rejectWithValue({
         error,
         httpStatus: response.status,
-        requestUrl,
         isLoading: false,
       });
     }
@@ -48,7 +47,6 @@ const createFetchThunk = <Data, ThunkArg, ResponseData>(
     return {
       data: extractData(responseData),
       httpStatus: response.status,
-      requestUrl,
       isLoading: false,
     };
   });
@@ -63,11 +61,11 @@ const fetchOptions = auth
   : undefined;
 
 function addFetchCaseReducers<Data, ThunkArg>(
-  builder: ActionReducerMapBuilder<FetchState<Data>>,
+  builder: ActionReducerMapBuilder<FetchState<Data, ThunkArg>>,
   fetchThunk: AsyncThunk<
-    FetchState<Data>,
+    FetchState<Data, ThunkArg>,
     ThunkArg,
-    { rejectValue: FetchState<Data> }
+    { rejectValue: FetchState<Data, ThunkArg> }
   >
 ) {
   builder
@@ -78,10 +76,11 @@ function addFetchCaseReducers<Data, ThunkArg>(
       };
     })
     .addCase(fetchThunk.fulfilled, (_state, action) => {
-      return action.payload;
+      return { ...action.payload, arg: action.meta.arg };
     })
     .addCase(fetchThunk.rejected, (_state, action) => {
-      return action.payload;
+      const payload = action.payload || { isLoading: false };
+      return { ...payload, arg: action.meta.arg };
     });
 }
 

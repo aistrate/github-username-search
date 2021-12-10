@@ -7,13 +7,13 @@ import {
 } from "../../common/fetchThunk";
 import type { User } from "./models";
 
+type FetchUserArg = { username: string };
+
 const fetchUser = createFetchThunk<User, FetchUserArg, User>(
   "user/fetchUser",
   getUserUrl,
   extractUserData
 );
-
-type FetchUserArg = { username: string };
 
 function getUserUrl({ username }: FetchUserArg) {
   return username ? `https://api.github.com/users/${username}` : null;
@@ -41,7 +41,7 @@ function extractUserData(user: User): User {
 
 const initialState = {
   isLoading: false,
-} as FetchState<User>;
+} as FetchState<User, FetchUserArg>;
 
 const userSlice = createSlice({
   name: "user",
@@ -59,6 +59,8 @@ const userSlice = createSlice({
 const selectUser = (state: RootState) => state.user;
 
 export default userSlice.reducer;
+
+export type { FetchUserArg };
 
 export { fetchUser, selectUser };
 

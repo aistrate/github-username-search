@@ -9,11 +9,12 @@ import { ExternalLink } from "../../common/styled/Links";
 import Message from "../../common/styled/Message";
 import Row from "../../common/styled/Row";
 import type { Repo } from "./models";
+import type { FetchReposArg } from "./reposSlice";
 
 export default RepoListView;
 
 type RepoListViewProps = {
-  reposFetch: FetchState<Repo[]>;
+  reposFetch: FetchState<Repo[], FetchReposArg>;
   username: string;
   page: number;
   pageCount: number;
