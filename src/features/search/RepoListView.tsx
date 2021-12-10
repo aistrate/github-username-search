@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import styled, { css } from "styled-components/macro";
 import DelayedSpinner from "../../common/DelayedSpinner";
-import type { FetchResult } from "../../common/fetch";
+import type { FetchState } from "../../common/fetchThunk";
 import { formatDateTime, formatNumber } from "../../common/formatting";
 import Pagination from "../../common/Pagination";
 import { LargeHeading, SmallHeading } from "../../common/styled/Headings";
@@ -13,7 +13,7 @@ import type { Repo } from "./models";
 export default RepoListView;
 
 type RepoListViewProps = {
-  repoListFetch: FetchResult<Repo[]>;
+  reposFetch: FetchState<Repo[]>;
   username: string;
   page: number;
   pageCount: number;
@@ -21,7 +21,7 @@ type RepoListViewProps = {
 };
 
 function RepoListView({
-  repoListFetch,
+  reposFetch,
   username,
   page,
   pageCount,
@@ -42,28 +42,26 @@ function RepoListView({
             page={page}
             pageCount={pageCount}
             getPageUrl={getPageUrl}
-            isLoading={repoListFetch.isLoading}
+            isLoading={reposFetch.isLoading}
           />
         </TopPagination>
       </LargeHeading>
 
       <Content>
-        {repoListFetch.isLoading && <DelayedSpinner />}
+        {reposFetch.isLoading && <DelayedSpinner />}
 
-        {repoListFetch.error && (
-          <Message type="error">{repoListFetch.error}</Message>
-        )}
+        {reposFetch.error && <Message type="error">{reposFetch.error}</Message>}
 
-        {repoListFetch.data && (
+        {reposFetch.data && (
           <>
-            <RepoInfoList repos={repoListFetch.data} />
+            <RepoInfoList repos={reposFetch.data} />
 
             <BottomPagination>
               <Pagination
                 page={page}
                 pageCount={pageCount}
                 getPageUrl={getPageUrl}
-                isLoading={repoListFetch.isLoading}
+                isLoading={reposFetch.isLoading}
                 scrollTo={headingRef}
               />
             </BottomPagination>

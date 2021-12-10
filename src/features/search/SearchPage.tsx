@@ -2,12 +2,16 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components/macro";
-import { useFetch } from "../../common/fetch";
 import Message from "../../common/styled/Message";
 import WindowTitle from "../../common/WindowTitle";
 import { useSaveToHistory } from "../history/persistHistory";
-import type { Repo } from "./models";
 import RepoListView from "./RepoListView";
+import {
+  fetchRepos,
+  reposPerPage,
+  resetRepos,
+  selectRepos,
+} from "./reposSlice";
 import type { SearchEvent } from "./SearchForm";
 import SearchForm from "./SearchForm";
 import { fetchUser, resetUser, selectUser } from "./userSlice";
@@ -15,8 +19,6 @@ import UserView from "./UserView";
 import { validateUsername } from "./validation";
 
 export default SearchPage;
-
-const reposPerPage = 30;
 
 type SearchPageProps = {
   queryUsername: string | null;
@@ -41,16 +43,18 @@ function SearchPage({ queryUsername, queryPage }: SearchPageProps) {
   }, [dispatch, lcUsername]);
 
   useEffect(() => {
+    dispatch(fetchRepos({ username: lcUsername, page }));
+  }, [dispatch, lcUsername, page]);
+
+  useEffect(() => {
     return () => {
       dispatch(resetUser());
+      dispatch(resetRepos());
     };
   }, [dispatch]);
 
   const userFetch = useSelector(selectUser);
-
-  const repoListUrl = lcUsername ? getRepoListUrl(lcUsername, page) : null;
-
-  const repoListFetch = useFetch<Repo[]>(repoListUrl);
+  const reposFetch = useSelector(selectRepos);
 
   useSaveToHistory(userFetch);
 
@@ -83,7 +87,7 @@ function SearchPage({ queryUsername, queryPage }: SearchPageProps) {
 
       {userFetch.data && (
         <StyledRepoListView
-          repoListFetch={repoListFetch}
+          reposFetch={reposFetch}
           username={username}
           page={page}
           pageCount={pageCount}
@@ -91,10 +95,6 @@ function SearchPage({ queryUsername, queryPage }: SearchPageProps) {
       )}
     </>
   );
-}
-
-function getRepoListUrl(username: string, page: number) {
-  return `https://api.github.com/users/${username}/repos?page=${page}&per_page=${reposPerPage}&sort=pushed`;
 }
 
 function validateQuery(username: string) {
