@@ -7,14 +7,14 @@ import type { User } from "./models";
 const fetchUser = createFetchThunk<User, string, User>(
   "user/fetchUser",
   getUserUrl,
-  selectUserFields
+  extractUserData
 );
 
 function getUserUrl(username: string) {
   return username ? `https://api.github.com/users/${username}` : null;
 }
 
-function selectUserFields(user: User): User {
+function extractUserData(user: User): User {
   return {
     id: user.id,
     avatar_url: user.avatar_url,

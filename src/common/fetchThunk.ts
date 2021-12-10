@@ -11,7 +11,7 @@ type FetchState<Data> = {
 const createFetchThunk = <Data, ThunkArg, ResponseData>(
   typePrefix: string,
   getRequestUrl: (arg: ThunkArg) => string | null,
-  selectFields: (responseData: ResponseData) => Data
+  extractData: (responseData: ResponseData) => Data
 ) =>
   createAsyncThunk<
     FetchState<Data>,
@@ -45,7 +45,7 @@ const createFetchThunk = <Data, ThunkArg, ResponseData>(
 
     const responseData: ResponseData = await response.json();
     return {
-      data: selectFields(responseData),
+      data: extractData(responseData),
       httpStatus: response.status,
       requestUrl,
       isLoading: false,
