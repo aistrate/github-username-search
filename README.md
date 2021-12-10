@@ -9,5 +9,6 @@ It was created with `create-react-app` and features:
 - TypeScript
 - React (with Hooks)
 - React Router
+- Redux
 - styled-components
 - responsive CSS (on mobile)
