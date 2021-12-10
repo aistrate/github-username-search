@@ -12,24 +12,24 @@ import type { User, UserType } from "./models";
 export default UserView;
 
 type UserViewProps = {
-  userState: FetchState<User>;
+  userFetch: FetchState<User>;
   username: string;
   className?: string;
 };
 
-function UserView({ userState, username, className }: UserViewProps) {
+function UserView({ userFetch, username, className }: UserViewProps) {
   return (
     <Container className={className}>
-      {userState.isLoading && <DelayedSpinner />}
+      {userFetch.isLoading && <DelayedSpinner />}
 
-      {userState.error &&
-        (userState.httpStatus === 404 ? (
+      {userFetch.error &&
+        (userFetch.httpStatus === 404 ? (
           <Message type="info">{`Username '${username}' was not found.`}</Message>
         ) : (
-          <Message type="error">{userState.error}</Message>
+          <Message type="error">{userFetch.error}</Message>
         ))}
 
-      {userState.data && <UserInfo user={userState.data} />}
+      {userFetch.data && <UserInfo user={userFetch.data} />}
     </Container>
   );
 }

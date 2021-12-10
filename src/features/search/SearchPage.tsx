@@ -46,13 +46,13 @@ function SearchPage({ queryUsername, queryPage }: SearchPageProps) {
     };
   }, [dispatch]);
 
-  const userState = useSelector(selectUser);
+  const userFetch = useSelector(selectUser);
 
   const repoListUrl = lcUsername ? getRepoListUrl(lcUsername, page) : null;
 
   const repoListFetch = useFetch<Repo[]>(repoListUrl);
 
-  useSaveToHistory(userState);
+  useSaveToHistory(userFetch);
 
   const browserHistory = useHistory();
 
@@ -65,7 +65,7 @@ function SearchPage({ queryUsername, queryPage }: SearchPageProps) {
     }
   }
 
-  const totalRepoCount = userState.data?.public_repos;
+  const totalRepoCount = userFetch.data?.public_repos;
   const pageCount =
     totalRepoCount !== undefined ? Math.ceil(totalRepoCount / reposPerPage) : 0;
 
@@ -79,9 +79,9 @@ function SearchPage({ queryUsername, queryPage }: SearchPageProps) {
         <StyledMessage type="error">{queryValidationError}</StyledMessage>
       )}
 
-      <StyledUserView userState={userState} username={username} />
+      <StyledUserView userFetch={userFetch} username={username} />
 
-      {userState.data && (
+      {userFetch.data && (
         <StyledRepoListView
           repoListFetch={repoListFetch}
           username={username}
