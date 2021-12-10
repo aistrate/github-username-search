@@ -1,7 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { RootState } from "../../app/store";
 import type { FetchState } from "../../common/fetchThunk";
-import { createFetchThunk } from "../../common/fetchThunk";
+import {
+  addFetchCaseReducers,
+  createFetchThunk,
+} from "../../common/fetchThunk";
 import type { User } from "./models";
 
 const fetchUser = createFetchThunk<User, string, User>(
@@ -47,19 +50,7 @@ const userSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder
-      .addCase(fetchUser.pending, (state) => {
-        return {
-          data: state.data, // to avoid flickering
-          isLoading: true,
-        };
-      })
-      .addCase(fetchUser.fulfilled, (_state, action) => {
-        return action.payload;
-      })
-      .addCase(fetchUser.rejected, (_state, action) => {
-        return action.payload;
-      });
+    addFetchCaseReducers(builder, fetchUser);
   },
 });
 

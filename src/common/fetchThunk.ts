@@ -1,3 +1,4 @@
+import type { ActionReducerMapBuilder, AsyncThunk } from "@reduxjs/toolkit";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
 type FetchState<Data> = {
@@ -61,6 +62,29 @@ const fetchOptions = auth
   ? { headers: new Headers({ Authorization: auth }) }
   : undefined;
 
+function addFetchCaseReducers<Data, ThunkArg>(
+  builder: ActionReducerMapBuilder<FetchState<Data>>,
+  fetchThunk: AsyncThunk<
+    FetchState<Data>,
+    ThunkArg,
+    { rejectValue: FetchState<Data> }
+  >
+) {
+  builder
+    .addCase(fetchThunk.pending, (state) => {
+      return {
+        data: state.data, // to avoid flickering
+        isLoading: true,
+      };
+    })
+    .addCase(fetchThunk.fulfilled, (_state, action) => {
+      return action.payload;
+    })
+    .addCase(fetchThunk.rejected, (_state, action) => {
+      return action.payload;
+    });
+}
+
 export type { FetchState };
 
-export { createFetchThunk };
+export { createFetchThunk, addFetchCaseReducers };
