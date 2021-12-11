@@ -1,25 +1,25 @@
 import type { ActionReducerMapBuilder, AsyncThunk } from "@reduxjs/toolkit";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-type FetchState<Data, ThunkArg> = {
+type FetchState<Data, FetchArg> = {
   data?: Data;
   error?: string;
   httpStatus?: number;
-  arg?: ThunkArg;
+  arg?: FetchArg;
   isLoading: boolean;
 };
 
-const createFetchThunk = <Data, ThunkArg, ResponseData>(
+const createFetchThunk = <Data, FetchArg, ResponseData>(
   typePrefix: string,
-  getRequestUrl: (arg: ThunkArg) => string | null,
+  getRequestUrl: (arg: FetchArg) => string | null,
   extractData: (responseData: ResponseData) => Data
 ) =>
   createAsyncThunk<
-    FetchState<Data, ThunkArg>,
-    ThunkArg,
-    { rejectValue: FetchState<Data, ThunkArg> }
-  >(typePrefix, async (thunkArg, { rejectWithValue }) => {
-    const requestUrl = getRequestUrl(thunkArg);
+    FetchState<Data, FetchArg>,
+    FetchArg,
+    { rejectValue: FetchState<Data, FetchArg> }
+  >(typePrefix, async (fetchArg, { rejectWithValue }) => {
+    const requestUrl = getRequestUrl(fetchArg);
 
     if (!requestUrl) {
       return { isLoading: false };
@@ -60,12 +60,12 @@ const fetchOptions = auth
   ? { headers: new Headers({ Authorization: auth }) }
   : undefined;
 
-function addFetchCaseReducers<Data, ThunkArg>(
-  builder: ActionReducerMapBuilder<FetchState<Data, ThunkArg>>,
+function addFetchCaseReducers<Data, FetchArg>(
+  builder: ActionReducerMapBuilder<FetchState<Data, FetchArg>>,
   fetchThunk: AsyncThunk<
-    FetchState<Data, ThunkArg>,
-    ThunkArg,
-    { rejectValue: FetchState<Data, ThunkArg> }
+    FetchState<Data, FetchArg>,
+    FetchArg,
+    { rejectValue: FetchState<Data, FetchArg> }
   >
 ) {
   builder
