@@ -40,11 +40,19 @@ function SearchPage({ queryUsername, queryPage }: SearchPageProps) {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    dispatch(fetchUser({ username: lcUsername }));
+    const promise = dispatch(fetchUser({ username: lcUsername }));
+
+    return () => {
+      promise.abort();
+    };
   }, [dispatch, lcUsername]);
 
   useEffect(() => {
-    dispatch(fetchRepos({ username: lcUsername, page }));
+    const promise = dispatch(fetchRepos({ username: lcUsername, page }));
+
+    return () => {
+      promise.abort();
+    };
   }, [dispatch, lcUsername, page]);
 
   useEffect(() => {

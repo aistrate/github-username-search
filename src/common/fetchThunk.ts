@@ -72,12 +72,17 @@ function addFetchCases<Data, FetchArg>(
       };
     })
     .addCase(fetchThunk.rejected, (_state, action) => {
+      if (action.error.name === "AbortError") {
+        return;
+      }
+
       const newState: FetchState<Data, FetchArg> =
         // error generated with rejectWithValue()
         action.payload || {
           // error NOT generated with rejectWithValue()
           error: `Unexpected error: ${action.error.message}`,
         };
+
       return {
         fetchArg: action.meta.arg,
         isLoading: false,
