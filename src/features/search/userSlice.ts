@@ -1,10 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { RootState } from "../../app/store";
 import type { FetchState } from "../../common/fetchThunk";
-import {
-  addFetchCaseReducers,
-  createFetchThunk,
-} from "../../common/fetchThunk";
+import { addFetchCases, createFetchThunk } from "../../common/fetchThunk";
 import type { User } from "./models";
 
 type FetchUserArg = { username: string };
@@ -50,7 +47,7 @@ const userSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    addFetchCaseReducers(builder, fetchUser);
+    addFetchCases(builder, fetchUser);
   },
 });
 

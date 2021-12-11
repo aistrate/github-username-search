@@ -1,10 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { RootState } from "../../app/store";
 import type { FetchState } from "../../common/fetchThunk";
-import {
-  addFetchCaseReducers,
-  createFetchThunk,
-} from "../../common/fetchThunk";
+import { addFetchCases, createFetchThunk } from "../../common/fetchThunk";
 import type { Repo } from "./models";
 
 type FetchReposArg = { username: string; page: number };
@@ -49,7 +46,7 @@ const reposSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    addFetchCaseReducers(builder, fetchRepos);
+    addFetchCases(builder, fetchRepos);
   },
 });
 

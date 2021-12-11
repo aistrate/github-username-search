@@ -58,7 +58,7 @@ const fetchOptions = auth
   ? { headers: new Headers({ Authorization: auth }) }
   : undefined;
 
-function addFetchCaseReducers<Data, FetchArg>(
+function addFetchCases<Data, FetchArg>(
   builder: ActionReducerMapBuilder<FetchState<Data, FetchArg>>,
   fetchThunk: AsyncThunk<
     FetchState<Data, FetchArg>,
@@ -97,4 +97,4 @@ function addFetchCaseReducers<Data, FetchArg>(
 
 export type { FetchState };
 
-export { createFetchThunk, addFetchCaseReducers };
+export { createFetchThunk, addFetchCases };
