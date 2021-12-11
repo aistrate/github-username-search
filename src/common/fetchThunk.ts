@@ -49,15 +49,6 @@ const createFetchThunk = <Data, FetchArg, ResponseData>(
     };
   });
 
-// define the environment variable in file .env.development.local (NOT production);
-// the file should not be tracked by source control (add to .gitignore)
-const auth = process.env.REACT_APP_GITHUB_API_AUTH;
-
-// this will increase the GitHub API rate limit from 60 to 5000 requests/hour
-const fetchOptions = auth
-  ? { headers: new Headers({ Authorization: auth }) }
-  : undefined;
-
 function addFetchCases<Data, FetchArg>(
   builder: ActionReducerMapBuilder<FetchState<Data, FetchArg>>,
   fetchThunk: AsyncThunk<
@@ -94,6 +85,15 @@ function addFetchCases<Data, FetchArg>(
       };
     });
 }
+
+// define the environment variable in file .env.development.local (NOT production);
+// the file should not be tracked by source control (add to .gitignore)
+const auth = process.env.REACT_APP_GITHUB_API_AUTH;
+
+// this will increase the GitHub API rate limit from 60 to 5000 requests/hour
+const fetchOptions = auth
+  ? { headers: new Headers({ Authorization: auth }) }
+  : undefined;
 
 export type { FetchState };
 
