@@ -39,9 +39,7 @@ function extractUserData(user: User): User {
   };
 }
 
-const initialState = {
-  isLoading: false,
-} as FetchState<User, FetchUserArg>;
+const initialState = {} as FetchState<User, FetchUserArg>;
 
 const userSlice = createSlice({
   name: "user",

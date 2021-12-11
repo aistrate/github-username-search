@@ -2,11 +2,11 @@ import type { ActionReducerMapBuilder, AsyncThunk } from "@reduxjs/toolkit";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
 type FetchState<Data, FetchArg> = {
+  fetchArg?: FetchArg;
+  isLoading?: boolean;
+  httpStatus?: number;
   data?: Data;
   error?: string;
-  httpStatus?: number;
-  isLoading: boolean;
-  fetchArg?: FetchArg;
 };
 
 const createFetchThunk = <Data, FetchArg, ResponseData>(
@@ -22,7 +22,7 @@ const createFetchThunk = <Data, FetchArg, ResponseData>(
     const requestUrl = getRequestUrl(fetchArg);
 
     if (!requestUrl) {
-      return { isLoading: false };
+      return {};
     }
 
     let response: Response;
@@ -31,24 +31,21 @@ const createFetchThunk = <Data, FetchArg, ResponseData>(
     } catch (err) {
       return rejectWithValue({
         error: `Error: ${(err as Error).message}`,
-        isLoading: false,
       });
     }
 
     if (!response.ok) {
       const errorData = await response.json();
       return rejectWithValue({
-        error: `HTTP Error: (${response.status}) ${errorData.message}`,
         httpStatus: response.status,
-        isLoading: false,
+        error: `HTTP Error: (${response.status}) ${errorData.message}`,
       });
     }
 
     const responseData: ResponseData = await response.json();
     return {
-      data: extractData(responseData),
       httpStatus: response.status,
-      isLoading: false,
+      data: extractData(responseData),
     };
   });
 
@@ -72,12 +69,16 @@ function addFetchCaseReducers<Data, FetchArg>(
   builder
     .addCase(fetchThunk.pending, (_state, action) => {
       return {
-        isLoading: true,
         fetchArg: action.meta.arg,
+        isLoading: true,
       };
     })
     .addCase(fetchThunk.fulfilled, (_state, action) => {
-      return { ...action.payload, fetchArg: action.meta.arg };
+      return {
+        fetchArg: action.meta.arg,
+        isLoading: false,
+        ...action.payload,
+      };
     })
     .addCase(fetchThunk.rejected, (_state, action) => {
       const newState: FetchState<Data, FetchArg> =
@@ -85,9 +86,12 @@ function addFetchCaseReducers<Data, FetchArg>(
         action.payload || {
           // error NOT generated with rejectWithValue()
           error: `Unexpected error: ${action.error.message}`,
-          isLoading: false,
         };
-      return { ...newState, fetchArg: action.meta.arg };
+      return {
+        fetchArg: action.meta.arg,
+        isLoading: false,
+        ...newState,
+      };
     });
 }
 

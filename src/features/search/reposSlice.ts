@@ -38,9 +38,7 @@ function extractReposData(repos: Repo[]): Repo[] {
   }));
 }
 
-const initialState = {
-  isLoading: false,
-} as FetchState<Repo[], FetchReposArg>;
+const initialState = {} as FetchState<Repo[], FetchReposArg>;
 
 const reposSlice = createSlice({
   name: "repos",
