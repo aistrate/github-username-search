@@ -29,15 +29,16 @@ const createFetchThunk = <Data, FetchArg, ResponseData>(
     try {
       response = await fetch(requestUrl, fetchOptions);
     } catch (err) {
-      const error = `Error: ${(err as Error).message}`;
-      return rejectWithValue({ error, isLoading: false });
+      return rejectWithValue({
+        error: `Error: ${(err as Error).message}`,
+        isLoading: false,
+      });
     }
 
     if (!response.ok) {
       const errorData = await response.json();
-      const error = `HTTP Error: (${response.status}) ${errorData.message}`;
       return rejectWithValue({
-        error,
+        error: `HTTP Error: (${response.status}) ${errorData.message}`,
         httpStatus: response.status,
         isLoading: false,
       });
