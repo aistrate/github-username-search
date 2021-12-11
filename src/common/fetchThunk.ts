@@ -79,8 +79,14 @@ function addFetchCaseReducers<Data, FetchArg>(
       return { ...action.payload, fetchArg: action.meta.arg };
     })
     .addCase(fetchThunk.rejected, (_state, action) => {
-      const payload = action.payload || { isLoading: false };
-      return { ...payload, fetchArg: action.meta.arg };
+      const newState: FetchState<Data, FetchArg> =
+        // error generated with rejectWithValue()
+        action.payload || {
+          // error NOT generated with rejectWithValue()
+          error: `Unexpected error: ${action.error.message}`,
+          isLoading: false,
+        };
+      return { ...newState, fetchArg: action.meta.arg };
     });
 }
 
