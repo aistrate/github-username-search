@@ -5,13 +5,13 @@ type FetchState<Data, FetchArg> = {
   data?: Data;
   error?: string;
   httpStatus?: number;
-  arg?: FetchArg;
+  fetchArg?: FetchArg;
   isLoading: boolean;
 };
 
 const createFetchThunk = <Data, FetchArg, ResponseData>(
   typePrefix: string,
-  getRequestUrl: (arg: FetchArg) => string | null,
+  getRequestUrl: (fetchArg: FetchArg) => string | null,
   extractData: (responseData: ResponseData) => Data
 ) =>
   createAsyncThunk<
@@ -76,11 +76,11 @@ function addFetchCaseReducers<Data, FetchArg>(
       };
     })
     .addCase(fetchThunk.fulfilled, (_state, action) => {
-      return { ...action.payload, arg: action.meta.arg };
+      return { ...action.payload, fetchArg: action.meta.arg };
     })
     .addCase(fetchThunk.rejected, (_state, action) => {
       const payload = action.payload || { isLoading: false };
-      return { ...payload, arg: action.meta.arg };
+      return { ...payload, fetchArg: action.meta.arg };
     });
 }
 

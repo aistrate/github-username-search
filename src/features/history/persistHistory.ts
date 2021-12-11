@@ -23,11 +23,11 @@ function useLoadHistory() {
 }
 
 function useSaveToHistory({
-  arg,
+  fetchArg,
   isLoading,
   error,
 }: FetchState<User, FetchUserArg>) {
-  const lcUsername = (arg?.username || "").toLowerCase();
+  const lcUsername = (fetchArg?.username || "").toLowerCase();
 
   useEffect(() => {
     if (lcUsername && !isLoading && !error) {
