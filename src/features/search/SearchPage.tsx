@@ -1,7 +1,8 @@
 import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components/macro";
+import { useAppDispatch } from "../../app/store";
 import Message from "../../common/styled/Message";
 import WindowTitle from "../../common/WindowTitle";
 import { useSaveToHistory } from "../history/persistHistory";
@@ -36,7 +37,7 @@ function SearchPage({ queryUsername, queryPage }: SearchPageProps) {
 
   const lcUsername = username.toLowerCase();
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     dispatch(fetchUser({ username: lcUsername }));
