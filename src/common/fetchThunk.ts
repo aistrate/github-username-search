@@ -5,8 +5,8 @@ type FetchState<Data, FetchArg> = {
   data?: Data;
   error?: string;
   httpStatus?: number;
-  fetchArg?: FetchArg;
   isLoading: boolean;
+  fetchArg?: FetchArg;
 };
 
 const createFetchThunk = <Data, FetchArg, ResponseData>(
@@ -70,10 +70,10 @@ function addFetchCaseReducers<Data, FetchArg>(
   >
 ) {
   builder
-    .addCase(fetchThunk.pending, (state) => {
+    .addCase(fetchThunk.pending, (_state, action) => {
       return {
-        data: state.data, // to avoid flickering
         isLoading: true,
+        fetchArg: action.meta.arg,
       };
     })
     .addCase(fetchThunk.fulfilled, (_state, action) => {
