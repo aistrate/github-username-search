@@ -14,11 +14,12 @@ export default UserView;
 
 type UserViewProps = {
   userFetch: FetchState<User, FetchUserArg>;
-  username: string;
   className?: string;
 };
 
-function UserView({ userFetch, username, className }: UserViewProps) {
+function UserView({ userFetch, className }: UserViewProps) {
+  const username = userFetch.fetchArg?.username || "";
+
   return (
     <Container className={className}>
       {userFetch.isLoading && <DelayedSpinner />}

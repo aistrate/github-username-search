@@ -15,19 +15,14 @@ export default RepoListView;
 
 type RepoListViewProps = {
   reposFetch: FetchState<Repo[], FetchReposArg>;
-  username: string;
-  page: number;
   pageCount: number;
   className?: string;
 };
 
-function RepoListView({
-  reposFetch,
-  username,
-  page,
-  pageCount,
-  className,
-}: RepoListViewProps) {
+function RepoListView({ reposFetch, pageCount, className }: RepoListViewProps) {
+  const username = reposFetch.fetchArg?.username || "";
+  const page = reposFetch.fetchArg?.page || 1;
+
   const headingRef = useRef<HTMLHeadingElement>(null!);
 
   function getPageUrl(page: number) {

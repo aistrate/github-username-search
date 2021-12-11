@@ -83,15 +83,10 @@ function SearchPage({ queryUsername, queryPage }: SearchPageProps) {
         <StyledMessage type="error">{queryValidationError}</StyledMessage>
       )}
 
-      <StyledUserView userFetch={userFetch} username={username} />
+      <StyledUserView userFetch={userFetch} />
 
       {userFetch.data && (
-        <StyledRepoListView
-          reposFetch={reposFetch}
-          username={username}
-          page={page}
-          pageCount={pageCount}
-        />
+        <StyledRepoListView reposFetch={reposFetch} pageCount={pageCount} />
       )}
     </>
   );
