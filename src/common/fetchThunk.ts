@@ -58,10 +58,11 @@ function addFetchCases<Data, FetchArg>(
   >
 ) {
   builder
-    .addCase(fetchThunk.pending, (_state, action) => {
+    .addCase(fetchThunk.pending, (state, action) => {
       return {
         fetchArg: action.meta.arg,
         isLoading: true,
+        data: state.data as Data, // to prevent visual flicker
       };
     })
 
