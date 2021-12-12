@@ -18,7 +18,7 @@ const createFetchThunk = <Data, FetchArg, ResponseData>(
     FetchState<Data, FetchArg>,
     FetchArg,
     { rejectValue: FetchState<Data, FetchArg> }
-  >(typePrefix, async (fetchArg, { rejectWithValue }) => {
+  >(typePrefix, async (fetchArg, { rejectWithValue, signal }) => {
     const requestUrl = getRequestUrl(fetchArg);
 
     if (!requestUrl) {
@@ -27,7 +27,7 @@ const createFetchThunk = <Data, FetchArg, ResponseData>(
 
     let response: Response;
     try {
-      response = await fetch(requestUrl, fetchOptions);
+      response = await fetch(requestUrl, { ...authFetchOptions, signal });
     } catch (err) {
       return rejectWithValue({
         error: `Error: ${(err as Error).message}`,
@@ -91,12 +91,12 @@ function addFetchCases<Data, FetchArg>(
     });
 }
 
-// define the environment variable in file .env.development.local (NOT production);
+// define the environment variable in file .env.local or .env.development.local (NOT in production);
 // the file should not be tracked by source control (add to .gitignore)
 const auth = process.env.REACT_APP_GITHUB_API_AUTH;
 
 // this will increase the GitHub API rate limit from 60 to 5000 requests/hour
-const fetchOptions = auth
+const authFetchOptions = auth
   ? { headers: new Headers({ Authorization: auth }) }
   : undefined;
 
