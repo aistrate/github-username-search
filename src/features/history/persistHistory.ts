@@ -4,8 +4,7 @@ import {
   getLocalStorageItem,
   setLocalStorageItem,
 } from "../../common/localStorage";
-import type { User } from "../search/models";
-import type { FetchUserArg } from "../search/userSlice";
+import type { FetchUserArg, User } from "../search/userSlice";
 import type { HistoryItem } from "./models";
 
 export { useLoadHistory, useSaveToHistory };

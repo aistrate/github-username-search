@@ -2,7 +2,19 @@ import { createSlice } from "@reduxjs/toolkit";
 import type { RootState } from "../../app/store";
 import type { FetchState } from "../../common/fetchThunk";
 import { addFetchCases, createFetchThunk } from "../../common/fetchThunk";
-import type { Repo } from "./models";
+
+type Repo = {
+  id: number;
+  name: string;
+  html_url: string;
+  fork: boolean;
+  description: string | null;
+  homepage: string | null;
+  language: string | null;
+  stargazers_count: number;
+  forks_count: number;
+  pushed_at: string;
+};
 
 type FetchReposArg = { username: string; page: number };
 
@@ -54,7 +66,7 @@ const selectRepos = (state: RootState) => state.repos;
 
 export default reposSlice.reducer;
 
-export type { FetchReposArg };
+export type { FetchReposArg, Repo };
 
 export { fetchRepos, selectRepos, reposPerPage };
 
