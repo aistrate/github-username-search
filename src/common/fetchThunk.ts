@@ -64,6 +64,7 @@ function addFetchCases<Data, FetchArg>(
         isLoading: true,
       };
     })
+
     .addCase(fetchThunk.fulfilled, (_state, action) => {
       return {
         fetchArg: action.meta.arg,
@@ -71,6 +72,7 @@ function addFetchCases<Data, FetchArg>(
         ...action.payload,
       };
     })
+
     .addCase(fetchThunk.rejected, (_state, action) => {
       if (action.error.name === "AbortError") {
         return;
