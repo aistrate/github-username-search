@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { userUrl } from "../../app/api";
 import type { RootState } from "../../app/store";
 import type { FetchState } from "../../common/fetchThunk";
 import { addFetchCases, createFetchThunk } from "../../common/fetchThunk";
@@ -32,7 +33,7 @@ const fetchUser = createFetchThunk<User, FetchUserArg, User>(
 );
 
 function getUserUrl({ username }: FetchUserArg) {
-  return username ? `https://api.github.com/users/${username}` : null;
+  return username ? userUrl(username) : null;
 }
 
 function extractUserData(user: User): User {

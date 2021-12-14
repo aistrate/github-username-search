@@ -2,17 +2,13 @@ import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components/macro";
+import { reposPerPage } from "../../app/api";
 import { useAppDispatch } from "../../app/store";
 import Message from "../../common/styled/Message";
 import WindowTitle from "../../common/WindowTitle";
 import { useSaveToHistory } from "../history/persistHistory";
 import RepoListView from "./RepoListView";
-import {
-  fetchRepos,
-  reposPerPage,
-  resetRepos,
-  selectRepos,
-} from "./reposSlice";
+import { fetchRepos, resetRepos, selectRepos } from "./reposSlice";
 import type { SearchEvent } from "./SearchForm";
 import SearchForm from "./SearchForm";
 import { fetchUser, resetUser, selectUser } from "./userSlice";

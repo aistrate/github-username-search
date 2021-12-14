@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { reposUrl } from "../../app/api";
 import type { RootState } from "../../app/store";
 import type { FetchState } from "../../common/fetchThunk";
 import { addFetchCases, createFetchThunk } from "../../common/fetchThunk";
@@ -24,12 +25,8 @@ const fetchRepos = createFetchThunk<Repo[], FetchReposArg, Repo[]>(
   extractReposData
 );
 
-const reposPerPage = 30;
-
 function getReposUrl({ username, page }: FetchReposArg) {
-  return username
-    ? `https://api.github.com/users/${username}/repos?page=${page}&per_page=${reposPerPage}&sort=pushed`
-    : null;
+  return username ? reposUrl(username, page) : null;
 }
 
 function extractReposData(repos: Repo[]): Repo[] {
@@ -68,6 +65,6 @@ export default reposSlice.reducer;
 
 export type { FetchReposArg, Repo };
 
-export { fetchRepos, selectRepos, reposPerPage };
+export { fetchRepos, selectRepos };
 
 export const { resetRepos } = reposSlice.actions;
