@@ -1,3 +1,4 @@
+import React from "react";
 import { useRef } from "react";
 import styled, { css } from "styled-components/macro";
 import DelayedSpinner from "../../common/DelayedSpinner";
@@ -71,7 +72,7 @@ type RepoInfoListProps = {
   repos: Repo[];
 };
 
-function RepoInfoList({ repos }: RepoInfoListProps) {
+const RepoInfoList = React.memo(({ repos }: RepoInfoListProps) => {
   return repos.length > 0 ? (
     <>
       {repos.map((repo) => (
@@ -81,7 +82,7 @@ function RepoInfoList({ repos }: RepoInfoListProps) {
   ) : (
     <>(none)</>
   );
-}
+});
 
 type RepoInfoProps = {
   repo: Repo;

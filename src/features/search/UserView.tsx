@@ -39,7 +39,7 @@ type UserInfoProps = {
   user: User;
 };
 
-function UserInfo({ user }: UserInfoProps) {
+const UserInfo = React.memo(({ user }: UserInfoProps) => {
   return (
     <>
       <Avatar url={user.avatar_url} userType={user.type} />
@@ -81,7 +81,7 @@ function UserInfo({ user }: UserInfoProps) {
       </dl>
     </>
   );
-}
+});
 
 type AvatarProps = {
   url: string;
