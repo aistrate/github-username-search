@@ -37,7 +37,7 @@ function Content() {
         <Switch>
           <Route path="/search">
             <SearchPage
-              queryUsername={queryParams.get("q")}
+              queryUsername={queryParams.get("username")}
               queryPage={queryParams.get("page")}
             />
           </Route>

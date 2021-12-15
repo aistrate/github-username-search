@@ -52,7 +52,7 @@ function HistoryRow({ historyItem }: HistoryRowProps) {
       }
       labelSuffix=""
     >
-      <InternalLink to={`/search?q=${historyItem.username}`}>
+      <InternalLink to={`/search?username=${historyItem.username}`}>
         {historyItem.username}
       </InternalLink>
     </Row>
