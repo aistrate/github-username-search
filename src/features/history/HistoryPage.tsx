@@ -42,18 +42,16 @@ type HistoryRowProps = {
   historyItem: HistoryItem;
 };
 
-function HistoryRow({ historyItem }: HistoryRowProps) {
+function HistoryRow({ historyItem: { timestamp, username } }: HistoryRowProps) {
   return (
     <Row
       label={
-        <Timestamp>
-          {formatDateTime(historyItem.timestamp, "weekday-date-time")}
-        </Timestamp>
+        <Timestamp>{formatDateTime(timestamp, "weekday-date-time")}</Timestamp>
       }
       labelSuffix=""
     >
-      <InternalLink to={`/search?username=${historyItem.username}`}>
-        {historyItem.username}
+      <InternalLink to={`/search?username=${username}`}>
+        {username}
       </InternalLink>
     </Row>
   );
