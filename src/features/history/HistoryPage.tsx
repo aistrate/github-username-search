@@ -1,16 +1,29 @@
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
 import styled from "styled-components/macro";
+import { useAppDispatch } from "../../app/store";
 import { formatDateTime } from "../../common/formatting";
 import { LargeHeading } from "../../common/styled/Headings";
 import { InternalLink } from "../../common/styled/Links";
 import Row from "../../common/styled/Row";
 import WindowTitle from "../../common/WindowTitle";
-import type { HistoryItem } from "./models";
-import { useLoadHistory } from "./persistHistory";
+import type { HistoryItem } from "./historySlice";
+import { loadHistory, resetHistory, selectHistory } from "./historySlice";
 
 export default HistoryPage;
 
 function HistoryPage() {
-  const history = useLoadHistory();
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(loadHistory());
+
+    return () => {
+      dispatch(resetHistory());
+    };
+  }, [dispatch]);
+
+  const history = useSelector(selectHistory);
 
   return (
     <>
