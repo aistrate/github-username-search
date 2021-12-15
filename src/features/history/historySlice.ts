@@ -1,6 +1,5 @@
-import type { PayloadAction } from "@reduxjs/toolkit";
-import { createSlice } from "@reduxjs/toolkit";
-import type { AppDispatch, RootState } from "../../app/store";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { AppDispatch, RootState } from "../../app/store";
 import { getLocalStorageItem } from "../../common/localStorage";
 
 type HistoryItem = {
@@ -36,7 +35,6 @@ const selectHistory = (state: RootState) => state.history;
 export default historySlice.reducer;
 
 export type { HistoryItem };
-
 export { loadHistory, selectHistory };
 
 export const { setHistory, resetHistory } = historySlice.actions;

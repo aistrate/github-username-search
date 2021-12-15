@@ -3,8 +3,8 @@ import {
   getLocalStorageItem,
   setLocalStorageItem,
 } from "../../common/localStorage";
-import type { UserFetch } from "../search/userSlice";
-import type { HistoryItem } from "./models";
+import { UserFetch } from "../search/userSlice";
+import { HistoryItem } from "./models";
 
 export { useLoadHistory, useSaveToHistory };
 

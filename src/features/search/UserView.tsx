@@ -6,7 +6,7 @@ import { LargeHeading } from "../../common/styled/Headings";
 import { ExternalLink } from "../../common/styled/Links";
 import Message from "../../common/styled/Message";
 import Row from "../../common/styled/Row";
-import type { User, UserFetch, UserType } from "./userSlice";
+import { User, UserFetch, UserType } from "./userSlice";
 
 export default UserView;
 

@@ -1,8 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { reposUrl } from "../../app/api";
-import type { RootState } from "../../app/store";
-import type { FetchState } from "../../common/fetchThunk";
-import { addFetchCases, createFetchThunk } from "../../common/fetchThunk";
+import { RootState } from "../../app/store";
+import {
+  addFetchCases,
+  createFetchThunk,
+  FetchState,
+} from "../../common/fetchThunk";
 
 type Repo = {
   id: number;
@@ -66,7 +69,6 @@ const selectRepos = (state: RootState) => state.repos;
 export default reposSlice.reducer;
 
 export type { FetchReposArg, Repo, ReposFetch };
-
 export { fetchRepos, selectRepos };
 
 export const { resetRepos } = reposSlice.actions;

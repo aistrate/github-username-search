@@ -7,8 +7,12 @@ import { LargeHeading } from "../../common/styled/Headings";
 import { InternalLink } from "../../common/styled/Links";
 import Row from "../../common/styled/Row";
 import WindowTitle from "../../common/WindowTitle";
-import type { HistoryItem } from "./historySlice";
-import { loadHistory, resetHistory, selectHistory } from "./historySlice";
+import {
+  HistoryItem,
+  loadHistory,
+  resetHistory,
+  selectHistory,
+} from "./historySlice";
 
 export default HistoryPage;
 

@@ -1,8 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { userUrl } from "../../app/api";
-import type { RootState } from "../../app/store";
-import type { FetchState } from "../../common/fetchThunk";
-import { addFetchCases, createFetchThunk } from "../../common/fetchThunk";
+import { RootState } from "../../app/store";
+import {
+  addFetchCases,
+  createFetchThunk,
+  FetchState,
+} from "../../common/fetchThunk";
 
 type UserType = "User" | "Organization";
 
@@ -78,7 +81,6 @@ const selectUser = (state: RootState) => state.user;
 export default userSlice.reducer;
 
 export type { FetchUserArg, User, UserFetch, UserType };
-
 export { fetchUser, selectUser };
 
 export const { resetUser } = userSlice.actions;

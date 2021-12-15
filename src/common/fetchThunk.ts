@@ -1,5 +1,8 @@
-import type { ActionReducerMapBuilder, AsyncThunk } from "@reduxjs/toolkit";
-import { createAsyncThunk } from "@reduxjs/toolkit";
+import {
+  ActionReducerMapBuilder,
+  AsyncThunk,
+  createAsyncThunk,
+} from "@reduxjs/toolkit";
 
 type FetchState<Data, FetchArg> = {
   fetchArg?: FetchArg;
@@ -104,5 +107,4 @@ const authFetchOptions = auth
   : undefined;
 
 export type { FetchState };
-
 export { createFetchThunk, addFetchCases };
