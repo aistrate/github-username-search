@@ -67,8 +67,7 @@ const reposSlice = createSlice({
 const selectRepos = (state: RootState) => state.repos;
 
 export default reposSlice.reducer;
+export const { resetRepos } = reposSlice.actions;
 
 export type { FetchReposArg, Repo, ReposFetch };
 export { fetchRepos, selectRepos };
-
-export const { resetRepos } = reposSlice.actions;

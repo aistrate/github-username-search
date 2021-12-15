@@ -33,8 +33,7 @@ const historySlice = createSlice({
 const selectHistory = (state: RootState) => state.history;
 
 export default historySlice.reducer;
+export const { setHistory, resetHistory } = historySlice.actions;
 
 export type { HistoryItem };
 export { loadHistory, selectHistory };
-
-export const { setHistory, resetHistory } = historySlice.actions;
