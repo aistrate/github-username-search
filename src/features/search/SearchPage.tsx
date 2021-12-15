@@ -30,35 +30,7 @@ function SearchPage({ queryUsername, queryPage }: SearchPageProps) {
     username = "";
   }
 
-  const lcUsername = username.toLowerCase();
-
-  const dispatch = useAppDispatch();
-
-  useEffect(() => {
-    const promise = dispatch(fetchUser({ username: lcUsername }));
-
-    return () => {
-      promise.abort();
-    };
-  }, [dispatch, lcUsername]);
-
-  useEffect(() => {
-    const promise = dispatch(fetchRepos({ username: lcUsername, page }));
-
-    return () => {
-      promise.abort();
-    };
-  }, [dispatch, lcUsername, page]);
-
-  useEffect(() => {
-    return () => {
-      dispatch(resetUser());
-      dispatch(resetRepos());
-    };
-  }, [dispatch]);
-
-  const userFetch = useSelector(selectUser);
-  const reposFetch = useSelector(selectRepos);
+  const { userFetch, reposFetch } = useFetch(username, page);
 
   useSaveToHistory(userFetch);
 
@@ -94,6 +66,40 @@ function SearchPage({ queryUsername, queryPage }: SearchPageProps) {
       )}
     </>
   );
+}
+
+function useFetch(username: string, page: number) {
+  const lcUsername = username.toLowerCase();
+
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    const promise = dispatch(fetchUser({ username: lcUsername }));
+
+    return () => {
+      promise.abort();
+    };
+  }, [dispatch, lcUsername]);
+
+  useEffect(() => {
+    const promise = dispatch(fetchRepos({ username: lcUsername, page }));
+
+    return () => {
+      promise.abort();
+    };
+  }, [dispatch, lcUsername, page]);
+
+  useEffect(() => {
+    return () => {
+      dispatch(resetUser());
+      dispatch(resetRepos());
+    };
+  }, [dispatch]);
+
+  const userFetch = useSelector(selectUser);
+  const reposFetch = useSelector(selectRepos);
+
+  return { userFetch, reposFetch };
 }
 
 function validateQuery(username: string) {
