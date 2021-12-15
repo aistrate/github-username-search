@@ -26,6 +26,8 @@ type User = {
 
 type FetchUserArg = { username: string };
 
+type UserFetch = FetchState<User, FetchUserArg>;
+
 const fetchUser = createFetchThunk<User, FetchUserArg, User>(
   "user/fetchUser",
   getUserUrl,
@@ -56,7 +58,7 @@ function extractUserData(user: User): User {
   };
 }
 
-const initialState = {} as FetchState<User, FetchUserArg>;
+const initialState = {} as UserFetch;
 
 const userSlice = createSlice({
   name: "user",
@@ -75,7 +77,7 @@ const selectUser = (state: RootState) => state.user;
 
 export default userSlice.reducer;
 
-export type { FetchUserArg, User, UserType };
+export type { FetchUserArg, User, UserFetch, UserType };
 
 export { fetchUser, selectUser };
 

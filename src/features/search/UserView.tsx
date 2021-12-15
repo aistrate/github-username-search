@@ -1,18 +1,17 @@
 import React from "react";
 import styled, { css } from "styled-components/macro";
 import DelayedSpinner from "../../common/DelayedSpinner";
-import type { FetchState } from "../../common/fetchThunk";
 import { formatDateTime, formatNumber } from "../../common/formatting";
 import { LargeHeading } from "../../common/styled/Headings";
 import { ExternalLink } from "../../common/styled/Links";
 import Message from "../../common/styled/Message";
 import Row from "../../common/styled/Row";
-import type { FetchUserArg, User, UserType } from "./userSlice";
+import type { User, UserFetch, UserType } from "./userSlice";
 
 export default UserView;
 
 type UserViewProps = {
-  userFetch: FetchState<User, FetchUserArg>;
+  userFetch: UserFetch;
   className?: string;
 };
 

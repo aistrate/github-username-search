@@ -1,20 +1,18 @@
-import React from "react";
-import { useRef } from "react";
+import React, { useRef } from "react";
 import styled, { css } from "styled-components/macro";
 import DelayedSpinner from "../../common/DelayedSpinner";
-import type { FetchState } from "../../common/fetchThunk";
 import { formatDateTime, formatNumber } from "../../common/formatting";
 import Pagination from "../../common/Pagination";
 import { LargeHeading, SmallHeading } from "../../common/styled/Headings";
 import { ExternalLink } from "../../common/styled/Links";
 import Message from "../../common/styled/Message";
 import Row from "../../common/styled/Row";
-import type { FetchReposArg, Repo } from "./reposSlice";
+import type { Repo, ReposFetch } from "./reposSlice";
 
 export default RepoListView;
 
 type RepoListViewProps = {
-  reposFetch: FetchState<Repo[], FetchReposArg>;
+  reposFetch: ReposFetch;
   pageCount: number;
   className?: string;
 };

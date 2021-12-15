@@ -19,6 +19,8 @@ type Repo = {
 
 type FetchReposArg = { username: string; page: number };
 
+type ReposFetch = FetchState<Repo[], FetchReposArg>;
+
 const fetchRepos = createFetchThunk<Repo[], FetchReposArg, Repo[]>(
   "repos/fetchRepos",
   getReposUrl,
@@ -44,7 +46,7 @@ function extractReposData(repos: Repo[]): Repo[] {
   }));
 }
 
-const initialState = {} as FetchState<Repo[], FetchReposArg>;
+const initialState = {} as ReposFetch;
 
 const reposSlice = createSlice({
   name: "repos",
@@ -63,7 +65,7 @@ const selectRepos = (state: RootState) => state.repos;
 
 export default reposSlice.reducer;
 
-export type { FetchReposArg, Repo };
+export type { FetchReposArg, Repo, ReposFetch };
 
 export { fetchRepos, selectRepos };
 
