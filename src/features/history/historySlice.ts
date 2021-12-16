@@ -1,6 +1,9 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { AppDispatch, RootState } from "../../app/store";
-import { getLocalStorageItem } from "../../common/localStorage";
+import {
+  getLocalStorageItem,
+  setLocalStorageItem,
+} from "../../common/localStorage";
 
 type HistoryItem = {
   username: string;
@@ -14,6 +17,31 @@ const loadHistory = () => (dispatch: AppDispatch) => {
 
   return dispatch(setHistory(history));
 };
+
+const saveToHistory = (username: string) => () => {
+  // don't dispatch to the store, only save to localStorage
+  setLocalStorageItem<HistoryItem[]>(localStorageKey, [], (history) =>
+    addToHistory(username, history)
+  );
+};
+
+function addToHistory(username: string, history: HistoryItem[]) {
+  const maxHistoryLength = 100;
+
+  history = history.filter((item) => item.username !== username);
+
+  history = [
+    {
+      username,
+      timestamp: Date.now(),
+    },
+    ...history,
+  ];
+
+  history = history.slice(0, maxHistoryLength);
+
+  return history;
+}
 
 const initialState = null as HistoryItem[] | null;
 
@@ -36,4 +64,4 @@ export default historySlice.reducer;
 export const { setHistory, resetHistory } = historySlice.actions;
 
 export type { HistoryItem };
-export { loadHistory, selectHistory };
+export { loadHistory, saveToHistory, selectHistory };

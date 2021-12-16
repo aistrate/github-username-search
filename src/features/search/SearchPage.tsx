@@ -6,11 +6,11 @@ import { reposPerPage } from "../../app/api";
 import { useAppDispatch } from "../../app/store";
 import Message from "../../common/styled/Message";
 import WindowTitle from "../../common/WindowTitle";
-import { useSaveToHistory } from "../history/persistHistory";
+import { saveToHistory } from "../history/historySlice";
 import RepoListView from "./RepoListView";
 import { fetchRepos, resetRepos, selectRepos } from "./reposSlice";
 import SearchForm, { SearchEvent } from "./SearchForm";
-import { fetchUser, resetUser, selectUser } from "./userSlice";
+import { fetchUser, resetUser, selectUser, UserFetch } from "./userSlice";
 import UserView from "./UserView";
 import { validateUsername } from "./validation";
 
@@ -100,6 +100,18 @@ function useFetch(username: string, page: number) {
   const reposFetch = useSelector(selectRepos);
 
   return { userFetch, reposFetch };
+}
+
+function useSaveToHistory({ fetchArg, isLoading, error }: UserFetch) {
+  const lcUsername = (fetchArg?.username || "").toLowerCase();
+
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    if (lcUsername && !isLoading && !error) {
+      dispatch(saveToHistory(lcUsername));
+    }
+  }, [dispatch, lcUsername, isLoading, error]);
 }
 
 function validateQuery(username: string) {
