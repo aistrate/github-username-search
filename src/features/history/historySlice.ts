@@ -11,17 +11,23 @@ type HistoryItem = {
 };
 
 const localStorageKey = "searchHistory";
+const localStorageDefaultValue = [] as HistoryItem[];
 
 const loadHistory = () => (dispatch: AppDispatch) => {
-  const history = getLocalStorageItem<HistoryItem[]>(localStorageKey, []);
+  const history = getLocalStorageItem<HistoryItem[]>(
+    localStorageKey,
+    localStorageDefaultValue
+  );
 
   return dispatch(setHistory(history));
 };
 
 const saveToHistory = (username: string) => () => {
   // don't dispatch to the store, only save to localStorage
-  setLocalStorageItem<HistoryItem[]>(localStorageKey, [], (history) =>
-    addToHistory(username, history)
+  setLocalStorageItem<HistoryItem[]>(
+    localStorageKey,
+    localStorageDefaultValue,
+    (history) => addToHistory(username, history)
   );
 };
 
