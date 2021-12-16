@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
-import Spinner from "./styled/Spinner";
 
-export default DelayedSpinner;
+export default Delayed;
 
-type DelayedSpinnerProps = {
+type DelayedProps = {
   delay?: number;
+  children?: React.ReactNode;
 };
 
-function DelayedSpinner({ delay = 500 }: DelayedSpinnerProps) {
+function Delayed({ delay = 500, children }: DelayedProps) {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -20,5 +20,5 @@ function DelayedSpinner({ delay = 500 }: DelayedSpinnerProps) {
     };
   }, [delay]);
 
-  return <>{isVisible && <Spinner />}</>;
+  return <>{isVisible && <>{children}</>}</>;
 }

@@ -1,11 +1,12 @@
 import React from "react";
 import styled, { css } from "styled-components/macro";
-import DelayedSpinner from "../../common/DelayedSpinner";
+import Delayed from "../../common/Delayed";
 import { formatDateTime, formatNumber } from "../../common/formatting";
 import { LargeHeading } from "../../common/styled/Headings";
 import { ExternalLink } from "../../common/styled/Links";
 import Message from "../../common/styled/Message";
 import Row from "../../common/styled/Row";
+import Spinner from "../../common/styled/Spinner";
 import { User, UserFetch, UserType } from "./userSlice";
 
 export default UserView;
@@ -20,7 +21,11 @@ function UserView({ userFetch, className }: UserViewProps) {
 
   return (
     <Container className={className}>
-      {userFetch.isLoading && <DelayedSpinner />}
+      {userFetch.isLoading && (
+        <Delayed>
+          <Spinner />
+        </Delayed>
+      )}
 
       {userFetch.error &&
         (userFetch.httpStatus === 404 ? (
