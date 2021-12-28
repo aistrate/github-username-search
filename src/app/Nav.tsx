@@ -23,9 +23,7 @@ type NavItemProps = {
 function NavItem({ to, children }: NavItemProps) {
   return (
     <ListItem>
-      <StyledNavLink to={to} activeClassName="active">
-        {children}
-      </StyledNavLink>
+      <StyledNavLink to={to}>{children}</StyledNavLink>
     </ListItem>
   );
 }

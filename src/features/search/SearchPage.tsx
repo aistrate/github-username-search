@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import styled from "styled-components/macro";
 import { reposPerPage } from "../../app/api";
 import { useAppDispatch } from "../../app/store";
@@ -34,14 +34,15 @@ function SearchPage({ queryUsername, queryPage }: SearchPageProps) {
 
   useSaveToHistory(userFetch);
 
-  const browserHistory = useHistory();
+  const location = useLocation();
+  const navigate = useNavigate();
 
   function handleSearch(e: SearchEvent) {
     const username = e.value;
     const search = `?username=${username}`;
 
-    if (browserHistory.location.search !== search) {
-      browserHistory.push(`/search${search}`);
+    if (location.search !== search) {
+      navigate(`/search${search}`);
     }
   }
 

@@ -1,8 +1,8 @@
 import {
   BrowserRouter,
-  Redirect,
+  Navigate,
   Route,
-  Switch,
+  Routes,
   useLocation,
 } from "react-router-dom";
 import styled from "styled-components/macro";
@@ -34,23 +34,20 @@ function Content() {
   return (
     <ContentContainer>
       <ErrorBoundary key={location.pathname}>
-        <Switch>
-          <Route path="/search">
-            <SearchPage
-              queryUsername={queryParams.get("username")}
-              queryPage={queryParams.get("page")}
-            />
-          </Route>
-          <Route path="/history">
-            <HistoryPage />
-          </Route>
-          <Route path="/about">
-            <AboutPage />
-          </Route>
-          <Route path="*">
-            <Redirect to="/search" />
-          </Route>
-        </Switch>
+        <Routes>
+          <Route
+            path="/search"
+            element={
+              <SearchPage
+                queryUsername={queryParams.get("username")}
+                queryPage={queryParams.get("page")}
+              />
+            }
+          />
+          <Route path="/history" element={<HistoryPage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="*" element={<Navigate to="/search" replace />} />
+        </Routes>
       </ErrorBoundary>
     </ContentContainer>
   );
