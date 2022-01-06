@@ -1,3 +1,4 @@
+import { Provider } from "react-redux";
 import {
   BrowserRouter,
   Navigate,
@@ -11,19 +12,22 @@ import AboutPage from "../features/about/AboutPage";
 import HistoryPage from "../features/history/HistoryPage";
 import SearchPage from "../features/search/SearchPage";
 import Nav from "./Nav";
+import store from "./store";
 
 export default App;
 
 function App() {
   return (
-    <AppContainer>
-      <AppHeader>{process.env.REACT_APP_APPLICATION_NAME}</AppHeader>
+    <Provider store={store}>
+      <AppContainer>
+        <AppHeader>{process.env.REACT_APP_APPLICATION_NAME}</AppHeader>
 
-      <BrowserRouter>
-        <Nav />
-        <Content />
-      </BrowserRouter>
-    </AppContainer>
+        <BrowserRouter>
+          <Nav />
+          <Content />
+        </BrowserRouter>
+      </AppContainer>
+    </Provider>
   );
 }
 
