@@ -36,7 +36,7 @@ function Content() {
   const queryParams = new URLSearchParams(location.search);
 
   return (
-    <ContentContainer>
+    <ContentContainer data-testid="contentContainer">
       <ErrorBoundary key={location.pathname}>
         <Routes>
           <Route
