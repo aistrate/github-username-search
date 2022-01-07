@@ -36,7 +36,7 @@ function Content() {
   const queryParams = new URLSearchParams(location.search);
 
   return (
-    <ContentContainer data-testid="contentContainer">
+    <PageContainer data-testid="pageContainer">
       <ErrorBoundary key={location.pathname}>
         <Routes>
           <Route
@@ -53,7 +53,7 @@ function Content() {
           <Route path="*" element={<Navigate to="/search" replace />} />
         </Routes>
       </ErrorBoundary>
-    </ContentContainer>
+    </PageContainer>
   );
 }
 
@@ -78,7 +78,7 @@ const AppHeader = styled.div`
   }
 `;
 
-const ContentContainer = styled.div`
+const PageContainer = styled.div`
   padding: 1rem;
   overflow-x: hidden;
 `;
