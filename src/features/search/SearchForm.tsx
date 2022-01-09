@@ -72,7 +72,7 @@ function SearchForm({
         onChange={handleTextChange}
       />
 
-      <Button type="submit" disabled={buttonDisabled}>
+      <Button name="Search" type="submit" disabled={buttonDisabled}>
         Search
       </Button>
 
