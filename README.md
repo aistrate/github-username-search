@@ -10,5 +10,6 @@ It was created with `create-react-app` and features:
 - React (with Hooks)
 - React Router
 - Redux
+- testing with Jest, Testing Library and Mock Service Worker
 - styled-components
 - responsive CSS (on mobile)
