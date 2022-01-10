@@ -1,4 +1,4 @@
-const baseUrl = "https://api.github.com";
+export const baseUrl = "https://api.github.com";
 
 export const reposPerPage = 30;
 
