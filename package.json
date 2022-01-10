@@ -47,5 +47,8 @@
       "last 1 safari version",
       "iOS 12"
     ]
+  },
+  "msw": {
+    "workerDirectory": "public"
   }
 }
