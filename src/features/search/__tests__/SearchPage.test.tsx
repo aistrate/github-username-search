@@ -45,3 +45,17 @@ test("perform search", async () => {
   ];
   expect(repoNames).toEqual(expected);
 });
+
+test("non-existing username displays 'not found' message", async () => {
+  render(<App />);
+
+  const input = screen.getByPlaceholderText("Username");
+  userEvent.clear(input);
+  userEvent.type(input, "ababab1234");
+
+  userEvent.click(screen.getByRole("button", { name: "Search" }));
+
+  expect(
+    await screen.findByText(/username 'ababab1234' was not found./i)
+  ).toBeInTheDocument();
+});
