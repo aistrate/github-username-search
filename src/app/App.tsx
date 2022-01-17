@@ -1,33 +1,14 @@
-import { Provider } from "react-redux";
-import {
-  BrowserRouter,
-  Navigate,
-  Route,
-  Routes,
-  useLocation,
-} from "react-router-dom";
+import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import styled from "styled-components/macro";
 import ErrorBoundary from "../common/ErrorBoundary";
 import AboutPage from "../features/about/AboutPage";
 import HistoryPage from "../features/history/HistoryPage";
 import SearchPage from "../features/search/SearchPage";
 import Nav from "./Nav";
-import store from "./store";
 
-export { App, BareApp };
+export default App;
 
 function App() {
-  return (
-    <Provider store={store}>
-      <BrowserRouter>
-        <BareApp />
-      </BrowserRouter>
-    </Provider>
-  );
-}
-
-/** The \<App\> component unwrapped from the Redux \<Provider\> and the \<BrowserRouter\>. */
-function BareApp() {
   return (
     <AppContainer>
       <AppHeader>{process.env.REACT_APP_APPLICATION_NAME}</AppHeader>
