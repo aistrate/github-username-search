@@ -4,15 +4,21 @@ import historyReducer from "../features/history/historySlice";
 import reposReducer from "../features/search/reposSlice";
 import userReducer from "../features/search/userSlice";
 
-const store = configureStore({
-  reducer: {
-    user: userReducer,
-    repos: reposReducer,
-    history: historyReducer,
-  },
-});
+const store = createStore();
+
+function createStore() {
+  return configureStore({
+    reducer: {
+      user: userReducer,
+      repos: reposReducer,
+      history: historyReducer,
+    },
+  });
+}
 
 export default store;
+
+export { createStore };
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;

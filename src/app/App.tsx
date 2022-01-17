@@ -14,20 +14,26 @@ import SearchPage from "../features/search/SearchPage";
 import Nav from "./Nav";
 import store from "./store";
 
-export default App;
+export { App, BareApp };
 
 function App() {
   return (
     <Provider store={store}>
-      <AppContainer>
-        <AppHeader>{process.env.REACT_APP_APPLICATION_NAME}</AppHeader>
-
-        <BrowserRouter>
-          <Nav />
-          <Content />
-        </BrowserRouter>
-      </AppContainer>
+      <BrowserRouter>
+        <BareApp />
+      </BrowserRouter>
     </Provider>
+  );
+}
+
+/** The \<App\> component unwrapped from the Redux \<Provider\> and the \<BrowserRouter\>. */
+function BareApp() {
+  return (
+    <AppContainer>
+      <AppHeader>{process.env.REACT_APP_APPLICATION_NAME}</AppHeader>
+      <Nav />
+      <Content />
+    </AppContainer>
   );
 }
 

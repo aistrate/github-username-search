@@ -1,9 +1,15 @@
-import { getByText, queryByText, render, screen } from "@testing-library/react";
+import { getByText, queryByText, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import App from "../App";
+import { BrowserRouter } from "react-router-dom";
+import { renderWithWrapper } from "../../common/testUtils";
+import { BareApp } from "../App";
 
 test("main menu navigation works correctly", () => {
-  render(<App />);
+  renderWithWrapper(
+    <BrowserRouter>
+      <BareApp />
+    </BrowserRouter>
+  );
 
   const menu = screen.getByRole("navigation");
   const page = screen.getByTestId("pageContainer");
