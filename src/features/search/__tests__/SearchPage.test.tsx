@@ -1,15 +1,10 @@
 import { screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { BrowserRouter } from "react-router-dom";
 import { BareApp } from "../../../app/App";
 import { renderWithWrapper } from "../../../common/testUtils";
 
 test("perform search", async () => {
-  renderWithWrapper(
-    <BrowserRouter>
-      <BareApp />
-    </BrowserRouter>
-  );
+  renderWithWrapper(<BareApp />);
 
   userEvent.type(screen.getByPlaceholderText("Username"), "reddit");
   userEvent.click(screen.getByRole("button", { name: "Search" }));
@@ -53,13 +48,8 @@ test("perform search", async () => {
 });
 
 test("non-existing username displays 'not found' message", async () => {
-  renderWithWrapper(
-    <BrowserRouter>
-      <BareApp />
-    </BrowserRouter>
-  );
+  renderWithWrapper(<BareApp />);
 
-  userEvent.clear(screen.getByPlaceholderText("Username"));
   userEvent.type(screen.getByPlaceholderText("Username"), "ababab1234");
   userEvent.click(screen.getByRole("button", { name: "Search" }));
 
