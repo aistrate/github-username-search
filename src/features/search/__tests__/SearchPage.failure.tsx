@@ -19,7 +19,7 @@ test("illegal character in search string causes validation message", async () =>
 
   const input = screen.getByPlaceholderText("Username");
   const validationMessage =
-    /username may only contain alphanumeric characters or single hyphens, and cannot begin or end with a hyphen./i;
+    "Username may only contain alphanumeric characters or single hyphens, and cannot begin or end with a hyphen.";
 
   userEvent.type(input, "google-{enter}");
   expect(screen.queryByText(validationMessage)).toBeInTheDocument();
