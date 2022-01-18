@@ -7,6 +7,8 @@ import { createStore } from "../app/store";
 export { renderWithWrapper };
 
 function renderWithWrapper(ui: ReactElement, options?: RenderOptions) {
+  window.localStorage.clear();
+
   const store = createStore();
 
   return render(
