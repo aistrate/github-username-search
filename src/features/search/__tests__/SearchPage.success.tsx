@@ -10,41 +10,8 @@ test("perform search", async () => {
   userEvent.click(screen.getByRole("button", { name: "Search" }));
 
   const repoHeadings = await screen.findAllByRole("heading", { level: 3 });
-  const repoNames = repoHeadings.map((heading) => heading.textContent);
-
-  const expected = [
-    "baseplate.go",
-    "android-interview",
-    "rules_apple",
-    "baseplate.py",
-    "baseplate.py-upgrader",
-    "xctestrunner",
-    "cqlmapper",
-    "error-pages",
-    "edgecontext",
-    "reddit-gtm-template",
-    "fernet-go",
-    "baseplate-celery",
-    "node-api-client",
-    "snudown",
-    "drone-kaniko",
-    "AlienBlue",
-    "rpan-studio",
-    "IndicatorFastScroll",
-    "thrift-compiler",
-    "docker-bazelisk",
-    "backup-utils",
-    "rollingpin",
-    "experiments.py",
-    "iOS-interview",
-    "dind-drone-plugin",
-    "dispatch",
-    "thrift-python",
-    "zap",
-    "reddit-coredns-plugins",
-    "obs-browser-plugin",
-  ];
-  expect(repoNames).toEqual(expected);
+  const repoNames = repoHeadings.map((heading) => heading.textContent || "");
+  expect(repoNames).toEqual(expectedRepoNames["reddit"].pages[1]);
 });
 
 test("perform search by pressing Enter", async () => {
@@ -69,3 +36,50 @@ test("trim search string before searching", async () => {
   const repoHeadings = await screen.findAllByRole("heading", { level: 3 });
   expect(repoHeadings.length).toEqual(30);
 });
+
+type RepoNames = {
+  [username: string]: {
+    pages: {
+      [page: number]: string[];
+    };
+  };
+};
+
+const expectedRepoNames: RepoNames = {
+  reddit: {
+    pages: {
+      1: [
+        "baseplate.go",
+        "android-interview",
+        "rules_apple",
+        "baseplate.py",
+        "baseplate.py-upgrader",
+        "xctestrunner",
+        "cqlmapper",
+        "error-pages",
+        "edgecontext",
+        "reddit-gtm-template",
+        "fernet-go",
+        "baseplate-celery",
+        "node-api-client",
+        "snudown",
+        "drone-kaniko",
+        "AlienBlue",
+        "rpan-studio",
+        "IndicatorFastScroll",
+        "thrift-compiler",
+        "docker-bazelisk",
+        "backup-utils",
+        "rollingpin",
+        "experiments.py",
+        "iOS-interview",
+        "dind-drone-plugin",
+        "dispatch",
+        "thrift-python",
+        "zap",
+        "reddit-coredns-plugins",
+        "obs-browser-plugin",
+      ],
+    },
+  },
+};
