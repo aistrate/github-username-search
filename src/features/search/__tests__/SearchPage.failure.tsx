@@ -3,7 +3,7 @@ import userEvent from "@testing-library/user-event";
 import App from "../../../app/App";
 import { renderWithWrapper } from "../../../common/testUtils";
 
-test("non-existing username displays 'not found' message", async () => {
+test("non-existing username causes 'not found' message", async () => {
   renderWithWrapper(<App />);
 
   userEvent.type(screen.getByPlaceholderText("Username"), "ababab1234");
@@ -14,15 +14,34 @@ test("non-existing username displays 'not found' message", async () => {
   ).toBeInTheDocument();
 });
 
-test("hyphens not allowed at beginning or end of search string", async () => {
+test("illegal character in search string causes validation message", async () => {
   renderWithWrapper(<App />);
 
-  userEvent.type(screen.getByPlaceholderText("Username"), "reddit-");
-  userEvent.click(screen.getByRole("button", { name: "Search" }));
+  const input = screen.getByPlaceholderText("Username");
+  const validationMessage =
+    /username may only contain alphanumeric characters or single hyphens, and cannot begin or end with a hyphen./i;
 
-  expect(
-    screen.queryByText(
-      /username may only contain alphanumeric characters or single hyphens, and cannot begin or end with a hyphen./i
-    )
-  ).toBeInTheDocument();
+  userEvent.type(input, "google-{enter}");
+  expect(screen.queryByText(validationMessage)).toBeInTheDocument();
+
+  userEvent.type(input, "{backspace}");
+  expect(screen.queryByText(validationMessage)).not.toBeInTheDocument();
+
+  userEvent.clear(input);
+  userEvent.type(input, "-google");
+  expect(screen.queryByText(validationMessage)).toBeInTheDocument();
+
+  userEvent.clear(input);
+  expect(screen.queryByText(validationMessage)).not.toBeInTheDocument();
+
+  userEvent.type(input, "google-2");
+  expect(screen.queryByText(validationMessage)).not.toBeInTheDocument();
+
+  userEvent.clear(input);
+  userEvent.type(input, "google--2");
+  expect(screen.queryByText(validationMessage)).toBeInTheDocument();
+
+  userEvent.clear(input);
+  userEvent.type(input, "google?2");
+  expect(screen.queryByText(validationMessage)).toBeInTheDocument();
 });
