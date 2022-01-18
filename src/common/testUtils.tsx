@@ -6,15 +6,22 @@ import { createStore } from "../app/store";
 
 export { renderWithWrapper };
 
-function renderWithWrapper(ui: ReactElement, options?: RenderOptions) {
+interface RenderWithWrapperOptions extends RenderOptions {
+  routerEntries?: string[];
+}
+
+function renderWithWrapper(
+  ui: ReactElement,
+  { routerEntries = ["/"], ...renderOptions }: RenderWithWrapperOptions = {}
+) {
   window.localStorage.clear();
 
   const store = createStore();
 
   return render(
     <Provider store={store}>
-      <MemoryRouter>{ui}</MemoryRouter>
+      <MemoryRouter initialEntries={routerEntries}>{ui}</MemoryRouter>
     </Provider>,
-    options
+    renderOptions
   );
 }

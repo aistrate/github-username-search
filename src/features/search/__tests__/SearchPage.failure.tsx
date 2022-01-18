@@ -45,3 +45,13 @@ test("illegal character in search string causes validation message", async () =>
   userEvent.type(input, "google?2");
   expect(screen.queryByText(validationMessage)).toBeInTheDocument();
 });
+
+test("illegal character in 'username' URL param causes validation message", async () => {
+  renderWithWrapper(<App />, { routerEntries: ["/search?username=google-"] });
+
+  const validationMessage =
+    'Invalid username "google-" in the URL. ' +
+    "Username may only contain alphanumeric characters or single hyphens, and cannot begin or end with a hyphen.";
+
+  expect(screen.queryByText(validationMessage)).toBeInTheDocument();
+});
