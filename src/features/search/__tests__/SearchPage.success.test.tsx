@@ -5,7 +5,7 @@ import { renderWithWrapper } from "../../../common/testUtils";
 
 jest.setTimeout(12000);
 
-test("perform search and page through repositories (main 'happy path' test)", async () => {
+test("perform search and page through the repositories (main 'happy path' test)", async () => {
   renderWithWrapper(<App />);
 
   userEvent.type(screen.getByPlaceholderText("Username"), "reddit");
@@ -75,6 +75,22 @@ test("trim search string before searching", async () => {
   expect(usernameInput).toHaveValue("reddit");
 
   await expectRepoNames(expectedRepoNames["reddit"].pages[1]);
+});
+
+test("perform search through URL parameter 'username'", async () => {
+  renderWithWrapper(<App />, { routerEntries: ["/search?username=reddit"] });
+
+  await expectRepoNames(expectedRepoNames["reddit"].pages[1]);
+  expect(screen.getByTestId("topPagination")).toHaveTextContent("Page 1/3");
+});
+
+test("perform search through URL parameters 'username' and 'page'", async () => {
+  renderWithWrapper(<App />, {
+    routerEntries: ["/search?username=reddit&page=2"],
+  });
+
+  await expectRepoNames(expectedRepoNames["reddit"].pages[2]);
+  expect(screen.getByTestId("topPagination")).toHaveTextContent("Page 2/3");
 });
 
 type RepoNames = {
