@@ -32,7 +32,7 @@ function RepoListView({ reposFetch, pageCount, className }: RepoListViewProps) {
     <div className={className}>
       <LargeHeading ref={headingRef}>
         Repositories
-        <TopPagination>
+        <TopPagination data-testid="topPagination">
           <Pagination
             page={page}
             pageCount={pageCount}
