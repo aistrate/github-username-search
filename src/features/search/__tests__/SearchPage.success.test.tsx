@@ -61,8 +61,7 @@ test("perform search by pressing Enter", async () => {
 
   userEvent.type(screen.getByPlaceholderText("Username"), "reddit{enter}");
 
-  const repoHeadings = await screen.findAllByRole("heading", { level: 3 });
-  expect(repoHeadings.length).toEqual(30);
+  await expectRepoNames(expectedRepoNames["reddit"].pages[1]);
 });
 
 test("trim search string before searching", async () => {
@@ -75,8 +74,7 @@ test("trim search string before searching", async () => {
 
   expect(usernameInput).toHaveValue("reddit");
 
-  const repoHeadings = await screen.findAllByRole("heading", { level: 3 });
-  expect(repoHeadings.length).toEqual(30);
+  await expectRepoNames(expectedRepoNames["reddit"].pages[1]);
 });
 
 type RepoNames = {

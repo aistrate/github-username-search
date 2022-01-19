@@ -46,7 +46,7 @@ test("illegal character in search string causes validation message", async () =>
   expect(screen.queryByText(validationMessage)).toBeInTheDocument();
 });
 
-test("illegal character in 'username' URL param causes validation message", async () => {
+test("illegal character in URL parameter 'username' causes validation message", async () => {
   renderWithWrapper(<App />, { routerEntries: ["/search?username=google-"] });
 
   const validationMessage =
