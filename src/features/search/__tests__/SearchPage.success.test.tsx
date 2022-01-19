@@ -5,13 +5,17 @@ import { renderWithWrapper } from "../../../common/testUtils";
 
 jest.setTimeout(12000);
 
-test("perform search and page through repositories", async () => {
+test("perform search and page through repositories (main 'happy path' test)", async () => {
   renderWithWrapper(<App />);
 
   userEvent.type(screen.getByPlaceholderText("Username"), "reddit");
   userEvent.click(screen.getByRole("button", { name: "Search" }));
 
   await expectRepoNames(expectedRepoNames["reddit"].pages[1]);
+
+  const page = screen.getByTestId("pageContainer");
+  expect(page).toHaveTextContent("Location:San Francisco, CA");
+  expect(page).toHaveTextContent("Repositories:88");
 
   const topPagination = screen.getByTestId("topPagination");
   expect(topPagination).toHaveTextContent("Page 1/3");
