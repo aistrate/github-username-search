@@ -1,4 +1,4 @@
-export { formatDateTime, formatNumber };
+export { formatDateTime, formatNumber, formatUrl };
 
 const locale = "en-GB";
 
@@ -44,4 +44,10 @@ function getDateTimeOptions(format: DateTimeFormat) {
 
 function formatNumber(value: number) {
   return value.toLocaleString(locale);
+}
+
+const urlWithProtocol = /^https?:\/\//i;
+
+function formatUrl(url: string) {
+  return url.match(urlWithProtocol) ? url : `http://${url}`;
 }

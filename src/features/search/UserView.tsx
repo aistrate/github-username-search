@@ -1,7 +1,11 @@
 import React from "react";
 import styled, { css } from "styled-components/macro";
 import Delayed from "../../common/Delayed";
-import { formatDateTime, formatNumber } from "../../common/formatting";
+import {
+  formatDateTime,
+  formatNumber,
+  formatUrl,
+} from "../../common/formatting";
 import { LargeHeading } from "../../common/styled/Headings";
 import { ExternalLink } from "../../common/styled/Links";
 import Message from "../../common/styled/Message";
@@ -69,7 +73,7 @@ const UserInfo = React.memo(({ user }: UserInfoProps) => {
         {user.email && <Row label="Email">{user.email}</Row>}
         {user.blog && (
           <Row label="Blog">
-            <ExternalLink nowrap href={user.blog}>
+            <ExternalLink nowrap href={formatUrl(user.blog)}>
               {user.blog}
             </ExternalLink>
           </Row>

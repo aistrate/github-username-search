@@ -1,7 +1,11 @@
 import React, { useRef } from "react";
 import styled, { css } from "styled-components/macro";
 import Delayed from "../../common/Delayed";
-import { formatDateTime, formatNumber } from "../../common/formatting";
+import {
+  formatDateTime,
+  formatNumber,
+  formatUrl,
+} from "../../common/formatting";
 import Pagination from "../../common/Pagination";
 import { LargeHeading, SmallHeading } from "../../common/styled/Headings";
 import { ExternalLink } from "../../common/styled/Links";
@@ -103,7 +107,7 @@ function RepoInfo({ repo }: RepoInfoProps) {
         {repo.description && <Row label="Description">{repo.description}</Row>}
         {repo.homepage && (
           <Row label="Homepage">
-            <ExternalLink nowrap href={repo.homepage}>
+            <ExternalLink nowrap href={formatUrl(repo.homepage)}>
               {repo.homepage}
             </ExternalLink>
           </Row>
