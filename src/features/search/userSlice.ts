@@ -12,7 +12,7 @@ type UserType = "User" | "Organization";
 type User = {
   id: number;
   avatar_url: string;
-  name: string;
+  name: string | null;
   login: string;
   type: UserType;
   html_url: string;
