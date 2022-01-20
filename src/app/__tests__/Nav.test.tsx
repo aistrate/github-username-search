@@ -16,12 +16,12 @@ test("main menu navigation works correctly", () => {
 
   expect(queryByRole(page, "button", { name: "Search" })).toBeInTheDocument();
 
-  userEvent.click(getByText(menu, /history/i));
-  expect(queryByText(page, /history \(0\)/i)).toBeInTheDocument();
+  userEvent.click(getByText(menu, "History"));
+  expect(queryByText(page, "History (0)")).toBeInTheDocument();
 
-  userEvent.click(getByText(menu, /about/i));
-  expect(queryByText(page, /how to search/i)).toBeInTheDocument();
+  userEvent.click(getByText(menu, "About"));
+  expect(queryByText(page, "How to search")).toBeInTheDocument();
 
-  userEvent.click(getByText(menu, /search/i));
+  userEvent.click(getByText(menu, "Search"));
   expect(queryByRole(page, "button", { name: "Search" })).toBeInTheDocument();
 });
