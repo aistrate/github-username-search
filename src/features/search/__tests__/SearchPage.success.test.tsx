@@ -5,7 +5,7 @@ import { renderWithWrapper } from "../../../common/testUtils";
 
 jest.setTimeout(12000);
 
-test("perform search and page through the repositories (main 'happy path' test)", async () => {
+test("perform search and page through the repositories ('happy path' test)", async () => {
   renderWithWrapper(<App />);
 
   userEvent.type(screen.getByPlaceholderText("Username"), "reddit");
@@ -55,6 +55,37 @@ async function expectRepoNames(expected: string[]) {
     { timeout: 3000 }
   );
 }
+
+test("perform search for user with single page of repositories", async () => {
+  renderWithWrapper(<App />);
+
+  userEvent.type(screen.getByPlaceholderText("Username"), "graphql");
+  userEvent.click(screen.getByRole("button", { name: "Search" }));
+
+  await expectRepoNames(expectedRepoNames["graphql"].pages[1]);
+
+  expect(screen.getByTestId("pageContainer")).toHaveTextContent(
+    "Repositories:25"
+  );
+
+  expect(screen.getByTestId("topPagination")).toBeEmptyDOMElement();
+});
+
+test("perform search for user with zero repositories", async () => {
+  renderWithWrapper(<App />);
+
+  userEvent.type(screen.getByPlaceholderText("Username"), "zerorepos");
+  userEvent.click(screen.getByRole("button", { name: "Search" }));
+
+  await screen.findByText("Repositories");
+  await screen.findByText("(none)");
+
+  expect(screen.getByTestId("pageContainer")).toHaveTextContent(
+    "Repositories:0"
+  );
+
+  expect(screen.getByTestId("topPagination")).toBeEmptyDOMElement();
+});
 
 test("perform search by pressing Enter", async () => {
   renderWithWrapper(<App />);
@@ -198,6 +229,42 @@ const expectedRepoNames: RepoNames = {
         "JMSlider",
         "JMTabView",
       ],
+    },
+  },
+  graphql: {
+    pages: {
+      1: [
+        "graphql.github.io",
+        "graphql-wg",
+        "graphql-js",
+        "graphql-landscape",
+        "vscode-graphql",
+        "graphql-spec",
+        "graphiql",
+        "graphql-playground",
+        "graphql-js-wg",
+        "libgraphqlparser",
+        "graphql-relay-js",
+        "express-graphql",
+        "graphql-directory",
+        "dataloader",
+        "swapi-graphql",
+        "graphql-over-http",
+        "EasyCLA",
+        "foundation",
+        "prettier",
+        ".github",
+        "faq",
+        "graphql-scalars",
+        "marketing",
+        "codemirror-graphql",
+        "graphql-language-service",
+      ],
+    },
+  },
+  zerorepos: {
+    pages: {
+      1: [],
     },
   },
 };
