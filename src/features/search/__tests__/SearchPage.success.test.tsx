@@ -3,8 +3,6 @@ import userEvent from "@testing-library/user-event";
 import App from "../../../app/App";
 import { renderWithWrapper } from "../../../common/testUtils";
 
-jest.setTimeout(12000);
-
 test("perform search and page through the repositories ('happy path' test)", async () => {
   renderWithWrapper(<App />);
 
@@ -41,7 +39,7 @@ test("perform search and page through the repositories ('happy path' test)", asy
 
   userEvent.click(getByText(topPagination, /previous/i));
   expect(topPagination).toHaveTextContent("Page 1/3");
-});
+}, 15000);
 
 async function expectRepoNames(expected: string[]) {
   await waitFor(
