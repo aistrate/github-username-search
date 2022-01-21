@@ -6,13 +6,13 @@ test("should render content with delay", () => {
 
   render(<Delayed delay={1000}>Delayed content</Delayed>);
 
-  expect(screen.queryByText(/delayed content/i)).not.toBeInTheDocument();
+  expect(screen.queryByText("Delayed content")).not.toBeInTheDocument();
 
   jest.advanceTimersByTime(900);
-  expect(screen.queryByText(/delayed content/i)).not.toBeInTheDocument();
+  expect(screen.queryByText("Delayed content")).not.toBeInTheDocument();
 
   act(() => {
     jest.advanceTimersByTime(100);
   });
-  expect(screen.queryByText(/delayed content/i)).toBeInTheDocument();
+  expect(screen.queryByText("Delayed content")).toBeInTheDocument();
 });

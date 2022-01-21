@@ -10,7 +10,7 @@ test("non-existing username causes 'not found' message", async () => {
   userEvent.click(screen.getByRole("button", { name: "Search" }));
 
   expect(
-    await screen.findByText(/username 'ababab1234' was not found./i)
+    await screen.findByText("Username 'ababab1234' was not found.")
   ).toBeInTheDocument();
 });
 
