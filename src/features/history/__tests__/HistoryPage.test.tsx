@@ -3,7 +3,7 @@ import userEvent from "@testing-library/user-event";
 import App from "../../../app/App";
 import { renderWithWrapper } from "../../../common/testUtils";
 
-test("on search, save username in search history ('happy path' test)", async () => {
+test("on search, save username in search history", async () => {
   renderWithWrapper(<App />);
 
   const menu = screen.getByRole("navigation");
@@ -11,50 +11,51 @@ test("on search, save username in search history ('happy path' test)", async () 
   const historyMenuItem = getByText(menu, "History");
 
   userEvent.click(historyMenuItem);
-  expect(screen.queryByText("History (0)")).toBeInTheDocument();
-  expectHistory([]);
+  expectHistoryToEqual([]);
 
   userEvent.click(searchMenuItem);
-  userEvent.type(screen.getByPlaceholderText("Username"), "reddit{enter}");
-  await waitForRepos();
+  await searchForUsername("reddit");
 
   userEvent.click(historyMenuItem);
-  expect(screen.queryByText("History (1)")).toBeInTheDocument();
-  expectHistory(["reddit"]);
+  expectHistoryToEqual(["reddit"]);
 
   userEvent.click(searchMenuItem);
-  userEvent.type(screen.getByPlaceholderText("Username"), "graphql{enter}");
-  await waitForRepos();
+  await searchForUsername("graphql");
 
   userEvent.click(historyMenuItem);
-  expect(screen.queryByText("History (2)")).toBeInTheDocument();
-  expectHistory(["graphql", "reddit"]);
+  expectHistoryToEqual(["graphql", "reddit"]);
 
   userEvent.click(searchMenuItem);
-  userEvent.type(screen.getByPlaceholderText("Username"), "reddit{enter}");
-  await waitForRepos();
+  await searchForUsername("reddit");
 
   userEvent.click(historyMenuItem);
-  expect(screen.queryByText("History (2)")).toBeInTheDocument();
-  expectHistory(["reddit", "graphql"]);
+  expectHistoryToEqual(["reddit", "graphql"]);
 
   userEvent.click(searchMenuItem);
-  userEvent.type(screen.getByPlaceholderText("Username"), "inexistent{enter}");
+  searchForUsername("inexistent", false);
   expect(
     await screen.findByText("Username 'inexistent' was not found.")
   ).toBeInTheDocument();
 
   userEvent.click(historyMenuItem);
-  expect(screen.queryByText("History (2)")).toBeInTheDocument();
-  expectHistory(["reddit", "graphql"]);
+  expectHistoryToEqual(["reddit", "graphql"]);
 });
 
-async function waitForRepos() {
-  await screen.findAllByRole("heading", { level: 3 });
+async function searchForUsername(username: string, waitForRepos = true) {
+  userEvent.type(screen.getByPlaceholderText("Username"), username);
+  userEvent.click(screen.getByRole("button", { name: "Search" }));
+
+  if (waitForRepos) {
+    await screen.findAllByRole("heading", { level: 3 });
+  }
 }
 
-function expectHistory(expected: string[]) {
+function expectHistoryToEqual(expected: string[]) {
   const rowValues = screen.queryAllByTestId("rowValue");
   const usernames = rowValues.map((rowValue) => rowValue.textContent || "");
   expect(usernames).toEqual(expected);
+
+  expect(
+    screen.queryByText(`History (${expected.length})`)
+  ).toBeInTheDocument();
 }
