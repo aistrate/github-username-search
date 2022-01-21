@@ -24,7 +24,7 @@ function UserView({ userFetch, className }: UserViewProps) {
   const username = userFetch.fetchArg?.username || "";
 
   return (
-    <Container className={className}>
+    <Container className={className} data-testid="userView">
       {userFetch.isLoading && (
         <Delayed>
           <Spinner />

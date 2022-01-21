@@ -23,7 +23,7 @@ function Page() {
   const queryParams = new URLSearchParams(location.search);
 
   return (
-    <PageContainer data-testid="pageContainer">
+    <PageContainer>
       <ErrorBoundary key={location.pathname}>
         <Routes>
           <Route
