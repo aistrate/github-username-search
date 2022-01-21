@@ -15,7 +15,7 @@ function Row({ label, labelSuffix = ":", children }: RowProps) {
         {label}
         {labelSuffix}
       </Label>
-      <Text>{children}</Text>
+      <Text data-testid="rowValue">{children}</Text>
     </Container>
   );
 }
