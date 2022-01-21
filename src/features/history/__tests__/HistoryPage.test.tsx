@@ -3,7 +3,7 @@ import userEvent from "@testing-library/user-event";
 import App from "../../../app/App";
 import { renderWithWrapper } from "../../../common/testUtils";
 
-test("on search, save username in search history", async () => {
+test("on every successful search, save username at the top of search history", async () => {
   renderWithWrapper(<App />);
 
   const menu = screen.getByRole("navigation");
