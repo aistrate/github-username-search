@@ -11,14 +11,14 @@ export default App;
 function App() {
   return (
     <AppContainer>
-      <AppHeader>{process.env.REACT_APP_APPLICATION_NAME}</AppHeader>
+      <Header>{process.env.REACT_APP_APPLICATION_NAME}</Header>
       <Nav />
-      <Content />
+      <Page />
     </AppContainer>
   );
 }
 
-function Content() {
+function Page() {
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
 
@@ -51,7 +51,7 @@ const AppContainer = styled.div`
   margin: auto;
 `;
 
-const AppHeader = styled.div`
+const Header = styled.div`
   background-color: #1b4371;
   color: white;
   font-size: 2.25rem;
