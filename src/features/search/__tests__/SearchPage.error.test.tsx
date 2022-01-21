@@ -3,14 +3,14 @@ import userEvent from "@testing-library/user-event";
 import App from "../../../app/App";
 import { renderWithWrapper } from "../../../common/testUtils";
 
-test("non-existing username causes 'not found' message", async () => {
+test("nonexistent username causes 'not found' message", async () => {
   renderWithWrapper(<App />);
 
-  userEvent.type(screen.getByPlaceholderText("Username"), "ababab1234");
+  userEvent.type(screen.getByPlaceholderText("Username"), "nonexistent");
   userEvent.click(screen.getByRole("button", { name: "Search" }));
 
   expect(
-    await screen.findByText("Username 'ababab1234' was not found.")
+    await screen.findByText("Username 'nonexistent' was not found.")
   ).toBeInTheDocument();
 });
 

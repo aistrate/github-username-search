@@ -32,9 +32,9 @@ test("on search, save username in search history", async () => {
   expectHistoryToEqual(["reddit", "graphql"]);
 
   userEvent.click(searchMenuItem);
-  searchForUsername("inexistent", false);
+  searchForUsername("nonexistent", false);
   expect(
-    await screen.findByText("Username 'inexistent' was not found.")
+    await screen.findByText("Username 'nonexistent' was not found.")
   ).toBeInTheDocument();
 
   userEvent.click(historyMenuItem);
