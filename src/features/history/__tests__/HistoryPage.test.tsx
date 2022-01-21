@@ -41,6 +41,24 @@ test("on every successful search, save username at the top of search history", a
   expectHistoryToEqual(["reddit", "graphql"]);
 });
 
+test("username on History page links to the Search page for that username", async () => {
+  renderWithWrapper(<App />);
+
+  const menu = screen.getByRole("navigation");
+
+  userEvent.click(getByText(menu, "Search"));
+  await searchForUsername("graphql");
+
+  userEvent.click(getByText(menu, "History"));
+  expect(screen.queryByText(`History (1)`)).toBeInTheDocument();
+
+  userEvent.click(screen.getByText("graphql"));
+  expect(screen.getByPlaceholderText("Username")).toHaveValue("graphql");
+
+  const repoHeadings = await screen.findAllByRole("heading", { level: 3 });
+  expect(repoHeadings.length).toBe(25);
+});
+
 async function searchForUsername(username: string, waitForRepos = true) {
   userEvent.type(screen.getByPlaceholderText("Username"), username);
   userEvent.click(screen.getByRole("button", { name: "Search" }));
