@@ -1,7 +1,7 @@
 import { getByText, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import App from "../../../app/App";
-import { renderWithWrapper } from "../../../common/testUtils";
+import App from "../../app/App";
+import { renderWithWrapper } from "../../common/testUtils";
 
 test("perform search and page through the repositories ('happy path' test)", async () => {
   renderWithWrapper(<App />);

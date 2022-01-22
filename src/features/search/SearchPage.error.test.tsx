@@ -1,7 +1,7 @@
 import { screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import App from "../../../app/App";
-import { renderWithWrapper } from "../../../common/testUtils";
+import App from "../../app/App";
+import { renderWithWrapper } from "../../common/testUtils";
 
 test("nonexistent username causes 'not found' message", async () => {
   renderWithWrapper(<App />);

@@ -1,7 +1,7 @@
 import { getByText, queryAllByRole, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import App from "../../../app/App";
-import { renderWithWrapper } from "../../../common/testUtils";
+import App from "../../app/App";
+import { renderWithWrapper } from "../../common/testUtils";
 
 test("on every successful search, save username at the top of search history", async () => {
   renderWithWrapper(<App />);

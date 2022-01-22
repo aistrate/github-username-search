@@ -1,7 +1,7 @@
 import { getByText, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { renderWithWrapper } from "../../common/testUtils";
-import App from "../App";
+import { renderWithWrapper } from "../common/testUtils";
+import App from "./App";
 
 test.only("main menu navigation works correctly", () => {
   renderWithWrapper(<App />);
