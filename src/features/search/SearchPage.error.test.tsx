@@ -1,7 +1,10 @@
 import { screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import { rest } from "msw";
+import { baseUrl } from "../../app/api";
 import App from "../../app/App";
 import { renderWithWrapper } from "../../common/testUtils";
+import { server } from "../../mocks/server";
 
 test("nonexistent username causes 'not found' message", async () => {
   renderWithWrapper(<App />);
@@ -11,6 +14,26 @@ test("nonexistent username causes 'not found' message", async () => {
 
   expect(
     await screen.findByText("Username 'nonexistent' was not found.")
+  ).toBeInTheDocument();
+});
+
+test("HTTP error causes error message to be shown", async () => {
+  renderWithWrapper(<App />);
+
+  server.use(
+    rest.get(`${baseUrl}/users/:username`, (_, res, ctx) => {
+      return res(
+        ctx.status(500),
+        ctx.json({ message: "Internal Server Error" })
+      );
+    })
+  );
+
+  userEvent.type(screen.getByPlaceholderText("Username"), "reddit");
+  userEvent.click(screen.getByRole("button", { name: "Search" }));
+
+  expect(
+    await screen.findByText("HTTP Error: (500) Internal Server Error")
   ).toBeInTheDocument();
 });
 
