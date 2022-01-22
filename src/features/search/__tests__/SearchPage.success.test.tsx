@@ -9,7 +9,7 @@ test("perform search and page through the repositories ('happy path' test)", asy
   userEvent.type(screen.getByPlaceholderText("Username"), "reddit");
   userEvent.click(screen.getByRole("button", { name: "Search" }));
 
-  await expectRepoNames(expectedRepoNames["reddit"].pages[1]);
+  await expectRepoNamesToEqual(expectedRepoNames["reddit"].pages[1]);
 
   const userView = screen.getByTestId("userView");
   expect(userView).toHaveTextContent("Location:San Francisco, CA");
@@ -19,40 +19,27 @@ test("perform search and page through the repositories ('happy path' test)", asy
   expect(topPagination).toHaveTextContent("Page 1/3");
 
   userEvent.click(getByText(topPagination, /next/i));
-  await expectRepoNames(expectedRepoNames["reddit"].pages[2]);
+  await expectRepoNamesToEqual(expectedRepoNames["reddit"].pages[2]);
   expect(topPagination).toHaveTextContent("Page 2/3");
 
   userEvent.click(getByText(topPagination, /next/i));
-  await expectRepoNames(expectedRepoNames["reddit"].pages[3]);
+  await expectRepoNamesToEqual(expectedRepoNames["reddit"].pages[3]);
   expect(topPagination).toHaveTextContent("Page 3/3");
 
   userEvent.click(getByText(topPagination, /next/i));
   expect(topPagination).toHaveTextContent("Page 3/3");
 
   userEvent.click(getByText(topPagination, /previous/i));
-  await expectRepoNames(expectedRepoNames["reddit"].pages[2]);
+  await expectRepoNamesToEqual(expectedRepoNames["reddit"].pages[2]);
   expect(topPagination).toHaveTextContent("Page 2/3");
 
   userEvent.click(getByText(topPagination, /previous/i));
-  await expectRepoNames(expectedRepoNames["reddit"].pages[1]);
+  await expectRepoNamesToEqual(expectedRepoNames["reddit"].pages[1]);
   expect(topPagination).toHaveTextContent("Page 1/3");
 
   userEvent.click(getByText(topPagination, /previous/i));
   expect(topPagination).toHaveTextContent("Page 1/3");
 }, 15000);
-
-async function expectRepoNames(expected: string[]) {
-  await waitFor(
-    () => {
-      const repoHeadings = screen.queryAllByRole("heading", { level: 3 });
-      const repoNames = repoHeadings.map(
-        (heading) => heading.textContent || ""
-      );
-      expect(repoNames).toEqual(expected);
-    },
-    { timeout: 3000 }
-  );
-}
 
 test("perform search for user with single page of repositories", async () => {
   renderWithWrapper(<App />);
@@ -60,7 +47,7 @@ test("perform search for user with single page of repositories", async () => {
   userEvent.type(screen.getByPlaceholderText("Username"), "graphql");
   userEvent.click(screen.getByRole("button", { name: "Search" }));
 
-  await expectRepoNames(expectedRepoNames["graphql"].pages[1]);
+  await expectRepoNamesToEqual(expectedRepoNames["graphql"].pages[1]);
 
   expect(screen.getByTestId("userView")).toHaveTextContent("Repositories:25");
 
@@ -86,7 +73,7 @@ test("perform search by pressing Enter", async () => {
 
   userEvent.type(screen.getByPlaceholderText("Username"), "reddit{enter}");
 
-  await expectRepoNames(expectedRepoNames["reddit"].pages[1]);
+  await expectRepoNamesToEqual(expectedRepoNames["reddit"].pages[1]);
 });
 
 test("trim search string before searching", async () => {
@@ -99,13 +86,13 @@ test("trim search string before searching", async () => {
 
   expect(usernameInput).toHaveValue("reddit");
 
-  await expectRepoNames(expectedRepoNames["reddit"].pages[1]);
+  await expectRepoNamesToEqual(expectedRepoNames["reddit"].pages[1]);
 });
 
 test("perform search through URL parameter 'username'", async () => {
   renderWithWrapper(<App />, { routerEntries: ["/search?username=reddit"] });
 
-  await expectRepoNames(expectedRepoNames["reddit"].pages[1]);
+  await expectRepoNamesToEqual(expectedRepoNames["reddit"].pages[1]);
   expect(screen.getByTestId("topPagination")).toHaveTextContent("Page 1/3");
 });
 
@@ -114,9 +101,22 @@ test("perform search through URL parameters 'username' and 'page'", async () => 
     routerEntries: ["/search?username=reddit&page=2"],
   });
 
-  await expectRepoNames(expectedRepoNames["reddit"].pages[2]);
+  await expectRepoNamesToEqual(expectedRepoNames["reddit"].pages[2]);
   expect(screen.getByTestId("topPagination")).toHaveTextContent("Page 2/3");
 });
+
+async function expectRepoNamesToEqual(expected: string[]) {
+  await waitFor(
+    () => {
+      const repoHeadings = screen.queryAllByRole("heading", { level: 3 });
+      const repoNames = repoHeadings.map(
+        (heading) => heading.textContent || ""
+      );
+      expect(repoNames).toEqual(expected);
+    },
+    { timeout: 3000 }
+  );
+}
 
 type RepoNames = {
   [username: string]: {
