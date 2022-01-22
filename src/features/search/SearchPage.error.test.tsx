@@ -21,7 +21,7 @@ test("HTTP error causes error message to be shown", async () => {
   renderWithWrapper(<App />);
 
   server.use(
-    rest.get(`${baseUrl}/users/:username`, (_, res, ctx) => {
+    rest.get(`${baseUrl}/users/:username`, (_req, res, ctx) => {
       return res(
         ctx.status(500),
         ctx.json({ message: "Internal Server Error" })
@@ -34,6 +34,24 @@ test("HTTP error causes error message to be shown", async () => {
 
   expect(
     await screen.findByText("HTTP Error: (500) Internal Server Error")
+  ).toBeInTheDocument();
+});
+
+test("network error causes error message to be shown", async () => {
+  renderWithWrapper(<App />);
+
+  server.use(
+    rest.get(`${baseUrl}/users/:username`, (_req, res, _ctx) => {
+      return res.networkError("Failed to connect");
+    })
+  );
+
+  userEvent.type(screen.getByPlaceholderText("Username"), "reddit");
+  userEvent.click(screen.getByRole("button", { name: "Search" }));
+
+  // Node-specific message (the Chrome-specific message is "Failed to fetch")
+  expect(
+    await screen.findByText("Error: Network request failed")
   ).toBeInTheDocument();
 });
 
