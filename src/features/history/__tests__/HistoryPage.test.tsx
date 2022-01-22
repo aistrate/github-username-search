@@ -1,4 +1,4 @@
-import { getByText, screen } from "@testing-library/react";
+import { getByText, queryAllByRole, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import App from "../../../app/App";
 import { renderWithWrapper } from "../../../common/testUtils";
@@ -60,6 +60,7 @@ test("username on History page links to the Search page for that username", asyn
 });
 
 async function searchForUsername(username: string, waitForRepos = true) {
+  // on the Search Page
   userEvent.type(screen.getByPlaceholderText("Username"), username);
   userEvent.click(screen.getByRole("button", { name: "Search" }));
 
@@ -69,8 +70,12 @@ async function searchForUsername(username: string, waitForRepos = true) {
 }
 
 function expectHistoryToEqual(expected: string[]) {
-  const rowValues = screen.queryAllByTestId("rowValue");
-  const usernames = rowValues.map((rowValue) => rowValue.textContent || "");
+  // on the History Page
+  const historyLinks = queryAllByRole(
+    screen.getByTestId("historyList"),
+    "link"
+  );
+  const usernames = historyLinks.map((link) => link.textContent || "");
   expect(usernames).toEqual(expected);
 
   expect(

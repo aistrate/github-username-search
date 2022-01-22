@@ -38,7 +38,7 @@ function HistoryPage() {
       </LargeHeading>
 
       {history && (
-        <div>
+        <div data-testid="historyList">
           {history.length > 0 ? (
             history.map((historyItem) => (
               <HistoryRow
