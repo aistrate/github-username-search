@@ -1,7 +1,7 @@
 import { act, render, screen } from "@testing-library/react";
 import Delayed from "./Delayed";
 
-test("should render content with delay", () => {
+test("show content with a delay", () => {
   jest.useFakeTimers();
 
   render(<Delayed delay={1000}>Delayed content</Delayed>);
@@ -15,4 +15,6 @@ test("should render content with delay", () => {
     jest.advanceTimersByTime(100);
   });
   expect(screen.queryByText("Delayed content")).toBeInTheDocument();
+
+  jest.useRealTimers();
 });
