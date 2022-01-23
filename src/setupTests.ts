@@ -3,6 +3,9 @@ import { server } from "./mocks/server";
 
 beforeAll(() => server.listen());
 
-afterEach(() => server.resetHandlers());
+afterEach(() => {
+  server.resetHandlers();
+  window.localStorage.clear();
+});
 
 afterAll(() => server.close());

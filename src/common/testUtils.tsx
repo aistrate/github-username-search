@@ -14,8 +14,6 @@ function renderWithWrapper(
   ui: ReactElement,
   { routerEntries = ["/"], ...renderOptions }: RenderWithWrapperOptions = {}
 ) {
-  window.localStorage.clear();
-
   const store = createStore();
 
   return render(
