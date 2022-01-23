@@ -27,7 +27,7 @@ function UserView({ userFetch, className }: UserViewProps) {
     <Container className={className} data-testid="userView">
       {userFetch.isLoading && (
         <Delayed>
-          <Spinner />
+          <Spinner data-testid="userSpinner" />
         </Delayed>
       )}
 

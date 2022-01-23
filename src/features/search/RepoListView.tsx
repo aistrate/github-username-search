@@ -49,7 +49,7 @@ function RepoListView({ reposFetch, pageCount, className }: RepoListViewProps) {
       <Content>
         {reposFetch.isLoading && (
           <Delayed>
-            <Spinner />
+            <Spinner data-testid="reposSpinner" />
           </Delayed>
         )}
 
