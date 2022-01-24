@@ -49,7 +49,7 @@ test("network error causes error message to be shown", async () => {
   userEvent.type(screen.getByPlaceholderText("Username"), "reddit");
   userEvent.click(screen.getByRole("button", { name: "Search" }));
 
-  // Node-specific message (the Chrome-specific message is "Failed to fetch")
+  // NodeJS-specific message (the Chrome-specific message is "Failed to fetch")
   expect(
     await screen.findByText("Error: Network request failed")
   ).toBeInTheDocument();
