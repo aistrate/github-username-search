@@ -132,6 +132,20 @@ test("show spinner if Repos data fetching takes more than 500 ms", async () => {
   await expectRepoNamesToEqual(expectedRepoNames["reddit"].pages[1]);
 
   expect(screen.queryByTestId("reposSpinner")).not.toBeInTheDocument();
+
+  server.use(
+    rest.get(`${baseUrl}/users/reddit/repos`, (_req, res, ctx) => {
+      return res(ctx.json(mockUsers["reddit"].repoPages[2]), ctx.delay(500));
+    })
+  );
+
+  userEvent.click(getByText(screen.getByTestId("topPagination"), /next/i));
+
+  expect(await screen.findByTestId("reposSpinner")).toBeInTheDocument();
+
+  await expectRepoNamesToEqual(expectedRepoNames["reddit"].pages[2]);
+
+  expect(screen.queryByTestId("reposSpinner")).not.toBeInTheDocument();
 });
 
 test("perform search through URL parameter 'username'", async () => {
