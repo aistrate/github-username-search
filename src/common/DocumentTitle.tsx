@@ -1,12 +1,12 @@
 import { useEffect } from "react";
 
-export default WindowTitle;
+export default DocumentTitle;
 
-type WindowTitleProps = {
+type DocumentTitleProps = {
   value: string;
 };
 
-function WindowTitle({ value }: WindowTitleProps) {
+function DocumentTitle({ value }: DocumentTitleProps) {
   useEffect(() => {
     document.title = `${value} - ${process.env.REACT_APP_APPLICATION_NAME}`;
   }, [value]);

@@ -1,13 +1,13 @@
+import DocumentTitle from "../../common/DocumentTitle";
 import { SmallHeading } from "../../common/styled/Headings";
 import { ExternalLink } from "../../common/styled/Links";
-import WindowTitle from "../../common/WindowTitle";
 
 export default AboutPage;
 
 function AboutPage() {
   return (
     <>
-      <WindowTitle value="About" />
+      <DocumentTitle value="About" />
 
       <p>
         Check out the source code for the website{" "}

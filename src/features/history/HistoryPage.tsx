@@ -2,11 +2,11 @@ import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import styled from "styled-components/macro";
 import { useAppDispatch } from "../../app/store";
+import DocumentTitle from "../../common/DocumentTitle";
 import { formatDateTime } from "../../common/formatting";
 import { LargeHeading } from "../../common/styled/Headings";
 import { InternalLink } from "../../common/styled/Links";
 import Row from "../../common/styled/Row";
-import WindowTitle from "../../common/WindowTitle";
 import {
   HistoryItem,
   loadHistory,
@@ -31,7 +31,7 @@ function HistoryPage() {
 
   return (
     <>
-      <WindowTitle value="History" />
+      <DocumentTitle value="History" />
 
       <LargeHeading>
         History {history ? `(${history.length})` : ""}

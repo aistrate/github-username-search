@@ -4,8 +4,8 @@ import { useLocation, useNavigate } from "react-router-dom";
 import styled from "styled-components/macro";
 import { reposPerPage } from "../../app/api";
 import { useAppDispatch } from "../../app/store";
+import DocumentTitle from "../../common/DocumentTitle";
 import Message from "../../common/styled/Message";
-import WindowTitle from "../../common/WindowTitle";
 import { saveToHistory } from "../history/historySlice";
 import RepoListView from "./RepoListView";
 import { fetchRepos, resetRepos, selectRepos } from "./reposSlice";
@@ -52,7 +52,7 @@ function SearchPage({ queryUsername, queryPage }: SearchPageProps) {
 
   return (
     <>
-      <WindowTitle value={getWindowTitle(username, page)} />
+      <DocumentTitle value={getDocumentTitle(username, page)} />
 
       <StyledSearchForm initialValue={username} onSearch={handleSearch} />
 
@@ -125,7 +125,7 @@ function validateQuery(username: string) {
   return null;
 }
 
-function getWindowTitle(username: string, page: number) {
+function getDocumentTitle(username: string, page: number) {
   return username === ""
     ? "Search"
     : page === 1
