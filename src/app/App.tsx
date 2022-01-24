@@ -1,4 +1,10 @@
-import { Navigate, Route, Routes, useLocation } from "react-router-dom";
+import {
+  Navigate,
+  Route,
+  Routes,
+  useLocation,
+  useSearchParams,
+} from "react-router-dom";
 import styled from "styled-components/macro";
 import ErrorBoundary from "../common/ErrorBoundary";
 import AboutPage from "../features/about/AboutPage";
@@ -20,7 +26,7 @@ function App() {
 
 function Page() {
   const location = useLocation();
-  const queryParams = new URLSearchParams(location.search);
+  const [searchParams] = useSearchParams();
 
   return (
     <PageContainer>
@@ -30,8 +36,8 @@ function Page() {
             path="/search"
             element={
               <SearchPage
-                queryUsername={queryParams.get("username")}
-                queryPage={queryParams.get("page")}
+                queryUsername={searchParams.get("username")}
+                queryPage={searchParams.get("page")}
               />
             }
           />
