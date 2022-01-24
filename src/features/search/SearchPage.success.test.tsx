@@ -1,7 +1,11 @@
 import { getByText, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import { rest } from "msw";
+import { baseUrl } from "../../app/api";
 import App from "../../app/App";
 import { renderWithWrapper } from "../../common/testUtils";
+import { mockUsers } from "../../mocks/mockData";
+import { server } from "../../mocks/server";
 
 test("perform search and page through the repositories ('happy path' test)", async () => {
   renderWithWrapper(<App />);
@@ -87,6 +91,47 @@ test("trim search string before searching", async () => {
   expect(usernameInput).toHaveValue("reddit");
 
   await expectRepoNamesToEqual(expectedRepoNames["reddit"].pages[1]);
+});
+
+test("show spinner if User data fetching takes more than 500 ms", async () => {
+  renderWithWrapper(<App />);
+
+  server.use(
+    rest.get(`${baseUrl}/users/reddit`, (_req, res, ctx) => {
+      return res(ctx.json(mockUsers["reddit"].user), ctx.delay(500));
+    })
+  );
+
+  userEvent.type(screen.getByPlaceholderText("Username"), "reddit");
+  userEvent.click(screen.getByRole("button", { name: "Search" }));
+
+  expect(await screen.findByTestId("userSpinner")).toBeInTheDocument();
+
+  expect(await screen.findByText("San Francisco, CA")).toBeInTheDocument();
+
+  expect(screen.queryByTestId("userSpinner")).not.toBeInTheDocument();
+});
+
+test("show spinner if Repos data fetching takes more than 500 ms", async () => {
+  renderWithWrapper(<App />);
+
+  server.use(
+    rest.get(`${baseUrl}/users/reddit`, (_req, res, ctx) => {
+      return res(ctx.json(mockUsers["reddit"].user), ctx.delay(0));
+    }),
+    rest.get(`${baseUrl}/users/reddit/repos`, (_req, res, ctx) => {
+      return res(ctx.json(mockUsers["reddit"].repoPages[1]), ctx.delay(800));
+    })
+  );
+
+  userEvent.type(screen.getByPlaceholderText("Username"), "reddit");
+  userEvent.click(screen.getByRole("button", { name: "Search" }));
+
+  expect(await screen.findByTestId("reposSpinner")).toBeInTheDocument();
+
+  await expectRepoNamesToEqual(expectedRepoNames["reddit"].pages[1]);
+
+  expect(screen.queryByTestId("reposSpinner")).not.toBeInTheDocument();
 });
 
 test("perform search through URL parameter 'username'", async () => {
