@@ -3,7 +3,7 @@ import userEvent from "@testing-library/user-event";
 import App from "../../app/App";
 import { renderWithWrapper } from "../../common/testUtils";
 
-test("on every successful search, save username at the top of search history", async () => {
+test("on every successful search, save username to the top of search history", async () => {
   renderWithWrapper(<App />);
 
   const menu = screen.getByRole("navigation");
@@ -41,7 +41,7 @@ test("on every successful search, save username at the top of search history", a
   expectHistoryToEqual(["reddit", "graphql"]);
 });
 
-test("username on History page links to the Search page for that username", async () => {
+test("username on History page links to Search page for that username", async () => {
   renderWithWrapper(<App />);
 
   const menu = screen.getByRole("navigation");

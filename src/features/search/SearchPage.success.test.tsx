@@ -7,7 +7,7 @@ import { renderWithWrapper } from "../../common/testUtils";
 import { mockUsers } from "../../mocks/mockData";
 import { server } from "../../mocks/server";
 
-test("perform search and page through the repositories ('happy path' test)", async () => {
+test("perform search and page through repositories ('happy path')", async () => {
   renderWithWrapper(<App />);
 
   userEvent.type(screen.getByPlaceholderText("Username"), "reddit");

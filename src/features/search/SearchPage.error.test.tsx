@@ -17,7 +17,7 @@ test("nonexistent username causes 'not found' message", async () => {
   ).toBeInTheDocument();
 });
 
-test("HTTP error causes error message to be shown", async () => {
+test("HTTP error causes error message", async () => {
   renderWithWrapper(<App />);
 
   server.use(
@@ -37,7 +37,7 @@ test("HTTP error causes error message to be shown", async () => {
   ).toBeInTheDocument();
 });
 
-test("network error causes error message to be shown", async () => {
+test("network error causes error message", async () => {
   renderWithWrapper(<App />);
 
   server.use(
