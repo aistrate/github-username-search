@@ -148,6 +148,40 @@ test("show spinner if Repos data fetching takes more than 500 ms", async () => {
   expect(screen.queryByTestId("reposSpinner")).not.toBeInTheDocument();
 });
 
+test("Username input receives focus when needed", async () => {
+  renderWithWrapper(<App />);
+
+  expect(screen.getByPlaceholderText("Username")).toHaveFocus();
+
+  const menu = screen.getByRole("navigation");
+
+  userEvent.click(getByText(menu, "About"));
+  expect(screen.queryByText("How to search")).toBeInTheDocument();
+
+  userEvent.click(getByText(menu, "Search"));
+  expect(screen.getByPlaceholderText("Username")).toHaveFocus();
+
+  let usernameInput = screen.getByPlaceholderText("Username");
+
+  userEvent.type(usernameInput, "graphql");
+  userEvent.click(screen.getByRole("button", { name: "Search" }));
+
+  expect(usernameInput).not.toHaveFocus();
+
+  await expectRepoNamesToEqual(expectedRepoNames["graphql"].pages[1]);
+  expect(usernameInput).not.toHaveFocus();
+
+  userEvent.click(getByText(menu, "History"));
+  expect(screen.queryByText("History (1)")).toBeInTheDocument();
+
+  userEvent.click(screen.getByText("graphql"));
+
+  usernameInput = screen.getByPlaceholderText("Username");
+
+  expect(usernameInput).toHaveValue("graphql");
+  expect(usernameInput).not.toHaveFocus();
+});
+
 test("perform search through URL parameter 'username'", async () => {
   renderWithWrapper(<App />, ["/search?username=reddit"]);
 
