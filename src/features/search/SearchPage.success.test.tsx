@@ -183,14 +183,14 @@ test("Username input receives focus when needed", async () => {
 });
 
 test("perform search through URL parameter 'username'", async () => {
-  renderWithWrapper(<App />, ["/search?username=reddit"]);
+  renderWithWrapper(<App />, "/search?username=reddit");
 
   await expectRepoNamesToEqual(expectedRepoNames["reddit"].pages[1]);
   expect(screen.getByTestId("topPagination")).toHaveTextContent("Page 1/3");
 });
 
 test("perform search through URL parameters 'username' and 'page'", async () => {
-  renderWithWrapper(<App />, ["/search?username=reddit&page=2"]);
+  renderWithWrapper(<App />, "/search?username=reddit&page=2");
 
   await expectRepoNamesToEqual(expectedRepoNames["reddit"].pages[2]);
   expect(screen.getByTestId("topPagination")).toHaveTextContent("Page 2/3");

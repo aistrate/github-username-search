@@ -88,7 +88,7 @@ test("illegal character in search string causes validation message", async () =>
 });
 
 test("illegal character in URL parameter 'username' causes validation message", async () => {
-  renderWithWrapper(<App />, ["/search?username=google-"]);
+  renderWithWrapper(<App />, "/search?username=google-");
 
   const validationMessage =
     'Invalid username "google-" in the URL. ' +

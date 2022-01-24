@@ -6,13 +6,13 @@ import { createStore } from "../app/store";
 
 export { renderWithWrapper };
 
-function renderWithWrapper(ui: ReactElement, routerEntries = ["/"]) {
+function renderWithWrapper(ui: ReactElement, initialRoute = "/") {
   const store = createStore();
 
   const Wrapper = ({ children }: { children: ReactNode }) => {
     return (
       <Provider store={store}>
-        <MemoryRouter initialEntries={routerEntries}>{children}</MemoryRouter>
+        <MemoryRouter initialEntries={[initialRoute]}>{children}</MemoryRouter>
       </Provider>
     );
   };
