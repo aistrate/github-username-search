@@ -59,6 +59,18 @@ test("username on History page links to Search page for that username", async ()
   expect(repoHeadings.length).toBe(25);
 });
 
+test("convert username to lowercase before saving it to search history", async () => {
+  renderWithWrapper(<App />);
+
+  const menu = screen.getByRole("navigation");
+
+  userEvent.click(getByText(menu, "Search"));
+  await searchForUsername("GraphQL"); // capitalized
+
+  userEvent.click(getByText(menu, "History"));
+  expect(screen.queryByText("graphql")).toBeInTheDocument();
+});
+
 async function searchForUsername(username: string, waitForRepos = true) {
   // on the Search Page
   userEvent.type(screen.getByPlaceholderText("Username"), username);
