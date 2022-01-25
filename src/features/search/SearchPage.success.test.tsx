@@ -80,12 +80,12 @@ test("perform search by pressing Enter", async () => {
   await expectRepoNamesToEqual(expectedRepoNames["reddit"].pages[1]);
 });
 
-test("trim search string before searching", async () => {
+test("trim search string and convert it to lowercase before searching", async () => {
   renderWithWrapper(<App />);
 
   const usernameInput = screen.getByPlaceholderText("Username");
 
-  userEvent.type(usernameInput, "  reddit   ");
+  userEvent.type(usernameInput, "  REDDIT   ");
   userEvent.click(screen.getByRole("button", { name: "Search" }));
 
   expect(usernameInput).toHaveValue("reddit");
