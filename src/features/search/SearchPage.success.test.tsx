@@ -3,7 +3,7 @@ import userEvent from "@testing-library/user-event";
 import { rest } from "msw";
 import { baseUrl } from "../../app/api";
 import App from "../../app/App";
-import { renderWithWrapper } from "../../common/testUtils";
+import { renderWithWrapper, RoutingLocation } from "../../common/testUtils";
 import { mockUsers } from "../../mocks/mockData";
 import { server } from "../../mocks/server";
 
@@ -195,6 +195,78 @@ test("perform search through URL parameters 'username' and 'page'", async () => 
   await expectRepoNamesToEqual(expectedRepoNames["reddit"].pages[2]);
   expect(screen.getByTestId("topPagination")).toHaveTextContent("Page 2/3");
 });
+
+test("set the routing location and the document title", async () => {
+  renderWithWrapper(
+    <>
+      <RoutingLocation />
+      <App />
+    </>
+  );
+
+  expect(routingLocation()).toBe("/search");
+  expect(document.title).toBe("Search - GitHub Username Search");
+
+  const usernameInput = screen.getByPlaceholderText("Username");
+  const searchButton = screen.getByRole("button", { name: "Search" });
+
+  userEvent.type(usernameInput, "reddit");
+  userEvent.click(searchButton);
+
+  expect(routingLocation()).toBe("/search?username=reddit");
+  expect(document.title).toBe("reddit - GitHub Username Search");
+
+  // topPagination will appear as soon as the User fetch is completed;
+  // in the rest of this test we will not wait for Repos fetches to complete,
+  // to save on execution time; the requests will get aborted by the SearchPage
+  const topPagination = await screen.findByTestId("topPagination");
+
+  userEvent.click(getByText(topPagination, /next/i));
+
+  expect(routingLocation()).toBe("/search?username=reddit&page=2");
+  expect(document.title).toBe("reddit (page 2) - GitHub Username Search");
+
+  userEvent.click(getByText(topPagination, /previous/i));
+
+  expect(routingLocation()).toBe("/search?username=reddit");
+  expect(document.title).toBe("reddit - GitHub Username Search");
+
+  userEvent.clear(usernameInput);
+  userEvent.type(usernameInput, "GraphQL"); // capitalized
+  userEvent.click(searchButton);
+
+  expect(routingLocation()).toBe("/search?username=graphql");
+  expect(document.title).toBe("graphql - GitHub Username Search");
+  expect(usernameInput).toHaveValue("graphql");
+
+  userEvent.clear(usernameInput);
+  userEvent.type(usernameInput, "nonexistent");
+  userEvent.click(searchButton);
+
+  expect(routingLocation()).toBe("/search?username=nonexistent");
+  expect(document.title).toBe("nonexistent - GitHub Username Search");
+  expect(
+    await screen.findByText("Username 'nonexistent' was not found.")
+  ).toBeInTheDocument();
+
+  const menu = screen.getByRole("navigation");
+
+  userEvent.click(getByText(menu, "About"));
+  expect(routingLocation()).toBe("/about");
+  expect(document.title).toBe("About - GitHub Username Search");
+
+  userEvent.click(getByText(menu, "History"));
+  expect(routingLocation()).toBe("/history");
+  expect(document.title).toBe("History - GitHub Username Search");
+
+  userEvent.click(screen.getByText("reddit"));
+  expect(routingLocation()).toBe("/search?username=reddit");
+  expect(document.title).toBe("reddit - GitHub Username Search");
+});
+
+function routingLocation() {
+  return screen.getByTestId("routingLocation").textContent || "";
+}
 
 async function expectRepoNamesToEqual(expected: string[]) {
   await waitFor(

@@ -29,7 +29,9 @@ function RepoListView({ reposFetch, pageCount, className }: RepoListViewProps) {
   const headingRef = useRef<HTMLHeadingElement>(null!);
 
   function getPageUrl(page: number) {
-    return `/search?username=${username}&page=${page}`;
+    return page === 1
+      ? `/search?username=${username}`
+      : `/search?username=${username}&page=${page}`;
   }
 
   return (
