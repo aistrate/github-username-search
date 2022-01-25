@@ -44,12 +44,12 @@ function SearchForm({
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
-    const trimmed = value.trim();
-    setValue(trimmed);
+    const normalizedValue = value.trim().toLowerCase();
+    setValue(normalizedValue);
     setSubmitted(true);
 
     if (!validationError) {
-      onSearch({ value: trimmed });
+      onSearch({ value: normalizedValue });
     }
   }
 

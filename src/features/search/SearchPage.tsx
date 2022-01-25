@@ -22,15 +22,15 @@ type SearchPageProps = {
 };
 
 function SearchPage({ queryUsername, queryPage }: SearchPageProps) {
-  let username = (queryUsername || "").trim();
+  let lcUsername = (queryUsername || "").trim().toLowerCase();
   const page = Math.max(1, parseInt(queryPage || "") || 1);
 
-  const queryValidationError = validateQuery(username);
+  const queryValidationError = validateQuery(lcUsername);
   if (queryValidationError) {
-    username = "";
+    lcUsername = "";
   }
 
-  const { userFetch, reposFetch } = useFetch(username, page);
+  const { userFetch, reposFetch } = useFetch(lcUsername, page);
 
   useSaveToHistory(userFetch);
 
@@ -38,10 +38,10 @@ function SearchPage({ queryUsername, queryPage }: SearchPageProps) {
   const navigate = useNavigate();
 
   function handleSearch(e: SearchEvent) {
-    const username = e.value;
-    const search = `?username=${username}`;
+    const lcUsername = e.value.toLowerCase();
+    const search = `?username=${lcUsername}`;
 
-    if (location.search !== search) {
+    if (location.search.toLowerCase() !== search) {
       navigate(`/search${search}`);
     }
   }
@@ -52,9 +52,9 @@ function SearchPage({ queryUsername, queryPage }: SearchPageProps) {
 
   return (
     <>
-      <DocumentTitle value={getDocumentTitle(username, page)} />
+      <DocumentTitle value={getDocumentTitle(lcUsername, page)} />
 
-      <StyledSearchForm initialValue={username} onSearch={handleSearch} />
+      <StyledSearchForm initialValue={lcUsername} onSearch={handleSearch} />
 
       {queryValidationError && (
         <StyledMessage type="error">{queryValidationError}</StyledMessage>
