@@ -71,13 +71,13 @@ test("convert username to lowercase before saving it to search history", async (
   expect(screen.queryByText("graphql")).toBeInTheDocument();
 });
 
-async function searchForUsername(username: string, waitForRepos = true) {
+async function searchForUsername(username: string, waitForUserInfo = true) {
   // on the Search Page
   userEvent.type(screen.getByPlaceholderText("Username"), username);
   userEvent.click(screen.getByRole("button", { name: "Search" }));
 
-  if (waitForRepos) {
-    await screen.findAllByRole("heading", { level: 3 });
+  if (waitForUserInfo) {
+    await screen.findByTestId("userInfo");
   }
 }
 
