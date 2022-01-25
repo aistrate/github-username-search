@@ -15,9 +15,9 @@ test("perform search and page through repositories ('happy path')", async () => 
 
   await expectRepoNamesToEqual(expectedRepoNames["reddit"].pages[1]);
 
-  const userView = screen.getByTestId("userView");
-  expect(userView).toHaveTextContent("Location:San Francisco, CA");
-  expect(userView).toHaveTextContent("Repositories:88");
+  const userInfo = screen.getByTestId("userInfo");
+  expect(userInfo).toHaveTextContent("Location:San Francisco, CA");
+  expect(userInfo).toHaveTextContent("Repositories:88");
 
   const topPagination = screen.getByTestId("topPagination");
   expect(topPagination).toHaveTextContent("Page 1/3");
@@ -53,7 +53,7 @@ test("perform search for user with single page of repositories", async () => {
 
   await expectRepoNamesToEqual(expectedRepoNames["graphql"].pages[1]);
 
-  expect(screen.getByTestId("userView")).toHaveTextContent("Repositories:25");
+  expect(screen.getByTestId("userInfo")).toHaveTextContent("Repositories:25");
 
   expect(screen.getByTestId("topPagination")).toBeEmptyDOMElement();
 });
@@ -67,7 +67,7 @@ test("perform search for user with zero repositories", async () => {
   await screen.findByText("Repositories");
   await screen.findByText("(none)");
 
-  expect(screen.getByTestId("userView")).toHaveTextContent("Repositories:0");
+  expect(screen.getByTestId("userInfo")).toHaveTextContent("Repositories:0");
 
   expect(screen.getByTestId("topPagination")).toBeEmptyDOMElement();
 });

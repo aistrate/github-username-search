@@ -24,7 +24,7 @@ function UserView({ userFetch, className }: UserViewProps) {
   const username = userFetch.fetchArg?.username || "";
 
   return (
-    <Container className={className} data-testid="userView">
+    <Container className={className}>
       {userFetch.isLoading && (
         <Delayed>
           <Spinner data-testid="userSpinner" />
@@ -49,7 +49,7 @@ type UserInfoProps = {
 
 const UserInfo = React.memo(({ user }: UserInfoProps) => {
   return (
-    <>
+    <div data-testid="userInfo">
       <Avatar url={user.avatar_url} userType={user.type} />
 
       <LargeHeading>{user.name || user.login}</LargeHeading>
@@ -87,7 +87,7 @@ const UserInfo = React.memo(({ user }: UserInfoProps) => {
         )}
         <Row label="Repositories">{formatNumber(user.public_repos)}</Row>
       </dl>
-    </>
+    </div>
   );
 });
 
