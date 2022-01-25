@@ -216,11 +216,10 @@ test("set the routing location and the document title", async () => {
   expect(routingLocation()).toBe("/search?username=reddit");
   expect(document.title).toBe("reddit - GitHub Username Search");
 
-  // topPagination will appear as soon as the User fetch is completed;
-  // in the rest of this test we will not wait for Repos fetches to complete,
-  // to save on execution time; the requests will get aborted by the SearchPage
   const topPagination = await screen.findByTestId("topPagination");
 
+  // for the rest of this test we will not wait for fetch requests to complete, so as to save on execution time;
+  // User and Repos requests will get aborted by the SearchPage when moving to a different user/page
   userEvent.click(getByText(topPagination, /next/i));
 
   expect(routingLocation()).toBe("/search?username=reddit&page=2");
