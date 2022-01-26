@@ -7,7 +7,7 @@ import { renderWithWrapper, RoutingLocation } from "../../common/testUtils";
 import { mockUsers } from "../../mocks/mockData";
 import { server } from "../../mocks/server";
 
-test("perform search and page through repositories ('happy path')", async () => {
+test("perform search and page through the repositories (happy path)", async () => {
   renderWithWrapper(<App />);
 
   userEvent.type(screen.getByPlaceholderText("Username"), "reddit");
@@ -196,7 +196,7 @@ test("username input receives focus when needed", async () => {
   expect(usernameInput).not.toHaveFocus();
 });
 
-test("set the routing location and the document title", async () => {
+test("on navigating around the app, change routing location and document title", async () => {
   renderWithWrapper(
     <>
       <RoutingLocation />
