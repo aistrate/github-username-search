@@ -43,7 +43,7 @@ test("on navigating around the app, change routing location and document title",
   const topPagination = await screen.findByTestId("topPagination");
 
   // for the rest of this test we will not wait for fetch requests to complete, so as to save on execution time;
-  // User and Repos requests will get aborted by the SearchPage when moving to a different user/page
+  // User and Repos requests will get aborted by the SearchPage on moving to a different user/page
   userEvent.click(getByText(topPagination, /next/i));
 
   expect(routingLocation()).toBe("/search?username=reddit&page=2");
