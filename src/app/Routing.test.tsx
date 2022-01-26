@@ -3,7 +3,7 @@ import userEvent from "@testing-library/user-event";
 import { renderWithWrapper } from "../common/testUtils";
 import App from "./App";
 
-test("main menu navigation works correctly", () => {
+test("main menu navigates the pages of the app", () => {
   renderWithWrapper(<App />);
 
   expect(screen.queryByRole("button", { name: "Search" })).toBeInTheDocument();
