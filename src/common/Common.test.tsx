@@ -1,7 +1,7 @@
 import { act, render, screen } from "@testing-library/react";
 import Delayed from "./Delayed";
 
-test("show content with a delay", () => {
+test("<Delayed> shows its content with a delay", () => {
   jest.useFakeTimers();
 
   render(<Delayed delay={1000}>Delayed content</Delayed>);
