@@ -1,9 +1,13 @@
 import { getByText, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { rest } from "msw";
+import { Provider } from "react-redux";
+import { MemoryRouter } from "react-router-dom";
+import renderer from "react-test-renderer";
 import { baseUrl } from "../../app/api";
 import App from "../../app/App";
-import { renderWithWrapper } from "../../common/testUtils";
+import { createStore } from "../../app/store";
+import { removeClassNames, renderWithWrapper } from "../../common/testUtils";
 import { mockUsers } from "../../mocks/mockData";
 import { server } from "../../mocks/server";
 
@@ -194,6 +198,24 @@ test("username input receives focus when needed", async () => {
 
   expect(usernameInput).toHaveValue("graphql");
   expect(usernameInput).not.toHaveFocus();
+});
+
+test("empty Search page renders correctly", async () => {
+  const store = createStore();
+
+  const tree = renderer
+    .create(
+      <Provider store={store}>
+        <MemoryRouter initialEntries={["/search"]}>
+          <App />
+        </MemoryRouter>
+      </Provider>
+    )
+    .toJSON();
+
+  removeClassNames(tree);
+
+  expect(tree).toMatchSnapshot();
 });
 
 async function expectRepoNamesToEqual(expected: string[]) {

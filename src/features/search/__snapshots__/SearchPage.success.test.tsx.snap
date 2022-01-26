@@ -1,0 +1,74 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`empty Search page renders correctly 1`] = `
+<div>
+  <div>
+    GitHub Username Search
+  </div>
+  <nav>
+    <ul>
+      <li>
+        <a
+          aria-current="page"
+          href="/search"
+          onClick={[Function]}
+        >
+          Search
+        </a>
+      </li>
+      <li>
+        <a
+          href="/history"
+          onClick={[Function]}
+        >
+          History
+        </a>
+      </li>
+      <li>
+        <a
+          href="/about"
+          onClick={[Function]}
+        >
+          About
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <div>
+    <form
+      onSubmit={[Function]}
+    >
+      <input
+        autoCapitalize="none"
+        autoComplete="off"
+        autoCorrect="off"
+        onChange={[Function]}
+        placeholder="Username"
+        spellCheck={false}
+        type="text"
+        value=""
+      />
+      <button
+        disabled={true}
+        name="Search"
+        type="submit"
+      >
+        Search
+      </button>
+      <div>
+        Type in a full username (see
+         
+        <a
+          href="./about"
+          rel="noreferrer"
+          target="_blank"
+        >
+          examples
+        </a>
+        ).
+      </div>
+    </form>
+    <div />
+  </div>
+</div>
+`;
