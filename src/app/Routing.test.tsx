@@ -87,7 +87,7 @@ test("on navigating around the app, change routing location and document title",
   expect(document.title).toBe("reddit - GitHub Username Search");
 });
 
-test("nonexistent route redirects to the Search page", async () => {
+test("nonexistent route redirects to the Search page", () => {
   renderWithWrapper(
     <>
       <RoutingLocation />
