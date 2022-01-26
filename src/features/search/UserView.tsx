@@ -122,8 +122,6 @@ function CompanyList({ names }: CompanyListProps) {
     .map((name) => name.trim())
     .map((name) => <Company name={name} />);
 
-  if (companyList.length === 0) return <></>;
-
   const comma = <>{", "}</>;
 
   const joined = companyList
