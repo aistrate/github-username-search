@@ -14,6 +14,7 @@ import Spinner from "../../common/styled/Spinner";
 import { User, UserFetch, UserType } from "./userSlice";
 
 export default UserView;
+export { CompanyList };
 
 type UserViewProps = {
   userFetch: UserFetch;
