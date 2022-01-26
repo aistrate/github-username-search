@@ -263,6 +263,19 @@ test("set the routing location and the document title", async () => {
   expect(document.title).toBe("reddit - GitHub Username Search");
 });
 
+test("nonexistent route redirects to the Search page", async () => {
+  renderWithWrapper(
+    <>
+      <RoutingLocation />
+      <App />
+    </>,
+    "/nonexistent-route"
+  );
+
+  expect(routingLocation()).toBe("/search");
+  expect(screen.queryByRole("button", { name: "Search" })).toBeInTheDocument();
+});
+
 function routingLocation() {
   return screen.getByTestId("routingLocation").textContent || "";
 }
