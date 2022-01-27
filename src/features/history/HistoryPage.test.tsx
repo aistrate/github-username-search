@@ -2,6 +2,7 @@ import { getByText, queryAllByRole, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import App from "../../app/App";
 import { renderWithWrapper } from "../../common/testUtils";
+import { HistoryItem } from "./historySlice";
 
 test("on every successful search, save username to the top of search history", async () => {
   renderWithWrapper(<App />);
@@ -80,11 +81,10 @@ test("empty History page shows '(empty)'", async () => {
 });
 
 test("render the History page with history data (snapshot test)", async () => {
-  const history = [
+  setHistory([
     { username: "reddit", timestamp: 1643299499644 },
     { username: "graphql", timestamp: 1643299495994 },
-  ];
-  window.localStorage.setItem("searchHistory", JSON.stringify(history));
+  ]);
 
   const { container } = renderWithWrapper(<App />, "/history");
 
@@ -113,4 +113,8 @@ function expectHistoryToEqual(expected: string[]) {
   expect(
     screen.queryByText(`History (${expected.length})`)
   ).toBeInTheDocument();
+}
+
+function setHistory(history: HistoryItem[]) {
+  window.localStorage.setItem("searchHistory", JSON.stringify(history));
 }
