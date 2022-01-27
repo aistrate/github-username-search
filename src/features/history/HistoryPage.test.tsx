@@ -78,6 +78,13 @@ test("convert username to lowercase before saving it to search history", async (
   expect(screen.queryByText("graphql")).toBeInTheDocument();
 });
 
+test("empty History page shows '(empty)'", async () => {
+  renderWithWrapper(<App />, "/history");
+
+  expect(screen.queryByText("History (0)")).toBeInTheDocument();
+  expect(screen.getByTestId("historyList")).toHaveTextContent("(empty)");
+});
+
 test("render the History page with history data (snapshot test)", async () => {
   const history = [
     { username: "reddit", timestamp: 1643299499644 },
