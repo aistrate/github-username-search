@@ -1,13 +1,11 @@
 import { getByText, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { rest } from "msw";
-import { Provider } from "react-redux";
-import { MemoryRouter } from "react-router-dom";
 import renderer from "react-test-renderer";
 import { baseUrl } from "../../app/api";
 import App from "../../app/App";
-import { createStore } from "../../app/store";
 import {
+  createRendererWithWrapper,
   delay,
   removeClassNames,
   renderWithWrapper,
@@ -205,15 +203,7 @@ test("give focus to the Username input when needed", async () => {
 });
 
 test("render the Search page with User and Repos data (snapshot test)", async () => {
-  const store = createStore();
-
-  let root = renderer.create(
-    <Provider store={store}>
-      <MemoryRouter initialEntries={["/search?username=reddit"]}>
-        <App />
-      </MemoryRouter>
-    </Provider>
-  );
+  let root = createRendererWithWrapper(<App />, "/search?username=reddit");
 
   await renderer.act(async () => {
     await delay(500);

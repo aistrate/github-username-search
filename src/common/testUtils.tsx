@@ -2,24 +2,40 @@ import { render } from "@testing-library/react";
 import { ReactElement, ReactNode } from "react";
 import { Provider } from "react-redux";
 import { MemoryRouter, useLocation } from "react-router-dom";
-import { ReactTestRendererJSON } from "react-test-renderer";
+import renderer, { ReactTestRendererJSON } from "react-test-renderer";
 import styled from "styled-components";
 import { createStore } from "../app/store";
 
-export { renderWithWrapper, delay, RoutingLocation, removeClassNames };
+export {
+  renderWithWrapper,
+  createRendererWithWrapper,
+  delay,
+  RoutingLocation,
+  removeClassNames,
+};
 
 function renderWithWrapper(ui: ReactElement, initialRoute = "/") {
-  const store = createStore();
-
-  const Wrapper = ({ children }: { children: ReactNode }) => {
-    return (
-      <Provider store={store}>
-        <MemoryRouter initialEntries={[initialRoute]}>{children}</MemoryRouter>
-      </Provider>
-    );
-  };
+  const Wrapper = createWrapper(initialRoute);
 
   return render(ui, { wrapper: Wrapper });
+}
+
+function createRendererWithWrapper(ui: ReactElement, initialRoute: string) {
+  const Wrapper = createWrapper(initialRoute);
+
+  return renderer.create(<Wrapper>{ui}</Wrapper>);
+}
+
+function createWrapper(initialRoute: string) {
+  const store = createStore();
+
+  const Wrapper = ({ children }: { children: ReactNode }) => (
+    <Provider store={store}>
+      <MemoryRouter initialEntries={[initialRoute]}>{children}</MemoryRouter>
+    </Provider>
+  );
+
+  return Wrapper;
 }
 
 function delay(ms: number) {
