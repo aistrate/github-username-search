@@ -78,7 +78,13 @@ test("convert username to lowercase before saving it to search history", async (
   expect(screen.queryByText("graphql")).toBeInTheDocument();
 });
 
-test("render the History page (snapshot test)", async () => {
+test("render the History page with history data (snapshot test)", async () => {
+  const history = [
+    { username: "reddit", timestamp: 1643299499644 },
+    { username: "graphql", timestamp: 1643299495994 },
+  ];
+  window.localStorage.setItem("searchHistory", JSON.stringify(history));
+
   let root = createRendererWithWrapper(<App />, "/history");
 
   await renderer.act(async () => {

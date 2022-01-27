@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`render the History page (snapshot test) 1`] = `
+exports[`render the History page with history data (snapshot test) 1`] = `
 <div>
   <div>
     GitHub Username Search
@@ -37,12 +37,43 @@ exports[`render the History page (snapshot test) 1`] = `
   <div>
     <h2>
       History 
-      (0)
+      (2)
     </h2>
     <div
       data-testid="historyList"
     >
-      (empty)
+      <div>
+        <dt>
+          <span>
+            Thu, Jan 27, 2022, 06:04 PM
+          </span>
+          
+        </dt>
+        <dd>
+          <a
+            href="/search?username=reddit"
+            onClick={[Function]}
+          >
+            reddit
+          </a>
+        </dd>
+      </div>
+      <div>
+        <dt>
+          <span>
+            Thu, Jan 27, 2022, 06:04 PM
+          </span>
+          
+        </dt>
+        <dd>
+          <a
+            href="/search?username=graphql"
+            onClick={[Function]}
+          >
+            graphql
+          </a>
+        </dd>
+      </div>
     </div>
   </div>
 </div>
