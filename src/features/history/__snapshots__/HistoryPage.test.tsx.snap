@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render the History page (snapshot test) 1`] = `
+<div>
+  <div>
+    GitHub Username Search
+  </div>
+  <nav>
+    <ul>
+      <li>
+        <a
+          href="/search"
+          onClick={[Function]}
+        >
+          Search
+        </a>
+      </li>
+      <li>
+        <a
+          aria-current="page"
+          href="/history"
+          onClick={[Function]}
+        >
+          History
+        </a>
+      </li>
+      <li>
+        <a
+          href="/about"
+          onClick={[Function]}
+        >
+          About
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <div>
+    <h2>
+      History 
+      (0)
+    </h2>
+    <div
+      data-testid="historyList"
+    >
+      (empty)
+    </div>
+  </div>
+</div>
+`;

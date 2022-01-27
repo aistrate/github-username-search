@@ -1,7 +1,13 @@
 import { getByText, queryAllByRole, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import renderer from "react-test-renderer";
 import App from "../../app/App";
-import { renderWithWrapper } from "../../common/testUtils";
+import {
+  createRendererWithWrapper,
+  delay,
+  removeClassNames,
+  renderWithWrapper,
+} from "../../common/testUtils";
 
 test("on every successful search, save username to the top of search history", async () => {
   renderWithWrapper(<App />);
@@ -70,6 +76,19 @@ test("convert username to lowercase before saving it to search history", async (
   userEvent.click(getByText(menu, "History"));
   expect(screen.queryByText("GraphQL")).not.toBeInTheDocument();
   expect(screen.queryByText("graphql")).toBeInTheDocument();
+});
+
+test("render the History page (snapshot test)", async () => {
+  let root = createRendererWithWrapper(<App />, "/history");
+
+  await renderer.act(async () => {
+    await delay(100);
+  });
+
+  const tree = root.toJSON();
+  removeClassNames(tree);
+
+  expect(tree).toMatchSnapshot();
 });
 
 async function searchForUsername(username: string, waitForUserInfo = true) {
