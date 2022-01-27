@@ -132,47 +132,44 @@ exports[`render the History page with history data (snapshot test) 1`] = `
 }
 
 <div
-  className="c0"
+  class="c0"
 >
   <div
-    className="c1"
+    class="c1"
   >
     GitHub Username Search
   </div>
   <nav>
     <ul
-      className="c2"
+      class="c2"
     >
       <li
-        className="c3"
+        class="c3"
       >
         <a
-          className="c4"
+          class="c4"
           href="/search"
-          onClick={[Function]}
         >
           Search
         </a>
       </li>
       <li
-        className="c3"
+        class="c3"
       >
         <a
           aria-current="page"
-          className="c4 active"
+          class="c4 active"
           href="/history"
-          onClick={[Function]}
         >
           History
         </a>
       </li>
       <li
-        className="c3"
+        class="c3"
       >
         <a
-          className="c4"
+          class="c4"
           href="/about"
-          onClick={[Function]}
         >
           About
         </a>
@@ -180,10 +177,10 @@ exports[`render the History page with history data (snapshot test) 1`] = `
     </ul>
   </nav>
   <div
-    className="c5"
+    class="c5"
   >
     <h2
-      className="c6"
+      class="c6"
     >
       History 
       (2)
@@ -192,50 +189,48 @@ exports[`render the History page with history data (snapshot test) 1`] = `
       data-testid="historyList"
     >
       <div
-        className="c7"
+        class="c7"
       >
         <dt
-          className="c8"
+          class="c8"
         >
           <span
-            className="c9"
+            class="c9"
           >
             Thu, Jan 27, 2022, 06:04 PM
           </span>
           
         </dt>
         <dd
-          className="c10"
+          class="c10"
         >
           <a
-            className="c11"
+            class="c11"
             href="/search?username=reddit"
-            onClick={[Function]}
           >
             reddit
           </a>
         </dd>
       </div>
       <div
-        className="c7"
+        class="c7"
       >
         <dt
-          className="c8"
+          class="c8"
         >
           <span
-            className="c9"
+            class="c9"
           >
             Thu, Jan 27, 2022, 06:04 PM
           </span>
           
         </dt>
         <dd
-          className="c10"
+          class="c10"
         >
           <a
-            className="c11"
+            class="c11"
             href="/search?username=graphql"
-            onClick={[Function]}
           >
             graphql
           </a>

@@ -316,47 +316,44 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
 }
 
 <div
-  className="c0"
+  class="c0"
 >
   <div
-    className="c1"
+    class="c1"
   >
     GitHub Username Search
   </div>
   <nav>
     <ul
-      className="c2"
+      class="c2"
     >
       <li
-        className="c3"
+        class="c3"
       >
         <a
           aria-current="page"
-          className="c4 active"
+          class="c4 active"
           href="/search"
-          onClick={[Function]}
         >
           Search
         </a>
       </li>
       <li
-        className="c3"
+        class="c3"
       >
         <a
-          className="c4"
+          class="c4"
           href="/history"
-          onClick={[Function]}
         >
           History
         </a>
       </li>
       <li
-        className="c3"
+        class="c3"
       >
         <a
-          className="c4"
+          class="c4"
           href="/about"
-          onClick={[Function]}
         >
           About
         </a>
@@ -364,38 +361,35 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
     </ul>
   </nav>
   <div
-    className="c5"
+    class="c5"
   >
     <form
-      className="c6"
-      onSubmit={[Function]}
+      class="c6"
     >
       <input
-        autoCapitalize="none"
-        autoComplete="off"
-        autoCorrect="off"
-        className="c7"
-        onChange={[Function]}
+        autocapitalize="none"
+        autocomplete="off"
+        autocorrect="off"
+        class="c7"
         placeholder="Username"
-        spellCheck={false}
+        spellcheck="false"
         type="text"
         value="reddit"
       />
       <button
-        className="c8"
-        disabled={false}
+        class="c8"
         name="Search"
         type="submit"
       >
         Search
       </button>
       <div
-        className="c9"
+        class="c9"
       >
         Type in a full username (see
          
         <a
-          className="c10"
+          class="c10"
           href="./about"
           rel="noreferrer"
           target="_blank"
@@ -406,38 +400,38 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
       </div>
     </form>
     <div
-      className="c11 c12"
+      class="c11 c12"
     >
       <div
         data-testid="userInfo"
       >
         <img
           alt="Avatar"
-          className="c13"
-          height={100}
+          class="c13"
+          height="100"
           src="https://avatars.githubusercontent.com/u/14248?v=4"
-          width={100}
+          width="100"
         />
         <h2
-          className="c14"
+          class="c14"
         >
           reddit
         </h2>
         <dl>
           <div
-            className="c15"
+            class="c15"
           >
             <dt
-              className="c16"
+              class="c16"
             >
               Username
               :
             </dt>
             <dd
-              className="c17"
+              class="c17"
             >
               <a
-                className="c10"
+                class="c10"
                 href="https://github.com/reddit"
                 rel="noreferrer"
                 target="_blank"
@@ -447,64 +441,64 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
             </dd>
           </div>
           <div
-            className="c15"
+            class="c15"
           >
             <dt
-              className="c16"
+              class="c16"
             >
               Type
               :
             </dt>
             <dd
-              className="c17"
+              class="c17"
             >
               Organization
             </dd>
           </div>
           <div
-            className="c15"
+            class="c15"
           >
             <dt
-              className="c16"
+              class="c16"
             >
               Created
               :
             </dt>
             <dd
-              className="c17"
+              class="c17"
             >
               Jun 19, 2008
             </dd>
           </div>
           <div
-            className="c15"
+            class="c15"
           >
             <dt
-              className="c16"
+              class="c16"
             >
               Location
               :
             </dt>
             <dd
-              className="c17"
+              class="c17"
             >
               San Francisco, CA
             </dd>
           </div>
           <div
-            className="c15"
+            class="c15"
           >
             <dt
-              className="c16"
+              class="c16"
             >
               Blog
               :
             </dt>
             <dd
-              className="c17"
+              class="c17"
             >
               <a
-                className="c18"
+                class="c18"
                 href="https://reddit.com/r/redditdev"
                 rel="noreferrer"
                 target="_blank"
@@ -514,16 +508,16 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
             </dd>
           </div>
           <div
-            className="c15"
+            class="c15"
           >
             <dt
-              className="c16"
+              class="c16"
             >
               Repositories
               :
             </dt>
             <dd
-              className="c17"
+              class="c17"
             >
               88
             </dd>
@@ -532,27 +526,27 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
       </div>
     </div>
     <div
-      className="c19"
+      class="c19"
     >
       <h2
-        className="c14"
+        class="c14"
       >
         Repositories
         <div
-          className="c20"
+          class="c20"
           data-testid="topPagination"
         >
           <div
-            className="c21"
+            class="c21"
           >
             <span
-              className="c22"
+              class="c22"
             >
               &lt; Previous
             </span>
                Page 
             <span
-              className=""
+              class=""
             >
               1
             </span>
@@ -560,9 +554,8 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
             3
                
             <a
-              className="c23 c24"
+              class="c23 c24"
               href="/search?username=reddit&page=2"
-              onClick={[Function]}
             >
               Next &gt;
             </a>
@@ -570,16 +563,16 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
         </div>
       </h2>
       <div
-        className="c25"
+        class="c25"
       >
         <div
-          className="c26 "
+          class="c26 "
         >
           <h3
-            className="c27"
+            class="c27"
           >
             <a
-              className="c10"
+              class="c10"
               href="https://github.com/reddit/baseplate.go"
               rel="noreferrer"
               target="_blank"
@@ -589,34 +582,34 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
           </h3>
           <dl>
             <div
-              className="c15"
+              class="c15"
             >
               <dt
-                className="c16"
+                class="c16"
               >
                 Description
                 :
               </dt>
               <dd
-                className="c17"
+                class="c17"
               >
                 Reddit's Service Framework in Go
               </dd>
             </div>
             <div
-              className="c15"
+              class="c15"
             >
               <dt
-                className="c16"
+                class="c16"
               >
                 Homepage
                 :
               </dt>
               <dd
-                className="c17"
+                class="c17"
               >
                 <a
-                  className="c18"
+                  class="c18"
                   href="https://pkg.go.dev/github.com/reddit/baseplate.go"
                   rel="noreferrer"
                   target="_blank"
@@ -626,31 +619,31 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
               </dd>
             </div>
             <div
-              className="c15"
+              class="c15"
             >
               <dt
-                className="c16"
+                class="c16"
               >
                 Language
                 :
               </dt>
               <dd
-                className="c17"
+                class="c17"
               >
                 Go
               </dd>
             </div>
             <div
-              className="c15"
+              class="c15"
             >
               <dt
-                className="c16"
+                class="c16"
               >
                 Stats
                 :
               </dt>
               <dd
-                className="c17"
+                class="c17"
               >
                 55
                  stars  |  
@@ -659,16 +652,16 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
               </dd>
             </div>
             <div
-              className="c15"
+              class="c15"
             >
               <dt
-                className="c16"
+                class="c16"
               >
                 Pushed
                 :
               </dt>
               <dd
-                className="c17"
+                class="c17"
               >
                 Jan 8, 2022, 02:24 AM
               </dd>
@@ -676,13 +669,13 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
           </dl>
         </div>
         <div
-          className="c26 "
+          class="c26 "
         >
           <h3
-            className="c27"
+            class="c27"
           >
             <a
-              className="c10"
+              class="c10"
               href="https://github.com/reddit/android-interview"
               rel="noreferrer"
               target="_blank"
@@ -692,46 +685,46 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
           </h3>
           <dl>
             <div
-              className="c15"
+              class="c15"
             >
               <dt
-                className="c16"
+                class="c16"
               >
                 Description
                 :
               </dt>
               <dd
-                className="c17"
+                class="c17"
               >
                 Sandbox for Android Programming Interview
               </dd>
             </div>
             <div
-              className="c15"
+              class="c15"
             >
               <dt
-                className="c16"
+                class="c16"
               >
                 Language
                 :
               </dt>
               <dd
-                className="c17"
+                class="c17"
               >
                 Kotlin
               </dd>
             </div>
             <div
-              className="c15"
+              class="c15"
             >
               <dt
-                className="c16"
+                class="c16"
               >
                 Stats
                 :
               </dt>
               <dd
-                className="c17"
+                class="c17"
               >
                 1
                  stars  |  
@@ -740,16 +733,16 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
               </dd>
             </div>
             <div
-              className="c15"
+              class="c15"
             >
               <dt
-                className="c16"
+                class="c16"
               >
                 Pushed
                 :
               </dt>
               <dd
-                className="c17"
+                class="c17"
               >
                 Jan 4, 2022, 07:05 PM
               </dd>
@@ -757,13 +750,13 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
           </dl>
         </div>
         <div
-          className="c26 "
+          class="c26 "
         >
           <h3
-            className="c27"
+            class="c27"
           >
             <a
-              className="c10"
+              class="c10"
               href="https://github.com/reddit/rules_apple"
               rel="noreferrer"
               target="_blank"
@@ -773,47 +766,47 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
           </h3>
           <dl>
             <div
-              className="c15"
+              class="c15"
             >
               <dt
-                className="c16"
+                class="c16"
               >
                 Fork?
                 :
               </dt>
               <dd
-                className="c17"
+                class="c17"
               >
                 Yes
               </dd>
             </div>
             <div
-              className="c15"
+              class="c15"
             >
               <dt
-                className="c16"
+                class="c16"
               >
                 Description
                 :
               </dt>
               <dd
-                className="c17"
+                class="c17"
               >
                 Bazel rules to build apps for Apple platforms.
               </dd>
             </div>
             
             <div
-              className="c15"
+              class="c15"
             >
               <dt
-                className="c16"
+                class="c16"
               >
                 Pushed
                 :
               </dt>
               <dd
-                className="c17"
+                class="c17"
               >
                 Jan 3, 2022, 07:42 PM
               </dd>
@@ -821,13 +814,13 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
           </dl>
         </div>
         <div
-          className="c26 "
+          class="c26 "
         >
           <h3
-            className="c27"
+            class="c27"
           >
             <a
-              className="c10"
+              class="c10"
               href="https://github.com/reddit/baseplate.py"
               rel="noreferrer"
               target="_blank"
@@ -837,34 +830,34 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
           </h3>
           <dl>
             <div
-              className="c15"
+              class="c15"
             >
               <dt
-                className="c16"
+                class="c16"
               >
                 Description
                 :
               </dt>
               <dd
-                className="c17"
+                class="c17"
               >
                 reddit's python service framework
               </dd>
             </div>
             <div
-              className="c15"
+              class="c15"
             >
               <dt
-                className="c16"
+                class="c16"
               >
                 Homepage
                 :
               </dt>
               <dd
-                className="c17"
+                class="c17"
               >
                 <a
-                  className="c18"
+                  class="c18"
                   href="https://baseplate.readthedocs.io"
                   rel="noreferrer"
                   target="_blank"
@@ -874,31 +867,31 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
               </dd>
             </div>
             <div
-              className="c15"
+              class="c15"
             >
               <dt
-                className="c16"
+                class="c16"
               >
                 Language
                 :
               </dt>
               <dd
-                className="c17"
+                class="c17"
               >
                 Python
               </dd>
             </div>
             <div
-              className="c15"
+              class="c15"
             >
               <dt
-                className="c16"
+                class="c16"
               >
                 Stats
                 :
               </dt>
               <dd
-                className="c17"
+                class="c17"
               >
                 469
                  stars  |  
@@ -907,16 +900,16 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
               </dd>
             </div>
             <div
-              className="c15"
+              class="c15"
             >
               <dt
-                className="c16"
+                class="c16"
               >
                 Pushed
                 :
               </dt>
               <dd
-                className="c17"
+                class="c17"
               >
                 Dec 23, 2021, 02:07 AM
               </dd>
@@ -924,13 +917,13 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
           </dl>
         </div>
         <div
-          className="c26 "
+          class="c26 "
         >
           <h3
-            className="c27"
+            class="c27"
           >
             <a
-              className="c10"
+              class="c10"
               href="https://github.com/reddit/baseplate.py-upgrader"
               rel="noreferrer"
               target="_blank"
@@ -940,47 +933,47 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
           </h3>
           <dl>
             <div
-              className="c15"
+              class="c15"
             >
               <dt
-                className="c16"
+                class="c16"
               >
                 Description
                 :
               </dt>
               <dd
-                className="c17"
+                class="c17"
               >
                 automates much of the work of upgrading to newer baseplate.py versions
               </dd>
             </div>
             
             <div
-              className="c15"
+              class="c15"
             >
               <dt
-                className="c16"
+                class="c16"
               >
                 Language
                 :
               </dt>
               <dd
-                className="c17"
+                class="c17"
               >
                 Python
               </dd>
             </div>
             <div
-              className="c15"
+              class="c15"
             >
               <dt
-                className="c16"
+                class="c16"
               >
                 Stats
                 :
               </dt>
               <dd
-                className="c17"
+                class="c17"
               >
                 5
                  stars  |  
@@ -989,16 +982,16 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
               </dd>
             </div>
             <div
-              className="c15"
+              class="c15"
             >
               <dt
-                className="c16"
+                class="c16"
               >
                 Pushed
                 :
               </dt>
               <dd
-                className="c17"
+                class="c17"
               >
                 Dec 20, 2021, 10:21 PM
               </dd>
@@ -1006,13 +999,13 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
           </dl>
         </div>
         <div
-          className="c26 "
+          class="c26 "
         >
           <h3
-            className="c27"
+            class="c27"
           >
             <a
-              className="c10"
+              class="c10"
               href="https://github.com/reddit/xctestrunner"
               rel="noreferrer"
               target="_blank"
@@ -1022,47 +1015,47 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
           </h3>
           <dl>
             <div
-              className="c15"
+              class="c15"
             >
               <dt
-                className="c16"
+                class="c16"
               >
                 Fork?
                 :
               </dt>
               <dd
-                className="c17"
+                class="c17"
               >
                 Yes
               </dd>
             </div>
             <div
-              className="c15"
+              class="c15"
             >
               <dt
-                className="c16"
+                class="c16"
               >
                 Description
                 :
               </dt>
               <dd
-                className="c17"
+                class="c17"
               >
                 A executable binary to run prebuilt iOS tests on iOS simulator/real device.
               </dd>
             </div>
             
             <div
-              className="c15"
+              class="c15"
             >
               <dt
-                className="c16"
+                class="c16"
               >
                 Pushed
                 :
               </dt>
               <dd
-                className="c17"
+                class="c17"
               >
                 Dec 15, 2021, 06:09 PM
               </dd>
@@ -1070,13 +1063,13 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
           </dl>
         </div>
         <div
-          className="c26 "
+          class="c26 "
         >
           <h3
-            className="c27"
+            class="c27"
           >
             <a
-              className="c10"
+              class="c10"
               href="https://github.com/reddit/cqlmapper"
               rel="noreferrer"
               target="_blank"
@@ -1086,46 +1079,46 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
           </h3>
           <dl>
             <div
-              className="c15"
+              class="c15"
             >
               <dt
-                className="c16"
+                class="c16"
               >
                 Description
                 :
               </dt>
               <dd
-                className="c17"
+                class="c17"
               >
                 A baseplate compatible fork of datastax' cqlengine library
               </dd>
             </div>
             <div
-              className="c15"
+              class="c15"
             >
               <dt
-                className="c16"
+                class="c16"
               >
                 Language
                 :
               </dt>
               <dd
-                className="c17"
+                class="c17"
               >
                 Python
               </dd>
             </div>
             <div
-              className="c15"
+              class="c15"
             >
               <dt
-                className="c16"
+                class="c16"
               >
                 Stats
                 :
               </dt>
               <dd
-                className="c17"
+                class="c17"
               >
                 9
                  stars  |  
@@ -1134,16 +1127,16 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
               </dd>
             </div>
             <div
-              className="c15"
+              class="c15"
             >
               <dt
-                className="c16"
+                class="c16"
               >
                 Pushed
                 :
               </dt>
               <dd
-                className="c17"
+                class="c17"
               >
                 Dec 13, 2021, 10:05 PM
               </dd>
@@ -1151,13 +1144,13 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
           </dl>
         </div>
         <div
-          className="c26 "
+          class="c26 "
         >
           <h3
-            className="c27"
+            class="c27"
           >
             <a
-              className="c10"
+              class="c10"
               href="https://github.com/reddit/error-pages"
               rel="noreferrer"
               target="_blank"
@@ -1167,47 +1160,47 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
           </h3>
           <dl>
             <div
-              className="c15"
+              class="c15"
             >
               <dt
-                className="c16"
+                class="c16"
               >
                 Description
                 :
               </dt>
               <dd
-                className="c17"
+                class="c17"
               >
                 the bummer mobile
               </dd>
             </div>
             
             <div
-              className="c15"
+              class="c15"
             >
               <dt
-                className="c16"
+                class="c16"
               >
                 Language
                 :
               </dt>
               <dd
-                className="c17"
+                class="c17"
               >
                 HTML
               </dd>
             </div>
             <div
-              className="c15"
+              class="c15"
             >
               <dt
-                className="c16"
+                class="c16"
               >
                 Stats
                 :
               </dt>
               <dd
-                className="c17"
+                class="c17"
               >
                 28
                  stars  |  
@@ -1216,16 +1209,16 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
               </dd>
             </div>
             <div
-              className="c15"
+              class="c15"
             >
               <dt
-                className="c16"
+                class="c16"
               >
                 Pushed
                 :
               </dt>
               <dd
-                className="c17"
+                class="c17"
               >
                 Dec 8, 2021, 11:59 PM
               </dd>
@@ -1233,13 +1226,13 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
           </dl>
         </div>
         <div
-          className="c26 "
+          class="c26 "
         >
           <h3
-            className="c27"
+            class="c27"
           >
             <a
-              className="c10"
+              class="c10"
               href="https://github.com/reddit/edgecontext"
               rel="noreferrer"
               target="_blank"
@@ -1249,34 +1242,34 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
           </h3>
           <dl>
             <div
-              className="c15"
+              class="c15"
             >
               <dt
-                className="c16"
+                class="c16"
               >
                 Description
                 :
               </dt>
               <dd
-                className="c17"
+                class="c17"
               >
                 request.edge_context payload definitions
               </dd>
             </div>
             <div
-              className="c15"
+              class="c15"
             >
               <dt
-                className="c16"
+                class="c16"
               >
                 Homepage
                 :
               </dt>
               <dd
-                className="c17"
+                class="c17"
               >
                 <a
-                  className="c18"
+                  class="c18"
                   href="https://reddit-edgecontext.readthedocs.io"
                   rel="noreferrer"
                   target="_blank"
@@ -1286,31 +1279,31 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
               </dd>
             </div>
             <div
-              className="c15"
+              class="c15"
             >
               <dt
-                className="c16"
+                class="c16"
               >
                 Language
                 :
               </dt>
               <dd
-                className="c17"
+                class="c17"
               >
                 Python
               </dd>
             </div>
             <div
-              className="c15"
+              class="c15"
             >
               <dt
-                className="c16"
+                class="c16"
               >
                 Stats
                 :
               </dt>
               <dd
-                className="c17"
+                class="c17"
               >
                 2
                  stars  |  
@@ -1319,16 +1312,16 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
               </dd>
             </div>
             <div
-              className="c15"
+              class="c15"
             >
               <dt
-                className="c16"
+                class="c16"
               >
                 Pushed
                 :
               </dt>
               <dd
-                className="c17"
+                class="c17"
               >
                 Dec 7, 2021, 09:12 PM
               </dd>
@@ -1336,13 +1329,13 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
           </dl>
         </div>
         <div
-          className="c26 "
+          class="c26 "
         >
           <h3
-            className="c27"
+            class="c27"
           >
             <a
-              className="c10"
+              class="c10"
               href="https://github.com/reddit/reddit-gtm-template"
               rel="noreferrer"
               target="_blank"
@@ -1352,46 +1345,46 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
           </h3>
           <dl>
             <div
-              className="c15"
+              class="c15"
             >
               <dt
-                className="c16"
+                class="c16"
               >
                 Description
                 :
               </dt>
               <dd
-                className="c17"
+                class="c17"
               >
                 The official tag template for the Reddit conversion pixel for use with Google Tag Manager
               </dd>
             </div>
             <div
-              className="c15"
+              class="c15"
             >
               <dt
-                className="c16"
+                class="c16"
               >
                 Language
                 :
               </dt>
               <dd
-                className="c17"
+                class="c17"
               >
                 Smarty
               </dd>
             </div>
             <div
-              className="c15"
+              class="c15"
             >
               <dt
-                className="c16"
+                class="c16"
               >
                 Stats
                 :
               </dt>
               <dd
-                className="c17"
+                class="c17"
               >
                 4
                  stars  |  
@@ -1400,16 +1393,16 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
               </dd>
             </div>
             <div
-              className="c15"
+              class="c15"
             >
               <dt
-                className="c16"
+                class="c16"
               >
                 Pushed
                 :
               </dt>
               <dd
-                className="c17"
+                class="c17"
               >
                 Nov 29, 2021, 10:32 PM
               </dd>
@@ -1417,13 +1410,13 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
           </dl>
         </div>
         <div
-          className="c26 "
+          class="c26 "
         >
           <h3
-            className="c27"
+            class="c27"
           >
             <a
-              className="c10"
+              class="c10"
               href="https://github.com/reddit/fernet-go"
               rel="noreferrer"
               target="_blank"
@@ -1433,49 +1426,49 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
           </h3>
           <dl>
             <div
-              className="c15"
+              class="c15"
             >
               <dt
-                className="c16"
+                class="c16"
               >
                 Fork?
                 :
               </dt>
               <dd
-                className="c17"
+                class="c17"
               >
                 Yes
               </dd>
             </div>
             <div
-              className="c15"
+              class="c15"
             >
               <dt
-                className="c16"
+                class="c16"
               >
                 Description
                 :
               </dt>
               <dd
-                className="c17"
+                class="c17"
               >
                 Fernet generates and verifies HMAC-based authentication tokens.
               </dd>
             </div>
             <div
-              className="c15"
+              class="c15"
             >
               <dt
-                className="c16"
+                class="c16"
               >
                 Homepage
                 :
               </dt>
               <dd
-                className="c17"
+                class="c17"
               >
                 <a
-                  className="c18"
+                  class="c18"
                   href="http://godoc.org/github.com/fernet/fernet-go"
                   rel="noreferrer"
                   target="_blank"
@@ -1485,31 +1478,31 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
               </dd>
             </div>
             <div
-              className="c15"
+              class="c15"
             >
               <dt
-                className="c16"
+                class="c16"
               >
                 Language
                 :
               </dt>
               <dd
-                className="c17"
+                class="c17"
               >
                 Go
               </dd>
             </div>
             <div
-              className="c15"
+              class="c15"
             >
               <dt
-                className="c16"
+                class="c16"
               >
                 Pushed
                 :
               </dt>
               <dd
-                className="c17"
+                class="c17"
               >
                 Nov 17, 2021, 07:35 PM
               </dd>
@@ -1517,13 +1510,13 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
           </dl>
         </div>
         <div
-          className="c26 "
+          class="c26 "
         >
           <h3
-            className="c27"
+            class="c27"
           >
             <a
-              className="c10"
+              class="c10"
               href="https://github.com/reddit/baseplate-celery"
               rel="noreferrer"
               target="_blank"
@@ -1533,31 +1526,31 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
           </h3>
           <dl>
             <div
-              className="c15"
+              class="c15"
             >
               <dt
-                className="c16"
+                class="c16"
               >
                 Language
                 :
               </dt>
               <dd
-                className="c17"
+                class="c17"
               >
                 Python
               </dd>
             </div>
             <div
-              className="c15"
+              class="c15"
             >
               <dt
-                className="c16"
+                class="c16"
               >
                 Stats
                 :
               </dt>
               <dd
-                className="c17"
+                class="c17"
               >
                 2
                  stars  |  
@@ -1566,16 +1559,16 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
               </dd>
             </div>
             <div
-              className="c15"
+              class="c15"
             >
               <dt
-                className="c16"
+                class="c16"
               >
                 Pushed
                 :
               </dt>
               <dd
-                className="c17"
+                class="c17"
               >
                 Oct 26, 2021, 08:50 PM
               </dd>
@@ -1583,13 +1576,13 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
           </dl>
         </div>
         <div
-          className="c26 "
+          class="c26 "
         >
           <h3
-            className="c27"
+            class="c27"
           >
             <a
-              className="c10"
+              class="c10"
               href="https://github.com/reddit/node-api-client"
               rel="noreferrer"
               target="_blank"
@@ -1599,31 +1592,31 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
           </h3>
           <dl>
             <div
-              className="c15"
+              class="c15"
             >
               <dt
-                className="c16"
+                class="c16"
               >
                 Language
                 :
               </dt>
               <dd
-                className="c17"
+                class="c17"
               >
                 JavaScript
               </dd>
             </div>
             <div
-              className="c15"
+              class="c15"
             >
               <dt
-                className="c16"
+                class="c16"
               >
                 Stats
                 :
               </dt>
               <dd
-                className="c17"
+                class="c17"
               >
                 83
                  stars  |  
@@ -1632,16 +1625,16 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
               </dd>
             </div>
             <div
-              className="c15"
+              class="c15"
             >
               <dt
-                className="c16"
+                class="c16"
               >
                 Pushed
                 :
               </dt>
               <dd
-                className="c17"
+                class="c17"
               >
                 Oct 24, 2021, 09:12 PM
               </dd>
@@ -1649,13 +1642,13 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
           </dl>
         </div>
         <div
-          className="c26 "
+          class="c26 "
         >
           <h3
-            className="c27"
+            class="c27"
           >
             <a
-              className="c10"
+              class="c10"
               href="https://github.com/reddit/snudown"
               rel="noreferrer"
               target="_blank"
@@ -1665,47 +1658,47 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
           </h3>
           <dl>
             <div
-              className="c15"
+              class="c15"
             >
               <dt
-                className="c16"
+                class="c16"
               >
                 Description
                 :
               </dt>
               <dd
-                className="c17"
+                class="c17"
               >
                 reddit's markdown renderer. based on sundown.
               </dd>
             </div>
             
             <div
-              className="c15"
+              class="c15"
             >
               <dt
-                className="c16"
+                class="c16"
               >
                 Language
                 :
               </dt>
               <dd
-                className="c17"
+                class="c17"
               >
                 C
               </dd>
             </div>
             <div
-              className="c15"
+              class="c15"
             >
               <dt
-                className="c16"
+                class="c16"
               >
                 Stats
                 :
               </dt>
               <dd
-                className="c17"
+                class="c17"
               >
                 154
                  stars  |  
@@ -1714,16 +1707,16 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
               </dd>
             </div>
             <div
-              className="c15"
+              class="c15"
             >
               <dt
-                className="c16"
+                class="c16"
               >
                 Pushed
                 :
               </dt>
               <dd
-                className="c17"
+                class="c17"
               >
                 Oct 20, 2021, 08:26 PM
               </dd>
@@ -1731,13 +1724,13 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
           </dl>
         </div>
         <div
-          className="c26 "
+          class="c26 "
         >
           <h3
-            className="c27"
+            class="c27"
           >
             <a
-              className="c10"
+              class="c10"
               href="https://github.com/reddit/drone-kaniko"
               rel="noreferrer"
               target="_blank"
@@ -1747,61 +1740,61 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
           </h3>
           <dl>
             <div
-              className="c15"
+              class="c15"
             >
               <dt
-                className="c16"
+                class="c16"
               >
                 Fork?
                 :
               </dt>
               <dd
-                className="c17"
+                class="c17"
               >
                 Yes
               </dd>
             </div>
             <div
-              className="c15"
+              class="c15"
             >
               <dt
-                className="c16"
+                class="c16"
               >
                 Description
                 :
               </dt>
               <dd
-                className="c17"
+                class="c17"
               >
                 Drone plugin for building and publishing Docker images
               </dd>
             </div>
             <div
-              className="c15"
+              class="c15"
             >
               <dt
-                className="c16"
+                class="c16"
               >
                 Language
                 :
               </dt>
               <dd
-                className="c17"
+                class="c17"
               >
                 Go
               </dd>
             </div>
             <div
-              className="c15"
+              class="c15"
             >
               <dt
-                className="c16"
+                class="c16"
               >
                 Pushed
                 :
               </dt>
               <dd
-                className="c17"
+                class="c17"
               >
                 Oct 19, 2021, 01:16 AM
               </dd>
@@ -1809,13 +1802,13 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
           </dl>
         </div>
         <div
-          className="c26 "
+          class="c26 "
         >
           <h3
-            className="c27"
+            class="c27"
           >
             <a
-              className="c10"
+              class="c10"
               href="https://github.com/reddit/AlienBlue"
               rel="noreferrer"
               target="_blank"
@@ -1825,46 +1818,46 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
           </h3>
           <dl>
             <div
-              className="c15"
+              class="c15"
             >
               <dt
-                className="c16"
+                class="c16"
               >
                 Description
                 :
               </dt>
               <dd
-                className="c17"
+                class="c17"
               >
                 Alien Blue iOS app - r/AlienBlue
               </dd>
             </div>
             <div
-              className="c15"
+              class="c15"
             >
               <dt
-                className="c16"
+                class="c16"
               >
                 Language
                 :
               </dt>
               <dd
-                className="c17"
+                class="c17"
               >
                 Objective-C
               </dd>
             </div>
             <div
-              className="c15"
+              class="c15"
             >
               <dt
-                className="c16"
+                class="c16"
               >
                 Stats
                 :
               </dt>
               <dd
-                className="c17"
+                class="c17"
               >
                 43
                  stars  |  
@@ -1873,16 +1866,16 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
               </dd>
             </div>
             <div
-              className="c15"
+              class="c15"
             >
               <dt
-                className="c16"
+                class="c16"
               >
                 Pushed
                 :
               </dt>
               <dd
-                className="c17"
+                class="c17"
               >
                 Oct 14, 2021, 11:06 PM
               </dd>
@@ -1890,13 +1883,13 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
           </dl>
         </div>
         <div
-          className="c26 "
+          class="c26 "
         >
           <h3
-            className="c27"
+            class="c27"
           >
             <a
-              className="c10"
+              class="c10"
               href="https://github.com/reddit/rpan-studio"
               rel="noreferrer"
               target="_blank"
@@ -1906,46 +1899,46 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
           </h3>
           <dl>
             <div
-              className="c15"
+              class="c15"
             >
               <dt
-                className="c16"
+                class="c16"
               >
                 Description
                 :
               </dt>
               <dd
-                className="c17"
+                class="c17"
               >
                 RPAN Studio
               </dd>
             </div>
             <div
-              className="c15"
+              class="c15"
             >
               <dt
-                className="c16"
+                class="c16"
               >
                 Language
                 :
               </dt>
               <dd
-                className="c17"
+                class="c17"
               >
                 C
               </dd>
             </div>
             <div
-              className="c15"
+              class="c15"
             >
               <dt
-                className="c16"
+                class="c16"
               >
                 Stats
                 :
               </dt>
               <dd
-                className="c17"
+                class="c17"
               >
                 215
                  stars  |  
@@ -1954,16 +1947,16 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
               </dd>
             </div>
             <div
-              className="c15"
+              class="c15"
             >
               <dt
-                className="c16"
+                class="c16"
               >
                 Pushed
                 :
               </dt>
               <dd
-                className="c17"
+                class="c17"
               >
                 Oct 11, 2021, 06:53 PM
               </dd>
@@ -1971,13 +1964,13 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
           </dl>
         </div>
         <div
-          className="c26 "
+          class="c26 "
         >
           <h3
-            className="c27"
+            class="c27"
           >
             <a
-              className="c10"
+              class="c10"
               href="https://github.com/reddit/IndicatorFastScroll"
               rel="noreferrer"
               target="_blank"
@@ -1987,47 +1980,47 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
           </h3>
           <dl>
             <div
-              className="c15"
+              class="c15"
             >
               <dt
-                className="c16"
+                class="c16"
               >
                 Description
                 :
               </dt>
               <dd
-                className="c17"
+                class="c17"
               >
                 Android library providing a simple UI control for scrolling through RecyclerViews
               </dd>
             </div>
             
             <div
-              className="c15"
+              class="c15"
             >
               <dt
-                className="c16"
+                class="c16"
               >
                 Language
                 :
               </dt>
               <dd
-                className="c17"
+                class="c17"
               >
                 Kotlin
               </dd>
             </div>
             <div
-              className="c15"
+              class="c15"
             >
               <dt
-                className="c16"
+                class="c16"
               >
                 Stats
                 :
               </dt>
               <dd
-                className="c17"
+                class="c17"
               >
                 659
                  stars  |  
@@ -2036,16 +2029,16 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
               </dd>
             </div>
             <div
-              className="c15"
+              class="c15"
             >
               <dt
-                className="c16"
+                class="c16"
               >
                 Pushed
                 :
               </dt>
               <dd
-                className="c17"
+                class="c17"
               >
                 Oct 3, 2021, 03:00 PM
               </dd>
@@ -2053,13 +2046,13 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
           </dl>
         </div>
         <div
-          className="c26 "
+          class="c26 "
         >
           <h3
-            className="c27"
+            class="c27"
           >
             <a
-              className="c10"
+              class="c10"
               href="https://github.com/reddit/thrift-compiler"
               rel="noreferrer"
               target="_blank"
@@ -2069,47 +2062,47 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
           </h3>
           <dl>
             <div
-              className="c15"
+              class="c15"
             >
               <dt
-                className="c16"
+                class="c16"
               >
                 Description
                 :
               </dt>
               <dd
-                className="c17"
+                class="c17"
               >
                 a thrift compiler in a docker container
               </dd>
             </div>
             
             <div
-              className="c15"
+              class="c15"
             >
               <dt
-                className="c16"
+                class="c16"
               >
                 Language
                 :
               </dt>
               <dd
-                className="c17"
+                class="c17"
               >
                 Dockerfile
               </dd>
             </div>
             <div
-              className="c15"
+              class="c15"
             >
               <dt
-                className="c16"
+                class="c16"
               >
                 Stats
                 :
               </dt>
               <dd
-                className="c17"
+                class="c17"
               >
                 0
                  stars  |  
@@ -2118,16 +2111,16 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
               </dd>
             </div>
             <div
-              className="c15"
+              class="c15"
             >
               <dt
-                className="c16"
+                class="c16"
               >
                 Pushed
                 :
               </dt>
               <dd
-                className="c17"
+                class="c17"
               >
                 Sep 13, 2021, 06:36 PM
               </dd>
@@ -2135,13 +2128,13 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
           </dl>
         </div>
         <div
-          className="c26 "
+          class="c26 "
         >
           <h3
-            className="c27"
+            class="c27"
           >
             <a
-              className="c10"
+              class="c10"
               href="https://github.com/reddit/docker-bazelisk"
               rel="noreferrer"
               target="_blank"
@@ -2151,46 +2144,46 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
           </h3>
           <dl>
             <div
-              className="c15"
+              class="c15"
             >
               <dt
-                className="c16"
+                class="c16"
               >
                 Description
                 :
               </dt>
               <dd
-                className="c17"
+                class="c17"
               >
                 Docker image for Bazelisk
               </dd>
             </div>
             <div
-              className="c15"
+              class="c15"
             >
               <dt
-                className="c16"
+                class="c16"
               >
                 Language
                 :
               </dt>
               <dd
-                className="c17"
+                class="c17"
               >
                 Dockerfile
               </dd>
             </div>
             <div
-              className="c15"
+              class="c15"
             >
               <dt
-                className="c16"
+                class="c16"
               >
                 Stats
                 :
               </dt>
               <dd
-                className="c17"
+                class="c17"
               >
                 0
                  stars  |  
@@ -2199,16 +2192,16 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
               </dd>
             </div>
             <div
-              className="c15"
+              class="c15"
             >
               <dt
-                className="c16"
+                class="c16"
               >
                 Pushed
                 :
               </dt>
               <dd
-                className="c17"
+                class="c17"
               >
                 Aug 24, 2021, 02:01 AM
               </dd>
@@ -2216,13 +2209,13 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
           </dl>
         </div>
         <div
-          className="c26 "
+          class="c26 "
         >
           <h3
-            className="c27"
+            class="c27"
           >
             <a
-              className="c10"
+              class="c10"
               href="https://github.com/reddit/backup-utils"
               rel="noreferrer"
               target="_blank"
@@ -2232,62 +2225,62 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
           </h3>
           <dl>
             <div
-              className="c15"
+              class="c15"
             >
               <dt
-                className="c16"
+                class="c16"
               >
                 Fork?
                 :
               </dt>
               <dd
-                className="c17"
+                class="c17"
               >
                 Yes
               </dd>
             </div>
             <div
-              className="c15"
+              class="c15"
             >
               <dt
-                className="c16"
+                class="c16"
               >
                 Description
                 :
               </dt>
               <dd
-                className="c17"
+                class="c17"
               >
                 GitHub Enterprise Backup Utilities
               </dd>
             </div>
             
             <div
-              className="c15"
+              class="c15"
             >
               <dt
-                className="c16"
+                class="c16"
               >
                 Language
                 :
               </dt>
               <dd
-                className="c17"
+                class="c17"
               >
                 Shell
               </dd>
             </div>
             <div
-              className="c15"
+              class="c15"
             >
               <dt
-                className="c16"
+                class="c16"
               >
                 Stats
                 :
               </dt>
               <dd
-                className="c17"
+                class="c17"
               >
                 2
                  stars  |  
@@ -2296,16 +2289,16 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
               </dd>
             </div>
             <div
-              className="c15"
+              class="c15"
             >
               <dt
-                className="c16"
+                class="c16"
               >
                 Pushed
                 :
               </dt>
               <dd
-                className="c17"
+                class="c17"
               >
                 Aug 14, 2021, 01:31 AM
               </dd>
@@ -2313,13 +2306,13 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
           </dl>
         </div>
         <div
-          className="c26 "
+          class="c26 "
         >
           <h3
-            className="c27"
+            class="c27"
           >
             <a
-              className="c10"
+              class="c10"
               href="https://github.com/reddit/rollingpin"
               rel="noreferrer"
               target="_blank"
@@ -2329,34 +2322,34 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
           </h3>
           <dl>
             <div
-              className="c15"
+              class="c15"
             >
               <dt
-                className="c16"
+                class="c16"
               >
                 Description
                 :
               </dt>
               <dd
-                className="c17"
+                class="c17"
               >
                 fast deploy to lots of servers
               </dd>
             </div>
             <div
-              className="c15"
+              class="c15"
             >
               <dt
-                className="c16"
+                class="c16"
               >
                 Homepage
                 :
               </dt>
               <dd
-                className="c17"
+                class="c17"
               >
                 <a
-                  className="c18"
+                  class="c18"
                   href="https://redditblog.com/2017/06/02/the-evolution-of-code-deploys-at-reddit/"
                   rel="noreferrer"
                   target="_blank"
@@ -2366,31 +2359,31 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
               </dd>
             </div>
             <div
-              className="c15"
+              class="c15"
             >
               <dt
-                className="c16"
+                class="c16"
               >
                 Language
                 :
               </dt>
               <dd
-                className="c17"
+                class="c17"
               >
                 Python
               </dd>
             </div>
             <div
-              className="c15"
+              class="c15"
             >
               <dt
-                className="c16"
+                class="c16"
               >
                 Stats
                 :
               </dt>
               <dd
-                className="c17"
+                class="c17"
               >
                 141
                  stars  |  
@@ -2399,16 +2392,16 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
               </dd>
             </div>
             <div
-              className="c15"
+              class="c15"
             >
               <dt
-                className="c16"
+                class="c16"
               >
                 Pushed
                 :
               </dt>
               <dd
-                className="c17"
+                class="c17"
               >
                 Jun 23, 2021, 01:49 PM
               </dd>
@@ -2416,13 +2409,13 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
           </dl>
         </div>
         <div
-          className="c26 "
+          class="c26 "
         >
           <h3
-            className="c27"
+            class="c27"
           >
             <a
-              className="c10"
+              class="c10"
               href="https://github.com/reddit/experiments.py"
               rel="noreferrer"
               target="_blank"
@@ -2432,34 +2425,34 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
           </h3>
           <dl>
             <div
-              className="c15"
+              class="c15"
             >
               <dt
-                className="c16"
+                class="c16"
               >
                 Description
                 :
               </dt>
               <dd
-                className="c17"
+                class="c17"
               >
                 reddit's python experiments framework
               </dd>
             </div>
             <div
-              className="c15"
+              class="c15"
             >
               <dt
-                className="c16"
+                class="c16"
               >
                 Homepage
                 :
               </dt>
               <dd
-                className="c17"
+                class="c17"
               >
                 <a
-                  className="c18"
+                  class="c18"
                   href="https://reddit-experiments.readthedocs.io"
                   rel="noreferrer"
                   target="_blank"
@@ -2469,31 +2462,31 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
               </dd>
             </div>
             <div
-              className="c15"
+              class="c15"
             >
               <dt
-                className="c16"
+                class="c16"
               >
                 Language
                 :
               </dt>
               <dd
-                className="c17"
+                class="c17"
               >
                 Python
               </dd>
             </div>
             <div
-              className="c15"
+              class="c15"
             >
               <dt
-                className="c16"
+                class="c16"
               >
                 Stats
                 :
               </dt>
               <dd
-                className="c17"
+                class="c17"
               >
                 4
                  stars  |  
@@ -2502,16 +2495,16 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
               </dd>
             </div>
             <div
-              className="c15"
+              class="c15"
             >
               <dt
-                className="c16"
+                class="c16"
               >
                 Pushed
                 :
               </dt>
               <dd
-                className="c17"
+                class="c17"
               >
                 Jun 17, 2021, 06:46 PM
               </dd>
@@ -2519,13 +2512,13 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
           </dl>
         </div>
         <div
-          className="c26 "
+          class="c26 "
         >
           <h3
-            className="c27"
+            class="c27"
           >
             <a
-              className="c10"
+              class="c10"
               href="https://github.com/reddit/iOS-interview"
               rel="noreferrer"
               target="_blank"
@@ -2535,46 +2528,46 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
           </h3>
           <dl>
             <div
-              className="c15"
+              class="c15"
             >
               <dt
-                className="c16"
+                class="c16"
               >
                 Description
                 :
               </dt>
               <dd
-                className="c17"
+                class="c17"
               >
                 Sandbox for the iOS Programming Interview
               </dd>
             </div>
             <div
-              className="c15"
+              class="c15"
             >
               <dt
-                className="c16"
+                class="c16"
               >
                 Language
                 :
               </dt>
               <dd
-                className="c17"
+                class="c17"
               >
                 Swift
               </dd>
             </div>
             <div
-              className="c15"
+              class="c15"
             >
               <dt
-                className="c16"
+                class="c16"
               >
                 Stats
                 :
               </dt>
               <dd
-                className="c17"
+                class="c17"
               >
                 1
                  stars  |  
@@ -2583,16 +2576,16 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
               </dd>
             </div>
             <div
-              className="c15"
+              class="c15"
             >
               <dt
-                className="c16"
+                class="c16"
               >
                 Pushed
                 :
               </dt>
               <dd
-                className="c17"
+                class="c17"
               >
                 May 7, 2021, 07:16 PM
               </dd>
@@ -2600,13 +2593,13 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
           </dl>
         </div>
         <div
-          className="c26 "
+          class="c26 "
         >
           <h3
-            className="c27"
+            class="c27"
           >
             <a
-              className="c10"
+              class="c10"
               href="https://github.com/reddit/dind-drone-plugin"
               rel="noreferrer"
               target="_blank"
@@ -2616,47 +2609,47 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
           </h3>
           <dl>
             <div
-              className="c15"
+              class="c15"
             >
               <dt
-                className="c16"
+                class="c16"
               >
                 Fork?
                 :
               </dt>
               <dd
-                className="c17"
+                class="c17"
               >
                 Yes
               </dd>
             </div>
             <div
-              className="c15"
+              class="c15"
             >
               <dt
-                className="c16"
+                class="c16"
               >
                 Description
                 :
               </dt>
               <dd
-                className="c17"
+                class="c17"
               >
                 Plugin for Drone CI v0.8+ to enable use of Testcontainers using Docker-in-Docker
               </dd>
             </div>
             
             <div
-              className="c15"
+              class="c15"
             >
               <dt
-                className="c16"
+                class="c16"
               >
                 Pushed
                 :
               </dt>
               <dd
-                className="c17"
+                class="c17"
               >
                 Mar 24, 2021, 12:36 PM
               </dd>
@@ -2664,13 +2657,13 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
           </dl>
         </div>
         <div
-          className="c26 "
+          class="c26 "
         >
           <h3
-            className="c27"
+            class="c27"
           >
             <a
-              className="c10"
+              class="c10"
               href="https://github.com/reddit/dispatch"
               rel="noreferrer"
               target="_blank"
@@ -2680,46 +2673,46 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
           </h3>
           <dl>
             <div
-              className="c15"
+              class="c15"
             >
               <dt
-                className="c16"
+                class="c16"
               >
                 Fork?
                 :
               </dt>
               <dd
-                className="c17"
+                class="c17"
               >
                 Yes
               </dd>
             </div>
             <div
-              className="c15"
+              class="c15"
             >
               <dt
-                className="c16"
+                class="c16"
               >
                 Description
                 :
               </dt>
               <dd
-                className="c17"
+                class="c17"
               >
                 All of the ad-hoc things you're doing to manage incidents today, done for you, and much more!
               </dd>
             </div>
             <div
-              className="c15"
+              class="c15"
             >
               <dt
-                className="c16"
+                class="c16"
               >
                 Stats
                 :
               </dt>
               <dd
-                className="c17"
+                class="c17"
               >
                 0
                  stars  |  
@@ -2728,16 +2721,16 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
               </dd>
             </div>
             <div
-              className="c15"
+              class="c15"
             >
               <dt
-                className="c16"
+                class="c16"
               >
                 Pushed
                 :
               </dt>
               <dd
-                className="c17"
+                class="c17"
               >
                 Mar 15, 2021, 10:17 PM
               </dd>
@@ -2745,13 +2738,13 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
           </dl>
         </div>
         <div
-          className="c26 "
+          class="c26 "
         >
           <h3
-            className="c27"
+            class="c27"
           >
             <a
-              className="c10"
+              class="c10"
               href="https://github.com/reddit/thrift-python"
               rel="noreferrer"
               target="_blank"
@@ -2761,16 +2754,16 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
           </h3>
           <dl>
             <div
-              className="c15"
+              class="c15"
             >
               <dt
-                className="c16"
+                class="c16"
               >
                 Stats
                 :
               </dt>
               <dd
-                className="c17"
+                class="c17"
               >
                 0
                  stars  |  
@@ -2779,16 +2772,16 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
               </dd>
             </div>
             <div
-              className="c15"
+              class="c15"
             >
               <dt
-                className="c16"
+                class="c16"
               >
                 Pushed
                 :
               </dt>
               <dd
-                className="c17"
+                class="c17"
               >
                 Mar 3, 2021, 08:17 PM
               </dd>
@@ -2796,13 +2789,13 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
           </dl>
         </div>
         <div
-          className="c26 "
+          class="c26 "
         >
           <h3
-            className="c27"
+            class="c27"
           >
             <a
-              className="c10"
+              class="c10"
               href="https://github.com/reddit/zap"
               rel="noreferrer"
               target="_blank"
@@ -2812,49 +2805,49 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
           </h3>
           <dl>
             <div
-              className="c15"
+              class="c15"
             >
               <dt
-                className="c16"
+                class="c16"
               >
                 Fork?
                 :
               </dt>
               <dd
-                className="c17"
+                class="c17"
               >
                 Yes
               </dd>
             </div>
             <div
-              className="c15"
+              class="c15"
             >
               <dt
-                className="c16"
+                class="c16"
               >
                 Description
                 :
               </dt>
               <dd
-                className="c17"
+                class="c17"
               >
                 Blazing fast, structured, leveled logging in Go.
               </dd>
             </div>
             <div
-              className="c15"
+              class="c15"
             >
               <dt
-                className="c16"
+                class="c16"
               >
                 Homepage
                 :
               </dt>
               <dd
-                className="c17"
+                class="c17"
               >
                 <a
-                  className="c18"
+                  class="c18"
                   href="https://godoc.org/go.uber.org/zap"
                   rel="noreferrer"
                   target="_blank"
@@ -2864,31 +2857,31 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
               </dd>
             </div>
             <div
-              className="c15"
+              class="c15"
             >
               <dt
-                className="c16"
+                class="c16"
               >
                 Language
                 :
               </dt>
               <dd
-                className="c17"
+                class="c17"
               >
                 Go
               </dd>
             </div>
             <div
-              className="c15"
+              class="c15"
             >
               <dt
-                className="c16"
+                class="c16"
               >
                 Stats
                 :
               </dt>
               <dd
-                className="c17"
+                class="c17"
               >
                 0
                  stars  |  
@@ -2897,16 +2890,16 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
               </dd>
             </div>
             <div
-              className="c15"
+              class="c15"
             >
               <dt
-                className="c16"
+                class="c16"
               >
                 Pushed
                 :
               </dt>
               <dd
-                className="c17"
+                class="c17"
               >
                 Dec 4, 2020, 02:07 AM
               </dd>
@@ -2914,13 +2907,13 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
           </dl>
         </div>
         <div
-          className="c26 "
+          class="c26 "
         >
           <h3
-            className="c27"
+            class="c27"
           >
             <a
-              className="c10"
+              class="c10"
               href="https://github.com/reddit/reddit-coredns-plugins"
               rel="noreferrer"
               target="_blank"
@@ -2930,46 +2923,46 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
           </h3>
           <dl>
             <div
-              className="c15"
+              class="c15"
             >
               <dt
-                className="c16"
+                class="c16"
               >
                 Description
                 :
               </dt>
               <dd
-                className="c17"
+                class="c17"
               >
                 Some CoreDNS plugins that reddit made
               </dd>
             </div>
             <div
-              className="c15"
+              class="c15"
             >
               <dt
-                className="c16"
+                class="c16"
               >
                 Language
                 :
               </dt>
               <dd
-                className="c17"
+                class="c17"
               >
                 Go
               </dd>
             </div>
             <div
-              className="c15"
+              class="c15"
             >
               <dt
-                className="c16"
+                class="c16"
               >
                 Stats
                 :
               </dt>
               <dd
-                className="c17"
+                class="c17"
               >
                 1
                  stars  |  
@@ -2978,16 +2971,16 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
               </dd>
             </div>
             <div
-              className="c15"
+              class="c15"
             >
               <dt
-                className="c16"
+                class="c16"
               >
                 Pushed
                 :
               </dt>
               <dd
-                className="c17"
+                class="c17"
               >
                 Jul 11, 2020, 04:06 AM
               </dd>
@@ -2995,13 +2988,13 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
           </dl>
         </div>
         <div
-          className="c26 "
+          class="c26 "
         >
           <h3
-            className="c27"
+            class="c27"
           >
             <a
-              className="c10"
+              class="c10"
               href="https://github.com/reddit/obs-browser-plugin"
               rel="noreferrer"
               target="_blank"
@@ -3011,46 +3004,46 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
           </h3>
           <dl>
             <div
-              className="c15"
+              class="c15"
             >
               <dt
-                className="c16"
+                class="c16"
               >
                 Description
                 :
               </dt>
               <dd
-                className="c17"
+                class="c17"
               >
                 Browser plugin for OBS Studio
               </dd>
             </div>
             <div
-              className="c15"
+              class="c15"
             >
               <dt
-                className="c16"
+                class="c16"
               >
                 Language
                 :
               </dt>
               <dd
-                className="c17"
+                class="c17"
               >
                 C++
               </dd>
             </div>
             <div
-              className="c15"
+              class="c15"
             >
               <dt
-                className="c16"
+                class="c16"
               >
                 Stats
                 :
               </dt>
               <dd
-                className="c17"
+                class="c17"
               >
                 7
                  stars  |  
@@ -3059,16 +3052,16 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
               </dd>
             </div>
             <div
-              className="c15"
+              class="c15"
             >
               <dt
-                className="c16"
+                class="c16"
               >
                 Pushed
                 :
               </dt>
               <dd
-                className="c17"
+                class="c17"
               >
                 Jul 1, 2020, 10:30 PM
               </dd>
@@ -3076,19 +3069,19 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
           </dl>
         </div>
         <div
-          className="c28"
+          class="c28"
         >
           <div
-            className="c21"
+            class="c21"
           >
             <span
-              className="c22"
+              class="c22"
             >
               &lt; Previous
             </span>
                Page 
             <span
-              className=""
+              class=""
             >
               1
             </span>
@@ -3096,9 +3089,8 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
             3
                
             <a
-              className="c23 c24"
+              class="c23 c24"
               href="/search?username=reddit&page=2"
-              onClick={[Function]}
             >
               Next &gt;
             </a>

@@ -1,14 +1,9 @@
 import { getByText, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { rest } from "msw";
-import renderer from "react-test-renderer";
 import { baseUrl } from "../../app/api";
 import App from "../../app/App";
-import {
-  createRendererWithWrapper,
-  delay,
-  renderWithWrapper,
-} from "../../common/testUtils";
+import { renderWithWrapper } from "../../common/testUtils";
 import { mockUsers } from "../../mocks/mockData";
 import { server } from "../../mocks/server";
 
@@ -202,13 +197,11 @@ test("give focus to the Username input when needed", async () => {
 });
 
 test("render the Search page with User and Repos data (snapshot test)", async () => {
-  let root = createRendererWithWrapper(<App />, "/search?username=reddit");
+  const { container } = renderWithWrapper(<App />, "/search?username=reddit");
 
-  await renderer.act(async () => {
-    await delay(500);
-  });
+  await expectRepoNamesToEqual(expectedRepoNames["reddit"].pages[1]);
 
-  expect(root.toJSON()).toMatchSnapshot();
+  expect(container.firstChild).toMatchSnapshot();
 });
 
 async function expectRepoNamesToEqual(expected: string[]) {

@@ -14,7 +14,7 @@ exports[`<CompanyList> transforms company names prefixed with '@' into links to 
 
 <div>
   <a
-    className="c0"
+    class="c0"
     href="https://github.com/Google"
     rel="noreferrer"
     target="_blank"
@@ -23,7 +23,7 @@ exports[`<CompanyList> transforms company names prefixed with '@' into links to 
   </a>
   , 
   <a
-    className="c0"
+    class="c0"
     href="https://github.com/Microsoft"
     rel="noreferrer"
     target="_blank"

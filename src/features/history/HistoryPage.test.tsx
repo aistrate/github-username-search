@@ -1,12 +1,7 @@
 import { getByText, queryAllByRole, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import renderer from "react-test-renderer";
 import App from "../../app/App";
-import {
-  createRendererWithWrapper,
-  delay,
-  renderWithWrapper,
-} from "../../common/testUtils";
+import { renderWithWrapper } from "../../common/testUtils";
 
 test("on every successful search, save username to the top of search history", async () => {
   renderWithWrapper(<App />);
@@ -91,13 +86,9 @@ test("render the History page with history data (snapshot test)", async () => {
   ];
   window.localStorage.setItem("searchHistory", JSON.stringify(history));
 
-  let root = createRendererWithWrapper(<App />, "/history");
+  const { container } = renderWithWrapper(<App />, "/history");
 
-  await renderer.act(async () => {
-    await delay(100);
-  });
-
-  expect(root.toJSON()).toMatchSnapshot();
+  expect(container.firstChild).toMatchSnapshot();
 });
 
 async function searchForUsername(username: string, waitForUserInfo = true) {
