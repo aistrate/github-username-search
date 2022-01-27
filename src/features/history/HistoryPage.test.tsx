@@ -68,6 +68,7 @@ test("convert username to lowercase before saving it to search history", async (
   await searchForUsername("GraphQL"); // capitalized
 
   userEvent.click(getByText(menu, "History"));
+  expect(screen.queryByText("GraphQL")).not.toBeInTheDocument();
   expect(screen.queryByText("graphql")).toBeInTheDocument();
 });
 
