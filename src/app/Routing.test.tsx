@@ -87,6 +87,19 @@ test("on navigating around the app, change routing location and document title",
   expect(document.title).toBe("reddit - GitHub Username Search");
 });
 
+test("root route ('/') redirects to the Search page", () => {
+  renderWithWrapper(
+    <>
+      <RoutingLocation />
+      <App />
+    </>,
+    "/"
+  );
+
+  expect(routingLocation()).toBe("/search");
+  expect(screen.queryByRole("button", { name: "Search" })).toBeInTheDocument();
+});
+
 test("nonexistent route redirects to the Search page", () => {
   renderWithWrapper(
     <>
