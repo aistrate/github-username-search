@@ -7,7 +7,11 @@ import renderer from "react-test-renderer";
 import { baseUrl } from "../../app/api";
 import App from "../../app/App";
 import { createStore } from "../../app/store";
-import { removeClassNames, renderWithWrapper } from "../../common/testUtils";
+import {
+  delay,
+  removeClassNames,
+  renderWithWrapper,
+} from "../../common/testUtils";
 import { mockUsers } from "../../mocks/mockData";
 import { server } from "../../mocks/server";
 
@@ -199,11 +203,6 @@ test("give focus to the Username input when needed", async () => {
   expect(usernameInput).toHaveValue("graphql");
   expect(usernameInput).not.toHaveFocus();
 });
-
-const delay = (ms: number) =>
-  new Promise((resolve) => {
-    setTimeout(resolve, ms);
-  });
 
 test("render the Search page with User and Repos data (snapshot test)", async () => {
   const store = createStore();

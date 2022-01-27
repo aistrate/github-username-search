@@ -6,7 +6,7 @@ import { ReactTestRendererJSON } from "react-test-renderer";
 import styled from "styled-components";
 import { createStore } from "../app/store";
 
-export { renderWithWrapper, RoutingLocation, removeClassNames };
+export { renderWithWrapper, delay, RoutingLocation, removeClassNames };
 
 function renderWithWrapper(ui: ReactElement, initialRoute = "/") {
   const store = createStore();
@@ -20,6 +20,12 @@ function renderWithWrapper(ui: ReactElement, initialRoute = "/") {
   };
 
   return render(ui, { wrapper: Wrapper });
+}
+
+function delay(ms: number) {
+  return new Promise((resolve) => {
+    setTimeout(resolve, ms);
+  });
 }
 
 function RoutingLocation() {
