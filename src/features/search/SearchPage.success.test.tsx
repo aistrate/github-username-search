@@ -7,7 +7,6 @@ import App from "../../app/App";
 import {
   createRendererWithWrapper,
   delay,
-  removeClassNames,
   renderWithWrapper,
 } from "../../common/testUtils";
 import { mockUsers } from "../../mocks/mockData";
@@ -209,10 +208,7 @@ test("render the Search page with User and Repos data (snapshot test)", async ()
     await delay(500);
   });
 
-  const tree = root.toJSON();
-  removeClassNames(tree);
-
-  expect(tree).toMatchSnapshot();
+  expect(root.toJSON()).toMatchSnapshot();
 });
 
 async function expectRepoNamesToEqual(expected: string[]) {

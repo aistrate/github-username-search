@@ -1,8 +1,20 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<CompanyList> transforms company names prefixed with '@' into links to each company's GitHub username 1`] = `
+.c0 {
+  color: #0366d6;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c0:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+}
+
 <div>
   <a
+    className="c0"
     href="https://github.com/Google"
     rel="noreferrer"
     target="_blank"
@@ -11,6 +23,7 @@ exports[`<CompanyList> transforms company names prefixed with '@' into links to 
   </a>
   , 
   <a
+    className="c0"
     href="https://github.com/Microsoft"
     rel="noreferrer"
     target="_blank"

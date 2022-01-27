@@ -1,5 +1,4 @@
 import renderer from "react-test-renderer";
-import { removeClassNames } from "../../common/testUtils";
 import { CompanyList } from "./UserView";
 
 test("<CompanyList> transforms company names prefixed with '@' into links to each company's GitHub username", () => {
@@ -10,8 +9,6 @@ test("<CompanyList> transforms company names prefixed with '@' into links to eac
       </div>
     )
     .toJSON();
-
-  removeClassNames(tree);
 
   expect(tree).toMatchSnapshot();
 });

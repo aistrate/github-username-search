@@ -1,31 +1,360 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
-<div>
-  <div>
+.c14 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0.83em 0;
+}
+
+.c27 {
+  font-size: 1.17rem;
+  font-weight: 700;
+  margin: 0.83em 0;
+}
+
+.c23 {
+  color: #0366d6;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c23:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+}
+
+.c10 {
+  color: #0366d6;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c10:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+}
+
+.c18 {
+  color: #0366d6;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.c18:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+}
+
+.c15 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  line-height: 1.5;
+  padding: 0.5em 0;
+  position: relative;
+}
+
+.c15:nth-child(even)::before {
+  content: "";
+  position: absolute;
+  left: -1rem;
+  right: -1rem;
+  top: 0;
+  bottom: 0;
+  pointer-events: none;
+  background-color: hsla(198,45%,10%,0.04);
+}
+
+.c16 {
+  -webkit-flex: 0 0 33%;
+  -ms-flex: 0 0 33%;
+  flex: 0 0 33%;
+  min-width: 10.5em;
+  margin-right: 1.5em;
+}
+
+.c17 {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  margin-left: 0;
+  font-weight: 600;
+}
+
+.c22 {
+  font-weight: 600;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  color: black;
+  opacity: 0.33;
+}
+
+.c24 {
+  font-weight: 600;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.c24:hover {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  color: #024ca0;
+}
+
+.c21 {
+  font-size: 1.17rem;
+  font-weight: 400;
+  white-space: nowrap;
+}
+
+.c20 {
+  float: right;
+  line-height: 2rem;
+  position: relative;
+  top: 1px;
+}
+
+.c28 {
+  float: right;
+  margin: 0.83em 0;
+}
+
+.c25 {
+  min-height: 60px;
+  position: relative;
+}
+
+.c26 + .c26 {
+  margin-top: 2.5rem;
+}
+
+.c8 {
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-left: 1em;
+  padding: 0.5em 1em;
+  border: none;
+  border-radius: 6px;
+  background-color: #3078ca;
+  color: white;
+  outline: none;
+}
+
+.c8:not(:disabled) {
+  cursor: pointer;
+}
+
+.c8:hover:not(:disabled) {
+  background-color: #22548e;
+}
+
+.c8:disabled {
+  opacity: 0.65;
+}
+
+.c8:focus {
+  box-shadow: 0 0 0 2px white,0 0 0 4px #3078ca;
+}
+
+.c7 {
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #0e1e25;
+  border: 1px solid #a2a9b1;
+  border-radius: 6px;
+  outline: none;
+  width: 12em;
+  height: 1.5em;
+  padding: 7px 14px;
+}
+
+.c7:hover {
+  border-color: #72777d;
+}
+
+.c7:focus {
+  border-color: #3366cc;
+  box-shadow: inset 0 0 0 1px #3366cc;
+}
+
+.c9 {
+  margin-top: 0.6rem;
+  opacity: 0.8;
+}
+
+.c11 {
+  min-height: 60px;
+  position: relative;
+}
+
+.c13 {
+  display: block;
+  height: auto;
+}
+
+.c6 {
+  margin-top: 1.5rem;
+}
+
+.c12 {
+  margin-top: 3.5rem;
+}
+
+.c19 {
+  margin-top: 3.5rem;
+}
+
+.c2 {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: rgb(0,0,0,0.85);
+  font-size: 1.25rem;
+}
+
+.c3 {
+  float: left;
+}
+
+.c4 {
+  display: block;
+  color: rgb(255,255,255,0.5);
+  font-weight: 600;
+  padding: 0.4em 0.8em;
+  text-align: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c4:hover {
+  color: white;
+  background-color: rgb(255,255,255,0.1);
+}
+
+.c4.active {
+  color: white;
+}
+
+.c0 {
+  max-width: 50rem;
+  min-width: 20rem;
+  min-height: 100vh;
+  margin: auto;
+}
+
+.c1 {
+  background-color: #1b4371;
+  color: white;
+  font-size: 2.25rem;
+  text-align: center;
+  padding: 0.6em 0;
+}
+
+.c5 {
+  padding: 1rem;
+  overflow-x: hidden;
+}
+
+@media (max-width:40em) {
+  .c15 {
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+  }
+}
+
+@media (max-width:40em) {
+  .c16 {
+    margin-bottom: 0.25em;
+  }
+}
+
+@media (max-width:40em) {
+  .c20 {
+    float: none;
+  }
+}
+
+@media (max-width:40em) {
+  .c20 {
+    margin-top: 0.83em;
+  }
+}
+
+@media (max-width:40em) {
+  .c28 {
+    float: none;
+  }
+}
+
+@media (max-width:40em) {
+  .c28 {
+    margin-top: 1.5em;
+  }
+}
+
+@media (max-width:40em) {
+  .c7 {
+    width: 10em;
+  }
+}
+
+@media (max-width:50em) {
+  .c1 {
+    font-size: calc(1.25rem + 2vw);
+  }
+}
+
+<div
+  className="c0"
+>
+  <div
+    className="c1"
+  >
     GitHub Username Search
   </div>
   <nav>
-    <ul>
-      <li>
+    <ul
+      className="c2"
+    >
+      <li
+        className="c3"
+      >
         <a
           aria-current="page"
+          className="c4 active"
           href="/search"
           onClick={[Function]}
         >
           Search
         </a>
       </li>
-      <li>
+      <li
+        className="c3"
+      >
         <a
+          className="c4"
           href="/history"
           onClick={[Function]}
         >
           History
         </a>
       </li>
-      <li>
+      <li
+        className="c3"
+      >
         <a
+          className="c4"
           href="/about"
           onClick={[Function]}
         >
@@ -34,14 +363,18 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
       </li>
     </ul>
   </nav>
-  <div>
+  <div
+    className="c5"
+  >
     <form
+      className="c6"
       onSubmit={[Function]}
     >
       <input
         autoCapitalize="none"
         autoComplete="off"
         autoCorrect="off"
+        className="c7"
         onChange={[Function]}
         placeholder="Username"
         spellCheck={false}
@@ -49,16 +382,20 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
         value="reddit"
       />
       <button
+        className="c8"
         disabled={false}
         name="Search"
         type="submit"
       >
         Search
       </button>
-      <div>
+      <div
+        className="c9"
+      >
         Type in a full username (see
          
         <a
+          className="c10"
           href="./about"
           rel="noreferrer"
           target="_blank"
@@ -68,27 +405,39 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
         ).
       </div>
     </form>
-    <div>
+    <div
+      className="c11 c12"
+    >
       <div
         data-testid="userInfo"
       >
         <img
           alt="Avatar"
+          className="c13"
           height={100}
           src="https://avatars.githubusercontent.com/u/14248?v=4"
           width={100}
         />
-        <h2>
+        <h2
+          className="c14"
+        >
           reddit
         </h2>
         <dl>
-          <div>
-            <dt>
+          <div
+            className="c15"
+          >
+            <dt
+              className="c16"
+            >
               Username
               :
             </dt>
-            <dd>
+            <dd
+              className="c17"
+            >
               <a
+                className="c10"
                 href="https://github.com/reddit"
                 rel="noreferrer"
                 target="_blank"
@@ -97,40 +446,65 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
               </a>
             </dd>
           </div>
-          <div>
-            <dt>
+          <div
+            className="c15"
+          >
+            <dt
+              className="c16"
+            >
               Type
               :
             </dt>
-            <dd>
+            <dd
+              className="c17"
+            >
               Organization
             </dd>
           </div>
-          <div>
-            <dt>
+          <div
+            className="c15"
+          >
+            <dt
+              className="c16"
+            >
               Created
               :
             </dt>
-            <dd>
+            <dd
+              className="c17"
+            >
               Jun 19, 2008
             </dd>
           </div>
-          <div>
-            <dt>
+          <div
+            className="c15"
+          >
+            <dt
+              className="c16"
+            >
               Location
               :
             </dt>
-            <dd>
+            <dd
+              className="c17"
+            >
               San Francisco, CA
             </dd>
           </div>
-          <div>
-            <dt>
+          <div
+            className="c15"
+          >
+            <dt
+              className="c16"
+            >
               Blog
               :
             </dt>
-            <dd>
+            <dd
+              className="c17"
+            >
               <a
+                className="c18"
                 href="https://reddit.com/r/redditdev"
                 rel="noreferrer"
                 target="_blank"
@@ -139,36 +513,54 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
               </a>
             </dd>
           </div>
-          <div>
-            <dt>
+          <div
+            className="c15"
+          >
+            <dt
+              className="c16"
+            >
               Repositories
               :
             </dt>
-            <dd>
+            <dd
+              className="c17"
+            >
               88
             </dd>
           </div>
         </dl>
       </div>
     </div>
-    <div>
-      <h2>
+    <div
+      className="c19"
+    >
+      <h2
+        className="c14"
+      >
         Repositories
         <div
+          className="c20"
           data-testid="topPagination"
         >
-          <div>
-            <span>
+          <div
+            className="c21"
+          >
+            <span
+              className="c22"
+            >
               &lt; Previous
             </span>
                Page 
-            <span>
+            <span
+              className=""
+            >
               1
             </span>
             /
             3
                
             <a
+              className="c23 c24"
               href="/search?username=reddit&page=2"
               onClick={[Function]}
             >
@@ -177,10 +569,17 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
           </div>
         </div>
       </h2>
-      <div>
-        <div>
-          <h3>
+      <div
+        className="c25"
+      >
+        <div
+          className="c26 "
+        >
+          <h3
+            className="c27"
+          >
             <a
+              className="c10"
               href="https://github.com/reddit/baseplate.go"
               rel="noreferrer"
               target="_blank"
@@ -189,22 +588,35 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
             </a>
           </h3>
           <dl>
-            <div>
-              <dt>
+            <div
+              className="c15"
+            >
+              <dt
+                className="c16"
+              >
                 Description
                 :
               </dt>
-              <dd>
+              <dd
+                className="c17"
+              >
                 Reddit's Service Framework in Go
               </dd>
             </div>
-            <div>
-              <dt>
+            <div
+              className="c15"
+            >
+              <dt
+                className="c16"
+              >
                 Homepage
                 :
               </dt>
-              <dd>
+              <dd
+                className="c17"
+              >
                 <a
+                  className="c18"
                   href="https://pkg.go.dev/github.com/reddit/baseplate.go"
                   rel="noreferrer"
                   target="_blank"
@@ -213,41 +625,64 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
                 </a>
               </dd>
             </div>
-            <div>
-              <dt>
+            <div
+              className="c15"
+            >
+              <dt
+                className="c16"
+              >
                 Language
                 :
               </dt>
-              <dd>
+              <dd
+                className="c17"
+              >
                 Go
               </dd>
             </div>
-            <div>
-              <dt>
+            <div
+              className="c15"
+            >
+              <dt
+                className="c16"
+              >
                 Stats
                 :
               </dt>
-              <dd>
+              <dd
+                className="c17"
+              >
                 55
                  stars  |  
                 38
                  forks
               </dd>
             </div>
-            <div>
-              <dt>
+            <div
+              className="c15"
+            >
+              <dt
+                className="c16"
+              >
                 Pushed
                 :
               </dt>
-              <dd>
+              <dd
+                className="c17"
+              >
                 Jan 8, 2022, 02:24 AM
               </dd>
             </div>
           </dl>
         </div>
-        <div>
-          <h3>
+        <div
+          className="c26 "
+        >
+          <h3
+            className="c27"
+          >
             <a
+              className="c10"
               href="https://github.com/reddit/android-interview"
               rel="noreferrer"
               target="_blank"
@@ -256,50 +691,79 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
             </a>
           </h3>
           <dl>
-            <div>
-              <dt>
+            <div
+              className="c15"
+            >
+              <dt
+                className="c16"
+              >
                 Description
                 :
               </dt>
-              <dd>
+              <dd
+                className="c17"
+              >
                 Sandbox for Android Programming Interview
               </dd>
             </div>
-            <div>
-              <dt>
+            <div
+              className="c15"
+            >
+              <dt
+                className="c16"
+              >
                 Language
                 :
               </dt>
-              <dd>
+              <dd
+                className="c17"
+              >
                 Kotlin
               </dd>
             </div>
-            <div>
-              <dt>
+            <div
+              className="c15"
+            >
+              <dt
+                className="c16"
+              >
                 Stats
                 :
               </dt>
-              <dd>
+              <dd
+                className="c17"
+              >
                 1
                  stars  |  
                 4
                  forks
               </dd>
             </div>
-            <div>
-              <dt>
+            <div
+              className="c15"
+            >
+              <dt
+                className="c16"
+              >
                 Pushed
                 :
               </dt>
-              <dd>
+              <dd
+                className="c17"
+              >
                 Jan 4, 2022, 07:05 PM
               </dd>
             </div>
           </dl>
         </div>
-        <div>
-          <h3>
+        <div
+          className="c26 "
+        >
+          <h3
+            className="c27"
+          >
             <a
+              className="c10"
               href="https://github.com/reddit/rules_apple"
               rel="noreferrer"
               target="_blank"
@@ -308,39 +772,62 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
             </a>
           </h3>
           <dl>
-            <div>
-              <dt>
+            <div
+              className="c15"
+            >
+              <dt
+                className="c16"
+              >
                 Fork?
                 :
               </dt>
-              <dd>
+              <dd
+                className="c17"
+              >
                 Yes
               </dd>
             </div>
-            <div>
-              <dt>
+            <div
+              className="c15"
+            >
+              <dt
+                className="c16"
+              >
                 Description
                 :
               </dt>
-              <dd>
+              <dd
+                className="c17"
+              >
                 Bazel rules to build apps for Apple platforms.
               </dd>
             </div>
             
-            <div>
-              <dt>
+            <div
+              className="c15"
+            >
+              <dt
+                className="c16"
+              >
                 Pushed
                 :
               </dt>
-              <dd>
+              <dd
+                className="c17"
+              >
                 Jan 3, 2022, 07:42 PM
               </dd>
             </div>
           </dl>
         </div>
-        <div>
-          <h3>
+        <div
+          className="c26 "
+        >
+          <h3
+            className="c27"
+          >
             <a
+              className="c10"
               href="https://github.com/reddit/baseplate.py"
               rel="noreferrer"
               target="_blank"
@@ -349,22 +836,35 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
             </a>
           </h3>
           <dl>
-            <div>
-              <dt>
+            <div
+              className="c15"
+            >
+              <dt
+                className="c16"
+              >
                 Description
                 :
               </dt>
-              <dd>
+              <dd
+                className="c17"
+              >
                 reddit's python service framework
               </dd>
             </div>
-            <div>
-              <dt>
+            <div
+              className="c15"
+            >
+              <dt
+                className="c16"
+              >
                 Homepage
                 :
               </dt>
-              <dd>
+              <dd
+                className="c17"
+              >
                 <a
+                  className="c18"
                   href="https://baseplate.readthedocs.io"
                   rel="noreferrer"
                   target="_blank"
@@ -373,41 +873,64 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
                 </a>
               </dd>
             </div>
-            <div>
-              <dt>
+            <div
+              className="c15"
+            >
+              <dt
+                className="c16"
+              >
                 Language
                 :
               </dt>
-              <dd>
+              <dd
+                className="c17"
+              >
                 Python
               </dd>
             </div>
-            <div>
-              <dt>
+            <div
+              className="c15"
+            >
+              <dt
+                className="c16"
+              >
                 Stats
                 :
               </dt>
-              <dd>
+              <dd
+                className="c17"
+              >
                 469
                  stars  |  
                 134
                  forks
               </dd>
             </div>
-            <div>
-              <dt>
+            <div
+              className="c15"
+            >
+              <dt
+                className="c16"
+              >
                 Pushed
                 :
               </dt>
-              <dd>
+              <dd
+                className="c17"
+              >
                 Dec 23, 2021, 02:07 AM
               </dd>
             </div>
           </dl>
         </div>
-        <div>
-          <h3>
+        <div
+          className="c26 "
+        >
+          <h3
+            className="c27"
+          >
             <a
+              className="c10"
               href="https://github.com/reddit/baseplate.py-upgrader"
               rel="noreferrer"
               target="_blank"
@@ -416,51 +939,80 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
             </a>
           </h3>
           <dl>
-            <div>
-              <dt>
+            <div
+              className="c15"
+            >
+              <dt
+                className="c16"
+              >
                 Description
                 :
               </dt>
-              <dd>
+              <dd
+                className="c17"
+              >
                 automates much of the work of upgrading to newer baseplate.py versions
               </dd>
             </div>
             
-            <div>
-              <dt>
+            <div
+              className="c15"
+            >
+              <dt
+                className="c16"
+              >
                 Language
                 :
               </dt>
-              <dd>
+              <dd
+                className="c17"
+              >
                 Python
               </dd>
             </div>
-            <div>
-              <dt>
+            <div
+              className="c15"
+            >
+              <dt
+                className="c16"
+              >
                 Stats
                 :
               </dt>
-              <dd>
+              <dd
+                className="c17"
+              >
                 5
                  stars  |  
                 3
                  forks
               </dd>
             </div>
-            <div>
-              <dt>
+            <div
+              className="c15"
+            >
+              <dt
+                className="c16"
+              >
                 Pushed
                 :
               </dt>
-              <dd>
+              <dd
+                className="c17"
+              >
                 Dec 20, 2021, 10:21 PM
               </dd>
             </div>
           </dl>
         </div>
-        <div>
-          <h3>
+        <div
+          className="c26 "
+        >
+          <h3
+            className="c27"
+          >
             <a
+              className="c10"
               href="https://github.com/reddit/xctestrunner"
               rel="noreferrer"
               target="_blank"
@@ -469,39 +1021,62 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
             </a>
           </h3>
           <dl>
-            <div>
-              <dt>
+            <div
+              className="c15"
+            >
+              <dt
+                className="c16"
+              >
                 Fork?
                 :
               </dt>
-              <dd>
+              <dd
+                className="c17"
+              >
                 Yes
               </dd>
             </div>
-            <div>
-              <dt>
+            <div
+              className="c15"
+            >
+              <dt
+                className="c16"
+              >
                 Description
                 :
               </dt>
-              <dd>
+              <dd
+                className="c17"
+              >
                 A executable binary to run prebuilt iOS tests on iOS simulator/real device.
               </dd>
             </div>
             
-            <div>
-              <dt>
+            <div
+              className="c15"
+            >
+              <dt
+                className="c16"
+              >
                 Pushed
                 :
               </dt>
-              <dd>
+              <dd
+                className="c17"
+              >
                 Dec 15, 2021, 06:09 PM
               </dd>
             </div>
           </dl>
         </div>
-        <div>
-          <h3>
+        <div
+          className="c26 "
+        >
+          <h3
+            className="c27"
+          >
             <a
+              className="c10"
               href="https://github.com/reddit/cqlmapper"
               rel="noreferrer"
               target="_blank"
@@ -510,50 +1085,79 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
             </a>
           </h3>
           <dl>
-            <div>
-              <dt>
+            <div
+              className="c15"
+            >
+              <dt
+                className="c16"
+              >
                 Description
                 :
               </dt>
-              <dd>
+              <dd
+                className="c17"
+              >
                 A baseplate compatible fork of datastax' cqlengine library
               </dd>
             </div>
-            <div>
-              <dt>
+            <div
+              className="c15"
+            >
+              <dt
+                className="c16"
+              >
                 Language
                 :
               </dt>
-              <dd>
+              <dd
+                className="c17"
+              >
                 Python
               </dd>
             </div>
-            <div>
-              <dt>
+            <div
+              className="c15"
+            >
+              <dt
+                className="c16"
+              >
                 Stats
                 :
               </dt>
-              <dd>
+              <dd
+                className="c17"
+              >
                 9
                  stars  |  
                 11
                  forks
               </dd>
             </div>
-            <div>
-              <dt>
+            <div
+              className="c15"
+            >
+              <dt
+                className="c16"
+              >
                 Pushed
                 :
               </dt>
-              <dd>
+              <dd
+                className="c17"
+              >
                 Dec 13, 2021, 10:05 PM
               </dd>
             </div>
           </dl>
         </div>
-        <div>
-          <h3>
+        <div
+          className="c26 "
+        >
+          <h3
+            className="c27"
+          >
             <a
+              className="c10"
               href="https://github.com/reddit/error-pages"
               rel="noreferrer"
               target="_blank"
@@ -562,51 +1166,80 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
             </a>
           </h3>
           <dl>
-            <div>
-              <dt>
+            <div
+              className="c15"
+            >
+              <dt
+                className="c16"
+              >
                 Description
                 :
               </dt>
-              <dd>
+              <dd
+                className="c17"
+              >
                 the bummer mobile
               </dd>
             </div>
             
-            <div>
-              <dt>
+            <div
+              className="c15"
+            >
+              <dt
+                className="c16"
+              >
                 Language
                 :
               </dt>
-              <dd>
+              <dd
+                className="c17"
+              >
                 HTML
               </dd>
             </div>
-            <div>
-              <dt>
+            <div
+              className="c15"
+            >
+              <dt
+                className="c16"
+              >
                 Stats
                 :
               </dt>
-              <dd>
+              <dd
+                className="c17"
+              >
                 28
                  stars  |  
                 24
                  forks
               </dd>
             </div>
-            <div>
-              <dt>
+            <div
+              className="c15"
+            >
+              <dt
+                className="c16"
+              >
                 Pushed
                 :
               </dt>
-              <dd>
+              <dd
+                className="c17"
+              >
                 Dec 8, 2021, 11:59 PM
               </dd>
             </div>
           </dl>
         </div>
-        <div>
-          <h3>
+        <div
+          className="c26 "
+        >
+          <h3
+            className="c27"
+          >
             <a
+              className="c10"
               href="https://github.com/reddit/edgecontext"
               rel="noreferrer"
               target="_blank"
@@ -615,22 +1248,35 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
             </a>
           </h3>
           <dl>
-            <div>
-              <dt>
+            <div
+              className="c15"
+            >
+              <dt
+                className="c16"
+              >
                 Description
                 :
               </dt>
-              <dd>
+              <dd
+                className="c17"
+              >
                 request.edge_context payload definitions
               </dd>
             </div>
-            <div>
-              <dt>
+            <div
+              className="c15"
+            >
+              <dt
+                className="c16"
+              >
                 Homepage
                 :
               </dt>
-              <dd>
+              <dd
+                className="c17"
+              >
                 <a
+                  className="c18"
                   href="https://reddit-edgecontext.readthedocs.io"
                   rel="noreferrer"
                   target="_blank"
@@ -639,41 +1285,64 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
                 </a>
               </dd>
             </div>
-            <div>
-              <dt>
+            <div
+              className="c15"
+            >
+              <dt
+                className="c16"
+              >
                 Language
                 :
               </dt>
-              <dd>
+              <dd
+                className="c17"
+              >
                 Python
               </dd>
             </div>
-            <div>
-              <dt>
+            <div
+              className="c15"
+            >
+              <dt
+                className="c16"
+              >
                 Stats
                 :
               </dt>
-              <dd>
+              <dd
+                className="c17"
+              >
                 2
                  stars  |  
                 6
                  forks
               </dd>
             </div>
-            <div>
-              <dt>
+            <div
+              className="c15"
+            >
+              <dt
+                className="c16"
+              >
                 Pushed
                 :
               </dt>
-              <dd>
+              <dd
+                className="c17"
+              >
                 Dec 7, 2021, 09:12 PM
               </dd>
             </div>
           </dl>
         </div>
-        <div>
-          <h3>
+        <div
+          className="c26 "
+        >
+          <h3
+            className="c27"
+          >
             <a
+              className="c10"
               href="https://github.com/reddit/reddit-gtm-template"
               rel="noreferrer"
               target="_blank"
@@ -682,50 +1351,79 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
             </a>
           </h3>
           <dl>
-            <div>
-              <dt>
+            <div
+              className="c15"
+            >
+              <dt
+                className="c16"
+              >
                 Description
                 :
               </dt>
-              <dd>
+              <dd
+                className="c17"
+              >
                 The official tag template for the Reddit conversion pixel for use with Google Tag Manager
               </dd>
             </div>
-            <div>
-              <dt>
+            <div
+              className="c15"
+            >
+              <dt
+                className="c16"
+              >
                 Language
                 :
               </dt>
-              <dd>
+              <dd
+                className="c17"
+              >
                 Smarty
               </dd>
             </div>
-            <div>
-              <dt>
+            <div
+              className="c15"
+            >
+              <dt
+                className="c16"
+              >
                 Stats
                 :
               </dt>
-              <dd>
+              <dd
+                className="c17"
+              >
                 4
                  stars  |  
                 3
                  forks
               </dd>
             </div>
-            <div>
-              <dt>
+            <div
+              className="c15"
+            >
+              <dt
+                className="c16"
+              >
                 Pushed
                 :
               </dt>
-              <dd>
+              <dd
+                className="c17"
+              >
                 Nov 29, 2021, 10:32 PM
               </dd>
             </div>
           </dl>
         </div>
-        <div>
-          <h3>
+        <div
+          className="c26 "
+        >
+          <h3
+            className="c27"
+          >
             <a
+              className="c10"
               href="https://github.com/reddit/fernet-go"
               rel="noreferrer"
               target="_blank"
@@ -734,31 +1432,50 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
             </a>
           </h3>
           <dl>
-            <div>
-              <dt>
+            <div
+              className="c15"
+            >
+              <dt
+                className="c16"
+              >
                 Fork?
                 :
               </dt>
-              <dd>
+              <dd
+                className="c17"
+              >
                 Yes
               </dd>
             </div>
-            <div>
-              <dt>
+            <div
+              className="c15"
+            >
+              <dt
+                className="c16"
+              >
                 Description
                 :
               </dt>
-              <dd>
+              <dd
+                className="c17"
+              >
                 Fernet generates and verifies HMAC-based authentication tokens.
               </dd>
             </div>
-            <div>
-              <dt>
+            <div
+              className="c15"
+            >
+              <dt
+                className="c16"
+              >
                 Homepage
                 :
               </dt>
-              <dd>
+              <dd
+                className="c17"
+              >
                 <a
+                  className="c18"
                   href="http://godoc.org/github.com/fernet/fernet-go"
                   rel="noreferrer"
                   target="_blank"
@@ -767,29 +1484,46 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
                 </a>
               </dd>
             </div>
-            <div>
-              <dt>
+            <div
+              className="c15"
+            >
+              <dt
+                className="c16"
+              >
                 Language
                 :
               </dt>
-              <dd>
+              <dd
+                className="c17"
+              >
                 Go
               </dd>
             </div>
-            <div>
-              <dt>
+            <div
+              className="c15"
+            >
+              <dt
+                className="c16"
+              >
                 Pushed
                 :
               </dt>
-              <dd>
+              <dd
+                className="c17"
+              >
                 Nov 17, 2021, 07:35 PM
               </dd>
             </div>
           </dl>
         </div>
-        <div>
-          <h3>
+        <div
+          className="c26 "
+        >
+          <h3
+            className="c27"
+          >
             <a
+              className="c10"
               href="https://github.com/reddit/baseplate-celery"
               rel="noreferrer"
               target="_blank"
@@ -798,41 +1532,64 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
             </a>
           </h3>
           <dl>
-            <div>
-              <dt>
+            <div
+              className="c15"
+            >
+              <dt
+                className="c16"
+              >
                 Language
                 :
               </dt>
-              <dd>
+              <dd
+                className="c17"
+              >
                 Python
               </dd>
             </div>
-            <div>
-              <dt>
+            <div
+              className="c15"
+            >
+              <dt
+                className="c16"
+              >
                 Stats
                 :
               </dt>
-              <dd>
+              <dd
+                className="c17"
+              >
                 2
                  stars  |  
                 1
                  forks
               </dd>
             </div>
-            <div>
-              <dt>
+            <div
+              className="c15"
+            >
+              <dt
+                className="c16"
+              >
                 Pushed
                 :
               </dt>
-              <dd>
+              <dd
+                className="c17"
+              >
                 Oct 26, 2021, 08:50 PM
               </dd>
             </div>
           </dl>
         </div>
-        <div>
-          <h3>
+        <div
+          className="c26 "
+        >
+          <h3
+            className="c27"
+          >
             <a
+              className="c10"
               href="https://github.com/reddit/node-api-client"
               rel="noreferrer"
               target="_blank"
@@ -841,41 +1598,64 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
             </a>
           </h3>
           <dl>
-            <div>
-              <dt>
+            <div
+              className="c15"
+            >
+              <dt
+                className="c16"
+              >
                 Language
                 :
               </dt>
-              <dd>
+              <dd
+                className="c17"
+              >
                 JavaScript
               </dd>
             </div>
-            <div>
-              <dt>
+            <div
+              className="c15"
+            >
+              <dt
+                className="c16"
+              >
                 Stats
                 :
               </dt>
-              <dd>
+              <dd
+                className="c17"
+              >
                 83
                  stars  |  
                 30
                  forks
               </dd>
             </div>
-            <div>
-              <dt>
+            <div
+              className="c15"
+            >
+              <dt
+                className="c16"
+              >
                 Pushed
                 :
               </dt>
-              <dd>
+              <dd
+                className="c17"
+              >
                 Oct 24, 2021, 09:12 PM
               </dd>
             </div>
           </dl>
         </div>
-        <div>
-          <h3>
+        <div
+          className="c26 "
+        >
+          <h3
+            className="c27"
+          >
             <a
+              className="c10"
               href="https://github.com/reddit/snudown"
               rel="noreferrer"
               target="_blank"
@@ -884,51 +1664,80 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
             </a>
           </h3>
           <dl>
-            <div>
-              <dt>
+            <div
+              className="c15"
+            >
+              <dt
+                className="c16"
+              >
                 Description
                 :
               </dt>
-              <dd>
+              <dd
+                className="c17"
+              >
                 reddit's markdown renderer. based on sundown.
               </dd>
             </div>
             
-            <div>
-              <dt>
+            <div
+              className="c15"
+            >
+              <dt
+                className="c16"
+              >
                 Language
                 :
               </dt>
-              <dd>
+              <dd
+                className="c17"
+              >
                 C
               </dd>
             </div>
-            <div>
-              <dt>
+            <div
+              className="c15"
+            >
+              <dt
+                className="c16"
+              >
                 Stats
                 :
               </dt>
-              <dd>
+              <dd
+                className="c17"
+              >
                 154
                  stars  |  
                 67
                  forks
               </dd>
             </div>
-            <div>
-              <dt>
+            <div
+              className="c15"
+            >
+              <dt
+                className="c16"
+              >
                 Pushed
                 :
               </dt>
-              <dd>
+              <dd
+                className="c17"
+              >
                 Oct 20, 2021, 08:26 PM
               </dd>
             </div>
           </dl>
         </div>
-        <div>
-          <h3>
+        <div
+          className="c26 "
+        >
+          <h3
+            className="c27"
+          >
             <a
+              className="c10"
               href="https://github.com/reddit/drone-kaniko"
               rel="noreferrer"
               target="_blank"
@@ -937,47 +1746,76 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
             </a>
           </h3>
           <dl>
-            <div>
-              <dt>
+            <div
+              className="c15"
+            >
+              <dt
+                className="c16"
+              >
                 Fork?
                 :
               </dt>
-              <dd>
+              <dd
+                className="c17"
+              >
                 Yes
               </dd>
             </div>
-            <div>
-              <dt>
+            <div
+              className="c15"
+            >
+              <dt
+                className="c16"
+              >
                 Description
                 :
               </dt>
-              <dd>
+              <dd
+                className="c17"
+              >
                 Drone plugin for building and publishing Docker images
               </dd>
             </div>
-            <div>
-              <dt>
+            <div
+              className="c15"
+            >
+              <dt
+                className="c16"
+              >
                 Language
                 :
               </dt>
-              <dd>
+              <dd
+                className="c17"
+              >
                 Go
               </dd>
             </div>
-            <div>
-              <dt>
+            <div
+              className="c15"
+            >
+              <dt
+                className="c16"
+              >
                 Pushed
                 :
               </dt>
-              <dd>
+              <dd
+                className="c17"
+              >
                 Oct 19, 2021, 01:16 AM
               </dd>
             </div>
           </dl>
         </div>
-        <div>
-          <h3>
+        <div
+          className="c26 "
+        >
+          <h3
+            className="c27"
+          >
             <a
+              className="c10"
               href="https://github.com/reddit/AlienBlue"
               rel="noreferrer"
               target="_blank"
@@ -986,50 +1824,79 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
             </a>
           </h3>
           <dl>
-            <div>
-              <dt>
+            <div
+              className="c15"
+            >
+              <dt
+                className="c16"
+              >
                 Description
                 :
               </dt>
-              <dd>
+              <dd
+                className="c17"
+              >
                 Alien Blue iOS app - r/AlienBlue
               </dd>
             </div>
-            <div>
-              <dt>
+            <div
+              className="c15"
+            >
+              <dt
+                className="c16"
+              >
                 Language
                 :
               </dt>
-              <dd>
+              <dd
+                className="c17"
+              >
                 Objective-C
               </dd>
             </div>
-            <div>
-              <dt>
+            <div
+              className="c15"
+            >
+              <dt
+                className="c16"
+              >
                 Stats
                 :
               </dt>
-              <dd>
+              <dd
+                className="c17"
+              >
                 43
                  stars  |  
                 7
                  forks
               </dd>
             </div>
-            <div>
-              <dt>
+            <div
+              className="c15"
+            >
+              <dt
+                className="c16"
+              >
                 Pushed
                 :
               </dt>
-              <dd>
+              <dd
+                className="c17"
+              >
                 Oct 14, 2021, 11:06 PM
               </dd>
             </div>
           </dl>
         </div>
-        <div>
-          <h3>
+        <div
+          className="c26 "
+        >
+          <h3
+            className="c27"
+          >
             <a
+              className="c10"
               href="https://github.com/reddit/rpan-studio"
               rel="noreferrer"
               target="_blank"
@@ -1038,50 +1905,79 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
             </a>
           </h3>
           <dl>
-            <div>
-              <dt>
+            <div
+              className="c15"
+            >
+              <dt
+                className="c16"
+              >
                 Description
                 :
               </dt>
-              <dd>
+              <dd
+                className="c17"
+              >
                 RPAN Studio
               </dd>
             </div>
-            <div>
-              <dt>
+            <div
+              className="c15"
+            >
+              <dt
+                className="c16"
+              >
                 Language
                 :
               </dt>
-              <dd>
+              <dd
+                className="c17"
+              >
                 C
               </dd>
             </div>
-            <div>
-              <dt>
+            <div
+              className="c15"
+            >
+              <dt
+                className="c16"
+              >
                 Stats
                 :
               </dt>
-              <dd>
+              <dd
+                className="c17"
+              >
                 215
                  stars  |  
                 48
                  forks
               </dd>
             </div>
-            <div>
-              <dt>
+            <div
+              className="c15"
+            >
+              <dt
+                className="c16"
+              >
                 Pushed
                 :
               </dt>
-              <dd>
+              <dd
+                className="c17"
+              >
                 Oct 11, 2021, 06:53 PM
               </dd>
             </div>
           </dl>
         </div>
-        <div>
-          <h3>
+        <div
+          className="c26 "
+        >
+          <h3
+            className="c27"
+          >
             <a
+              className="c10"
               href="https://github.com/reddit/IndicatorFastScroll"
               rel="noreferrer"
               target="_blank"
@@ -1090,51 +1986,80 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
             </a>
           </h3>
           <dl>
-            <div>
-              <dt>
+            <div
+              className="c15"
+            >
+              <dt
+                className="c16"
+              >
                 Description
                 :
               </dt>
-              <dd>
+              <dd
+                className="c17"
+              >
                 Android library providing a simple UI control for scrolling through RecyclerViews
               </dd>
             </div>
             
-            <div>
-              <dt>
+            <div
+              className="c15"
+            >
+              <dt
+                className="c16"
+              >
                 Language
                 :
               </dt>
-              <dd>
+              <dd
+                className="c17"
+              >
                 Kotlin
               </dd>
             </div>
-            <div>
-              <dt>
+            <div
+              className="c15"
+            >
+              <dt
+                className="c16"
+              >
                 Stats
                 :
               </dt>
-              <dd>
+              <dd
+                className="c17"
+              >
                 659
                  stars  |  
                 39
                  forks
               </dd>
             </div>
-            <div>
-              <dt>
+            <div
+              className="c15"
+            >
+              <dt
+                className="c16"
+              >
                 Pushed
                 :
               </dt>
-              <dd>
+              <dd
+                className="c17"
+              >
                 Oct 3, 2021, 03:00 PM
               </dd>
             </div>
           </dl>
         </div>
-        <div>
-          <h3>
+        <div
+          className="c26 "
+        >
+          <h3
+            className="c27"
+          >
             <a
+              className="c10"
               href="https://github.com/reddit/thrift-compiler"
               rel="noreferrer"
               target="_blank"
@@ -1143,51 +2068,80 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
             </a>
           </h3>
           <dl>
-            <div>
-              <dt>
+            <div
+              className="c15"
+            >
+              <dt
+                className="c16"
+              >
                 Description
                 :
               </dt>
-              <dd>
+              <dd
+                className="c17"
+              >
                 a thrift compiler in a docker container
               </dd>
             </div>
             
-            <div>
-              <dt>
+            <div
+              className="c15"
+            >
+              <dt
+                className="c16"
+              >
                 Language
                 :
               </dt>
-              <dd>
+              <dd
+                className="c17"
+              >
                 Dockerfile
               </dd>
             </div>
-            <div>
-              <dt>
+            <div
+              className="c15"
+            >
+              <dt
+                className="c16"
+              >
                 Stats
                 :
               </dt>
-              <dd>
+              <dd
+                className="c17"
+              >
                 0
                  stars  |  
                 3
                  forks
               </dd>
             </div>
-            <div>
-              <dt>
+            <div
+              className="c15"
+            >
+              <dt
+                className="c16"
+              >
                 Pushed
                 :
               </dt>
-              <dd>
+              <dd
+                className="c17"
+              >
                 Sep 13, 2021, 06:36 PM
               </dd>
             </div>
           </dl>
         </div>
-        <div>
-          <h3>
+        <div
+          className="c26 "
+        >
+          <h3
+            className="c27"
+          >
             <a
+              className="c10"
               href="https://github.com/reddit/docker-bazelisk"
               rel="noreferrer"
               target="_blank"
@@ -1196,50 +2150,79 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
             </a>
           </h3>
           <dl>
-            <div>
-              <dt>
+            <div
+              className="c15"
+            >
+              <dt
+                className="c16"
+              >
                 Description
                 :
               </dt>
-              <dd>
+              <dd
+                className="c17"
+              >
                 Docker image for Bazelisk
               </dd>
             </div>
-            <div>
-              <dt>
+            <div
+              className="c15"
+            >
+              <dt
+                className="c16"
+              >
                 Language
                 :
               </dt>
-              <dd>
+              <dd
+                className="c17"
+              >
                 Dockerfile
               </dd>
             </div>
-            <div>
-              <dt>
+            <div
+              className="c15"
+            >
+              <dt
+                className="c16"
+              >
                 Stats
                 :
               </dt>
-              <dd>
+              <dd
+                className="c17"
+              >
                 0
                  stars  |  
                 1
                  forks
               </dd>
             </div>
-            <div>
-              <dt>
+            <div
+              className="c15"
+            >
+              <dt
+                className="c16"
+              >
                 Pushed
                 :
               </dt>
-              <dd>
+              <dd
+                className="c17"
+              >
                 Aug 24, 2021, 02:01 AM
               </dd>
             </div>
           </dl>
         </div>
-        <div>
-          <h3>
+        <div
+          className="c26 "
+        >
+          <h3
+            className="c27"
+          >
             <a
+              className="c10"
               href="https://github.com/reddit/backup-utils"
               rel="noreferrer"
               target="_blank"
@@ -1248,60 +2231,95 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
             </a>
           </h3>
           <dl>
-            <div>
-              <dt>
+            <div
+              className="c15"
+            >
+              <dt
+                className="c16"
+              >
                 Fork?
                 :
               </dt>
-              <dd>
+              <dd
+                className="c17"
+              >
                 Yes
               </dd>
             </div>
-            <div>
-              <dt>
+            <div
+              className="c15"
+            >
+              <dt
+                className="c16"
+              >
                 Description
                 :
               </dt>
-              <dd>
+              <dd
+                className="c17"
+              >
                 GitHub Enterprise Backup Utilities
               </dd>
             </div>
             
-            <div>
-              <dt>
+            <div
+              className="c15"
+            >
+              <dt
+                className="c16"
+              >
                 Language
                 :
               </dt>
-              <dd>
+              <dd
+                className="c17"
+              >
                 Shell
               </dd>
             </div>
-            <div>
-              <dt>
+            <div
+              className="c15"
+            >
+              <dt
+                className="c16"
+              >
                 Stats
                 :
               </dt>
-              <dd>
+              <dd
+                className="c17"
+              >
                 2
                  stars  |  
                 1
                  forks
               </dd>
             </div>
-            <div>
-              <dt>
+            <div
+              className="c15"
+            >
+              <dt
+                className="c16"
+              >
                 Pushed
                 :
               </dt>
-              <dd>
+              <dd
+                className="c17"
+              >
                 Aug 14, 2021, 01:31 AM
               </dd>
             </div>
           </dl>
         </div>
-        <div>
-          <h3>
+        <div
+          className="c26 "
+        >
+          <h3
+            className="c27"
+          >
             <a
+              className="c10"
               href="https://github.com/reddit/rollingpin"
               rel="noreferrer"
               target="_blank"
@@ -1310,22 +2328,35 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
             </a>
           </h3>
           <dl>
-            <div>
-              <dt>
+            <div
+              className="c15"
+            >
+              <dt
+                className="c16"
+              >
                 Description
                 :
               </dt>
-              <dd>
+              <dd
+                className="c17"
+              >
                 fast deploy to lots of servers
               </dd>
             </div>
-            <div>
-              <dt>
+            <div
+              className="c15"
+            >
+              <dt
+                className="c16"
+              >
                 Homepage
                 :
               </dt>
-              <dd>
+              <dd
+                className="c17"
+              >
                 <a
+                  className="c18"
                   href="https://redditblog.com/2017/06/02/the-evolution-of-code-deploys-at-reddit/"
                   rel="noreferrer"
                   target="_blank"
@@ -1334,41 +2365,64 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
                 </a>
               </dd>
             </div>
-            <div>
-              <dt>
+            <div
+              className="c15"
+            >
+              <dt
+                className="c16"
+              >
                 Language
                 :
               </dt>
-              <dd>
+              <dd
+                className="c17"
+              >
                 Python
               </dd>
             </div>
-            <div>
-              <dt>
+            <div
+              className="c15"
+            >
+              <dt
+                className="c16"
+              >
                 Stats
                 :
               </dt>
-              <dd>
+              <dd
+                className="c17"
+              >
                 141
                  stars  |  
                 28
                  forks
               </dd>
             </div>
-            <div>
-              <dt>
+            <div
+              className="c15"
+            >
+              <dt
+                className="c16"
+              >
                 Pushed
                 :
               </dt>
-              <dd>
+              <dd
+                className="c17"
+              >
                 Jun 23, 2021, 01:49 PM
               </dd>
             </div>
           </dl>
         </div>
-        <div>
-          <h3>
+        <div
+          className="c26 "
+        >
+          <h3
+            className="c27"
+          >
             <a
+              className="c10"
               href="https://github.com/reddit/experiments.py"
               rel="noreferrer"
               target="_blank"
@@ -1377,22 +2431,35 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
             </a>
           </h3>
           <dl>
-            <div>
-              <dt>
+            <div
+              className="c15"
+            >
+              <dt
+                className="c16"
+              >
                 Description
                 :
               </dt>
-              <dd>
+              <dd
+                className="c17"
+              >
                 reddit's python experiments framework
               </dd>
             </div>
-            <div>
-              <dt>
+            <div
+              className="c15"
+            >
+              <dt
+                className="c16"
+              >
                 Homepage
                 :
               </dt>
-              <dd>
+              <dd
+                className="c17"
+              >
                 <a
+                  className="c18"
                   href="https://reddit-experiments.readthedocs.io"
                   rel="noreferrer"
                   target="_blank"
@@ -1401,41 +2468,64 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
                 </a>
               </dd>
             </div>
-            <div>
-              <dt>
+            <div
+              className="c15"
+            >
+              <dt
+                className="c16"
+              >
                 Language
                 :
               </dt>
-              <dd>
+              <dd
+                className="c17"
+              >
                 Python
               </dd>
             </div>
-            <div>
-              <dt>
+            <div
+              className="c15"
+            >
+              <dt
+                className="c16"
+              >
                 Stats
                 :
               </dt>
-              <dd>
+              <dd
+                className="c17"
+              >
                 4
                  stars  |  
                 3
                  forks
               </dd>
             </div>
-            <div>
-              <dt>
+            <div
+              className="c15"
+            >
+              <dt
+                className="c16"
+              >
                 Pushed
                 :
               </dt>
-              <dd>
+              <dd
+                className="c17"
+              >
                 Jun 17, 2021, 06:46 PM
               </dd>
             </div>
           </dl>
         </div>
-        <div>
-          <h3>
+        <div
+          className="c26 "
+        >
+          <h3
+            className="c27"
+          >
             <a
+              className="c10"
               href="https://github.com/reddit/iOS-interview"
               rel="noreferrer"
               target="_blank"
@@ -1444,50 +2534,79 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
             </a>
           </h3>
           <dl>
-            <div>
-              <dt>
+            <div
+              className="c15"
+            >
+              <dt
+                className="c16"
+              >
                 Description
                 :
               </dt>
-              <dd>
+              <dd
+                className="c17"
+              >
                 Sandbox for the iOS Programming Interview
               </dd>
             </div>
-            <div>
-              <dt>
+            <div
+              className="c15"
+            >
+              <dt
+                className="c16"
+              >
                 Language
                 :
               </dt>
-              <dd>
+              <dd
+                className="c17"
+              >
                 Swift
               </dd>
             </div>
-            <div>
-              <dt>
+            <div
+              className="c15"
+            >
+              <dt
+                className="c16"
+              >
                 Stats
                 :
               </dt>
-              <dd>
+              <dd
+                className="c17"
+              >
                 1
                  stars  |  
                 3
                  forks
               </dd>
             </div>
-            <div>
-              <dt>
+            <div
+              className="c15"
+            >
+              <dt
+                className="c16"
+              >
                 Pushed
                 :
               </dt>
-              <dd>
+              <dd
+                className="c17"
+              >
                 May 7, 2021, 07:16 PM
               </dd>
             </div>
           </dl>
         </div>
-        <div>
-          <h3>
+        <div
+          className="c26 "
+        >
+          <h3
+            className="c27"
+          >
             <a
+              className="c10"
               href="https://github.com/reddit/dind-drone-plugin"
               rel="noreferrer"
               target="_blank"
@@ -1496,39 +2615,62 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
             </a>
           </h3>
           <dl>
-            <div>
-              <dt>
+            <div
+              className="c15"
+            >
+              <dt
+                className="c16"
+              >
                 Fork?
                 :
               </dt>
-              <dd>
+              <dd
+                className="c17"
+              >
                 Yes
               </dd>
             </div>
-            <div>
-              <dt>
+            <div
+              className="c15"
+            >
+              <dt
+                className="c16"
+              >
                 Description
                 :
               </dt>
-              <dd>
+              <dd
+                className="c17"
+              >
                 Plugin for Drone CI v0.8+ to enable use of Testcontainers using Docker-in-Docker
               </dd>
             </div>
             
-            <div>
-              <dt>
+            <div
+              className="c15"
+            >
+              <dt
+                className="c16"
+              >
                 Pushed
                 :
               </dt>
-              <dd>
+              <dd
+                className="c17"
+              >
                 Mar 24, 2021, 12:36 PM
               </dd>
             </div>
           </dl>
         </div>
-        <div>
-          <h3>
+        <div
+          className="c26 "
+        >
+          <h3
+            className="c27"
+          >
             <a
+              className="c10"
               href="https://github.com/reddit/dispatch"
               rel="noreferrer"
               target="_blank"
@@ -1537,50 +2679,79 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
             </a>
           </h3>
           <dl>
-            <div>
-              <dt>
+            <div
+              className="c15"
+            >
+              <dt
+                className="c16"
+              >
                 Fork?
                 :
               </dt>
-              <dd>
+              <dd
+                className="c17"
+              >
                 Yes
               </dd>
             </div>
-            <div>
-              <dt>
+            <div
+              className="c15"
+            >
+              <dt
+                className="c16"
+              >
                 Description
                 :
               </dt>
-              <dd>
+              <dd
+                className="c17"
+              >
                 All of the ad-hoc things you're doing to manage incidents today, done for you, and much more!
               </dd>
             </div>
-            <div>
-              <dt>
+            <div
+              className="c15"
+            >
+              <dt
+                className="c16"
+              >
                 Stats
                 :
               </dt>
-              <dd>
+              <dd
+                className="c17"
+              >
                 0
                  stars  |  
                 1
                  forks
               </dd>
             </div>
-            <div>
-              <dt>
+            <div
+              className="c15"
+            >
+              <dt
+                className="c16"
+              >
                 Pushed
                 :
               </dt>
-              <dd>
+              <dd
+                className="c17"
+              >
                 Mar 15, 2021, 10:17 PM
               </dd>
             </div>
           </dl>
         </div>
-        <div>
-          <h3>
+        <div
+          className="c26 "
+        >
+          <h3
+            className="c27"
+          >
             <a
+              className="c10"
               href="https://github.com/reddit/thrift-python"
               rel="noreferrer"
               target="_blank"
@@ -1589,32 +2760,49 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
             </a>
           </h3>
           <dl>
-            <div>
-              <dt>
+            <div
+              className="c15"
+            >
+              <dt
+                className="c16"
+              >
                 Stats
                 :
               </dt>
-              <dd>
+              <dd
+                className="c17"
+              >
                 0
                  stars  |  
                 1
                  forks
               </dd>
             </div>
-            <div>
-              <dt>
+            <div
+              className="c15"
+            >
+              <dt
+                className="c16"
+              >
                 Pushed
                 :
               </dt>
-              <dd>
+              <dd
+                className="c17"
+              >
                 Mar 3, 2021, 08:17 PM
               </dd>
             </div>
           </dl>
         </div>
-        <div>
-          <h3>
+        <div
+          className="c26 "
+        >
+          <h3
+            className="c27"
+          >
             <a
+              className="c10"
               href="https://github.com/reddit/zap"
               rel="noreferrer"
               target="_blank"
@@ -1623,31 +2811,50 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
             </a>
           </h3>
           <dl>
-            <div>
-              <dt>
+            <div
+              className="c15"
+            >
+              <dt
+                className="c16"
+              >
                 Fork?
                 :
               </dt>
-              <dd>
+              <dd
+                className="c17"
+              >
                 Yes
               </dd>
             </div>
-            <div>
-              <dt>
+            <div
+              className="c15"
+            >
+              <dt
+                className="c16"
+              >
                 Description
                 :
               </dt>
-              <dd>
+              <dd
+                className="c17"
+              >
                 Blazing fast, structured, leveled logging in Go.
               </dd>
             </div>
-            <div>
-              <dt>
+            <div
+              className="c15"
+            >
+              <dt
+                className="c16"
+              >
                 Homepage
                 :
               </dt>
-              <dd>
+              <dd
+                className="c17"
+              >
                 <a
+                  className="c18"
                   href="https://godoc.org/go.uber.org/zap"
                   rel="noreferrer"
                   target="_blank"
@@ -1656,41 +2863,64 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
                 </a>
               </dd>
             </div>
-            <div>
-              <dt>
+            <div
+              className="c15"
+            >
+              <dt
+                className="c16"
+              >
                 Language
                 :
               </dt>
-              <dd>
+              <dd
+                className="c17"
+              >
                 Go
               </dd>
             </div>
-            <div>
-              <dt>
+            <div
+              className="c15"
+            >
+              <dt
+                className="c16"
+              >
                 Stats
                 :
               </dt>
-              <dd>
+              <dd
+                className="c17"
+              >
                 0
                  stars  |  
                 2
                  forks
               </dd>
             </div>
-            <div>
-              <dt>
+            <div
+              className="c15"
+            >
+              <dt
+                className="c16"
+              >
                 Pushed
                 :
               </dt>
-              <dd>
+              <dd
+                className="c17"
+              >
                 Dec 4, 2020, 02:07 AM
               </dd>
             </div>
           </dl>
         </div>
-        <div>
-          <h3>
+        <div
+          className="c26 "
+        >
+          <h3
+            className="c27"
+          >
             <a
+              className="c10"
               href="https://github.com/reddit/reddit-coredns-plugins"
               rel="noreferrer"
               target="_blank"
@@ -1699,50 +2929,79 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
             </a>
           </h3>
           <dl>
-            <div>
-              <dt>
+            <div
+              className="c15"
+            >
+              <dt
+                className="c16"
+              >
                 Description
                 :
               </dt>
-              <dd>
+              <dd
+                className="c17"
+              >
                 Some CoreDNS plugins that reddit made
               </dd>
             </div>
-            <div>
-              <dt>
+            <div
+              className="c15"
+            >
+              <dt
+                className="c16"
+              >
                 Language
                 :
               </dt>
-              <dd>
+              <dd
+                className="c17"
+              >
                 Go
               </dd>
             </div>
-            <div>
-              <dt>
+            <div
+              className="c15"
+            >
+              <dt
+                className="c16"
+              >
                 Stats
                 :
               </dt>
-              <dd>
+              <dd
+                className="c17"
+              >
                 1
                  stars  |  
                 1
                  forks
               </dd>
             </div>
-            <div>
-              <dt>
+            <div
+              className="c15"
+            >
+              <dt
+                className="c16"
+              >
                 Pushed
                 :
               </dt>
-              <dd>
+              <dd
+                className="c17"
+              >
                 Jul 11, 2020, 04:06 AM
               </dd>
             </div>
           </dl>
         </div>
-        <div>
-          <h3>
+        <div
+          className="c26 "
+        >
+          <h3
+            className="c27"
+          >
             <a
+              className="c10"
               href="https://github.com/reddit/obs-browser-plugin"
               rel="noreferrer"
               target="_blank"
@@ -1751,60 +3010,93 @@ exports[`render the Search page with User and Repos data (snapshot test) 1`] = `
             </a>
           </h3>
           <dl>
-            <div>
-              <dt>
+            <div
+              className="c15"
+            >
+              <dt
+                className="c16"
+              >
                 Description
                 :
               </dt>
-              <dd>
+              <dd
+                className="c17"
+              >
                 Browser plugin for OBS Studio
               </dd>
             </div>
-            <div>
-              <dt>
+            <div
+              className="c15"
+            >
+              <dt
+                className="c16"
+              >
                 Language
                 :
               </dt>
-              <dd>
+              <dd
+                className="c17"
+              >
                 C++
               </dd>
             </div>
-            <div>
-              <dt>
+            <div
+              className="c15"
+            >
+              <dt
+                className="c16"
+              >
                 Stats
                 :
               </dt>
-              <dd>
+              <dd
+                className="c17"
+              >
                 7
                  stars  |  
                 1
                  forks
               </dd>
             </div>
-            <div>
-              <dt>
+            <div
+              className="c15"
+            >
+              <dt
+                className="c16"
+              >
                 Pushed
                 :
               </dt>
-              <dd>
+              <dd
+                className="c17"
+              >
                 Jul 1, 2020, 10:30 PM
               </dd>
             </div>
           </dl>
         </div>
-        <div>
-          <div>
-            <span>
+        <div
+          className="c28"
+        >
+          <div
+            className="c21"
+          >
+            <span
+              className="c22"
+            >
               &lt; Previous
             </span>
                Page 
-            <span>
+            <span
+              className=""
+            >
               1
             </span>
             /
             3
                
             <a
+              className="c23 c24"
               href="/search?username=reddit&page=2"
               onClick={[Function]}
             >

@@ -5,7 +5,6 @@ import App from "../../app/App";
 import {
   createRendererWithWrapper,
   delay,
-  removeClassNames,
   renderWithWrapper,
 } from "../../common/testUtils";
 
@@ -98,10 +97,7 @@ test("render the History page with history data (snapshot test)", async () => {
     await delay(100);
   });
 
-  const tree = root.toJSON();
-  removeClassNames(tree);
-
-  expect(tree).toMatchSnapshot();
+  expect(root.toJSON()).toMatchSnapshot();
 });
 
 async function searchForUsername(username: string, waitForUserInfo = true) {
