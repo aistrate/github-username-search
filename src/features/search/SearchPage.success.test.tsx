@@ -166,7 +166,7 @@ test("show spinner if Repos data fetching takes more than 500 ms", async () => {
   expect(screen.queryByTestId("reposSpinner")).not.toBeInTheDocument();
 });
 
-test("username input receives focus when needed", async () => {
+test("give focus to the Username input when needed", async () => {
   renderWithWrapper(<App />);
 
   expect(screen.getByPlaceholderText("Username")).toHaveFocus();
@@ -200,19 +200,27 @@ test("username input receives focus when needed", async () => {
   expect(usernameInput).not.toHaveFocus();
 });
 
-test("empty Search page renders correctly", async () => {
+const delay = (ms: number) =>
+  new Promise((resolve) => {
+    setTimeout(resolve, ms);
+  });
+
+test("render the Search page with User and Repos data (snapshot test)", async () => {
   const store = createStore();
 
-  const tree = renderer
-    .create(
-      <Provider store={store}>
-        <MemoryRouter initialEntries={["/search"]}>
-          <App />
-        </MemoryRouter>
-      </Provider>
-    )
-    .toJSON();
+  let root = renderer.create(
+    <Provider store={store}>
+      <MemoryRouter initialEntries={["/search?username=reddit"]}>
+        <App />
+      </MemoryRouter>
+    </Provider>
+  );
 
+  await renderer.act(async () => {
+    await delay(500);
+  });
+
+  const tree = root.toJSON();
   removeClassNames(tree);
 
   expect(tree).toMatchSnapshot();

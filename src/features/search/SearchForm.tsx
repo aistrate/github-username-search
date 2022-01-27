@@ -34,10 +34,12 @@ function SearchForm({
     setTextAndButton(initialValue);
     setSubmitted(false);
 
-    if (initialValue === "") {
-      inputRef.current.focus();
-    } else {
-      inputRef.current.blur();
+    if (inputRef.current) {
+      if (initialValue === "") {
+        inputRef.current.focus();
+      } else {
+        inputRef.current.blur();
+      }
     }
   }, [initialValue]);
 
