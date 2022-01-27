@@ -1,6 +1,10 @@
-export { formatDateTime, formatNumber, formatUrl };
+export { formatDateTime, formatNumber, formatUrl, setLocale };
 
-const locale = "en-GB";
+let locale = "en-GB";
+
+function setLocale(value: string) {
+  locale = value;
+}
 
 const dateOptions: Intl.DateTimeFormatOptions = {
   year: "numeric",
