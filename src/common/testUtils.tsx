@@ -14,12 +14,19 @@ export {
   removeClassNames,
 };
 
+/**
+ * Renderer used by most tests. Uses jsdom as a full DOM implementation in Node.js.
+ * Can handle user events (click, etc.) on the page.
+ */
 function renderWithWrapper(ui: ReactElement, initialRoute = "/") {
   const Wrapper = createWrapper(initialRoute);
 
   return render(ui, { wrapper: Wrapper });
 }
 
+/**
+ * Renderer used by snapshot tests.
+ */
 function createRendererWithWrapper(ui: ReactElement, initialRoute: string) {
   const Wrapper = createWrapper(initialRoute);
 
