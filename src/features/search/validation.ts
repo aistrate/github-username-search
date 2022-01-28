@@ -1,6 +1,6 @@
-export { validateUsername };
+export { usernameValidationError };
 
-function validateUsername(username: string) {
+function usernameValidationError(username: string) {
   username = username.trim();
 
   if (username.search(invalidUsernameChars) >= 0) {

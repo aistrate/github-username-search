@@ -3,7 +3,7 @@ import styled from "styled-components/macro";
 import Button from "../../common/styled/Button";
 import { ExternalLink } from "../../common/styled/Links";
 import TextInput from "../../common/styled/TextInput";
-import { validateUsername } from "./validation";
+import { usernameValidationError } from "./validation";
 
 export type { SearchEvent };
 export default SearchForm;
@@ -24,14 +24,12 @@ function SearchForm({
   className,
 }: SearchFormProps) {
   const [value, setValue] = useState("");
-  const [buttonDisabled, setButtonDisabled] = useState(true);
   const inputRef = useRef<HTMLInputElement>(null!);
 
   const [submitted, setSubmitted] = useState(false);
-  const [validationError, setValidationError] = useState<string | null>(null);
 
   useEffect(() => {
-    setTextAndButton(initialValue);
+    setValue(initialValue);
     setSubmitted(false);
 
     if (inputRef.current) {
@@ -50,19 +48,20 @@ function SearchForm({
     setValue(normalizedValue);
     setSubmitted(true);
 
-    if (!validationError) {
+    if (!usernameValidationError(normalizedValue)) {
       onSearch({ value: normalizedValue });
     }
   }
 
   function handleTextChange(e: React.ChangeEvent<HTMLInputElement>) {
-    setTextAndButton(e.target.value);
+    setValue(e.target.value);
   }
 
-  function setTextAndButton(val: string) {
-    setValue(val);
-    setValidationError(validateUsername(val));
-    setButtonDisabled(val.trim().length === 0);
+  function isButtonDisabled() {
+    return (
+      value.trim().length === 0 ||
+      (submitted && !!usernameValidationError(value))
+    );
   }
 
   return (
@@ -74,12 +73,12 @@ function SearchForm({
         onChange={handleTextChange}
       />
 
-      <Button name="Search" type="submit" disabled={buttonDisabled}>
+      <Button name="Search" type="submit" disabled={isButtonDisabled()}>
         Search
       </Button>
 
-      {submitted && validationError && (
-        <ValidationMessage>{validationError}</ValidationMessage>
+      {submitted && usernameValidationError(value) && (
+        <ValidationMessage>{usernameValidationError(value)}</ValidationMessage>
       )}
 
       <Instructions>

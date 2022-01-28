@@ -12,7 +12,7 @@ import { fetchRepos, resetRepos, selectRepos } from "./reposSlice";
 import SearchForm, { SearchEvent } from "./SearchForm";
 import { fetchUser, resetUser, selectUser, UserFetch } from "./userSlice";
 import UserView from "./UserView";
-import { validateUsername } from "./validation";
+import { usernameValidationError } from "./validation";
 
 export default SearchPage;
 
@@ -116,7 +116,7 @@ function useSaveToHistory({ fetchArg, isLoading, error }: UserFetch) {
 }
 
 function validateQuery(username: string) {
-  const validationError = validateUsername(username);
+  const validationError = usernameValidationError(username);
 
   if (validationError) {
     return `Invalid username "${username}" in the URL. ${validationError}`;
