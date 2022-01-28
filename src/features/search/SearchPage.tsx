@@ -25,7 +25,7 @@ function SearchPage({ queryUsername, queryPage }: SearchPageProps) {
   let lcUsername = (queryUsername || "").trim().toLowerCase();
   const page = Math.max(1, parseInt(queryPage || "") || 1);
 
-  const queryValidationError = validateQuery(lcUsername);
+  const queryValidationError = getQueryValidationError(lcUsername);
   if (queryValidationError) {
     lcUsername = "";
   }
@@ -115,7 +115,7 @@ function useSaveToHistory({ fetchArg, isLoading, error }: UserFetch) {
   }, [dispatch, lcUsername, isLoading, error]);
 }
 
-function validateQuery(username: string) {
+function getQueryValidationError(username: string) {
   const validationError = usernameValidationError(username);
 
   if (validationError) {
