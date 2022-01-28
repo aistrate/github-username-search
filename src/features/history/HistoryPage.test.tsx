@@ -51,7 +51,7 @@ test("username on History page links to Search page for that username", async ()
   await searchForUsername("graphql");
 
   userEvent.click(getByText(menu, "History"));
-  expect(screen.queryByText(`History (1)`)).toBeInTheDocument();
+  expect(screen.queryByText("History (1)")).toBeInTheDocument();
 
   userEvent.click(screen.getByText("graphql"));
   expect(screen.getByPlaceholderText("Username")).toHaveValue("graphql");
