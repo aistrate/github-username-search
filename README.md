@@ -7,9 +7,10 @@ See a [live demo](https://gus-aistrate.netlify.app/search) here.
 Features:
 
 - TypeScript
-- React (with Hooks)
+- React with Hooks
 - React Router
 - Redux
-- testing with Jest, Testing Library and Mock Service Worker
 - styled-components
-- responsive CSS (on mobile)
+- responsive CSS
+- testing with Jest and React Testing Library
+- API mocking with Mock Service Worker
