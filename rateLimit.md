@@ -1,6 +1,8 @@
-## How to Increase the Rate Limit in Development Mode
+## How to Increase the GitHub API Rate Limit in Development Mode
 
-For unauthenticated requests, the GitHub API has a [rate limit](https://docs.github.com/en/rest/overview/resources-in-the-rest-api#rate-limiting) of 60 requests per hour, associated with the originating IP address. When the limit is reached, the API will respond with HTTP Status 403 (Forbidden) for the remainder of the 60 minute period that started with your first request. You might find this limit to be too low when running the app in development mode.
+For unauthenticated requests, the GitHub API has a [rate limit](https://docs.github.com/en/rest/overview/resources-in-the-rest-api#rate-limiting) of 60 requests per hour, associated with the originating IP address. You might find this limit to be too low when running the app in development mode.
+
+When the limit is reached, the API will respond with HTTP Status 403 (Forbidden) for the remainder of the 60 minute period that started with your first request.
 
 To increase the rate limit to 5000 requests per hour in development mode (or in general when running in local environments), you can use credentials generated through your GitHub account (which doesn't have to own the `github-username-search` repo, or a fork of it). This method is not appropriate for production, as it will make your credentials public on the client.
 
@@ -10,7 +12,7 @@ To increase the rate limit:
 
 This application will not be linked to a specific GitHub repository (your GitHub account doesn't have to be the owner of the `github-username-search` repo, or a fork of it).
 
-- log in to your GitHub account (`github.com`)
+- log in to your GitHub account (on `github.com`)
 - go to **Settings** -> **Developer Settings** -> **OAuth Apps** (or go directly to https://github.com/settings/developers)
 - click on **New OAuth App**
 - assign the following mandatory fields:
@@ -24,8 +26,6 @@ This application will not be linked to a specific GitHub repository (your GitHub
 
 ### 2. Create authorization credentials and save them into a config file for local environments
 
-These credentials will be used in the `Authorization` HTTP request header for all network calls made to the GitHub API.
-
 - concatenate the Client ID and the Client secret generated above, with a colon in between:
   ```
   <Client ID>:<Client secret>
@@ -35,6 +35,8 @@ These credentials will be used in the `Authorization` HTTP request header for al
   ```
   REACT_APP_GITHUB_API_AUTH=Basic <Base64 string>
   ```
+
+The React app will use the `REACT_APP_GITHUB_API_AUTH` value to add an `Authorization` HTTP header to every request made to the GitHub API.
 
 ### 3. Verify that the rate limit was increased
 
