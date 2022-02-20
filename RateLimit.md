@@ -1,8 +1,8 @@
 ## How to Increase the Rate Limit in Development Mode
 
-For unauthenticated requests, the GitHub API has a [rate limit](https://docs.github.com/en/rest/overview/resources-in-the-rest-api#rate-limiting) of 60 requests per hour, associated with the originating IP address. When the limit is reached, the API will respond with HTTP Status 403 (Forbidden) for the remainder of the 60 minutes starting from your first request. You might find this limit to be too low when running the app in development mode.
+For unauthenticated requests, the GitHub API has a [rate limit](https://docs.github.com/en/rest/overview/resources-in-the-rest-api#rate-limiting) of 60 requests per hour, associated with the originating IP address. When the limit is reached, the API will respond with HTTP Status 403 (Forbidden) for the remainder of the 60 minute period that started with your first request. You might find this limit to be too low when running the app in development mode.
 
-To increase the rate limit to 5000 requests per hour in development mode (or in general when running in local environments), you can use credentials generated through your GitHub account (which doesn't have to own the `github-username-search` repo, or a fork of it). This method is not appropriate for production, as it makes your credentials public, either on the client or on the server.
+To increase the rate limit to 5000 requests per hour in development mode (or in general when running in local environments), you can use credentials generated through your GitHub account (which doesn't have to own the `github-username-search` repo, or a fork of it). This method is not appropriate for production, as it will make your credentials public on the client.
 
 To increase the rate limit:
 
