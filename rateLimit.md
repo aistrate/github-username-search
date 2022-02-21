@@ -12,7 +12,7 @@ To increase the rate limit:
 
 This application will not be linked to a specific GitHub repository (your GitHub account doesn't have to be the owner of the `github-username-search` repo, or a fork of it).
 
-- log in to your GitHub account (on `github.com`)
+- log in to your GitHub account on [github.com](https://github.com)
 - go to **Settings** -> **Developer Settings** -> **OAuth Apps** (or go directly to https://github.com/settings/developers)
 - click on **New OAuth App**
 - assign the following mandatory fields:

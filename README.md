@@ -15,4 +15,4 @@ Features:
 - testing with Jest and React Testing Library
 - API mocking with Mock Service Worker
 
-To increase the rate limit of the GitHub API from 60 to 5000 requests per hour in development mode, read [this](./rateLimit.md).
+Note: To increase the rate limit of the GitHub API from 60 to 5000 requests per hour in development mode, read [this](./rateLimit.md).
