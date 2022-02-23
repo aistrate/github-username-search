@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import styled from "styled-components/macro";
 import Button from "../../common/styled/Button";
-import { ExternalLink } from "../../common/styled/Links";
+import { ExternalLink } from "../../common/styled/links";
 import TextInput from "../../common/styled/TextInput";
 import { usernameValidationError } from "./validation";
 

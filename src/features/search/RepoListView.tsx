@@ -7,8 +7,8 @@ import {
   formatUrl,
 } from "../../common/formatting";
 import Pagination from "../../common/Pagination";
-import { LargeHeading, SmallHeading } from "../../common/styled/Headings";
-import { ExternalLink } from "../../common/styled/Links";
+import { LargeHeading, SmallHeading } from "../../common/styled/headings";
+import { ExternalLink } from "../../common/styled/links";
 import Message from "../../common/styled/Message";
 import Row from "../../common/styled/Row";
 import Spinner from "../../common/styled/Spinner";

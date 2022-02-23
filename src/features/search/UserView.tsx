@@ -6,8 +6,8 @@ import {
   formatNumber,
   formatUrl,
 } from "../../common/formatting";
-import { LargeHeading } from "../../common/styled/Headings";
-import { ExternalLink } from "../../common/styled/Links";
+import { LargeHeading } from "../../common/styled/headings";
+import { ExternalLink } from "../../common/styled/links";
 import Message from "../../common/styled/Message";
 import Row from "../../common/styled/Row";
 import Spinner from "../../common/styled/Spinner";

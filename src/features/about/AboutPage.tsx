@@ -1,6 +1,6 @@
 import DocumentTitle from "../../common/DocumentTitle";
-import { SmallHeading } from "../../common/styled/Headings";
-import { ExternalLink } from "../../common/styled/Links";
+import { SmallHeading } from "../../common/styled/headings";
+import { ExternalLink } from "../../common/styled/links";
 
 export default AboutPage;
 

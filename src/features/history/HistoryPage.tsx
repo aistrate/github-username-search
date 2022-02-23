@@ -4,8 +4,8 @@ import styled from "styled-components/macro";
 import { useAppDispatch } from "../../app/store";
 import DocumentTitle from "../../common/DocumentTitle";
 import { formatDateTime } from "../../common/formatting";
-import { LargeHeading } from "../../common/styled/Headings";
-import { InternalLink } from "../../common/styled/Links";
+import { LargeHeading } from "../../common/styled/headings";
+import { InternalLink } from "../../common/styled/links";
 import Row from "../../common/styled/Row";
 import {
   HistoryItem,
