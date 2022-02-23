@@ -24,7 +24,7 @@ This application will not be linked to a specific GitHub repository (your GitHub
 - click on **Generate a new client secret**
 - save the client secret (a 40-digit hex number) into a local file, as the website will only display it once, immediately after generation; treat it as a password and keep it secret
 
-### 2. Create authorization credentials and save them into a config file for local environments
+### 2. Create authorization credentials and save them into config file for local environments
 
 - concatenate the Client ID and the Client secret generated above, with a colon in between:
   ```
@@ -38,7 +38,7 @@ This application will not be linked to a specific GitHub repository (your GitHub
 
 The React app will use the `REACT_APP_GITHUB_API_AUTH` value to add an `Authorization` HTTP header to every request made to the GitHub API.
 
-### 3. Verify that the rate limit was increased
+### 3. Verify that rate limit was increased
 
 - run the React app locally (`yarn start`, or `yarn build` followed by `serve -s build`), and use it to search for a username (e.g., "microsoft").
 - in **DevTools** -> **Network** tab, find a network call to `api.github.com`
