@@ -1,4 +1,4 @@
-import { getByText, screen } from "@testing-library/react";
+import { screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import * as nav from "../testUtils/nav";
 import * as searchPage from "../testUtils/searchPage";
@@ -36,16 +36,16 @@ test("on navigating around the app, change routing location and document title",
   expect(routingLocation()).toBe("/search?username=reddit");
   expect(document.title).toBe("reddit - GitHub Username Search");
 
-  const topPagination = await screen.findByTestId("topPagination");
+  await searchPage.waitForPaginationControl();
 
   // for the rest of this test we will not wait for fetch requests to complete, to keep the test simple;
   // User and Repos requests will get aborted by the SearchPage on moving to a different user/page
-  userEvent.click(getByText(topPagination, /next/i));
+  searchPage.goToNextRepoPage();
 
   expect(routingLocation()).toBe("/search?username=reddit&page=2");
   expect(document.title).toBe("reddit (page 2) - GitHub Username Search");
 
-  userEvent.click(getByText(topPagination, /previous/i));
+  searchPage.goToPreviousRepoPage();
 
   expect(routingLocation()).toBe("/search?username=reddit");
   expect(document.title).toBe("reddit - GitHub Username Search");

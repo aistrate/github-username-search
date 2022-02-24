@@ -1,4 +1,4 @@
-import { getByText, screen, waitFor } from "@testing-library/react";
+import { screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { rest } from "msw";
 import { baseUrl } from "../../app/api";
@@ -20,30 +20,29 @@ test("perform search and page through the repositories (happy path)", async () =
   expect(userInfo).toHaveTextContent("Location:San Francisco, CA");
   expect(userInfo).toHaveTextContent("Repositories:88");
 
-  const topPagination = screen.getByTestId("topPagination");
-  expect(topPagination).toHaveTextContent("Page 1/3");
+  expect(searchPage.paginationText()).toMatch("Page 1/3");
 
-  userEvent.click(getByText(topPagination, /next/i));
+  searchPage.goToNextRepoPage();
   await expectRepoNamesToEqual(expectedRepoNames["reddit"].pages[2]);
-  expect(topPagination).toHaveTextContent("Page 2/3");
+  expect(searchPage.paginationText()).toMatch("Page 2/3");
 
-  userEvent.click(getByText(topPagination, /next/i));
+  searchPage.goToNextRepoPage();
   await expectRepoNamesToEqual(expectedRepoNames["reddit"].pages[3]);
-  expect(topPagination).toHaveTextContent("Page 3/3");
+  expect(searchPage.paginationText()).toMatch("Page 3/3");
 
-  userEvent.click(getByText(topPagination, /next/i));
-  expect(topPagination).toHaveTextContent("Page 3/3");
+  searchPage.goToNextRepoPage();
+  expect(searchPage.paginationText()).toMatch("Page 3/3");
 
-  userEvent.click(getByText(topPagination, /previous/i));
+  searchPage.goToPreviousRepoPage();
   await expectRepoNamesToEqual(expectedRepoNames["reddit"].pages[2]);
-  expect(topPagination).toHaveTextContent("Page 2/3");
+  expect(searchPage.paginationText()).toMatch("Page 2/3");
 
-  userEvent.click(getByText(topPagination, /previous/i));
+  searchPage.goToPreviousRepoPage();
   await expectRepoNamesToEqual(expectedRepoNames["reddit"].pages[1]);
-  expect(topPagination).toHaveTextContent("Page 1/3");
+  expect(searchPage.paginationText()).toMatch("Page 1/3");
 
-  userEvent.click(getByText(topPagination, /previous/i));
-  expect(topPagination).toHaveTextContent("Page 1/3");
+  searchPage.goToPreviousRepoPage();
+  expect(searchPage.paginationText()).toMatch("Page 1/3");
 }, 15000);
 
 test("perform search for user with single page of repositories", async () => {
@@ -55,7 +54,7 @@ test("perform search for user with single page of repositories", async () => {
 
   expect(screen.getByTestId("userInfo")).toHaveTextContent("Repositories:25");
 
-  expect(screen.getByTestId("topPagination")).toBeEmptyDOMElement();
+  expect(searchPage.paginationText()).toBe("");
 });
 
 test("perform search for user with zero repositories", async () => {
@@ -68,21 +67,21 @@ test("perform search for user with zero repositories", async () => {
 
   expect(screen.getByTestId("userInfo")).toHaveTextContent("Repositories:0");
 
-  expect(screen.getByTestId("topPagination")).toBeEmptyDOMElement();
+  expect(searchPage.paginationText()).toBe("");
 });
 
 test("perform search through URL parameter 'username'", async () => {
   renderWithWrapper(<App />, "/search?username=reddit");
 
   await expectRepoNamesToEqual(expectedRepoNames["reddit"].pages[1]);
-  expect(screen.getByTestId("topPagination")).toHaveTextContent("Page 1/3");
+  expect(searchPage.paginationText()).toMatch("Page 1/3");
 });
 
 test("perform search through URL parameters 'username' and 'page'", async () => {
   renderWithWrapper(<App />, "/search?username=reddit&page=2");
 
   await expectRepoNamesToEqual(expectedRepoNames["reddit"].pages[2]);
-  expect(screen.getByTestId("topPagination")).toHaveTextContent("Page 2/3");
+  expect(searchPage.paginationText()).toMatch("Page 2/3");
 });
 
 test("perform search by pressing Enter", async () => {
@@ -147,7 +146,7 @@ test("show spinner if Repos data fetching takes more than 500 ms", async () => {
     })
   );
 
-  userEvent.click(getByText(screen.getByTestId("topPagination"), /next/i));
+  searchPage.goToNextRepoPage();
 
   expect(await screen.findByTestId("reposSpinner")).toBeInTheDocument();
 
