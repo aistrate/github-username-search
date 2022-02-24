@@ -3,8 +3,8 @@ import userEvent from "@testing-library/user-event";
 import { rest } from "msw";
 import { baseUrl } from "../../app/api";
 import App from "../../app/App";
-import { renderWithWrapper } from "../../common/testUtils";
 import { server } from "../../mocks/server";
+import { renderWithWrapper } from "../../testUtils/utils";
 
 test("nonexistent username causes 'not found' message", async () => {
   renderWithWrapper(<App />);

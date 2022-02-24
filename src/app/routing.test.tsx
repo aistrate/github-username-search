@@ -1,6 +1,6 @@
 import { getByText, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { renderWithWrapper, RoutingLocation } from "../common/testUtils";
+import { renderWithWrapper, RoutingLocation } from "../testUtils/utils";
 import App from "./App";
 
 test("main menu navigates the pages of the app", () => {

@@ -3,7 +3,7 @@ import userEvent from "@testing-library/user-event";
 import { rest } from "msw";
 import { baseUrl } from "../../app/api";
 import App from "../../app/App";
-import { renderWithWrapper } from "../../common/testUtils";
+import { renderWithWrapper } from "../../testUtils/utils";
 import { mockUsers } from "../../mocks/mockData";
 import { server } from "../../mocks/server";
 
