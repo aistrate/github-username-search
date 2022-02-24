@@ -1,6 +1,8 @@
 import { getByText, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
+// SearchForm
+
 export function searchUsername(username: string) {
   typeUsername(username);
   userEvent.click(searchButton());
@@ -18,16 +20,26 @@ export function usernameInputValue() {
   return usernameInput().getAttribute("value");
 }
 
-export async function waitForUserInfo() {
-  await screen.findByTestId("userInfo");
-}
-
 function usernameInput() {
   return screen.getByPlaceholderText("Username");
 }
 
 function searchButton() {
   return screen.getByRole("button", { name: "Search" });
+}
+
+// UserInfo
+
+export function userInfoText() {
+  return userInfo().textContent || "";
+}
+
+export async function waitForUserInfo() {
+  await screen.findByTestId("userInfo");
+}
+
+function userInfo() {
+  return screen.getByTestId("userInfo");
 }
 
 // Pagination
@@ -45,7 +57,7 @@ export function paginationText() {
 }
 
 export async function waitForPaginationControl() {
-  return await screen.findByTestId("topPagination");
+  await screen.findByTestId("topPagination");
 }
 
 function topPagination() {

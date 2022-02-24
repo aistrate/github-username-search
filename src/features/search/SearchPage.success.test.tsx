@@ -16,9 +16,8 @@ test("perform search and page through the repositories (happy path)", async () =
 
   await expectRepoNamesToEqual(expectedRepoNames["reddit"].pages[1]);
 
-  const userInfo = screen.getByTestId("userInfo");
-  expect(userInfo).toHaveTextContent("Location:San Francisco, CA");
-  expect(userInfo).toHaveTextContent("Repositories:88");
+  expect(searchPage.userInfoText()).toMatch("Location:San Francisco, CA");
+  expect(searchPage.userInfoText()).toMatch("Repositories:88");
 
   expect(searchPage.paginationText()).toMatch("Page 1/3");
 
@@ -52,7 +51,7 @@ test("perform search for user with single page of repositories", async () => {
 
   await expectRepoNamesToEqual(expectedRepoNames["graphql"].pages[1]);
 
-  expect(screen.getByTestId("userInfo")).toHaveTextContent("Repositories:25");
+  expect(searchPage.userInfoText()).toMatch("Repositories:25");
 
   expect(searchPage.paginationText()).toBe("");
 });
@@ -65,7 +64,7 @@ test("perform search for user with zero repositories", async () => {
   await screen.findByText("Repositories");
   await screen.findByText("(none)");
 
-  expect(screen.getByTestId("userInfo")).toHaveTextContent("Repositories:0");
+  expect(searchPage.userInfoText()).toMatch("Repositories:0");
 
   expect(searchPage.paginationText()).toBe("");
 });
@@ -115,7 +114,7 @@ test("show spinner if User data fetching takes more than 500 ms", async () => {
 
   expect(await screen.findByTestId("userSpinner")).toBeInTheDocument();
 
-  expect(await screen.findByText("San Francisco, CA")).toBeInTheDocument();
+  await searchPage.waitForUserInfo();
 
   expect(screen.queryByTestId("userSpinner")).not.toBeInTheDocument();
 });
