@@ -6,12 +6,12 @@ import App from "../../app/App";
 import { renderWithWrapper } from "../../testUtils/utils";
 import { mockUsers } from "../../mocks/mockData";
 import { server } from "../../mocks/server";
+import * as searchPage from "../../testUtils/searchPage";
 
 test("perform search and page through the repositories (happy path)", async () => {
   renderWithWrapper(<App />);
 
-  userEvent.type(screen.getByPlaceholderText("Username"), "reddit");
-  userEvent.click(screen.getByRole("button", { name: "Search" }));
+  searchPage.searchForUsername("reddit");
 
   await expectRepoNamesToEqual(expectedRepoNames["reddit"].pages[1]);
 
@@ -48,8 +48,7 @@ test("perform search and page through the repositories (happy path)", async () =
 test("perform search for user with single page of repositories", async () => {
   renderWithWrapper(<App />);
 
-  userEvent.type(screen.getByPlaceholderText("Username"), "graphql");
-  userEvent.click(screen.getByRole("button", { name: "Search" }));
+  searchPage.searchForUsername("graphql");
 
   await expectRepoNamesToEqual(expectedRepoNames["graphql"].pages[1]);
 
@@ -61,8 +60,7 @@ test("perform search for user with single page of repositories", async () => {
 test("perform search for user with zero repositories", async () => {
   renderWithWrapper(<App />);
 
-  userEvent.type(screen.getByPlaceholderText("Username"), "zerorepos");
-  userEvent.click(screen.getByRole("button", { name: "Search" }));
+  searchPage.searchForUsername("zerorepos");
 
   await screen.findByText("Repositories");
   await screen.findByText("(none)");
@@ -89,7 +87,7 @@ test("perform search through URL parameters 'username' and 'page'", async () => 
 test("perform search by pressing Enter", async () => {
   renderWithWrapper(<App />);
 
-  userEvent.type(screen.getByPlaceholderText("Username"), "reddit{enter}");
+  searchPage.typeUsername("reddit{enter}");
 
   await expectRepoNamesToEqual(expectedRepoNames["reddit"].pages[1]);
 });
@@ -97,12 +95,9 @@ test("perform search by pressing Enter", async () => {
 test("trim search string and convert it to lowercase before searching", async () => {
   renderWithWrapper(<App />);
 
-  const usernameInput = screen.getByPlaceholderText("Username");
+  searchPage.searchForUsername("  REDDIT   ");
 
-  userEvent.type(usernameInput, "  REDDIT   ");
-  userEvent.click(screen.getByRole("button", { name: "Search" }));
-
-  expect(usernameInput).toHaveValue("reddit");
+  expect(screen.getByPlaceholderText("Username")).toHaveValue("reddit");
 
   await expectRepoNamesToEqual(expectedRepoNames["reddit"].pages[1]);
 });
@@ -116,8 +111,7 @@ test("show spinner if User data fetching takes more than 500 ms", async () => {
     })
   );
 
-  userEvent.type(screen.getByPlaceholderText("Username"), "reddit");
-  userEvent.click(screen.getByRole("button", { name: "Search" }));
+  searchPage.searchForUsername("reddit");
 
   expect(await screen.findByTestId("userSpinner")).toBeInTheDocument();
 
@@ -138,8 +132,7 @@ test("show spinner if Repos data fetching takes more than 500 ms", async () => {
     })
   );
 
-  userEvent.type(screen.getByPlaceholderText("Username"), "reddit");
-  userEvent.click(screen.getByRole("button", { name: "Search" }));
+  searchPage.searchForUsername("reddit");
 
   expect(await screen.findByTestId("reposSpinner")).toBeInTheDocument();
 
@@ -175,10 +168,9 @@ test("give focus to the Username input when needed", async () => {
   userEvent.click(getByText(menu, "Search"));
   expect(screen.getByPlaceholderText("Username")).toHaveFocus();
 
-  let usernameInput = screen.getByPlaceholderText("Username");
+  searchPage.searchForUsername("graphql");
 
-  userEvent.type(usernameInput, "graphql");
-  userEvent.click(screen.getByRole("button", { name: "Search" }));
+  let usernameInput = screen.getByPlaceholderText("Username");
 
   expect(usernameInput).not.toHaveFocus();
 

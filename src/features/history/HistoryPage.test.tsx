@@ -1,6 +1,7 @@
 import { getByText, queryAllByRole, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import App from "../../app/App";
+import * as searchPage from "../../testUtils/searchPage";
 import { renderWithWrapper } from "../../testUtils/utils";
 import { HistoryItem } from "./historySlice";
 
@@ -15,25 +16,28 @@ test("on every successful search, save username to the top of search history", a
   expectHistoryToEqual([]);
 
   userEvent.click(searchMenuItem);
-  await searchForUsername("reddit");
+  searchPage.searchForUsername("reddit");
+  await searchPage.waitForUserInfo();
 
   userEvent.click(historyMenuItem);
   expectHistoryToEqual(["reddit"]);
 
   userEvent.click(searchMenuItem);
-  await searchForUsername("graphql");
+  searchPage.searchForUsername("graphql");
+  await searchPage.waitForUserInfo();
 
   userEvent.click(historyMenuItem);
   expectHistoryToEqual(["graphql", "reddit"]);
 
   userEvent.click(searchMenuItem);
-  await searchForUsername("reddit");
+  searchPage.searchForUsername("reddit");
+  await searchPage.waitForUserInfo();
 
   userEvent.click(historyMenuItem);
   expectHistoryToEqual(["reddit", "graphql"]);
 
   userEvent.click(searchMenuItem);
-  searchForUsername("nonexistent", false);
+  searchPage.searchForUsername("nonexistent");
   expect(
     await screen.findByText("Username 'nonexistent' was not found.")
   ).toBeInTheDocument();
@@ -48,7 +52,8 @@ test("username on History page links to Search page for that username", async ()
   const menu = screen.getByRole("navigation");
 
   userEvent.click(getByText(menu, "Search"));
-  await searchForUsername("graphql");
+  searchPage.searchForUsername("graphql");
+  await searchPage.waitForUserInfo();
 
   userEvent.click(getByText(menu, "History"));
   expect(screen.queryByText("History (1)")).toBeInTheDocument();
@@ -66,7 +71,8 @@ test("convert username to lowercase before saving it to search history", async (
   const menu = screen.getByRole("navigation");
 
   userEvent.click(getByText(menu, "Search"));
-  await searchForUsername("GraphQL"); // capitalized
+  searchPage.searchForUsername("GraphQL"); // capitalized
+  await searchPage.waitForUserInfo();
 
   userEvent.click(getByText(menu, "History"));
   expect(screen.queryByText("GraphQL")).not.toBeInTheDocument();
@@ -90,16 +96,6 @@ test("render the History page with history data (snapshot test)", async () => {
 
   expect(container.firstChild).toMatchSnapshot();
 });
-
-async function searchForUsername(username: string, waitForUserInfo = true) {
-  // on the Search Page
-  userEvent.type(screen.getByPlaceholderText("Username"), username);
-  userEvent.click(screen.getByRole("button", { name: "Search" }));
-
-  if (waitForUserInfo) {
-    await screen.findByTestId("userInfo");
-  }
-}
 
 function expectHistoryToEqual(expected: string[]) {
   // on the History Page

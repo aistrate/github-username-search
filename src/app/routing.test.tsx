@@ -1,5 +1,6 @@
 import { getByText, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import * as searchPage from "../testUtils/searchPage";
 import { renderWithWrapper, RoutingLocation } from "../testUtils/utils";
 import App from "./App";
 
@@ -31,11 +32,7 @@ test("on navigating around the app, change routing location and document title",
   expect(routingLocation()).toBe("/search");
   expect(document.title).toBe("Search - GitHub Username Search");
 
-  const usernameInput = screen.getByPlaceholderText("Username");
-  const searchButton = screen.getByRole("button", { name: "Search" });
-
-  userEvent.type(usernameInput, "reddit");
-  userEvent.click(searchButton);
+  searchPage.searchForUsername("reddit");
 
   expect(routingLocation()).toBe("/search?username=reddit");
   expect(document.title).toBe("reddit - GitHub Username Search");
@@ -54,17 +51,15 @@ test("on navigating around the app, change routing location and document title",
   expect(routingLocation()).toBe("/search?username=reddit");
   expect(document.title).toBe("reddit - GitHub Username Search");
 
-  userEvent.clear(usernameInput);
-  userEvent.type(usernameInput, "GraphQL"); // capitalized
-  userEvent.click(searchButton);
+  searchPage.clearUsername();
+  searchPage.searchForUsername("GraphQL"); // capitalized
 
   expect(routingLocation()).toBe("/search?username=graphql");
   expect(document.title).toBe("graphql - GitHub Username Search");
-  expect(usernameInput).toHaveValue("graphql");
+  expect(screen.getByPlaceholderText("Username")).toHaveValue("graphql");
 
-  userEvent.clear(usernameInput);
-  userEvent.type(usernameInput, "nonexistent");
-  userEvent.click(searchButton);
+  searchPage.clearUsername();
+  searchPage.searchForUsername("nonexistent");
 
   expect(routingLocation()).toBe("/search?username=nonexistent");
   expect(document.title).toBe("nonexistent - GitHub Username Search");

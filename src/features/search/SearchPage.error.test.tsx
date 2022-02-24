@@ -4,13 +4,13 @@ import { rest } from "msw";
 import { baseUrl } from "../../app/api";
 import App from "../../app/App";
 import { server } from "../../mocks/server";
+import * as searchPage from "../../testUtils/searchPage";
 import { renderWithWrapper } from "../../testUtils/utils";
 
 test("nonexistent username causes 'not found' message", async () => {
   renderWithWrapper(<App />);
 
-  userEvent.type(screen.getByPlaceholderText("Username"), "nonexistent");
-  userEvent.click(screen.getByRole("button", { name: "Search" }));
+  searchPage.searchForUsername("nonexistent");
 
   expect(
     await screen.findByText("Username 'nonexistent' was not found.")
@@ -29,8 +29,7 @@ test("HTTP error causes error message", async () => {
     })
   );
 
-  userEvent.type(screen.getByPlaceholderText("Username"), "reddit");
-  userEvent.click(screen.getByRole("button", { name: "Search" }));
+  searchPage.searchForUsername("reddit");
 
   expect(
     await screen.findByText("HTTP Error: (500) Internal Server Error")
@@ -46,8 +45,7 @@ test("network error causes error message", async () => {
     })
   );
 
-  userEvent.type(screen.getByPlaceholderText("Username"), "reddit");
-  userEvent.click(screen.getByRole("button", { name: "Search" }));
+  searchPage.searchForUsername("reddit");
 
   // NodeJS-specific message (the Chrome-specific message is "Failed to fetch")
   expect(
@@ -58,32 +56,31 @@ test("network error causes error message", async () => {
 test("illegal character in search string causes validation message", () => {
   renderWithWrapper(<App />);
 
-  const input = screen.getByPlaceholderText("Username");
   const validationMessage =
     "Username may only contain alphanumeric characters or single hyphens, and cannot begin or end with a hyphen.";
 
-  userEvent.type(input, "google-{enter}");
+  searchPage.typeUsername("google-{enter}");
   expect(screen.queryByText(validationMessage)).toBeInTheDocument();
 
-  userEvent.type(input, "{backspace}");
+  searchPage.typeUsername("{backspace}");
   expect(screen.queryByText(validationMessage)).not.toBeInTheDocument();
 
-  userEvent.clear(input);
-  userEvent.type(input, "-google");
+  searchPage.clearUsername();
+  searchPage.typeUsername("-google");
   expect(screen.queryByText(validationMessage)).toBeInTheDocument();
 
-  userEvent.clear(input);
+  searchPage.clearUsername();
   expect(screen.queryByText(validationMessage)).not.toBeInTheDocument();
 
-  userEvent.type(input, "google-2");
+  searchPage.typeUsername("google-2");
   expect(screen.queryByText(validationMessage)).not.toBeInTheDocument();
 
-  userEvent.clear(input);
-  userEvent.type(input, "google--2");
+  searchPage.clearUsername();
+  searchPage.typeUsername("google--2");
   expect(screen.queryByText(validationMessage)).toBeInTheDocument();
 
-  userEvent.clear(input);
-  userEvent.type(input, "google?2");
+  searchPage.clearUsername();
+  searchPage.typeUsername("google?2");
   expect(screen.queryByText(validationMessage)).toBeInTheDocument();
 });
 
