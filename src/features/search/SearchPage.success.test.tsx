@@ -3,10 +3,11 @@ import userEvent from "@testing-library/user-event";
 import { rest } from "msw";
 import { baseUrl } from "../../app/api";
 import App from "../../app/App";
-import { renderWithWrapper } from "../../testUtils/utils";
 import { mockUsers } from "../../mocks/mockData";
 import { server } from "../../mocks/server";
+import * as nav from "../../testUtils/nav";
 import * as searchPage from "../../testUtils/searchPage";
+import { renderWithWrapper } from "../../testUtils/utils";
 
 test("perform search and page through the repositories (happy path)", async () => {
   renderWithWrapper(<App />);
@@ -160,12 +161,10 @@ test("give focus to the Username input when needed", async () => {
 
   expect(screen.getByPlaceholderText("Username")).toHaveFocus();
 
-  const menu = screen.getByRole("navigation");
-
-  userEvent.click(getByText(menu, "About"));
+  nav.goToAboutPage();
   expect(screen.queryByText("How to search")).toBeInTheDocument();
 
-  userEvent.click(getByText(menu, "Search"));
+  nav.goToSearchPage();
   expect(screen.getByPlaceholderText("Username")).toHaveFocus();
 
   searchPage.searchUsername("graphql");
@@ -175,7 +174,7 @@ test("give focus to the Username input when needed", async () => {
   await expectRepoNamesToEqual(expectedRepoNames["graphql"].pages[1]);
   expect(screen.getByPlaceholderText("Username")).not.toHaveFocus();
 
-  userEvent.click(getByText(menu, "History"));
+  nav.goToHistoryPage();
   expect(screen.queryByText("History (1)")).toBeInTheDocument();
 
   userEvent.click(screen.getByText("graphql"));

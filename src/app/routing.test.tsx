@@ -1,5 +1,6 @@
 import { getByText, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import * as nav from "../testUtils/nav";
 import * as searchPage from "../testUtils/searchPage";
 import { renderWithWrapper, RoutingLocation } from "../testUtils/utils";
 import App from "./App";
@@ -9,15 +10,13 @@ test("main menu navigates the pages of the app", () => {
 
   expect(screen.queryByRole("button", { name: "Search" })).toBeInTheDocument();
 
-  const menu = screen.getByRole("navigation");
-
-  userEvent.click(getByText(menu, "History"));
+  nav.goToHistoryPage();
   expect(screen.queryByText("History (0)")).toBeInTheDocument();
 
-  userEvent.click(getByText(menu, "About"));
+  nav.goToAboutPage();
   expect(screen.queryByText("How to search")).toBeInTheDocument();
 
-  userEvent.click(getByText(menu, "Search"));
+  nav.goToSearchPage();
   expect(screen.queryByRole("button", { name: "Search" })).toBeInTheDocument();
 });
 
@@ -67,13 +66,11 @@ test("on navigating around the app, change routing location and document title",
     await screen.findByText("Username 'nonexistent' was not found.")
   ).toBeInTheDocument();
 
-  const menu = screen.getByRole("navigation");
-
-  userEvent.click(getByText(menu, "About"));
+  nav.goToAboutPage();
   expect(routingLocation()).toBe("/about");
   expect(document.title).toBe("About - GitHub Username Search");
 
-  userEvent.click(getByText(menu, "History"));
+  nav.goToHistoryPage();
   expect(routingLocation()).toBe("/history");
   expect(document.title).toBe("History - GitHub Username Search");
 
