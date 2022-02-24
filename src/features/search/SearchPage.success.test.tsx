@@ -97,7 +97,7 @@ test("trim search string and convert it to lowercase before searching", async ()
 
   searchPage.searchForUsername("  REDDIT   ");
 
-  expect(screen.getByPlaceholderText("Username")).toHaveValue("reddit");
+  expect(searchPage.usernameInputValue()).toBe("reddit");
 
   await expectRepoNamesToEqual(expectedRepoNames["reddit"].pages[1]);
 });
@@ -170,22 +170,18 @@ test("give focus to the Username input when needed", async () => {
 
   searchPage.searchForUsername("graphql");
 
-  let usernameInput = screen.getByPlaceholderText("Username");
-
-  expect(usernameInput).not.toHaveFocus();
+  expect(screen.getByPlaceholderText("Username")).not.toHaveFocus();
 
   await expectRepoNamesToEqual(expectedRepoNames["graphql"].pages[1]);
-  expect(usernameInput).not.toHaveFocus();
+  expect(screen.getByPlaceholderText("Username")).not.toHaveFocus();
 
   userEvent.click(getByText(menu, "History"));
   expect(screen.queryByText("History (1)")).toBeInTheDocument();
 
   userEvent.click(screen.getByText("graphql"));
 
-  usernameInput = screen.getByPlaceholderText("Username");
-
-  expect(usernameInput).toHaveValue("graphql");
-  expect(usernameInput).not.toHaveFocus();
+  expect(searchPage.usernameInputValue()).toBe("graphql");
+  expect(screen.getByPlaceholderText("Username")).not.toHaveFocus();
 });
 
 test("render the Search page with User and Repos data (snapshot test)", async () => {

@@ -1,7 +1,13 @@
 import { screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
-export { clearUsername, searchForUsername, typeUsername, waitForUserInfo };
+export {
+  clearUsername,
+  searchForUsername,
+  typeUsername,
+  usernameInputValue,
+  waitForUserInfo,
+};
 
 function searchForUsername(username: string) {
   typeUsername(username);
@@ -14,6 +20,10 @@ function typeUsername(username: string) {
 
 function clearUsername() {
   userEvent.clear(usernameInput());
+}
+
+function usernameInputValue() {
+  return usernameInput().getAttribute("value");
 }
 
 async function waitForUserInfo() {

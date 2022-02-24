@@ -56,7 +56,7 @@ test("on navigating around the app, change routing location and document title",
 
   expect(routingLocation()).toBe("/search?username=graphql");
   expect(document.title).toBe("graphql - GitHub Username Search");
-  expect(screen.getByPlaceholderText("Username")).toHaveValue("graphql");
+  expect(searchPage.usernameInputValue()).toBe("graphql");
 
   searchPage.clearUsername();
   searchPage.searchForUsername("nonexistent");

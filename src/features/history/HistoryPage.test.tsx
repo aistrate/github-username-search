@@ -59,7 +59,7 @@ test("username on History page links to Search page for that username", async ()
   expect(screen.queryByText("History (1)")).toBeInTheDocument();
 
   userEvent.click(screen.getByText("graphql"));
-  expect(screen.getByPlaceholderText("Username")).toHaveValue("graphql");
+  expect(searchPage.usernameInputValue()).toBe("graphql");
 
   const repoHeadings = await screen.findAllByRole("heading", { level: 3 });
   expect(repoHeadings.length).toBe(25);
