@@ -32,7 +32,7 @@ test("on navigating around the app, change routing location and document title",
   expect(routingLocation()).toBe("/search");
   expect(document.title).toBe("Search - GitHub Username Search");
 
-  searchPage.searchForUsername("reddit");
+  searchPage.searchUsername("reddit");
 
   expect(routingLocation()).toBe("/search?username=reddit");
   expect(document.title).toBe("reddit - GitHub Username Search");
@@ -52,14 +52,14 @@ test("on navigating around the app, change routing location and document title",
   expect(document.title).toBe("reddit - GitHub Username Search");
 
   searchPage.clearUsername();
-  searchPage.searchForUsername("GraphQL"); // capitalized
+  searchPage.searchUsername("GraphQL"); // capitalized
 
   expect(routingLocation()).toBe("/search?username=graphql");
   expect(document.title).toBe("graphql - GitHub Username Search");
   expect(searchPage.usernameInputValue()).toBe("graphql");
 
   searchPage.clearUsername();
-  searchPage.searchForUsername("nonexistent");
+  searchPage.searchUsername("nonexistent");
 
   expect(routingLocation()).toBe("/search?username=nonexistent");
   expect(document.title).toBe("nonexistent - GitHub Username Search");

@@ -1,7 +1,7 @@
 import { screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
-export function searchForUsername(username: string) {
+export function searchUsername(username: string) {
   typeUsername(username);
   userEvent.click(searchButton());
 }

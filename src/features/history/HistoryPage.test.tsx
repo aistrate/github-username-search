@@ -16,28 +16,28 @@ test("on every successful search, save username to the top of search history", a
   expectHistoryToEqual([]);
 
   userEvent.click(searchMenuItem);
-  searchPage.searchForUsername("reddit");
+  searchPage.searchUsername("reddit");
   await searchPage.waitForUserInfo();
 
   userEvent.click(historyMenuItem);
   expectHistoryToEqual(["reddit"]);
 
   userEvent.click(searchMenuItem);
-  searchPage.searchForUsername("graphql");
+  searchPage.searchUsername("graphql");
   await searchPage.waitForUserInfo();
 
   userEvent.click(historyMenuItem);
   expectHistoryToEqual(["graphql", "reddit"]);
 
   userEvent.click(searchMenuItem);
-  searchPage.searchForUsername("reddit");
+  searchPage.searchUsername("reddit");
   await searchPage.waitForUserInfo();
 
   userEvent.click(historyMenuItem);
   expectHistoryToEqual(["reddit", "graphql"]);
 
   userEvent.click(searchMenuItem);
-  searchPage.searchForUsername("nonexistent");
+  searchPage.searchUsername("nonexistent");
   expect(
     await screen.findByText("Username 'nonexistent' was not found.")
   ).toBeInTheDocument();
@@ -52,7 +52,7 @@ test("username on History page links to Search page for that username", async ()
   const menu = screen.getByRole("navigation");
 
   userEvent.click(getByText(menu, "Search"));
-  searchPage.searchForUsername("graphql");
+  searchPage.searchUsername("graphql");
   await searchPage.waitForUserInfo();
 
   userEvent.click(getByText(menu, "History"));
@@ -71,7 +71,7 @@ test("convert username to lowercase before saving it to search history", async (
   const menu = screen.getByRole("navigation");
 
   userEvent.click(getByText(menu, "Search"));
-  searchPage.searchForUsername("GraphQL"); // capitalized
+  searchPage.searchUsername("GraphQL"); // capitalized
   await searchPage.waitForUserInfo();
 
   userEvent.click(getByText(menu, "History"));

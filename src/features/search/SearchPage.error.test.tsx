@@ -10,7 +10,7 @@ import { renderWithWrapper } from "../../testUtils/utils";
 test("nonexistent username causes 'not found' message", async () => {
   renderWithWrapper(<App />);
 
-  searchPage.searchForUsername("nonexistent");
+  searchPage.searchUsername("nonexistent");
 
   expect(
     await screen.findByText("Username 'nonexistent' was not found.")
@@ -29,7 +29,7 @@ test("HTTP error causes error message", async () => {
     })
   );
 
-  searchPage.searchForUsername("reddit");
+  searchPage.searchUsername("reddit");
 
   expect(
     await screen.findByText("HTTP Error: (500) Internal Server Error")
@@ -45,7 +45,7 @@ test("network error causes error message", async () => {
     })
   );
 
-  searchPage.searchForUsername("reddit");
+  searchPage.searchUsername("reddit");
 
   // NodeJS-specific message (the Chrome-specific message is "Failed to fetch")
   expect(

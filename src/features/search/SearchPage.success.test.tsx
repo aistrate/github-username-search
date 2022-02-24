@@ -11,7 +11,7 @@ import * as searchPage from "../../testUtils/searchPage";
 test("perform search and page through the repositories (happy path)", async () => {
   renderWithWrapper(<App />);
 
-  searchPage.searchForUsername("reddit");
+  searchPage.searchUsername("reddit");
 
   await expectRepoNamesToEqual(expectedRepoNames["reddit"].pages[1]);
 
@@ -48,7 +48,7 @@ test("perform search and page through the repositories (happy path)", async () =
 test("perform search for user with single page of repositories", async () => {
   renderWithWrapper(<App />);
 
-  searchPage.searchForUsername("graphql");
+  searchPage.searchUsername("graphql");
 
   await expectRepoNamesToEqual(expectedRepoNames["graphql"].pages[1]);
 
@@ -60,7 +60,7 @@ test("perform search for user with single page of repositories", async () => {
 test("perform search for user with zero repositories", async () => {
   renderWithWrapper(<App />);
 
-  searchPage.searchForUsername("zerorepos");
+  searchPage.searchUsername("zerorepos");
 
   await screen.findByText("Repositories");
   await screen.findByText("(none)");
@@ -95,7 +95,7 @@ test("perform search by pressing Enter", async () => {
 test("trim search string and convert it to lowercase before searching", async () => {
   renderWithWrapper(<App />);
 
-  searchPage.searchForUsername("  REDDIT   ");
+  searchPage.searchUsername("  REDDIT   ");
 
   expect(searchPage.usernameInputValue()).toBe("reddit");
 
@@ -111,7 +111,7 @@ test("show spinner if User data fetching takes more than 500 ms", async () => {
     })
   );
 
-  searchPage.searchForUsername("reddit");
+  searchPage.searchUsername("reddit");
 
   expect(await screen.findByTestId("userSpinner")).toBeInTheDocument();
 
@@ -132,7 +132,7 @@ test("show spinner if Repos data fetching takes more than 500 ms", async () => {
     })
   );
 
-  searchPage.searchForUsername("reddit");
+  searchPage.searchUsername("reddit");
 
   expect(await screen.findByTestId("reposSpinner")).toBeInTheDocument();
 
@@ -168,7 +168,7 @@ test("give focus to the Username input when needed", async () => {
   userEvent.click(getByText(menu, "Search"));
   expect(screen.getByPlaceholderText("Username")).toHaveFocus();
 
-  searchPage.searchForUsername("graphql");
+  searchPage.searchUsername("graphql");
 
   expect(screen.getByPlaceholderText("Username")).not.toHaveFocus();
 
