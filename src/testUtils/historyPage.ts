@@ -1,8 +1,15 @@
 import { queryAllByRole, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
-export function isHistoryPageWithCount(count: number) {
-  return screen.queryByText(`History (${count})`) !== null;
+export function isHistoryPage() {
+  return screen.queryByText(headingRegex) !== null;
+}
+
+export function headingCount() {
+  const headingText = screen.getByText(headingRegex).textContent || "";
+  const match = headingText.match(headingRegex) as RegExpMatchArray;
+
+  return parseInt(match[1]);
 }
 
 export function historyUsernames() {
@@ -24,3 +31,5 @@ export function followUsernameLink(username: string) {
 function historyUsernameLinks() {
   return queryAllByRole(screen.getByTestId("historyList"), "link");
 }
+
+const headingRegex = /History \((\d+)\)/;

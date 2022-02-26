@@ -51,7 +51,7 @@ test("username on History page links to Search page for that username", async ()
   await searchPage.waitForUserInfo();
 
   nav.goToHistoryPage();
-  expect(historyPage.isHistoryPageWithCount(1)).toBe(true);
+  expect(historyPage.headingCount()).toBe(1);
 
   historyPage.followUsernameLink("graphql");
   expect(searchPage.usernameInputValue()).toBe("graphql");
@@ -75,7 +75,7 @@ test("convert username to lowercase before saving it to search history", async (
 test("empty History page shows '(empty)'", async () => {
   renderWithWrapper(<App />, "/history");
 
-  expect(historyPage.isHistoryPageWithCount(0)).toBe(true);
+  expect(historyPage.headingCount()).toBe(0);
   expect(screen.getByTestId("historyList")).toHaveTextContent("(empty)");
 });
 
@@ -92,7 +92,7 @@ test("render the History page with history data (snapshot test)", async () => {
 
 function expectHistoryToEqual(expected: string[]) {
   expect(historyPage.historyUsernames()).toEqual(expected);
-  expect(historyPage.isHistoryPageWithCount(expected.length)).toBe(true);
+  expect(historyPage.headingCount()).toBe(expected.length);
 }
 
 function setHistory(history: HistoryItem[]) {

@@ -12,7 +12,8 @@ test("main menu navigates the pages of the app", () => {
   expect(searchPage.isSearchPage()).toBe(true);
 
   nav.goToHistoryPage();
-  expect(historyPage.isHistoryPageWithCount(0)).toBe(true);
+  expect(historyPage.isHistoryPage()).toBe(true);
+  expect(historyPage.headingCount()).toBe(0);
 
   nav.goToAboutPage();
   expect(aboutPage.isAboutPage()).toBe(true);

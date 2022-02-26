@@ -174,7 +174,7 @@ test("give focus to the Username input when needed", async () => {
   expect(searchPage.usernameInputHasFocus()).toBe(false);
 
   nav.goToHistoryPage();
-  expect(historyPage.isHistoryPageWithCount(1)).toBe(true);
+  expect(historyPage.headingCount()).toBe(1);
 
   historyPage.followUsernameLink("graphql");
 
