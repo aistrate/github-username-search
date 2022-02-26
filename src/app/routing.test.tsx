@@ -1,4 +1,5 @@
 import { screen } from "@testing-library/react";
+import * as aboutPage from "../testUtils/aboutPage";
 import * as historyPage from "../testUtils/historyPage";
 import * as nav from "../testUtils/nav";
 import * as searchPage from "../testUtils/searchPage";
@@ -8,16 +9,16 @@ import App from "./App";
 test("main menu navigates the pages of the app", () => {
   renderWithWrapper(<App />);
 
-  expect(screen.queryByRole("button", { name: "Search" })).toBeInTheDocument();
+  expect(searchPage.isSearchPage()).toBe(true);
 
   nav.goToHistoryPage();
-  expect(screen.queryByText("History (0)")).toBeInTheDocument();
+  expect(historyPage.isHistoryPageWithCount(0)).toBe(true);
 
   nav.goToAboutPage();
-  expect(screen.queryByText("How to search")).toBeInTheDocument();
+  expect(aboutPage.isAboutPage()).toBe(true);
 
   nav.goToSearchPage();
-  expect(screen.queryByRole("button", { name: "Search" })).toBeInTheDocument();
+  expect(searchPage.isSearchPage()).toBe(true);
 });
 
 test("on navigating around the app, change routing location and document title", async () => {
@@ -89,7 +90,7 @@ test("root route ('/') redirects to the Search page", () => {
   );
 
   expect(routingLocation()).toBe("/search");
-  expect(screen.queryByRole("button", { name: "Search" })).toBeInTheDocument();
+  expect(searchPage.isSearchPage()).toBe(true);
 });
 
 test("nonexistent route redirects to the Search page", () => {
@@ -102,7 +103,7 @@ test("nonexistent route redirects to the Search page", () => {
   );
 
   expect(routingLocation()).toBe("/search");
-  expect(screen.queryByRole("button", { name: "Search" })).toBeInTheDocument();
+  expect(searchPage.isSearchPage()).toBe(true);
 });
 
 function routingLocation() {

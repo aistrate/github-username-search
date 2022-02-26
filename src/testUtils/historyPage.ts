@@ -1,6 +1,10 @@
 import { queryAllByRole, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
+export function isHistoryPageWithCount(count: number) {
+  return screen.queryByText(`History (${count})`) !== null;
+}
+
 export function historyUsernames() {
   return historyUsernameLinks().map((link) => link.textContent || "");
 }

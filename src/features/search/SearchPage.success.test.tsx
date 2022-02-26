@@ -4,6 +4,7 @@ import { baseUrl } from "../../app/api";
 import App from "../../app/App";
 import { mockUsers } from "../../mocks/mockData";
 import { server } from "../../mocks/server";
+import * as aboutPage from "../../testUtils/aboutPage";
 import * as historyPage from "../../testUtils/historyPage";
 import * as nav from "../../testUtils/nav";
 import * as searchPage from "../../testUtils/searchPage";
@@ -160,7 +161,7 @@ test("give focus to the Username input when needed", async () => {
   expect(searchPage.usernameInputHasFocus()).toBe(true);
 
   nav.goToAboutPage();
-  expect(screen.queryByText("How to search")).toBeInTheDocument();
+  expect(aboutPage.isAboutPage()).toBe(true);
 
   nav.goToSearchPage();
   expect(searchPage.usernameInputHasFocus()).toBe(true);
@@ -173,7 +174,7 @@ test("give focus to the Username input when needed", async () => {
   expect(searchPage.usernameInputHasFocus()).toBe(false);
 
   nav.goToHistoryPage();
-  expect(screen.queryByText("History (1)")).toBeInTheDocument();
+  expect(historyPage.isHistoryPageWithCount(1)).toBe(true);
 
   historyPage.followUsernameLink("graphql");
 

@@ -1,6 +1,10 @@
 import { getByText, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
+export function isSearchPage() {
+  return screen.queryByRole("button", { name: "Search" }) !== null;
+}
+
 // SearchForm
 
 export function searchUsername(username: string) {
