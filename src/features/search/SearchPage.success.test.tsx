@@ -1,10 +1,10 @@
 import { screen, waitFor } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
 import { rest } from "msw";
 import { baseUrl } from "../../app/api";
 import App from "../../app/App";
 import { mockUsers } from "../../mocks/mockData";
 import { server } from "../../mocks/server";
+import * as historyPage from "../../testUtils/historyPage";
 import * as nav from "../../testUtils/nav";
 import * as searchPage from "../../testUtils/searchPage";
 import { renderWithWrapper } from "../../testUtils/utils";
@@ -175,7 +175,7 @@ test("give focus to the Username input when needed", async () => {
   nav.goToHistoryPage();
   expect(screen.queryByText("History (1)")).toBeInTheDocument();
 
-  userEvent.click(screen.getByText("graphql"));
+  historyPage.followUsernameLink("graphql");
 
   expect(searchPage.usernameInputValue()).toBe("graphql");
   expect(screen.getByPlaceholderText("Username")).not.toHaveFocus();

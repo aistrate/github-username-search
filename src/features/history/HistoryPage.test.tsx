@@ -1,6 +1,6 @@
-import { queryAllByRole, screen } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
+import { screen } from "@testing-library/react";
 import App from "../../app/App";
+import * as historyPage from "../../testUtils/historyPage";
 import * as nav from "../../testUtils/nav";
 import * as searchPage from "../../testUtils/searchPage";
 import { renderWithWrapper } from "../../testUtils/utils";
@@ -53,7 +53,7 @@ test("username on History page links to Search page for that username", async ()
   nav.goToHistoryPage();
   expect(screen.queryByText("History (1)")).toBeInTheDocument();
 
-  userEvent.click(screen.getByText("graphql"));
+  historyPage.followUsernameLink("graphql");
   expect(searchPage.usernameInputValue()).toBe("graphql");
 
   const repoHeadings = await screen.findAllByRole("heading", { level: 3 });
@@ -68,8 +68,8 @@ test("convert username to lowercase before saving it to search history", async (
   await searchPage.waitForUserInfo();
 
   nav.goToHistoryPage();
-  expect(screen.queryByText("GraphQL")).not.toBeInTheDocument();
-  expect(screen.queryByText("graphql")).toBeInTheDocument();
+  expect(historyPage.historyUsernames()).not.toContain("GraphQL");
+  expect(historyPage.historyUsernames()).toContain("graphql");
 });
 
 test("empty History page shows '(empty)'", async () => {
@@ -91,13 +91,7 @@ test("render the History page with history data (snapshot test)", async () => {
 });
 
 function expectHistoryToEqual(expected: string[]) {
-  // on the History Page
-  const historyLinks = queryAllByRole(
-    screen.getByTestId("historyList"),
-    "link"
-  );
-  const usernames = historyLinks.map((link) => link.textContent || "");
-  expect(usernames).toEqual(expected);
+  expect(historyPage.historyUsernames()).toEqual(expected);
 
   expect(
     screen.queryByText(`History (${expected.length})`)

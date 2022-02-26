@@ -1,5 +1,5 @@
 import { screen } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
+import * as historyPage from "../testUtils/historyPage";
 import * as nav from "../testUtils/nav";
 import * as searchPage from "../testUtils/searchPage";
 import { renderWithWrapper, RoutingLocation } from "../testUtils/utils";
@@ -74,7 +74,7 @@ test("on navigating around the app, change routing location and document title",
   expect(routingLocation()).toBe("/history");
   expect(document.title).toBe("History - GitHub Username Search");
 
-  userEvent.click(screen.getByText("reddit"));
+  historyPage.followUsernameLink("reddit");
   expect(routingLocation()).toBe("/search?username=reddit");
   expect(document.title).toBe("reddit - GitHub Username Search");
 });
