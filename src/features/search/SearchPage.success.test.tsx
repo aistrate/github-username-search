@@ -157,20 +157,20 @@ test("show spinner if Repos data fetching takes more than 500 ms", async () => {
 test("give focus to the Username input when needed", async () => {
   renderWithWrapper(<App />);
 
-  expect(screen.getByPlaceholderText("Username")).toHaveFocus();
+  expect(searchPage.usernameInputHasFocus()).toBe(true);
 
   nav.goToAboutPage();
   expect(screen.queryByText("How to search")).toBeInTheDocument();
 
   nav.goToSearchPage();
-  expect(screen.getByPlaceholderText("Username")).toHaveFocus();
+  expect(searchPage.usernameInputHasFocus()).toBe(true);
 
   searchPage.searchUsername("graphql");
 
-  expect(screen.getByPlaceholderText("Username")).not.toHaveFocus();
+  expect(searchPage.usernameInputHasFocus()).toBe(false);
 
   await expectRepoNamesToEqual(expectedRepoNames["graphql"].pages[1]);
-  expect(screen.getByPlaceholderText("Username")).not.toHaveFocus();
+  expect(searchPage.usernameInputHasFocus()).toBe(false);
 
   nav.goToHistoryPage();
   expect(screen.queryByText("History (1)")).toBeInTheDocument();
@@ -178,7 +178,7 @@ test("give focus to the Username input when needed", async () => {
   historyPage.followUsernameLink("graphql");
 
   expect(searchPage.usernameInputValue()).toBe("graphql");
-  expect(screen.getByPlaceholderText("Username")).not.toHaveFocus();
+  expect(searchPage.usernameInputHasFocus()).toBe(false);
 });
 
 test("render the Search page with User and Repos data (snapshot test)", async () => {

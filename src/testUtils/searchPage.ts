@@ -20,6 +20,10 @@ export function usernameInputValue() {
   return usernameInput().getAttribute("value");
 }
 
+export function usernameInputHasFocus() {
+  return usernameInput() === document.activeElement;
+}
+
 function usernameInput() {
   return screen.getByPlaceholderText("Username");
 }
