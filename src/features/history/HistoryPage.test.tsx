@@ -54,6 +54,7 @@ test("username on History page links to Search page for that username", async ()
   expect(historyPage.headingCount()).toBe(1);
 
   historyPage.followUsernameLink("graphql");
+  expect(searchPage.isSearchPage()).toBe(true);
   expect(searchPage.usernameInputValue()).toBe("graphql");
 
   const repoHeadings = await screen.findAllByRole("heading", { level: 3 });

@@ -63,7 +63,7 @@ test("perform search for user with zero repositories", async () => {
   searchPage.searchUsername("zerorepos");
 
   await screen.findByText("Repositories");
-  await screen.findByText("(none)");
+  expect(await screen.findByText("(none)")).toBeInTheDocument();
 
   expect(searchPage.userInfoText()).toMatch("Repositories:0");
 
